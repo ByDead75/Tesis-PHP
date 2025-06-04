@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BancoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/bancos', [BancoController::class, 'index'])->name('bancos.index');
+
 Route::get('/', function () {
     return view('template');
 });
@@ -21,6 +24,7 @@ Route::get('/login', function () {
     return view('auth.login');
 });
 
+<<<<<<< Updated upstream
 Route::get('/403', function () {
     return view('errors.403');
 });
@@ -32,3 +36,12 @@ Route::get('/404', function () {
 Route::get('/500', function () {
     return view('errors.500');
 });
+=======
+Route::get('/inicio', function () {
+    return view('principal');
+});
+
+Route::get('/prueba', function () {
+    return view('prueba');
+});
+>>>>>>> Stashed changes
