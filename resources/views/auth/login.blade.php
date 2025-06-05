@@ -23,9 +23,9 @@
     <div class="col-lg-5 col-12">
         <div id="auth-left">
             <div class="auth-logo">
-                <a href="index.html"><img src="./assets/compiled/svg/logo.svg" alt="Logo"></a>
+                <a href="index.html"><img src="./assets/compiled/svg/humanitas.jfif" alt="Logo"></a>
             </div>
-            <h1 class="auth-title">Inicio de Sesión</h1>
+            <h1 class="auth-title">Ingresar</h1>
 
             <form action="index.html">
                 <div class="form-group position-relative has-icon-left mb-4">
@@ -49,7 +49,7 @@
                 <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Ingresar</button>
             </form>
             <div class="text-center mt-5 text-lg fs-4">
-                <p><a class="font-bold" href="auth-forgot-password.html">¿Olvidaste tu contraseña?</a>.</p>
+                <p><a class="font-bold" href="auth-forgot-password.html">¿Olvidaste tu contraseña?</a></p>
             </div>
         </div>
     </div>
