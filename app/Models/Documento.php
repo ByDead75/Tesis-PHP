@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CentroCosto extends Model{
+class Documento extends Model{
 
     use HasFactory;
-    protected $table = "centro_costo";
+    protected $table = "documento";
     
     protected $primaryKey = "id";
 
@@ -16,13 +16,13 @@ class CentroCosto extends Model{
 
     protected $fillable = [
         
-        'id_centro',
-        'centro',
-        'cod_empresa',
-        'cod_aprobador',
-        'status_aprobador',
-        'cod_director',
-        'cod_gerencia',
-        'centro_costocol',
+        'id',
+        'nombre_documento',
+        'id_factura',
+        'id_usuario',
+        'tipo_documento',
+        'fecha_registro',
+        'ruta',
+        'observacion',
     ];
 }

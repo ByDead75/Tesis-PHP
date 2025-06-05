@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CentroCosto extends Model{
+class CentroDeCostos extends Model{
 
     use HasFactory;
-    protected $table = "centro_costo";
-    
+    protected $table = "centros_de_costo";
+
     protected $primaryKey = "id";
 
     public $timestamps = false;
@@ -18,11 +18,5 @@ class CentroCosto extends Model{
         
         'id_centro',
         'centro',
-        'cod_empresa',
-        'cod_aprobador',
-        'status_aprobador',
-        'cod_director',
-        'cod_gerencia',
-        'centro_costocol',
     ];
 }

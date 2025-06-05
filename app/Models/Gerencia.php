@@ -5,24 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CentroCosto extends Model{
+class Gerencia extends Model{
 
     use HasFactory;
-    protected $table = "centro_costo";
+    protected $table = "gerencia";
     
-    protected $primaryKey = "id";
-
+    protected $primaryKey = "cod_empresa, cod_direccion, cod_gerencia";
     public $timestamps = false;
 
     protected $fillable = [
         
-        'id_centro',
-        'centro',
         'cod_empresa',
-        'cod_aprobador',
-        'status_aprobador',
-        'cod_director',
+        'cod_direccion',
         'cod_gerencia',
-        'centro_costocol',
+        'nb_gerencia',
+        'fecha inactivacion',
     ];
 }

@@ -28,6 +28,7 @@ Route::get('/login', function () {
     return view('auth.login');
 });
 
+
 Route::get('/403', function () {
     return view('errors.403');
 });
@@ -47,3 +48,4 @@ Route::get('/inicio', function () {
 Route::get('/prueba', function () {
     return view('prueba');
 });
+
