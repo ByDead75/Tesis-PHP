@@ -22,12 +22,13 @@
 <div class="row h-100">
     <div class="col-lg-5 col-12">
         <div id="auth-left">
-            <div class="auth-logo">
-                <a href="index.html"><img src="./assets/compiled/svg/humanitas.jfif" alt="Logo"></a>
+            <div class="auth-logo text-center d-md-block d-lg-none h">
+                <a href="/"><img src="./assets/compiled/svg/humanitas_gris.svg"  alt="Logo"></a>
             </div>
             <h1 class="auth-title">Ingresar</h1>
 
-            <form action="index.html">
+            <!--- action="/" - Redireccion a la página de inicio--->
+            <form action="/">
                 <div class="form-group position-relative has-icon-left mb-4">
                     <input type="text" class="form-control form-control-xl" placeholder="Usuario">
                     <div class="form-control-icon">
@@ -55,7 +56,12 @@
     </div>
     <div class="col-lg-7 d-none d-lg-block">
         <div id="auth-right">
-
+            <div class="d-flex align-items-center justify-content-center h-100">
+                <a href="/">
+                    <img src="./assets/compiled/svg/logo_humanitas.svg" alt="Logo" class="img-fluid img-shadow" width="100%">
+                </a>
+            </div>
+            
         </div>
     </div>
 </div>

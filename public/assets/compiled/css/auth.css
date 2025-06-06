@@ -7,14 +7,22 @@ body {
 }
 #auth #auth-right {
     height: 100%;
-    background: url(./png/4853433.png), linear-gradient(90deg, #2d499d, #3f5491);
+    background: var(--bs-azul-humanitas);
 }
+#auth #auth-right .auth-logo{
+    margin-bottom: 2rem;
+}
+#auth #auth-right .auth-logo img {
+    height: 2rem;
+}
+
 #auth #auth-left {
     padding: 5rem;
 }
 #auth #auth-left .auth-title {
     font-size: 4rem;
     margin-bottom: 1rem;
+    margin-top: 4rem;
 }
 #auth #auth-left .auth-subtitle {
     font-size: 1.7rem;

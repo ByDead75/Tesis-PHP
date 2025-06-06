@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BancoController;
+use App\Http\Controllers\CentroDeCostosController;
+use App\Http\Controllers\CentrosDeCostoController;
+use App\Models\CentroDeCostos;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,19 +17,16 @@ use App\Http\Controllers\BancoController;
 |
 */
 
-Route::get('/bancos', [BancoController::class, 'index'])->name('bancos.index');
+Route::get('/bancos', [CentrosDeCostoController::class, 'index'])->name('bancos.index');
 
-Route::get('/', function () {
-    return view('template');
-});
+/*Route::get('/centros', [CentrosDeCostoController::class, 'index'])->name('centros.index'); */
 
-Route::get('/panel', function () {
-    return view('panel.index');
-});
+Route::get('/', function () {return view('template');});
 
-Route::get('/login', function () {
-    return view('auth.login');
-});
+Route::get('/dashboard', function () { return view('dashboard.index');})->name('dashboard');
+
+Route::get('/login', function () {return view('auth.login');})->name('login');
+
 
 
 Route::get('/403', function () {
@@ -49,3 +49,6 @@ Route::get('/prueba', function () {
     return view('prueba');
 });
 
+Route::get('/listado_bancos', function () {
+    return view('listado_bancos');
+});

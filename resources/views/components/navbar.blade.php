@@ -1,13 +1,13 @@
-<nav class="main-navbar">
+<nav class="main-navbar" >
                     <div class="container">
                         <ul>
                             
                             
                             
                             <li
-                                class="menu-item  ">
-                                <a href="/panel" class='menu-link'>
-                                    <span><i class="bi bi-grid-fill"></i> Panel</span>
+                                class="menu-item  active">
+                                <a href="{{ url('dashboard') }}" class='menu-link'>
+                                    <span><i class="bi bi-grid-fill"></i> Dashboard</span>
                                 </a>
                             </li>
                             
@@ -75,7 +75,7 @@
                             
                             
                             <li
-                                class="menu-item active has-sub">
+                                class="menu-item has-sub">
                                 <a href="#" class='menu-link'>
                                     <span><i class="bi bi-grid-1x2-fill"></i> Registro Historico</span>
                                 </a>

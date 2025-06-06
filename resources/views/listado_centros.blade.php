@@ -8,11 +8,12 @@
 </head>
 <body>
     <div>
+
         <select class="form-select" id="basicSelect">
             <option>IT</option>
 
-            @foreach($bancos as $banco)
-                <option value="{{ $banco->cod_banco }}">{{ $banco->nb_banco }}</option>
+            @foreach($centros as $centro)
+                <option value="{{ $centro->id_centro }}">{{ $centro->centro }}</option>
             @endforeach
             
         </select>

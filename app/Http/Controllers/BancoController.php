@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Bancos;
 
+
 class BancoController extends Controller
 {
     public function index ()
@@ -11,7 +12,8 @@ class BancoController extends Controller
 
         $bancos = $bancos_model->get_bancos();
 
-        dd($bancos);
+        return view('listado_bancos',  ['bancos' => $bancos]);
 
     } 
+
 }

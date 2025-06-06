@@ -3,7 +3,7 @@
                 <div class="header-top">
                     <div class="container">
                         <div class="logo">
-                            <a href="/"><img src="./assets/compiled/svg/humanitas.jfif" alt="Logo"></a>
+                            <a href="/"><img src="./assets/compiled/svg/humanitas_gris.svg" alt="Logo"></a>
                         </div>
                         <div class="header-top-right">
 
@@ -21,7 +21,7 @@
                                   <li><a class="dropdown-item" href="#">Mi Cuenta</a></li>
                                   <li><a class="dropdown-item" href="#">Configuración</a></li>
                                   <li><hr class="dropdown-divider"></li>
-                                  <li><a class="dropdown-item" href="/login">Cerrar Sesión</a></li>
+                                  <li><a class="dropdown-item" href="{{ url('login') }}">Cerrar Sesión</a></li>
                                 </ul>
                             </div>
 
@@ -32,6 +32,7 @@
                         </div>
                     </div>
                 </div>
+                
                 <x-navbar/>
 
             </header>

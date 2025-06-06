@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CentroDeCostos extends Model{
+class CentrosDeCosto extends Model{
 
     use HasFactory;
     protected $table = "centros_de_costo";
@@ -19,4 +19,10 @@ class CentroDeCostos extends Model{
         'id_centro',
         'centro',
     ];
+
+    public function get_centros() {
+        $resultado = self::select('id_centro','centro')->distinct()->get();
+
+        return $resultado;
+    }
 }
