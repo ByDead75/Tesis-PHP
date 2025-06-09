@@ -15,6 +15,7 @@ class Usuarios extends Model{
 
     protected $fillable = [
         
+        'password',
         'cedula',
     ];
 

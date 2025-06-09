@@ -45,10 +45,9 @@ Route::get('/inicio', function () {
     return view('principal');
 });
 
-Route::get('/prueba', function () {
-    return view('prueba');
+
+
+Route::get('/generar_solicitud', function () {
+    return view('ordenes.generar_solicitud');
 });
 
-Route::get('/listado_bancos', function () {
-    return view('listado_bancos');
-});
