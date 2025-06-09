@@ -2,14 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BancoController;
-<<<<<<< Updated upstream
 use App\Http\Controllers\CentroDeCostosController;
 use App\Http\Controllers\CentrosDeCostoController;
 use App\Models\CentroDeCostos;
 
-=======
 use App\Http\Controllers\LoginController;
->>>>>>> Stashed changes
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,7 +46,7 @@ Route::get('/login', function () {return view('auth.login');})->name('login');
 // });
 
 // Ruta de inicio
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
 
