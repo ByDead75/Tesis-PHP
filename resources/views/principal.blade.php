@@ -43,8 +43,15 @@
                                     </div>
                                 </a>
                             </div>
+                            <h2>Bienvenido, {{ Auth::user()->name ?? 'Usuario' }}!</h2>
+                                <p>Has iniciado sesión correctamente. Esta es tu página de inicio.</p>
 
-                            <a href="#" class="burger-btn d-block d-xl-none">
+                                @if(session('success'))
+                                    <div class="alert-success">
+                                        {{ session('success') }}
+                                    </div>
+                                @endif
+                                    <a href="#" class="burger-btn d-block d-xl-none">
                                 <i class="bi bi-justify fs-3"></i>
                             </a>
                         </div>

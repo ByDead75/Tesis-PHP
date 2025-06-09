@@ -2,10 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BancoController;
+<<<<<<< Updated upstream
 use App\Http\Controllers\CentroDeCostosController;
 use App\Http\Controllers\CentrosDeCostoController;
 use App\Models\CentroDeCostos;
 
+=======
+use App\Http\Controllers\LoginController;
+>>>>>>> Stashed changes
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,6 +32,26 @@ Route::get('/dashboard', function () { return view('dashboard.index');})->name('
 Route::get('/login', function () {return view('auth.login');})->name('login');
 
 
+// Ruta para mostrar el formulario de login
+//  Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+
+// Ruta para procesar el login
+//  Route::post('/login', [LoginController::class, 'login']);
+
+// Ruta para cerrar sesión
+//  Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+// Ejemplo de ruta protegida (solo accesible si el usuario está logueado)
+//  Route::middleware(['auth'])->group(function () {
+    //  Route::get('/home', function () {
+        // return view('home'); // Asegúrate de tener una vista 'home.blade.php'
+    // })->name('home');
+// });
+
+// Ruta de inicio
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Route::get('/403', function () {
     return view('errors.403');
