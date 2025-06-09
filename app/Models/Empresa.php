@@ -20,4 +20,10 @@ class Empresa extends Model{
         'nb_empresa',
         'logo_empresa',
     ];
+
+    public function get_empresas() {
+    $resultado = self::select('cod_empresa','nb_empresa')->distinct()->get();
+
+    return $resultado;
+    }
 }

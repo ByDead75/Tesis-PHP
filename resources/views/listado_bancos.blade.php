@@ -23,7 +23,33 @@
             @endforeach
             
         </select>
-    
+
+        
+        <select class="form-select" id="basicSelect">
+
+            @foreach($proveedores as $proveedor)
+                <option value="{{ $proveedor->cod_tipo_auxiliar }}">{{ $proveedor->nb_auxiliar }}</option>
+            @endforeach
+            
+        </select>
+
+        <select class="form-select" id="basicSelect">
+
+            @foreach($empresas as $empresa)
+                <option value="{{ $empresa->cod_empresa }}">{{ $empresa->nb_empresa }}</option>
+            @endforeach
+            
+        </select>
+
+        <select class="form-select" id="basicSelect">
+
+            @foreach($cuentas as $cuenta)
+                <option value="{{ $cuenta->cod_auxiliar }}">{{ $cuenta->nu_cuenta }}</option>
+            @endforeach
+            
+        </select>
+        
+        
     </div>
 </body>
 </html>

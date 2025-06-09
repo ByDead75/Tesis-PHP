@@ -22,4 +22,11 @@ class Cuentas extends Model{
         'cod_banco',
         'nu_cuenta',
     ];
+
+    public function get_cuentas() {
+
+    $resultado = self::select('cod_auxiliar', 'cod_banco', 'nu_cuenta', 'destino')->distinct()->get();
+
+    return $resultado;
+    }
 }

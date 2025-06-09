@@ -21,4 +21,10 @@ class Proveedores extends Model{
         'rif',
         'nit',
     ];
+
+    public function get_proveedores() {
+        $resultado = self::select('cod_auxiliar','nb_auxiliar', 'rif')->distinct()->get();
+
+        return $resultado;
+    }
 }

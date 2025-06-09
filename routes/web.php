@@ -2,11 +2,20 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BancoController;
+<<<<<<< Updated upstream
 use App\Http\Controllers\CentroDeCostosController;
 use App\Http\Controllers\CentrosDeCostoController;
 use App\Models\CentroDeCostos;
 
 use App\Http\Controllers\LoginController;
+=======
+use App\Http\Controllers\GenerarSolicitudesController;
+use App\Models\CentroDeCostos;
+
+
+use App\Http\Controllers\LoginController;
+
+>>>>>>> Stashed changes
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,7 +27,7 @@ use App\Http\Controllers\LoginController;
 |
 */
 
-Route::get('/bancos', [CentrosDeCostoController::class, 'index'])->name('bancos.index');
+Route::get('/bancos', [GenerarSolicitudesController::class, 'index'])->name('bancos.index');
 
 /*Route::get('/centros', [CentrosDeCostoController::class, 'index'])->name('centros.index'); */
 
