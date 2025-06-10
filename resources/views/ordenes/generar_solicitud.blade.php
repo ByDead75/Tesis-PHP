@@ -133,11 +133,12 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="first-name-column" >Banco</label>
-                                                <select class="form-select" id="basicSelect">
-                                                    <option value="prueba">Seleccionar</option>
-                                                    <option value="prueba">Prueba</option>
-                                                    <option value="prueba">Prueba</option>
-                                                </select>
+                                            <select class="form-select" id="selectBanco">
+                                                <option value="">Seleccionar</option>
+                                                @foreach($bancos as $banco)     
+                                                    <option value="{{ $banco->cod_banco }}">{{ $banco->nb_banco }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
 

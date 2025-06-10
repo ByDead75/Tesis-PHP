@@ -2,20 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BancoController;
-<<<<<<< Updated upstream
-use App\Http\Controllers\CentroDeCostosController;
 use App\Http\Controllers\CentrosDeCostoController;
 use App\Models\CentroDeCostos;
 
 use App\Http\Controllers\LoginController;
-=======
 use App\Http\Controllers\GenerarSolicitudesController;
-use App\Models\CentroDeCostos;
 
-
-use App\Http\Controllers\LoginController;
-
->>>>>>> Stashed changes
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,9 +19,7 @@ use App\Http\Controllers\LoginController;
 |
 */
 
-Route::get('/bancos', [GenerarSolicitudesController::class, 'index'])->name('bancos.index');
-
-/*Route::get('/centros', [CentrosDeCostoController::class, 'index'])->name('centros.index'); */
+Route::get('/generar_solicitud', [GenerarSolicitudesController::class, 'index'])->name('ordenes.index');
 
 Route::get('/', function () {return view('template');});
 
@@ -76,8 +66,11 @@ Route::get('/inicio', function () {
 });
 
 
-
+/*
 Route::get('/generar_solicitud', function () {
     return view('ordenes.generar_solicitud');
 });
+*/
+
+
 

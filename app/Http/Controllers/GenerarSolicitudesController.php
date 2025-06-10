@@ -25,7 +25,7 @@ class GenerarSolicitudesController extends Controller
         $bancos = $bancos_model->get_bancos();
         $cuentas = $cuentas_model->get_cuentas();
 
-        return view('listado_bancos',   [
+        return view('ordenes.generar_solicitud',   [
         'centros' => $centros, 
         'bancos' => $bancos, 
         'proveedores' => $proveedores,
