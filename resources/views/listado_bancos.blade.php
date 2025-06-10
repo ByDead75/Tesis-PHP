@@ -44,5 +44,9 @@
         </select>
          
     </div>
+    <div>
+        <x-modal/>
+    </div>
+    <script src="assets/compiled/js/modal.js"></script>
 </body>
 </html>

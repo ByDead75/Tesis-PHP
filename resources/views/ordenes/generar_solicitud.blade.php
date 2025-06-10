@@ -177,6 +177,13 @@
                                             <input type="text" id="company-column" class="form-control" name="company-column" placeholder="Company">
                                         </div>
                                     </div>
+
+                                    <div class="col-md-4 col-12">
+                                        <div class="form-group">
+                                            <label for="company-column">Monto Total</label>
+                                            <input type="text" id="company-column" class="form-control" name="company-column" placeholder="Company">
+                                        </div>
+                                    </div>
                                     
 
                             <section class="section">
@@ -199,6 +206,9 @@
                             <div>
                                 <x-file_upload/>
                             </div>
+
+                            
+                            </div>
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
                                         
@@ -207,10 +217,6 @@
                             </form>
                         </div>
                     </div>
-
-                    
-
-
                 </div>
             </div>
         </div>
@@ -218,7 +224,11 @@
     </div>
 
     <div>
+        <x-modal id="proveedores" title="Proveedores"/>
+    </div>
 
+    <div>
+        <x-modal id="Bancos" title="Bancos"/>
     </div>
 
     <script src="/public/assets/compiled/js/app.js"></script>
