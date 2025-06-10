@@ -3,13 +3,10 @@
 @section('title', 'Generar Solicitud')
 
 @push('css')
-
+    <link rel="stylesheet" href="./assets/compiled/css/ordenes.css">
 @endpush
 
 @section('content')
-
-
-
     <div class="d-flex justify-content-center">
         <section id="multiple-column-form">
             <div class="row match-height">
@@ -80,21 +77,15 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="first-name-column" >Tipo de Proveedor</label>
-                                            <select class="form-select" id="basicSelect">
-                                                <option value="prueba">Seleccionar</option>
-                                                <option value="prueba">Prueba</option>
-                                                <option value="prueba">Prueba</option>
-                                            </select>
+                                            <input type="text" id="city-column" class="form-control" placeholder="" name="tipo_proveedor">
+                                            <input type="hidden" id="city-column" class="form-control"  name="city-column">
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="first-name-column" >Nombre o Razón Social / Beneficiario del Pago</label>
-                                            <select class="form-select" id="basicSelect">
-                                                <option value="prueba">Seleccionar</option>
-                                                <option value="prueba">Prueba</option>
-                                                <option value="prueba">Prueba</option>
-                                            </select>
+                                            <input type="text" id="proveedor_nombre" class="form-control" placeholder="Clic para seleccionar un proveedor" name="proveedor_nombre">
+                                            <input type="hidden" id="proveedor_codigo" class="form-control"  name="proveedor_codigo">
                                         </div>
                                         
                                     </div>
@@ -224,17 +215,18 @@
         </section>
     </div>
 
-    
-
-    <div>
-        <x-modal id="Bancos" title="Bancos"/>
-    </div>
-
-    <script src="/public/assets/compiled/js/app.js"></script>
-    <script src="./assets/compiled/js/app.js"></script>
+@include('components.modal')
 
 @endsection
 
 @push('js')
+<!--Funcionalidad de Perfil (Generar Solicitud) -->
+    <script src="./assets/compiled/js/app.js"></script>
+    <script src="./assets/compiled/js/proveedores_modal.js"></script>
 
+    <script>
+        $('#proveedor_nombre').on('click', function () {
+            proveedores('{{ url("proveedores/index") }}')
+        })
+    </script>
 @endpush

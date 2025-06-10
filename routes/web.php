@@ -7,6 +7,7 @@ use App\Models\CentroDeCostos;
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\GenerarSolicitudesController;
+use App\Http\Controllers\ProveedoresController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,10 @@ use App\Http\Controllers\GenerarSolicitudesController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::controller(ProveedoresController::class)->group(function () {
+    Route::get('proveedores/index', 'index')->name('proveedores.index');
+});
 
 Route::get('/generar_solicitud', [GenerarSolicitudesController::class, 'index'])->name('ordenes.index');
 

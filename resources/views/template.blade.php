@@ -22,7 +22,7 @@
 </head>
 
 <body>
-    <script src="assets/static/js/initTheme.js"></script>
+    
     <div id="app">
         <div id="main" class="layout-horizontal">
             <x-header/>
@@ -35,8 +35,10 @@
         </div>
     </div>
 
-    <script src="assets/static/js/components/dark.js"></script>
-    <script src="assets/static/js/pages/horizontal-layout.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    
+    <script src="./assets/compiled/js/app.js"></script>
+
     <script src="assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="assets/compiled/js/modal.js"></script>
 
@@ -48,12 +50,9 @@
     <script src="assets/extensions/filepond-plugin-image-preview/filepond-plugin-image-preview.min.js"></script>
     <script src="assets/extensions/filepond-plugin-image-resize/filepond-plugin-image-resize.min.js"></script>
     <script src="assets/extensions/filepond/filepond.js"></script>
+    
     <script src="assets/extensions/toastify-js/src/toastify.js"></script>
     <script src="assets/static/js/pages/filepond.js"></script>
-
-    <script src="assets/extensions/jquery/jquery.js"></script>
-
-    
     
     @stack('js')
     

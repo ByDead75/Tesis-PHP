@@ -38,6 +38,6 @@
             </header>
 
 @push('js')
-    <!--Funcionalidad de Perfil de Usuario -->
-    <script src="assets/compiled/js/app.js"></script>
+    <!--Funcionalidad de Perfil de Usuario (Header) -->
+    <script src="./assets/compiled/js/app.js"></script>
 @endpush
