@@ -23,5 +23,3 @@ class Modal extends Component
 
 ?>
 
-
-                            

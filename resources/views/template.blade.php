@@ -51,6 +51,8 @@
     <script src="assets/extensions/toastify-js/src/toastify.js"></script>
     <script src="assets/static/js/pages/filepond.js"></script>
 
+    <script src="assets/extensions/jquery/jquery.js"></script>
+
     
     
     @stack('js')

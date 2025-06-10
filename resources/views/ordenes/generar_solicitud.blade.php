@@ -139,6 +139,7 @@
                                                     <option value="{{ $banco->cod_banco }}">{{ $banco->nb_banco }}</option>
                                                 @endforeach
                                             </select>
+                                            <x-modal id="" title="" />
                                         </div>
                                     </div>
 
@@ -223,9 +224,7 @@
         </section>
     </div>
 
-    <div>
-        <x-modal id="proveedores" title="Proveedores"/>
-    </div>
+    
 
     <div>
         <x-modal id="Bancos" title="Bancos"/>
