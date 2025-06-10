@@ -50,4 +50,18 @@ class Solicitudes extends Model{
         'fecha_firma4',
         'firma_4',
     ];
+
+        public function get_solicitudes() {
+        $resultado = self::select('solicitudes.id_pago', 
+                'solicitudes.id_solicitud',
+                'solicitudes.fecha_solicitud',
+                'solicitudes.id_solicitante', 
+                'solicitudes.rif',
+                'solicitudes.monto_total',
+                'empleados1.nombre as nombre_solicitante' )
+                ->join('empleados1', 'solicitudes.id_solicitante', '=', 'empleados1.cedula')
+                ->distinct()->get();
+
+        return $resultado;
+    }
 }
