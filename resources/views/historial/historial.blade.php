@@ -7,6 +7,7 @@
 @endpush
 
 @section('content')
+
 <!-- Tabla para el Historial en jQuery -->
     <section class="section">
         <div class="card">
@@ -63,25 +64,16 @@
                                 <td value="{{ $solicitud->id_solicitud }}"> {{ $solicitud->monto_total }} Bs</td>
                                 <td> <span class="badge bg-primary">Completada</span> </td>
                                 <td><i class="bi bi-journals"></i></td>
-                                
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
+                    {{ $solicitudes->links() }}
                     <div class="row">
-                        <div class="col-10">
-                            <div class="dataTables_info" id="table2_info" role="status" aria-live="polite">Page 1 of 3</div>
-                        </div>
-                        <div class="col-2">
-                            <div class="dataTables_paginate paging_simple" id="table2_paginate">
-                                <ul class="pagination pagination-primary">
-                                    <li class="paginate_button page-item previous disabled" id="table2_previous">
-                                        <a aria-controls="table2" aria-disabled="true" role="link" data-dt-idx="previous" tabindex="0" class="page-link">Previous</a>
-                                    </li>
-                                    <li class="paginate_button page-item next" id="table2_next">
-                                        <a href="#" aria-controls="table2" role="link" data-dt-idx="next" tabindex="0" class="page-link">Next</a>
-                                    </li>
-                                </ul>
+                        <div>
+                            <div>
+                                <div class="col-12 d-flex justify-content-center mt-4">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -90,15 +82,14 @@
         </div>
     </section>
 @endsection
+
     <script src="assets/static/js/components/dark.js"></script>
     <script src="assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     
     
     <script src="assets/compiled/js/app.js"></script>
     
-
-    
-<script src="assets/extensions/jquery/jquery.min.js"></script>
-<script src="assets/extensions/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="assets/extensions/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
-<script src="assets/static/js/pages/datatables.js"></script>
+    <script src="assets/extensions/jquery/jquery.min.js"></script>
+    <script src="assets/extensions/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="assets/extensions/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
+    <script src="assets/static/js/pages/datatables.js"></script>
