@@ -1,10 +1,26 @@
+let customized_two_datatable = $("#proveedores_table").DataTable({
+    responsive: true,
+    pagingType: 'simple',
+    dom:
+		"<'row'<'col-3'l><'col-9'f>>" +
+		"<'row dt-row'<'col-sm-12'tr>>" +
+		"<'row'<'col-4'i><'col-8'p>>",
+    "language": {
+        "info": "Page _PAGE_ of _PAGES_",
+        "lengthMenu": "_MENU_ ",
+        "search": "",
+        "searchPlaceholder": "Buscar..."
+    }
+});
+
+
 var proveedores = function(url){
     var mbody = $('#proveedoresModal').find('.modal-body');
     mbody.html('');
     $('#proveedoresModal').modal('show');
 
     if ($('#proveedoresModal').find('.modal-body').children().length == 0) {  
-        // $("#spinner").show()
+        $("#spinner").show()
         $.ajax({
             url: url,
             type: 'GET',
@@ -24,7 +40,8 @@ var proveedores = function(url){
 
                 for (i=0; i < data.length; i++) {
                     table = table + `
-                        <tr>
+                    
+                    <tr>
                             <td class="text-bold-500">
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="codigo_proveedor" id="codigo_proveedor" value="`+data[i]['cod_auxiliar']+`" onclick="proveedor_selecionado('`+data[i]['cod_auxiliar']+`','`+data[i]['nb_auxiliar']+`')">
@@ -37,14 +54,14 @@ var proveedores = function(url){
                     `
                 }
 
-                // $("#spinner").hide();
+                $("#spinner").hide();
                 mbody.append(`
                     <div class="row" id="table-hover-row">
                         <div class="col-12">
                             <div class="card mb-0">
                                 <div class="card-content">
                                     <div class="table-responsive">
-                                        <table class="table table-hover mb-0" id="tabla_proveedores">
+                                        <table class="table table-hover mb-0" id="proveedores_table">
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
@@ -64,8 +81,9 @@ var proveedores = function(url){
                     </div>
                 `);
 
-                // var table1 = document.querySelector('#tabla_clinicas');
-                // var dataTable = new simpleDatatables.DataTable(table1);
+                new DataTable('#proveedores_table');
+
+                
             }
         })
     }

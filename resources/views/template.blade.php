@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="assets/extensions/filepond/filepond.css">
     <link rel="stylesheet" href="assets/extensions/filepond-plugin-image-preview/filepond-plugin-image-preview.css">
     <link rel="stylesheet" href="assets/extensions/toastify-js/src/toastify.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.3.2/css/dataTables.dataTables.css">
     
     @stack('css')
 </head>
@@ -35,12 +36,18 @@
         </div>
     </div>
 
+
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    
-    <script src="./assets/compiled/js/app.js"></script>
+    <script src="https://cdn.datatables.net/2.3.2/js/dataTables.js"></script>
+
 
     <script src="assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="assets/compiled/js/modal.js"></script>
+
+    <script src="assets/extensions/jquery/jquery.min.js"></script>
+    <script src="assets/extensions/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="assets/extensions/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
+    <script src="assets/static/js/pages/datatables.js"></script>
 
     <script src="assets/extensions/filepond-plugin-file-validate-size/filepond-plugin-file-validate-size.min.js"></script>
     <script src="assets/extensions/filepond-plugin-file-validate-type/filepond-plugin-file-validate-type.min.js"></script>
@@ -53,6 +60,8 @@
     
     <script src="assets/extensions/toastify-js/src/toastify.js"></script>
     <script src="assets/static/js/pages/filepond.js"></script>
+
+        <script src="assets/compiled/js/app.js"></script>
     
     @stack('js')
     

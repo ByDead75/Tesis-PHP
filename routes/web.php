@@ -7,11 +7,8 @@ use App\Models\CentroDeCostos;
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\GenerarSolicitudesController;
-<<<<<<< Updated upstream
 use App\Http\Controllers\ProveedoresController;
-=======
 use App\Http\Controllers\HistorialController;
->>>>>>> Stashed changes
 
 /*
 |--------------------------------------------------------------------------
@@ -32,7 +29,7 @@ Route::get('/generar_solicitud', [GenerarSolicitudesController::class, 'index'])
 
 Route::get('/historial', [HistorialController::class, 'index'])->name('historial.index');
 
-// Route::get('/bancos', [GenerarSolicitudesController::class, 'index'])->name('bancos.index');
+
 
 Route::get('/', function () {return view('template');});
 
@@ -76,6 +73,10 @@ Route::get('/500', function () {
 
 Route::get('/inicio', function () {
     return view('principal');
+});
+
+Route::get('/pruebas', function () {
+    return view('ordenes.pruebas');
 });
 
 
