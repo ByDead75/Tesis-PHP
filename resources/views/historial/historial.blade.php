@@ -3,10 +3,14 @@
 @section('title', 'Historial de Solicitudes')
 
 @push('css')
-
+    <link rel="stylesheet" href="assets/extensions/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="./assets/compiled/css/table-datatable-jquery.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.3.2/js/dataTables.js">
+    
 @endpush
 
 @section('content')
+
 
 <!-- Tabla para el Historial en jQuery -->
     <section class="section">
@@ -17,30 +21,9 @@
                 </h2>
             </div>
             <div class="card-body">
-                <div class="table-responsive datatable-minimal">
-                    <div class="row">
-                        <div class="col-10">
-                            <div class="dataTables_length" id="table2_length">
-                                <label>
-                                    <select name="table2_length" aria-controls="table2" class="form-select form-select-sm">
-                                        <option value="10">10</option>
-                                        <option value="25">25</option>
-                                        <option value="50">50</option>
-                                        <option value="100">100</option>
-                                    </select> 
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-2">
-                            <div id="table2_filter" class="dataTables_filter">
-                                <label>
-                                    <input type="search" class="form-control form-control-sm" placeholder="Search.." aria-controls="table2">
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <table class="table" id="table2">
-                        <thead>
+                <div class="table">
+                    <table class="table table-hover" id="tabla_historial">
+                        <thead class="">
                             <tr>
                                 <th>ID Solicitud</th>
                                 <th>Solicitante</th>
@@ -56,7 +39,7 @@
                             @foreach($solicitudes as $solicitud)
                             <tr>
                                 
-                                <td value="{{ $solicitud->id_solicitud }}">{{ $solicitud->id_pago }}</td>
+                                <td value="{{ $solicitud->id_solicitud }}">{{ $solicitud->id_solicitud }}</td>
                                 <td>{{ $solicitud->nombre_solicitante }}</td>
                                 <td value="{{ $solicitud->id_solicitud }}">{{ $solicitud->id_solicitante }}</td>
                                 <td value="{{ $solicitud->id_solicitud }}">{{ $solicitud->fecha_solicitud }}</td>
@@ -68,7 +51,7 @@
                             @endforeach
                         </tbody>
                     </table>
-                    {{ $solicitudes->links() }}
+
                     <div class="row">
                         <div>
                             <div>
@@ -83,13 +66,8 @@
     </section>
 @endsection
 
-    <script src="assets/static/js/components/dark.js"></script>
-    <script src="assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    
-    
-    <script src="assets/compiled/js/app.js"></script>
-    
-    <script src="assets/extensions/jquery/jquery.min.js"></script>
-    <script src="assets/extensions/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="assets/extensions/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
-    <script src="assets/static/js/pages/datatables.js"></script>
+
+@push('js')
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="./assets/compiled/js/tablas.js"></script>
+@endpush

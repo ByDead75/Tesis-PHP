@@ -1,15 +1,32 @@
+<style>
+    .dataTables_length {
+        float: center ;
+    }
+    .dataTables_length label {
+        margin-right: 10px;
+    }
+    .dataTables_filter {
+        margin-bottom: 15px;
+        float: right;
+    }
+
+    .dataTables_filter label {
+        margin-right: 6% !important;
+    }
+    
+</style>
 
 <div>
     <!-- Modal proveedores -->
     <div class="modal fade" id="proveedoresModal" tabindex="-1" aria-labelledby="Label" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-xl">
             
             <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5">Listado de proveedores</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body w-100">
+            <div class="modal-body">
                 
             </div>
 

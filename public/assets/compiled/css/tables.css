@@ -1,0 +1,7 @@
+.dataTables_length {
+    margin-right: 20px; /* Añade espacio a la derecha del "Mostrar X registros" */
+}
+
+.dataTables_length label {
+    margin-right: 8px; /* Espacio entre el texto "Mostrar" y el desplegable */
+}

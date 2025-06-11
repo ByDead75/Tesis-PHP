@@ -1,17 +1,13 @@
+$(document).on("click", ".form-control-solicitud", function () {
+    $("#proveedoresModal").modal("show");
 
+    $.ajax({
+        url: url,
 
-$(document).on('click', '.form-control-solicitud', function() {
-    $('#proveedoresModal').modal('show');
+        type: "GET",
 
-            $.ajax({
-
-            url: url,
-
-            type: 'GET',
-
-            success:function(data){
-
-                table = `
+        success: function (data) {
+            table = `
 
                     <tr>
 
@@ -33,11 +29,12 @@ $(document).on('click', '.form-control-solicitud', function() {
 
                     </tr>
 
-                `
+                `;
 
-                for (i=0; i < data.length; i++) {
-
-                    table = table + `
+            for (i = 0; i < data.length; i++) {
+                table =
+                    table +
+                    `
 
                         <tr>
 
@@ -45,31 +42,39 @@ $(document).on('click', '.form-control-solicitud', function() {
 
                                 <div class="form-check">
 
-                                    <input class="form-check-input" type="radio" name="codigo_suscripcion" id="codigo_suscripcion" value="`+data[i]['codigo']+`" onclick="proveedor_selecionado('`+data[i]['codigo']+`','`+data[i]['nombre']+`')">
+                                    <input class="form-check-input" type="radio" name="codigo_suscripcion" id="codigo_suscripcion" value="` +
+                    data[i]["codigo"] +
+                    `" onclick="proveedor_selecionado('` +
+                    data[i]["codigo"] +
+                    `','` +
+                    data[i]["nombre"] +
+                    `')">
 
                                 </div>
 
                             </td>
 
-                            <td class="text-bold-500">`+data[i]['codigo']+`</td>
+                            <td class="text-bold-500">` +
+                    data[i]["codigo"] +
+                    `</td>
 
-                            <td class="text-bold-500">`+data[i]['nombre']+`</td>
+                            <td class="text-bold-500">` +
+                    data[i]["nombre"] +
+                    `</td>
 
-                            <td class="text-bold-500">`+data[i]['rif']+`</td>
+                            <td class="text-bold-500">` +
+                    data[i]["rif"] +
+                    `</td>
 
                         </tr>
 
-                    `
+                    `;
+            }
 
-                }
+            $("#spinner").hide();
 
- 
-
-                $("#spinner").hide();
-
-               
-
-                mbody.append(`
+            mbody.append(
+                `
 
                     <div class="row" id="table-hover-row">
 
@@ -99,11 +104,9 @@ $(document).on('click', '.form-control-solicitud', function() {
 
                                             </thead>
 
-                                            <tbody>`
-
-                                                +table+
-
-                                            `</tbody>
+                                            <tbody>` +
+                    table +
+                    `</tbody>
 
                                         </table>
 
@@ -117,17 +120,14 @@ $(document).on('click', '.form-control-solicitud', function() {
 
                     </div>
 
-                `);
+                `
+            );
 
- 
+            var table1 = document.querySelector("#tabla_clinicas");
 
-                var table1 = document.querySelector('#tabla_clinicas');
-
-                var dataTable = new simpleDatatables.DataTable(table1);
-
-            }
-
-        })
+            var dataTable = new simpleDatatables.DataTable(table1);
+        },
+    });
 });
 
 /*

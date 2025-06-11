@@ -13,11 +13,11 @@ class HistorialController extends Controller
         $solicitudes_model = new Solicitudes;
         $empleados1_model = new Empleados1;
 
-        $solicitudes = $solicitudes_model->get_solicitudes();
-        $empleados = $empleados1_model->get_empleados1();
+        $solicitudes = $solicitudes_model->get_solicitudes()->take(100);
+        // $empleados = $empleados1_model->get_empleados1();
 
-        $solicitudes = Solicitudes::paginate(25);
+        // $solicitudes = Solicitudes::paginate(25);
 
-        return view('historial.historial', ['solicitudes' => $solicitudes, 'empleados' => $empleados]);
+        return view('historial.historial', ['solicitudes' => $solicitudes]);
     }
 }

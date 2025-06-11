@@ -89,7 +89,7 @@
                             
                             <li
                                 class="submenu-item  ">
-                                <a href="/#"
+                                <a href="{{ url('/historial') }}"
                                     class='submenu-link'>Historial</a>
 
                                 

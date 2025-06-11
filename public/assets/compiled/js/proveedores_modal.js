@@ -1,19 +1,3 @@
-let customized_two_datatable = $("#proveedores_table").DataTable({
-    responsive: true,
-    pagingType: 'simple',
-    dom:
-		"<'row'<'col-3'l><'col-9'f>>" +
-		"<'row dt-row'<'col-sm-12'tr>>" +
-		"<'row'<'col-4'i><'col-8'p>>",
-    "language": {
-        "info": "Page _PAGE_ of _PAGES_",
-        "lengthMenu": "_MENU_ ",
-        "search": "",
-        "searchPlaceholder": "Buscar..."
-    }
-});
-
-
 var proveedores = function(url){
     var mbody = $('#proveedoresModal').find('.modal-body');
     mbody.html('');
@@ -64,7 +48,7 @@ var proveedores = function(url){
                                         <table class="table table-hover mb-0" id="proveedores_table">
                                             <thead>
                                                 <tr>
-                                                    <th>#</th>
+                                                    <th></th>
                                                     <th>Código</th>
                                                     <th>Nombre del proveedor</th>
                                                     <th>RIF</th>
@@ -81,7 +65,21 @@ var proveedores = function(url){
                     </div>
                 `);
 
-                new DataTable('#proveedores_table');
+                
+
+                new DataTable('#proveedores_table', {
+                    "language": {
+                    "sLengthMenu": "Mostrar _MENU_ registros",
+                    "sSearch": "Buscar ",
+                    "searchPlaceholder": "Buscar...",
+                    "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "sInfo": "Página _PAGE_ de _PAGES_",
+                    "oPaginate": {
+                            "sNext": "Siguiente",
+                            "sPrevious": "Anterior"
+                        },
+                },
+                });
 
                 
             }
