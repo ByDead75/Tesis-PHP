@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB; 
 
 class Cuentas extends Model{
 
@@ -25,8 +26,26 @@ class Cuentas extends Model{
 
     public function get_cuentas() {
 
-    $resultado = self::select('cod_auxiliar', 'cod_banco', 'nu_cuenta', 'destino')->distinct()->get();
+    $resultado = self::select('cod_tipo_auxiliar',
+                'cod_auxiliar', 
+                'cod_banco', 
+                'nu_cuenta', 
+                'destino')
+                ->distinct()
+                ->get();
 
     return $resultado;
+    }
+
+    public function get_cuentas_proveedor($codigo_proveedor) {
+        $resultado = self::select('cuentas.cod_banco',
+                    DB::raw("TRIM(REPLACE(REPLACE(REPLACE(bancos.nb_banco, CHAR(13), ''), CHAR(10), ''), '\t', '')) as nb_banco"),
+                    'cuentas.nu_cuenta')
+                    ->join('bancos', 'cuentas.cod_banco', '=', 'bancos.cod_banco')
+                    ->where('cuentas.cod_auxiliar', $codigo_proveedor)
+                    ->distinct()
+                    ->get();
+
+        return $resultado;
     }
 }

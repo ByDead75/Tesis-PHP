@@ -23,7 +23,14 @@ class Proveedores extends Model{
     ];
 
     public function get_proveedores() {
-        $resultado = self::select('cod_auxiliar','nb_auxiliar', 'rif')->distinct()->get();
+        $resultado = self::select('proveedores.cod_tipo_auxiliar',
+        'proveedores.cod_auxiliar',
+        'proveedores.nb_auxiliar', 
+        'proveedores.rif')
+        ->distinct()->get();
+
+        
+        //'cuentas.cod_banco as proveedor_banco'
 
         return $resultado;
     }

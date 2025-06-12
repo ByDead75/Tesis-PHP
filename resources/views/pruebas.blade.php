@@ -15,8 +15,8 @@
                 </h2>
             </div>
             <div class="card-body">
-                <div class="table-responsive datatable-minimal">
-                    <table class="table" id="tabla_historial">
+                <div class="table datatable-minimal">
+                    <table class="table table-striped" id="tabla_historial">
                         <thead>
                             <tr>
                                 <th>ID Solicitud</th>
@@ -30,9 +30,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-
-                            </tr>
+                            
                         </tbody>
                     </table>
                     
@@ -59,11 +57,9 @@
 @push('js')
 <!--Pruebas - Historial -->
     
+    <script src="./assets/compiled/js/tabla-historial.js"></script>
 
-    <script src="assets/extensions/jquery/jquery.min.js"></script>
-    <script src="assets/extensions/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="assets/extensions/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
-    <script src="assets/static/js/pages/datatables.js"></script>
+    
 
     
 @endpush

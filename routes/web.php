@@ -1,9 +1,7 @@
 <?php
 
+use App\Http\Controllers\CuentasController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BancoController;
-use App\Http\Controllers\CentrosDeCostoController;
-use App\Models\CentroDeCostos;
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\GenerarSolicitudesController;
@@ -25,9 +23,16 @@ Route::controller(ProveedoresController::class)->group(function () {
     Route::get('proveedores/index', 'index')->name('proveedores.index');
 });
 
+Route::controller(CuentasController::class)->group(function () {
+    Route::get('cuentas/proveedores/index', 'index')->name('cuentas.proveedores.index');
+});
+
 Route::get('/generar_solicitud', [GenerarSolicitudesController::class, 'index'])->name('ordenes.index');
 
+
+
 Route::get('/historial', [HistorialController::class, 'index'])->name('historial.index');
+Route::get('/historial/obtener', [HistorialController::class, 'registros_historial'])->name('historial.obtener');
 
 
 
@@ -75,10 +80,11 @@ Route::get('/inicio', function () {
     return view('principal');
 });
 
+/*
 Route::get('/pruebas', function () {
     return view('ordenes.pruebas');
 });
-
+*/
 
 /*
 Route::get('/generar_solicitud', function () {

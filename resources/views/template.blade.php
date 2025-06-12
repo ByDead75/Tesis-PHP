@@ -57,9 +57,10 @@
     <script src="assets/extensions/filepond-plugin-image-preview/filepond-plugin-image-preview.min.js"></script>
     <script src="assets/extensions/filepond-plugin-image-resize/filepond-plugin-image-resize.min.js"></script>
     <script src="assets/extensions/filepond/filepond.js"></script>
+    <script src="assets/static/js/pages/filepond.js"></script>
     
     <script src="assets/extensions/toastify-js/src/toastify.js"></script>
-    <script src="assets/static/js/pages/filepond.js"></script>
+    
 
         <script src="assets/compiled/js/app.js"></script>
     

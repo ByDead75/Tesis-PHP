@@ -1,24 +1,26 @@
-var proveedores = function(url){
-    var mbody = $('#proveedoresModal').find('.modal-body');
+var bancos = function(url){
+    var mbody = $('#bancosModal').find('.modal-body');
     mbody.html('');
-    $('#proveedoresModal').modal('show');
+    $('#bancosModal').modal('show');
 
-    if ($('#proveedoresModal').find('.modal-body').children().length == 0) {  
-        $("#spinner-proveedores").show()
+    if ($('#bancosModal').find('.modal-body').children().length == 0) {  
+        $("#spinner-cuentas-proveedores").show()
         $.ajax({
             url: url,
             type: 'GET',
+            data: {codigo_proveedor : $('#proveedor_codigo').val()},
+            dataType: "json",
             success:function(data){
-                table = `
+                table =`
                     <tr>
                         <td class="text-bold-500">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="codigo_proveedor" id="codigo_proveedor" value="634" onclick="proveedor_selecionado('POR DEFINIR','634', 'PROVEEDOR POR DEFINIR', 'POR DEFINIR')">
+                                <input class="form-check-input" type="radio" name="codigo_banco" id="codigo_banco" value="" onclick="banco_selecionado('634', 'CUENTA BANCARIA POR DEFINIR', 'POR DEFINIR')">
                             </div>
                         </td>
                         <td class="text-bold-500"></td>
-                        <td class="text-bold-500">PROVEEDOR POR DEFINIR</td>
-                        <td class="text-bold-500"></td>
+                        <td class="text-bold-500">CUENTA BANCARIA POR DEFINIR</td>
+                        <td class="text-bold-500">POR DEFINIR</td>
                     </tr>
                 `
 
@@ -28,30 +30,31 @@ var proveedores = function(url){
                     <tr>
                             <td class="text-bold-500">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="codigo_proveedor" id="codigo_proveedor" value="`+data[i]['cod_auxiliar']+`" onclick="proveedor_selecionado('`+data[i]['cod_tipo_auxiliar']+`','`+data[i]['cod_auxiliar']+`','`+data[i]['nb_auxiliar']+`','`+data[i]['rif']+`' )">
+                                    <input class="form-check-input" type="radio" name="codigo_banco" id="codigo_banco" value="" onclick="banco_selecionado('`+data[i]['cod_banco']+`','`+data[i]['nb_banco']+`','`+data[i]['nu_cuenta']+`' )">
                                 </div>
                             </td>
-                            <td class="text-bold-500">`+data[i]['cod_auxiliar']+`</td>
-                            <td class="text-bold-500">`+data[i]['nb_auxiliar']+`</td>
-                            <td class="text-bold-500">`+data[i]['rif']+`</td>
+                            <td class="text-bold-500">`+data[i]['cod_banco']+`</td>
+                            <td class="text-bold-500">`+data[i]['nb_banco']+`</td>
+                            <td class="text-bold-500">`+data[i]['nu_cuenta']+`</td>
                         </tr>
                     `
                 }
 
-                $("#spinner-proveedores").hide();
+                $("#spinner-cuentas-proveedores").hide();
                 mbody.append(`
                     <div class="row" id="table-hover-row">
                         <div class="col-12">
                             <div class="card mb-0">
                                 <div class="card-content">
                                     <div class="table-responsive">
-                                        <table class="table table-hover mb-0" id="proveedores_table">
+                                        <table class="table table-hover mb-0" id="proveedores_bancos_table">
                                             <thead>
                                                 <tr>
                                                     <th></th>
-                                                    <th>Código</th>
-                                                    <th>Nombre del proveedor</th>
-                                                    <th>RIF</th>
+                                                    <th>Código del Banco</th>
+                                                    <th>Banco Destino</th>
+                                                    <th>N° de Cuenta</th>
+                                                    
                                                 </tr>
                                             </thead>
                                             <tbody>`
@@ -67,7 +70,7 @@ var proveedores = function(url){
 
                 
 
-                new DataTable('#proveedores_table', {
+                new DataTable('#proveedores_bancos_table', {
                     "language": {
                     "sLengthMenu": "Mostrar _MENU_ registros",
                     "sSearch": "Buscar ",
@@ -87,10 +90,9 @@ var proveedores = function(url){
     }
 }
 
-var proveedor_selecionado = function(tipo_proveedor, codigo, nombre, rif){
-    $('#tipo_proveedor').val(tipo_proveedor);
-    $('#proveedor_codigo').val(codigo);
-    $('#proveedor_nombre').val(nombre);
-    $('#proveedor_rif').val(rif);
-    $('#proveedoresModal').modal('hide');
+var banco_selecionado = function(codigo_banco, banco_proveedor, cuenta_proveedor){
+    $('#proveedor_banco_codigo').val(codigo_banco);
+    $('#proveedor_banco').val(banco_proveedor);
+    $('#proveedor_numero_cuenta').val(cuenta_proveedor);
+    $('#bancosModal').modal('hide');
 }

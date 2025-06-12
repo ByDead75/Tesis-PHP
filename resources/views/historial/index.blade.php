@@ -22,8 +22,8 @@
             </div>
             <div class="card-body">
                 <div class="table">
-                    <table class="table table-hover" id="tabla_historial">
-                        <thead class="">
+                    <table class="table table-striped" id="tabla_historial">
+                        <thead>
                             <tr>
                                 <th>ID Solicitud</th>
                                 <th>Solicitante</th>
@@ -31,24 +31,12 @@
                                 <th>Fecha de la Solicitud</th>
                                 <th>RIF</th>
                                 <th>Monto Total</th>
-                                <th>Estatus</th>
-                                <th>Detalles</th>
+                                <!--<th>Estatus</th>
+                                <th>Detalles</th> -->
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($solicitudes as $solicitud)
-                            <tr>
-                                
-                                <td value="{{ $solicitud->id_solicitud }}">{{ $solicitud->id_solicitud }}</td>
-                                <td>{{ $solicitud->nombre_solicitante }}</td>
-                                <td value="{{ $solicitud->id_solicitud }}">{{ $solicitud->id_solicitante }}</td>
-                                <td value="{{ $solicitud->id_solicitud }}">{{ $solicitud->fecha_solicitud }}</td>
-                                <td value="{{ $solicitud->id_solicitud }}">{{ $solicitud->rif }}</td>
-                                <td value="{{ $solicitud->id_solicitud }}"> {{ $solicitud->monto_total }} Bs</td>
-                                <td> <span class="badge bg-primary">Completada</span> </td>
-                                <td><i class="bi bi-journals"></i></td>
-                            </tr>
-                            @endforeach
+                            
                         </tbody>
                     </table>
 
@@ -68,6 +56,5 @@
 
 
 @push('js')
-    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-    <script src="./assets/compiled/js/tablas.js"></script>
+    <script src="./assets/compiled/js/tabla-historial.js"></script>
 @endpush

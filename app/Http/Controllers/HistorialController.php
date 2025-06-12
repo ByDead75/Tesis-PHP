@@ -4,20 +4,33 @@ namespace App\Http\Controllers;
 
 use App\Models\Solicitudes;
 use App\Models\Empleados1;
+use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class HistorialController extends Controller
 {
 
     public function index ()
     {
-        $solicitudes_model = new Solicitudes;
-        $empleados1_model = new Empleados1;
+        return view('historial.index');
+    }
 
-        $solicitudes = $solicitudes_model->get_solicitudes()->take(100);
-        // $empleados = $empleados1_model->get_empleados1();
+    public function registros_historial (Request $request) {
 
-        // $solicitudes = Solicitudes::paginate(25);
+        if ($request->ajax()) {
+            
+            $solicitudes_model = new Solicitudes;
+            $solicitudes = $solicitudes_model->get_solicitudes();
 
-        return view('historial.historial', ['solicitudes' => $solicitudes]);
+            $datatables = DataTables::of($solicitudes)
+                ->addIndexColumn()
+                // ->addColumn('fecha_solicitud', function ($row) {
+                //     return $row->fecha_solicitud ? $row->fecha_solicitud->strtotime('d/m/Y') : '';
+                // })
+                ->make(true);
+
+            return $datatables;
+        }
+        
     }
 }

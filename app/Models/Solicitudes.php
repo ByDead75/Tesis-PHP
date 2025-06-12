@@ -52,7 +52,8 @@ class Solicitudes extends Model{
     ];
 
         public function get_solicitudes() {
-        $resultado = self::select('solicitudes.id_pago', 
+        $resultado = self::orderBy('solicitudes.fecha_solicitud', 'desc')
+                ->select('solicitudes.id_pago', 
                 'solicitudes.id_solicitud',
                 'solicitudes.fecha_solicitud',
                 'solicitudes.id_solicitante', 
@@ -60,7 +61,9 @@ class Solicitudes extends Model{
                 'solicitudes.monto_total',
                 'empleados1.nombre as nombre_solicitante' )
                 ->join('empleados1', 'solicitudes.id_solicitante', '=', 'empleados1.cedula')
-                ->distinct()->get();
+                ->distinct()
+                ->limit(100) 
+                ->get();
 
         return $resultado;
     }
