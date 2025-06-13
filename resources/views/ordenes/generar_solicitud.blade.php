@@ -8,7 +8,7 @@
 @endpush
 
 @section('content')
-    <div class="d-flex justify-content-center">
+    <div id="main-content" class="pb-1">
         <section id="multiple-column-form">
             <div class="row match-height">
                 <div class="col-12">
@@ -62,144 +62,146 @@
     </div>
 
 
+    <div id="main-content" class="">
+        <section id="multiple-column-form">
+            <div class="row match-height">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title text-center">Datos del Pago</h2>
+                        </div>
 
-    <section id="multiple-column-form">
-    <div class="row match-height">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header">
-                    <h2 class="card-title text-center">Datos del Pago</h2>
-                </div>
+                        <div class="card-content">
+                            <div class="card-body">
+                                <form class="form">
+                                    <div class="row">
+                                        <div class="col-md-4 col-12">
+                                            <div class="form-group">
+                                                <label for="first-name-column" >Tipo de Proveedor</label>
+                                                <input type="text" id="tipo_proveedor" class="form-control" placeholder="Seleccione el proveedor" name="tipo_proveedor" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-12">
+                                            <div class="form-group">
+                                                <label for="first-name-column" >Nombre o Razón Social / Beneficiario del Pago</label>
+                                                <input type="text" id="proveedor_nombre" class="form-control" placeholder="Clic para seleccionar un proveedor" name="proveedor_nombre">
+                                                <input type="hidden" id="proveedor_codigo" class="form-control"  name="proveedor_codigo">
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-md-4 col-12">
+                                            <div class="form-group">
+                                                <label for="first-name-column" >Factura/Presupuesto</label>
+                                                    <select class="form-select" id="basicSelect">
+                                                        <option value="">Seleccionar</option>
+                                                        <option value="FACTURA">FACTURA</option>
+                                                        <option value="PRESUPUESTO">PRESUPUESTO</option>
+                                                    </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-12">
+                                            <div class="form-group">
+                                                <label for="first-name-column">Rif del Proveedor</label>
+                                                <input type="text" id="proveedor_rif" class="form-control" name="proveedor_rif" placeholder="Seleccione el proveedor" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-12">
+                                            <div class="form-group">
+                                                <label for="first-name-column" >Forma de Pago</label>
+                                                    <select class="form-select" id="basicSelect">
+                                                        <option value="">Seleccionar</option>
+                                                        <option value="FACTURA">FACTURA</option>
+                                                        <option value="PRESUPUESTO">PRESUPUESTO</option>
+                                                    </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-12">
+                                            <div class="form-group">
+                                                <label for="company-column">N° de la Factura/Presupuesto</label>
+                                                <input type="text" id="company-column" class="form-control" name="company-column" placeholder="Company">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-12">
+                                            <div class="form-group">
+                                                <label for="first-name-column" >Banco del Proveedor</label>
+                                                <input type="text" id="proveedor_banco" class="form-control" placeholder="Clic para seleccionar un banco" name="proveedor_banco">
+                                                <input type="hidden" id="proveedor_banco_codigo" class="form-control"  name="proveedor_banco_codigo">
+                                            </div>
+                                        </div>
 
-                <div class="card-content">
-                    <div class="card-body">
-                        <form class="form">
-                            <div class="row">
-                                <div class="col-md-4 col-12">
-                                    <div class="form-group">
-                                        <label for="first-name-column" >Tipo de Proveedor</label>
-                                        <input type="text" id="tipo_proveedor" class="form-control" placeholder="Seleccione el proveedor" name="tipo_proveedor" readonly>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-12">
-                                    <div class="form-group">
-                                        <label for="first-name-column" >Nombre o Razón Social / Beneficiario del Pago</label>
-                                        <input type="text" id="proveedor_nombre" class="form-control" placeholder="Clic para seleccionar un proveedor" name="proveedor_nombre">
-                                        <input type="hidden" id="proveedor_codigo" class="form-control"  name="proveedor_codigo">
-                                    </div>
-                                    
-                                </div>
-                                <div class="col-md-4 col-12">
-                                    <div class="form-group">
-                                        <label for="first-name-column" >Factura/Presupuesto</label>
-                                            <select class="form-select" id="basicSelect">
-                                                <option value="">Seleccionar</option>
-                                                <option value="FACTURA">FACTURA</option>
-                                                <option value="PRESUPUESTO">PRESUPUESTO</option>
-                                            </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-12">
-                                    <div class="form-group">
-                                        <label for="first-name-column">Rif del Proveedor</label>
-                                        <input type="text" id="proveedor_rif" class="form-control" name="proveedor_rif" placeholder="Seleccione el proveedor" readonly>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-12">
-                                    <div class="form-group">
-                                        <label for="first-name-column" >Forma de Pago</label>
-                                            <select class="form-select" id="basicSelect">
-                                                <option value="">Seleccionar</option>
-                                                <option value="FACTURA">FACTURA</option>
-                                                <option value="PRESUPUESTO">PRESUPUESTO</option>
-                                            </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-12">
-                                    <div class="form-group">
-                                        <label for="company-column">N° de la Factura/Presupuesto</label>
-                                        <input type="text" id="company-column" class="form-control" name="company-column" placeholder="Company">
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-12">
-                                    <div class="form-group">
-                                        <label for="first-name-column" >Banco del Proveedor</label>
-                                        <input type="text" id="proveedor_banco" class="form-control" placeholder="Clic para seleccionar un banco" name="proveedor_banco">
-                                        <input type="hidden" id="proveedor_banco_codigo" class="form-control"  name="proveedor_banco_codigo">
-                                    </div>
-                                </div>
+                                        <div class="col-md-4 col-12">
+                                            <div class="form-group">
+                                                <label for="first-name-column" >N° de Cuenta</label>
+                                                    <input type="text" id="proveedor_numero_cuenta" class="form-control" name="proveedor_numero_cuenta" placeholder="Seleccione el banco" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-12">
+                                            <div class="form-group">
+                                                <label for="company-column">N° de Control</label>
+                                                <input type="text" id="company-column" class="form-control" name="company-column" placeholder="Company">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-12">
+                                            <div class="form-group">
+                                                <label for="email-id-column">Monto Neto - ej: 1200.00</label>
+                                                <input type="email" id="email-id-column" class="form-control" name="email-id-column" placeholder="Email">
+                                            </div>
+                                        </div>
 
-                                <div class="col-md-4 col-12">
-                                    <div class="form-group">
-                                        <label for="first-name-column" >N° de Cuenta</label>
-                                            <input type="text" id="proveedor_numero_cuenta" class="form-control" name="proveedor_numero_cuenta" placeholder="Seleccione el banco" readonly>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-12">
-                                    <div class="form-group">
-                                        <label for="company-column">N° de Control</label>
-                                        <input type="text" id="company-column" class="form-control" name="company-column" placeholder="Company">
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-12">
-                                    <div class="form-group">
-                                        <label for="email-id-column">Monto Neto - ej: 1200.00</label>
-                                        <input type="email" id="email-id-column" class="form-control" name="email-id-column" placeholder="Email">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4 col-12">
-                                    <div class="form-group">
-                                        <label for="country-floating">Monto del IVA - ej: 144.00</label>
-                                        <input type="text" id="country-floating" class="form-control" name="country-floating" placeholder="Country">
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-12">
-                                    <div class="form-group">
-                                        <label for="company-column">Monto Total</label>
-                                        <input type="text" id="company-column" class="form-control" name="company-column" placeholder="Company">
-                                    </div>
-                                </div>
-                                
-                                <section class="section">
-                                            <div class="row">
-                                                <div class="col">
-                                                    <div class="card">
-                                                        <div class="card-header">
-                                                            <h3 class="text-center">Concepto de Pago</h3>
-                                                        </div>
-                                                        <div class="card-body">
-                                                            <div class="form-group mt-2">
-                                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        <div class="col-md-4 col-12">
+                                            <div class="form-group">
+                                                <label for="country-floating">Monto del IVA - ej: 144.00</label>
+                                                <input type="text" id="country-floating" class="form-control" name="country-floating" placeholder="Country">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-12">
+                                            <div class="form-group">
+                                                <label for="company-column">Monto Total</label>
+                                                <input type="text" id="company-column" class="form-control" name="company-column" placeholder="Company">
+                                            </div>
+                                        </div>
+                                        
+                                        <section class="section">
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="card">
+                                                                <div class="card-header">
+                                                                    <h3 class="text-center">Concepto de Pago</h3>
+                                                                </div>
+                                                                <div class="card-body">
+                                                                    <div class="form-group mt-2">
+                                                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                </section>
+                                        </section>
 
-                        <div>
-                            <x-file_upload/>
-                        </div>
-
-                        <div>
-
-                        </div>
-
-                        
-                        </div>
-                                <div class="col-12 d-flex justify-content-end">
-                                    <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
-                                    
+                                <div>
+                                    <x-file_upload/>
                                 </div>
+
+                                <div>
+
+                                </div>
+
+                                
+                                </div>
+                                        <div class="col-12 d-flex justify-content-end">
+                                            <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                                            
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
-    </section>
+
 
 
 @include('components.modal')
