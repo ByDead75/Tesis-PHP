@@ -95,6 +95,7 @@
     --bs-azul-humanitas: #00add8;
     --bs-naranja-humanitas: #f89728;
     --bs-naranja-humanitas-hover:#f57517;
+    --bs-celeste-humanitas: #e2f0fb;
 
     --bs-blue: #435ebe;
     --bs-indigo: #6610f2;
@@ -294,7 +295,7 @@ body {
     line-height: var(--bs-body-line-height);
     color: var(--bs-body-color);
     text-align: var(--bs-body-text-align);
-    background-color: var(--bs-body-bg);
+    background-color: var(--bs-celeste-humanitas);
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
