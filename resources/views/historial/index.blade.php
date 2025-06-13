@@ -64,7 +64,7 @@
                         </div>
 
                         <div class="col-sm-12 d-flex justify-content-end pt-3">
-                            <button type="submit" class="btn btn-primary me-1">Buscar</button>
+                            <button type="button" class="btn btn-primary me-1" id="buscar">Buscar</button>
                             <a href="" class="btn btn-secondary">Limpiar</a>
                         </div>
                     </div>
@@ -111,4 +111,7 @@
 
 @push('js')
     <script src="./assets/compiled/js/tabla-historial.js"></script>
+    <script>
+        var route_historial = '{{ route("historial.obtener") }}'
+    </script>
 @endpush

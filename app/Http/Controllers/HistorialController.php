@@ -21,7 +21,12 @@ class HistorialController extends Controller
         if ($request->ajax()) {
             
             $solicitudes_model = new Solicitudes;
-            $solicitudes = $solicitudes_model->get_solicitudes();
+            $solicitudes = $solicitudes_model->get_solicitudes($request->id_solicitud, 
+                                                                $request->id_solicitante, 
+                                                                $request->status_solicitud,
+                                                                $request->fecha_desde,
+                                                                $request->fecha_hasta,
+                                                            );
 
             $datatables = DataTables::of($solicitudes)
                 ->addIndexColumn()

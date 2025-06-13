@@ -11,10 +11,10 @@ class StatusHelper
 
         switch ($statusId) {
             case 1:
-                $status = 'POR APROBACION';
+                $status = 'APROBADA';
                 break;
             case 2:
-                $status = 'APROBADA';
+                $status = 'POR APROBACION';
                 break;
             case 3:
                 $status = 'RECHAZADA';
@@ -43,10 +43,10 @@ class StatusHelper
 
         switch ($statusId) {
             case 1:
-                $status = 'bg-warning';
+                $status = 'bg-success';
                 break;
             case 2:
-                $status = 'bg-success';
+                $status = 'bg-warning';
                 break;
             case 3:
                 $status = 'bg-danger';
