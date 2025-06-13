@@ -31,8 +31,8 @@
                                 <th>Fecha de la Solicitud</th>
                                 <th>RIF</th>
                                 <th>Monto Total</th>
-                                <!--<th>Estatus</th>
-                                <th>Detalles</th> -->
+                                <th>Estatus</th>
+                                <!--<th>Detalles</th> -->
                             </tr>
                         </thead>
                         <tbody>

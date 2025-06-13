@@ -59,6 +59,7 @@ class Solicitudes extends Model{
                 'solicitudes.id_solicitante', 
                 'solicitudes.rif',
                 'solicitudes.monto_total',
+                'solicitudes.status_solicitud',
                 'empleados1.nombre as nombre_solicitante' )
                 ->join('empleados1', 'solicitudes.id_solicitante', '=', 'empleados1.cedula')
                 ->distinct()

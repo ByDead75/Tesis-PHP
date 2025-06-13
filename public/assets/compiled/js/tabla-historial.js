@@ -16,6 +16,7 @@ $(document).ready(function() {
             { data: 'fecha_solicitud', name: 'fecha_solicitud' },
             {data: 'rif', name: 'rif'},
             {data: 'monto_total', name: 'monto_total'},
+            {data: 'status_solicitud', name: 'status_solicitud'},
             
 
         ],

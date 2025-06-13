@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\StatusHelper;
 use App\Models\Solicitudes;
 use App\Models\Empleados1;
 use Illuminate\Http\Request;
@@ -24,9 +25,11 @@ class HistorialController extends Controller
 
             $datatables = DataTables::of($solicitudes)
                 ->addIndexColumn()
-                // ->addColumn('fecha_solicitud', function ($row) {
-                //     return $row->fecha_solicitud ? $row->fecha_solicitud->strtotime('d/m/Y') : '';
-                // })
+                ->addColumn('status_solicitud', function ($row) {
+                    $td = '<span class="badge '.StatusHelper::getStatusColor($row->status_solicitud).'">'.StatusHelper::getStatus($row->status_solicitud).'</span>';
+                    return $td;
+                })
+                ->rawColumns(['status_solicitud'])
                 ->make(true);
 
             return $datatables;
