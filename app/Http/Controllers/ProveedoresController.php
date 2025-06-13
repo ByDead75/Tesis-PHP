@@ -16,6 +16,5 @@ class ProveedoresController extends Controller
 
             return response()->json($proveedores);
         }
-
     } 
 }
