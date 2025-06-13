@@ -23,10 +23,6 @@ class HistorialController extends Controller
             $solicitudes_model = new Solicitudes;
             $solicitudes = $solicitudes_model->get_solicitudes();
 
-        //Este comando indica la cantidad de paginación que se le asigna a la tabla
-
-        $solicitudes = Solicitudes::paginate(25);
-
             $datatables = DataTables::of($solicitudes)
                 ->addIndexColumn()
                 ->addColumn('status_solicitud', function ($row) {
