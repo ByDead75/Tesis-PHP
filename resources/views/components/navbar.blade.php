@@ -38,7 +38,7 @@
                         
                             <li
                                 class="submenu-item  ">
-                                <a href="{{ route('ordenes.editar-solicitud') }}"
+                                <a href="/#"
                                     class='submenu-link'>Editar Solicitud</a>
 
                                 

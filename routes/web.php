@@ -35,25 +35,18 @@ Route::controller(HistorialController::class)->group(function () {
 });
 
 Route::controller(GenerarSolicitudesController::class)->group(function () {
-    Route::get('/generar_solicitud', 'index')->name('ordenes.index');
+    Route::get('/generar_solicitud', 'index')->name('ordenes.generar-solicitud');
 });
 
 /*Route::controller(LoginController::class)->group(function () {
     Route::get('/login', function () {return view('auth.login');})->name('login');
 });
 */
-Route::get('/generar_solicitud', [GenerarSolicitudesController::class, 'index'])->name('ordenes.generar-solicitud');
 
 Route::get('/editar_solicitud', [EditarSolicitudesController::class, 'index'])->name('ordenes.editar-solicitud');
 
 
-
-Route::get('/historial', [HistorialController::class, 'index'])->name('historial.index');
-Route::get('/historial/obtener', [HistorialController::class, 'registros_historial'])->name('historial.obtener');
-
-
 //Rutas sueltas (provisionales)
-
 Route::get('/', function () {return view('template');});
 Route::get('/dashboard', function () { return view('dashboard.index');})->name('dashboard');
 Route::get('/login', function () {return view('auth.login');})->name('login');
@@ -71,13 +64,14 @@ Route::middleware(['auth'])->group(function () {
 // Ruta de inicio de Laravel
 Route::get('/welcome', function () { return view('welcome'); });
 
+
 // Rutas de Errores
 Route::get('/403', function () { return view('errors.403'); });
 Route::get('/404', function () { return view('errors.404'); });
 Route::get('/500', function () { return view('errors.500'); });
 
-//Rutas de Prueba
 
+//Rutas de Prueba
 /*
 Route::get('/pruebas', function () { return view('ordenes.pruebas'); });
 */
