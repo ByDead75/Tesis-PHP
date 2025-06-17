@@ -38,8 +38,8 @@
                                 <label for="first-name-column">Status</label>
                                     <select class="form-select" id="status_solicitud">
                                         <option value="">Seleccionar</option>
-                                        <option value="1">APROBADA</option>
-                                        <option value="2">POR APROBACION</option>
+                                        <option value="1">POR APROBACION</option>
+                                        <option value="2">APROBADA</option>
                                         <option value="3">RECHAZADA</option>
                                         <option value="4">PAGADA</option>
                                         <option value="5">RECIBIDO ADM</option>
