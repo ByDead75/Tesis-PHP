@@ -17,7 +17,7 @@
                 <h3 class="card-title text-center">Historial de Solicitudes</h3>
             </div>
             <div class="card-body pb-0">
-                <form action="" method="GET" class="mb-4">
+                <form class="mb-4">
                     <div class="row">
                         <div class="col-md-4 col-12">
                             <div class="form-group">
@@ -87,7 +87,6 @@
                                     <th>RIF</th>
                                     <th>Monto Total</th>
                                     <th>Status</th>
-                                    <!--<th>Detalles</th> -->
                                 </tr>
                             </thead>
                             <tbody>
@@ -109,9 +108,10 @@
     
 @endsection
 
-@push('js')
-    <script src="./assets/compiled/js/tabla-historial.js"></script>
-    <script>
-        var route_historial = '{{ route("historial.obtener") }}'
-    </script>
-@endpush
+<!-- @push('js') -->
+<script>
+    var route_historial = '{{ route("historial.obtener") }}'
+</script>
+
+<script src="./assets/compiled/js/tabla-historial.js"></script>
+<!-- @endpush -->

@@ -4,12 +4,13 @@ $(document).ready(function() {
             processing: true,
             serverSide: true,
             bLengthChange: true,
+            searching: true,
             ajax: {
                 url: route_historial, 
-                type: 'GET',
-                headers: {
-                    'X-CSRF-TOKEN': $('meta:eq(1)').attr('content') 
-                },
+                // type: 'GET',
+                // headers: {
+                //     'X-CSRF-TOKEN': $('meta:eq(1)').attr('content') 
+                // },
                 data: function (d) {
                     d.id_solicitud = $('#id_solicitud').val(),
                     d.id_solicitante = $('#id_solicitante').val(),
@@ -20,7 +21,7 @@ $(document).ready(function() {
             },
             columns: [
                 {data: 'id_solicitud', name: 'id_solicitud' },
-                {data: 'nombre_solicitante', name: 'nombre_solicitante'},
+                {data: 'nombre_solicitante', name: 'empleados1.nombre'},
                 {data: 'id_solicitante', name: 'id_solicitante'},
                 {data: 'fecha_solicitud', name: 'fecha_solicitud' },
                 {data: 'rif', name: 'rif'},

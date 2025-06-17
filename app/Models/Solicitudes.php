@@ -52,8 +52,7 @@ class Solicitudes extends Model{
     ];
 
         public function get_solicitudes($id_solicitud, $id_solicitante, $status_solicitud, $fecha_desde, $fecha_hasta) {
-        $resultado = self::orderBy('solicitudes.fecha_solicitud', 'desc')
-                ->select('solicitudes.id_pago', 
+        $resultado = self::select('solicitudes.id_pago', 
                 'solicitudes.id_solicitud',
                 'solicitudes.fecha_solicitud',
                 'solicitudes.id_solicitante', 
@@ -77,7 +76,7 @@ class Solicitudes extends Model{
                     $resultado->limit(100);
                 }
 
-                $resultado->distinct()
+                $resultado->orderBy('solicitudes.fecha_solicitud', 'desc')->distinct()
                 ->get();
 
         return $resultado;

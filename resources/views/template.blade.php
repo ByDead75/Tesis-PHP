@@ -43,11 +43,9 @@
 
     <script src="assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="assets/compiled/js/modal.js"></script>
-
-    <script src="assets/extensions/jquery/jquery.min.js"></script>
+>
     <script src="assets/extensions/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="assets/extensions/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
-    <script src="assets/static/js/pages/datatables.js"></script>
 
     <script src="assets/extensions/filepond-plugin-file-validate-size/filepond-plugin-file-validate-size.min.js"></script>
     <script src="assets/extensions/filepond-plugin-file-validate-type/filepond-plugin-file-validate-type.min.js"></script>
