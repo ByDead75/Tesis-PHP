@@ -28,7 +28,7 @@
                             
                             <li
                                 class="submenu-item  ">
-                                <a href="{{ url('generar_solicitud') }}"
+                                <a href="{{ route('ordenes.generar-solicitud') }}"
                                     class='submenu-link'>Cargar Solicitud</a>
 
                                 
@@ -38,7 +38,7 @@
                         
                             <li
                                 class="submenu-item  ">
-                                <a href="/#"
+                                <a href="{{ route('ordenes.editar-solicitud') }}"
                                     class='submenu-link'>Editar Solicitud</a>
 
                                 

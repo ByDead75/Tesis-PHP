@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CuentasController;
+use App\Http\Controllers\EditarSolicitudesController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\LoginController;
@@ -41,6 +42,14 @@ Route::controller(GenerarSolicitudesController::class)->group(function () {
     Route::get('/login', function () {return view('auth.login');})->name('login');
 });
 */
+Route::get('/generar_solicitud', [GenerarSolicitudesController::class, 'index'])->name('ordenes.generar-solicitud');
+
+Route::get('/editar_solicitud', [EditarSolicitudesController::class, 'index'])->name('ordenes.editar-solicitud');
+
+
+
+Route::get('/historial', [HistorialController::class, 'index'])->name('historial.index');
+Route::get('/historial/obtener', [HistorialController::class, 'registros_historial'])->name('historial.obtener');
 
 
 //Rutas sueltas (provisionales)
