@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CuentasController;
+use App\Http\Controllers\EditarSolicitudesController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\LoginController;
@@ -27,7 +28,9 @@ Route::controller(CuentasController::class)->group(function () {
     Route::get('cuentas/proveedores/index', 'index')->name('cuentas.proveedores.index');
 });
 
-Route::get('/generar_solicitud', [GenerarSolicitudesController::class, 'index'])->name('ordenes.index');
+Route::get('/generar_solicitud', [GenerarSolicitudesController::class, 'index'])->name('ordenes.generar-solicitud');
+
+Route::get('/editar_solicitud', [EditarSolicitudesController::class, 'index'])->name('ordenes.editar-solicitud');
 
 
 

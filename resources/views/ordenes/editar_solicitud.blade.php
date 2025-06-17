@@ -1,6 +1,6 @@
 @extends('template')
 
-@section('title', 'Generar Solicitud')
+@section('title', 'Editar Solicitud')
 
 @push('css')
     <link rel="stylesheet" href="./assets/compiled/css/generar-solicitud.css">
@@ -10,7 +10,7 @@
 @section('content')
     <div id="main-content" class="pb-1">
         <div>
-            <h2 class="card-title text-center mb-4 pb-2">Solicitud de Pago para Compras y Servicios</h2>
+            <h2 class="card-title text-center mb-4 pb-2">Editar Solicitud de Pago</h2>
         </div>
         <section id="multiple-column-form">
             <div class="row match-height">
