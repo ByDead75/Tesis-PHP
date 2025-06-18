@@ -38,18 +38,21 @@ Route::controller(GenerarSolicitudesController::class)->group(function () {
     Route::get('/generar_solicitud', 'index')->name('ordenes.generar-solicitud');
 });
 
-/*Route::controller(LoginController::class)->group(function () {
-    Route::get('/login', function () {return view('auth.login');})->name('login');
+Route::controller(LoginController::class)->group(function () {
+    Route::get('login', 'showLoginForm')->name('login');
+    Route::post('usuario/login', 'login')->name('usuario.login');
+    Route::post('usuario/logout', 'logout')->name('usuario.logout');
 });
-*/
+
 
 Route::get('/editar_solicitud', [EditarSolicitudesController::class, 'index'])->name('ordenes.editar-solicitud');
 
 
 //Rutas sueltas (provisionales)
-Route::get('/', function () {return view('index');});
+Route::get('/', function () {return view('index');})->name('index');
 Route::get('/dashboard', function () { return view('dashboard.index');})->name('dashboard');
-Route::get('/login', function () {return view('auth.login');})->name('login');
+
+
 
 
 /*

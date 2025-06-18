@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="./assets/compiled/css/auth.css">
     <link rel="stylesheet" href="./assets/compiled/css/app.css">
     <link rel="stylesheet" href="./assets/compiled/css/app-dark.css">
-    
 </head>
 
 <body>
@@ -29,15 +28,16 @@
             <h1 class="auth-title">Ingresar</h1>
 
             <!--- action="/" - Redireccion a la página de inicio--->
-            <form action="/">
+            <form method="POST" action="{{ route('usuario.login') }}">
+                @csrf
                 <div class="form-group position-relative has-icon-left mb-4">
-                    <input type="text" class="form-control form-control-xl" placeholder="Usuario">
+                    <input type="text" class="form-control form-control-xl" id="cedula" name="cedula" placeholder="Usuario">
                     <div class="form-control-icon">
                         <i class="bi bi-person"></i>
                     </div>
                 </div>
                 <div class="form-group position-relative has-icon-left mb-4">
-                    <input type="password" class="form-control form-control-xl" placeholder="Contraseña">
+                    <input type="password" class="form-control form-control-xl" id="password" name="password" placeholder="Contraseña" >
                     <div class="form-control-icon">
                         <i class="bi bi-shield-lock"></i>
                     </div>
@@ -48,8 +48,9 @@
                         Mantener Sesión
                     </label>
                 </div>
-                <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Ingresar</button>
+                <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5" type="submit">Ingresar</button>
             </form>
+
             <div class="text-center mt-5 text-lg fs-4">
                 <p><a class="font-bold" href="auth-forgot-password.html">¿Olvidaste tu contraseña?</a></p>
             </div>
