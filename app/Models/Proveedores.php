@@ -29,9 +29,6 @@ class Proveedores extends Model{
         'proveedores.rif')
         ->distinct()->get();
 
-        
-        //'cuentas.cod_banco as proveedor_banco'
-
         return $resultado;
     }
 }

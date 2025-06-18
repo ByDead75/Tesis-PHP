@@ -20,4 +20,11 @@ class Sucursales extends Model{
         'NB_SUCURSAL',
         'FECHA_INACTIVACION',
     ];
+
+    public function get_sucursales() {
+        $resultado = self::select('sucursales.NB_SUCURSAL')
+        ->distinct()->get();
+
+        return $resultado;
+    }
 }

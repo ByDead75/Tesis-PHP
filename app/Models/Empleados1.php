@@ -36,7 +36,7 @@ class Empleados1 extends Model{
         'cod_centro_costo',
     ];
         public function get_empleados1() {
-        $resultado = self::select('nombre')->distinct()->get();
+        $resultado = self::select('empleados1.nombre')->distinct()->get();
 
         return $resultado;
     }

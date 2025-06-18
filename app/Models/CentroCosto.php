@@ -25,4 +25,11 @@ class CentroCosto extends Model{
         'cod_gerencia',
         'centro_costocol',
     ];
+    public function get_centro_costo() {
+        $resultado = self::select('centro_costo.centro',
+        'centro_costo.cod_aprobador')
+        ->distinct()->get();
+
+        return $resultado;
+    }
 }

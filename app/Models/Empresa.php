@@ -22,8 +22,8 @@ class Empresa extends Model{
     ];
 
     public function get_empresas() {
-    $resultado = self::select('cod_empresa','nb_empresa')->distinct()->get();
+        $resultado = self::select('empresa.cod_empresa','empresa.nb_empresa')->distinct()->get();
 
-    return $resultado;
+        return $resultado;
     }
 }
