@@ -16,12 +16,6 @@ class LoginController extends Controller
         return view('auth.login'); // Asegúrate de tener una vista 'auth/login.blade.php'
     }
 
-    /**
-     * Maneja la solicitud de login.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function login(Request $request)
     {
         // 1. Validar los datos de entrada
