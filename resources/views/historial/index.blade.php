@@ -3,9 +3,7 @@
 @section('title', 'Historial de Solicitudes')
 
 @push('css')
-    <link rel="stylesheet" href="assets/extensions/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
-    <link rel="stylesheet" href="./assets/compiled/css/table-datatable-jquery.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.3.2/js/dataTables.js">
+    
 @endpush
 
 @section('content')

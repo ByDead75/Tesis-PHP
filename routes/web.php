@@ -47,7 +47,7 @@ Route::get('/editar_solicitud', [EditarSolicitudesController::class, 'index'])->
 
 
 //Rutas sueltas (provisionales)
-Route::get('/', function () {return view('template');});
+Route::get('/', function () {return view('index');});
 Route::get('/dashboard', function () { return view('dashboard.index');})->name('dashboard');
 Route::get('/login', function () {return view('auth.login');})->name('login');
 

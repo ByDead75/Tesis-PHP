@@ -14,10 +14,14 @@
     <link rel="stylesheet" href="./assets/compiled/css/iconly.css">
     
 
+    <link rel="stylesheet" href="assets/extensions/datatables.net-bs5/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="./assets/compiled/css/table-datatable-jquery.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.3.2/js/dataTables.js">
+    
+
     <link rel="stylesheet" href="assets/extensions/filepond/filepond.css">
     <link rel="stylesheet" href="assets/extensions/filepond-plugin-image-preview/filepond-plugin-image-preview.css">
     <link rel="stylesheet" href="assets/extensions/toastify-js/src/toastify.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.3.2/css/dataTables.dataTables.css">
     
     @stack('css')
 </head>
