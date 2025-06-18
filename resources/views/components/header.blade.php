@@ -21,7 +21,17 @@
                         <li><a class="dropdown-item" href="#">Mi Cuenta</a></li>
                         <li><a class="dropdown-item" href="#">Configuración</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="{{ url('login') }}">Cerrar Sesión</a></li>
+
+
+                        <li>
+                            <a  class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                Cerrar Sesión
+                            </a>
+
+                            <form id="logout-form" action="{{ route('usuario.logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </li>
                     </ul>
                 </div>
 

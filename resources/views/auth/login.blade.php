@@ -13,6 +13,23 @@
     <link rel="stylesheet" href="./assets/compiled/css/auth.css">
     <link rel="stylesheet" href="./assets/compiled/css/app.css">
     <link rel="stylesheet" href="./assets/compiled/css/app-dark.css">
+
+    <style>
+        .alert-danger {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            padding: .75rem 1.25rem;
+            margin-bottom: 2rem;
+            border: 1px solid transparent;
+            border-radius: .25rem;
+        }
+        .error-message {
+            color: #dc3545;
+            font-size: 0.875em;
+            margin-top: 0.25rem;
+        }
+    </style>
 </head>
 
 <body>
@@ -35,6 +52,7 @@
                     <div class="form-control-icon">
                         <i class="bi bi-person"></i>
                     </div>
+                    
                 </div>
                 <div class="form-group position-relative has-icon-left mb-4">
                     <input type="password" class="form-control form-control-xl" id="password" name="password" placeholder="Contraseña" >
@@ -42,6 +60,9 @@
                         <i class="bi bi-shield-lock"></i>
                     </div>
                 </div>
+                @error('cedula')
+                    <div class="error-message">{{ $message }}</div>
+                @enderror
                 <div class="form-check form-check-lg d-flex align-items-end">
                     <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckDefault">
                     <label class="form-check-label text-gray-600" for="flexCheckDefault">

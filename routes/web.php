@@ -42,6 +42,7 @@ Route::controller(LoginController::class)->group(function () {
     Route::get('login', 'showLoginForm')->name('login');
     Route::post('usuario/login', 'login')->name('usuario.login');
     Route::post('usuario/logout', 'logout')->name('usuario.logout');
+    Route::get('/', 'inicio')->name('index');
 });
 
 
@@ -49,7 +50,7 @@ Route::get('/editar_solicitud', [EditarSolicitudesController::class, 'index'])->
 
 
 //Rutas sueltas (provisionales)
-Route::get('/', function () {return view('index');})->name('index');
+
 Route::get('/dashboard', function () { return view('dashboard.index');})->name('dashboard');
 
 
