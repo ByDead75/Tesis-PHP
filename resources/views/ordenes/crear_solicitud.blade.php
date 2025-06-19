@@ -3,7 +3,8 @@
 @section('title', 'Generar Solicitud')
 
 @push('css')
-    <link rel="stylesheet" href="./assets/compiled/css/generar-solicitud.css">
+    <link rel="stylesheet" href="{{asset('assets/compiled/css/generar-solicitud.css')}}">
+    
     
 @endpush
 
@@ -146,20 +147,20 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="monto_neto" class="form-label">Monto Neto - ej: 1200.00</label>
-                                            <input type="number" step="any" id="monto_neto" class="form-control" name="monto_neto" placeholder="">
+                                            <input type="number" step="any" id="monto_neto" class="form-control" name="monto_neto">
                                         </div>
                                     </div>
 
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="monto_iva" class="form-label">Monto del IVA - ej: 144.00</label>
-                                            <input type="number" step="any" id="monto_iva" class="form-control" name="monto_iva" placeholder="">
+                                            <input type="number" step="any" id="monto_iva" class="form-control" name="monto_iva">
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="monto_total" class="form-label">Monto Total</label>
-                                            <input type="number" step="any" id="monto_total" class="form-control" name="monto_total" placeholder="">
+                                            <input type="number" step="any" id="monto_total" class="form-control" name="monto_total">
                                         </div>
                                     </div>
                                 </div>
@@ -203,13 +204,13 @@
 @push('js')
 <!--Funcionalidad de Modales-->
     
-    <script src="./assets/compiled/js/proveedores_modal.js"></script>
-    <script src="./assets/compiled/js/bancos_modal.js"></script>
+    <script src="{{asset('assets/compiled/js/proveedores_modal.js')}}"></script>
+    <script src="{{asset('assets/compiled/js/bancos_modal.js')}}"></script>
     
 
     <script>
         $('#proveedor_nombre').on('click', function () {
-            proveedores('{{ url("proveedores/index") }}')  
+            proveedores('{{ route("buscar.proveedores") }}')  
         })
     </script>
 
@@ -217,16 +218,40 @@
         $('#proveedor_banco').on('click', function () {
             if ($('#proveedor_nombre').val() === "") {
                 alert('Debes seleccionar un proveedor primero');
-                proveedores('{{ url("proveedores/index") }}')  
+                proveedores('{{ route("buscar.proveedores") }}')  
                 return
             }
-            bancos('{{ route("cuentas.proveedores.index") }}')
+            bancos('{{ route("buscar.cuentas.proveedores") }}')
         })
     </script>
 
-    
+    <script>
+        // Obtener referencias a los elementos del DOM
+        const input1 = document.getElementById('monto_neto');
+        const input2 = document.getElementById('monto_iva');
+        const resultadoInput = document.getElementById('monto_total');
+
+        // Función para calcular la suma y actualizar el resultado
+        function calcularSuma() {
+            
+            const valor1 = parseFloat(input1.value) || 0;
+            const valor2 = parseFloat(input2.value) || 0;
+
+            const suma = valor1 + valor2;
+
+            // Mostrar el resultado en el tercer input
+            resultadoInput.value = suma;
+        }
+
+        // Añadir "escuchadores" de eventos a los inputs
+        // Cada vez que el valor de input1 o input2 cambie, se llamará a calcularSuma()
+        input1.addEventListener('input', calcularSuma);
+        input2.addEventListener('input', calcularSuma);
+
+        // Opcional: Calcular la suma inicial al cargar la página
+        document.addEventListener('DOMContentLoaded', calcularSuma);
+
+    </script>
     
 @endpush
 
-<!-- 
-    -->

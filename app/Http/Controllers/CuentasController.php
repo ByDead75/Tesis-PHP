@@ -9,7 +9,7 @@ use Nette\Utils\Json;
 
 class CuentasController extends Controller
 {
-    public function index (Request $request)
+    public function BuscarCuentasProveedores (Request $request)
     {
         if ($request->ajax()) {
        

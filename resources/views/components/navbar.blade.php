@@ -26,41 +26,22 @@
                         
                         <ul class="submenu-group">
                             
-                            <li
-                                class="submenu-item  ">
-                                <a href="{{ route('ordenes.generar-solicitud') }}"
-                                    class='submenu-link'>Cargar Solicitud</a>
-
+                            <li class="submenu-item ">
+                                <a href="{{ route('ordenes.solicitud.crear') }}"
+                                    class='submenu-link'>Crear Solicitud</a>
                                 
                             </li>
                             
-                        
-                        
-                            <li
-                                class="submenu-item  ">
-                                <a href="/#"
+                            <li class="submenu-item ">
+                                <a href="{{ route('ordenes.solicitud.registros') }}"
                                     class='submenu-link'>Editar Solicitud</a>
-
                                 
                             </li>
                             
-                        
-                        
                             <li
                                 class="submenu-item  ">
                                 <a href="/#"
                                     class='submenu-link'>Aprobar Solicitud</a>
-
-                                
-                            </li>
-                            
-                        
-                        
-                            <li
-                                class="submenu-item  ">
-                                <a href="/#"
-                                    class='submenu-link'>Eliminar Solicitud</a>
-
                                 
                             </li>
                             
@@ -89,7 +70,7 @@
                             
                             <li
                                 class="submenu-item  ">
-                                <a href="{{ url('/historial') }}"
+                                <a href="{{ route('historial.index') }}"
                                     class='submenu-link'>Historial</a>
 
                                 
@@ -135,10 +116,6 @@
                                         <a href="/#" class="subsubmenu-link">Editar Usuario</a>
                                     </li>
                                     
-                                    <li class="subsubmenu-item ">
-                                        <a href="/#" class="subsubmenu-link">Eliminar Usuario</a>
-                                    </li>
-                                    
                                 </ul>
                                 
                             </li>
@@ -163,9 +140,6 @@
                                         <a href="/#" class="subsubmenu-link">Editar Proovedor</a>
                                     </li>
 
-                                    <li class="subsubmenu-item ">
-                                        <a href="/#" class="subsubmenu-link">Eliminar Proovedor</a>
-                                    </li>
                                     
                                 </ul>
                                 
@@ -190,10 +164,6 @@
                                         <a href="/#" class="subsubmenu-link">Editar Banco</a>
                                     </li>
                                     
-                                    <li class="subsubmenu-item ">
-                                        <a href="/#" class="subsubmenu-link">Eliminar Banco</a>
-                                    </li>
-                                    
                                 </ul>
                                 
                             </li>
@@ -213,5 +183,5 @@
 
 @push('js')
     <!--Funcionalidad de Perfil de Usuario (Navbar) -->
-    <script src="assets/compiled/js/app.js"></script>
+    <script src="{{asset('assets/compiled/js/app.js')}}"></script>
 @endpush

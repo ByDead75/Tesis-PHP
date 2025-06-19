@@ -3,7 +3,7 @@
 @section('title', 'Editar Solicitud')
 
 @push('css')
-    <link rel="stylesheet" href="./assets/compiled/css/generar-solicitud.css">
+    <link rel="stylesheet" href="{{asset('assets/compiled/css/generar-solicitud.css')}}">
     
 @endpush
 
@@ -203,13 +203,15 @@
 @push('js')
 <!--Funcionalidad de Modales-->
     
-    <script src="./assets/compiled/js/proveedores_modal.js"></script>
-    <script src="./assets/compiled/js/bancos_modal.js"></script>
+
+
+    <script src="{{asset('assets/compiled/js/proveedores_modal.js')}}"></script>
+    <script src="{{asset('assets/compiled/js/bancos_modal.js')}}"></script>
     
 
     <script>
         $('#proveedor_nombre').on('click', function () {
-            proveedores('{{ url("proveedores/index") }}')  
+            proveedores('{{ route("buscar.proveedores") }}')  
         })
     </script>
 
@@ -217,10 +219,10 @@
         $('#proveedor_banco').on('click', function () {
             if ($('#proveedor_nombre').val() === "") {
                 alert('Debes seleccionar un proveedor primero');
-                proveedores('{{ url("proveedores/index") }}')  
+                proveedores('{{ route("buscar.proveedores") }}')  
                 return
             }
-            bancos('{{ route("cuentas.proveedores.index") }}')
+            bancos('{{ route("buscar.cuentas.proveedores") }}')
         })
     </script>
 
@@ -228,5 +230,3 @@
     
 @endpush
 
-<!-- 
-    -->

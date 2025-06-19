@@ -8,7 +8,7 @@ use Nette\Utils\Json;
 
 class ProveedoresController extends Controller
 {
-    public function index (Request $request)
+    public function BuscarProveedores (Request $request)
     {
         if ($request->ajax()) {
             $proveedores_model = new Proveedores;

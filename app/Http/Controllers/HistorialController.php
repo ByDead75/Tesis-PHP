@@ -11,12 +11,12 @@ use Yajra\DataTables\DataTables;
 class HistorialController extends Controller
 {
 
-    public function index ()
+    public function MostrarHistorialIndex ()
     {
         return view('historial.index');
     }
 
-    public function registros_historial (Request $request) {
+    public function DataHistorial (Request $request) {
 
         if ($request->ajax()) {
             

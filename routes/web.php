@@ -21,36 +21,44 @@ use App\Http\Controllers\HistorialController;
 //Controladores de Login
 
 Route::controller(LoginController::class)->group(function () {
-    Route::get('login', 'showLoginForm')->name('login');
+    Route::get('login', 'MostrarLoginForm')->name('login');
     Route::post('usuario/login', 'login')->name('usuario.login');
     Route::post('usuario/logout', 'logout')->name('usuario.logout');
-    Route::get('/', 'inicio')->name('index');
+    Route::get('/', 'MostrarInicio')->name('index');
 });
 
 //Controladores de Historial
 
 Route::controller(HistorialController::class)->group(function () {
-    Route::get('/historial', 'index')->name('historial.index');
-    Route::get('/historial/obtener', 'registros_historial')->name('historial.obtener');
+    Route::get('/historial', 'MostrarHistorialIndex')->name('historial.index');
+    Route::get('/historial/obtener', 'DataHistorial')->name('historial.data');
 });
 
-//Controladores de Cargar/Editar/Aprobar Solicitudes
+//Controladores de Crear/Editar/Aprobar Solicitudes
 
 Route::controller(ProveedoresController::class)->group(function () {
-    Route::get('proveedores/index', 'index')->name('proveedores.index');
+    Route::get('proveedores/index', 'BuscarProveedores')->name('buscar.proveedores');
 });
 
 Route::controller(CuentasController::class)->group(function () {
-    Route::get('cuentas/proveedores/index', 'index')->name('cuentas.proveedores.index');
+    Route::get('cuentas/proveedores/index', 'BuscarCuentasProveedores')->name('buscar.cuentas.proveedores');
 });
 
 Route::controller(OrdenesController::class)->group(function () {
-    Route::get('/generar_solicitud', 'get_cargar_solicitud')->name('ordenes.generar-solicitud');
-    Route::get('/editar_solicitud', 'index')->name('ordenes.editar-solicitud');
+    Route::get('solicitudes/crear', 'MostrarCrearSolicitud')->name('ordenes.solicitud.crear');
+
+
+    Route::get('/solicitudes/registros', 'MostrarIndexEditarSolicitudes')->name('ordenes.solicitud.registros');
+    Route::get('/solicitudes/registros/obtener', 'RegistrosEditarSolicitudes')->name('ordenes.solicitud.registros.obtener');
+
+                
+    Route::get('/solicitud/editar', 'MostrarSolicitudSeleccionada')
+                ->name('ordenes.mostrar.solicitud.selecionada');
+
+
+    Route::get('/solicitud/editar/{id_solicitud}', 'EditarSolicitudSeleccionada')
+                ->name('ordenes.solicitud.registros.selecionada'); 
 });
-
-
-
 
 
 //Rutas sueltas (provisionales)

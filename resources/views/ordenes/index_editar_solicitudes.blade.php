@@ -1,6 +1,6 @@
 @extends('template')
 
-@section('title', 'Historial de Solicitudes')
+@section('title', 'Editar Solicitudes')
 
 @push('css')
     
@@ -12,7 +12,7 @@
     <section class="section">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title text-center">Historial de Solicitudes</h3>
+                <h3 class="card-title text-center">Registros para Editar Solicitudes</h3>
             </div>
             <div class="card-body pb-0">
                 <form class="mb-4">
@@ -75,12 +75,13 @@
                 <div class="card-body pb-0">
                     <!-- Tabla para el Historial en jQuery -->
                     <div class="table">
-                        <table class="table table-striped" id="tabla_historial">
+                        <table class="table table-striped" id="registros_editar_solicitudes">
                             <thead>
                                 <tr>
-                                    <th>ID Solicitud</th>
+                                    <th>Acciones</th>
+                                    <th>ID de Solicitud</th>
                                     <th>Solicitante</th>
-                                    <th>ID Solicitante</th>
+                                    <th>ID de Solicitante</th>
                                     <th>Fecha de la Solicitud</th>
                                     <th>RIF</th>
                                     <th>Monto Total</th>
@@ -88,6 +89,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                
                             </tbody>
                         </table>
                         <div class="row">
@@ -108,8 +110,17 @@
 
 @push('js') 
 <script>
-    var route_historial = '{{ route("historial.data") }}'
+    var route_registros = '{{ route("ordenes.solicitud.registros.obtener") }}'
 </script>
 
-<script src="{{asset('assets/compiled/js/tabla-historial.js')}}"></script>
+
+
+<script src="{{asset('assets/compiled/js/tabla_editar_solicitudes.js')}}"></script>
+
+<script>
+    function RedireccionEditarSolicitud(idSolicitud) {
+    //
+    window.location.href = editUrl; // Redirige el navegador
+}
+</script>
 @endpush 

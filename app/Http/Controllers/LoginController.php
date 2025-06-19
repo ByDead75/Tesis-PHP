@@ -12,41 +12,27 @@ use Illuminate\Validation\ValidationException;
 class LoginController extends Controller
 {
     
-    public function showLoginForm()
+    public function MostrarLoginForm()
     {
-        return view('auth.login'); // Asegúrate de tener una vista 'auth/login.blade.php'
+        return view('auth.login'); 
     }
 
     public function login(Request $request)
     {
-        // 1. Validar los datos de entrada
-        
         $credentials = $request->only(['cedula', 'password']);
 
         $usuario = \App\Models\Usuarios::find($credentials['cedula']);
 
-        // dd($usuario);
-
         if ($usuario && md5($credentials['password']) === $usuario->password) {
 
-    
             Auth::guard('usuarios')->login($usuario);
-
-            // Redirigir al usuario a la página deseada después del login 
             return redirect()->intended('/');
         }else {
             throw ValidationException::withMessages([
-                'cedula' => ['El usuario o la contraseña son incorrectos.'], // Mensaje general para cédula/contraseña
-                // También puedes ser más específico si la lógica lo permite,
-                // por ejemplo, si sabes que la cédula existe pero la contraseña no
+                'cedula' => ['El usuario o la contraseña son incorrectos.'], 
             ]);
         }
         
-    }
-
-    public function inicio(){
-        $usuario = auth()->guard('usuarios')->user();
-        return view('index', compact('usuario')); 
     }
 
     
@@ -58,5 +44,10 @@ class LoginController extends Controller
         $request->session()->regenerateToken(); // Regenera el token CSRF
 
         return redirect('/login'); // Redirige a la página de login
+    }
+
+    public function MostrarInicio(){
+        $usuario = auth()->guard('usuarios')->user();
+        return view('index', compact('usuario')); 
     }
 }
