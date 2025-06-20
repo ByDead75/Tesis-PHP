@@ -19,6 +19,7 @@
                     <ul class="dropdown-menu dropdown-menu-end shadow-lg" aria-labelledby="topbarUserDropdown">
                         <li><a class="dropdown-item" href="#">Mi Cuenta</a></li>
                         <li><a class="dropdown-item" href="#">Configuración</a></li>
+                        <li><a class="dropdown-item" href="#">Cambiar Contraseña</a></li>
                         <li><hr class="dropdown-divider"></li>
 
                         <li>
