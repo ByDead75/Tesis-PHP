@@ -8,7 +8,7 @@
 
 @section('content')
 
-<div id="main-content" class="pt-0">
+<div id="main-content" class="">
     <section class="section">
         <div class="card">
             <div class="card-header">

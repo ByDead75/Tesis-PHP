@@ -52,12 +52,10 @@ Route::controller(OrdenesController::class)->group(function () {
     Route::get('/solicitudes/registros/obtener', 'RegistrosEditarSolicitudes')->name('ordenes.solicitud.registros.obtener');
 
                 
-    Route::get('/solicitud/editar', 'MostrarSolicitudSeleccionada')
-                ->name('ordenes.mostrar.solicitud.selecionada');
-
-
-    Route::get('/solicitud/editar/{id_solicitud}', 'EditarSolicitudSeleccionada')
-                ->name('ordenes.solicitud.registros.selecionada'); 
+    Route::get('/solicitud/editar', 'MostrarSolicitudSeleccionada')->name('ordenes.mostrar.solicitud.selecionada');
+    Route::get('/solicitud/editar/{id_solicitud}', 'EditarSolicitudSeleccionada')->name('ordenes.solicitud.registros.selecionada'); 
+    
+    //Route::put('/solicitudes/{id_solicitud}', 'ActualizarSolicitud')->name('ordenes.solicitud.actualizar.seleccionada');
 });
 
 

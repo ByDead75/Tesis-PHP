@@ -38,10 +38,42 @@ class OrdenesController extends Controller
         return view('ordenes.index_editar_solicitudes');
     }
 
+
+    /*
+    public function EditarSolicitud(Solicitud $solicitud)
+    {
+        return view('solicitudes.edit', compact('solicitud'));
+    }
+
+    public function ActualizarSolicitud(Request $request, Solicitud $solicitud){
+        $request->validate([
+            
+            'concepto_pago' => 'nullable|string|max:500',
+            'cuenta' => 'required|string|max:30',
+            'factura' => 'required|string|max:20',
+            'n_control' => 'required|string|max:10',
+            'rif'               => 'required|string|max:20',
+            'monto'        => 'required|string|max:20',
+            'monto_iva'       => 'required|numeric|min:0',
+            'fecha_solicitud'   => 'required|date',
+        ]);
+
+        $solicitud->concepto_pago = $request->input('concepto_pago');
+        $solicitud->rif = $request->input('rif');
+        $solicitud->monto_total = $request->input('monto_total');
+        $solicitud->fecha_solicitud = $request->input('fecha_solicitud');
+        $solicitud->descripcion = $request->input('descripcion');
+
+        $solicitud->save();
+
+        return redirect()->route('historial.index')
+        ->with('success', 'Solicitud actualizada correctamente!');
+    }
+    */
+
     public function RegistrosEditarSolicitudes (Request $request)
     {
 
-        // incluir condicional para exlucir solicitudes en status "PAGADA"
         if ($request->ajax()) {
             
             $solicitudes_model = new Solicitudes;
@@ -55,6 +87,7 @@ class OrdenesController extends Controller
             $datatables = DataTables::of($solicitudes)
                 ->addIndexColumn()
                 ->addColumn('actions', function($row) {
+                    //$editarUrl = route('ordenes.solicitud.actualizar', $row->id);
                     $button = '<div class="btn-group btn-group-sm" role="group">
                                     <a class="btn btn-secondary icon"  onclick="RedireccionEditarSolicitud('.$row->id_solicitud.') "title="Clic para editar">
                                         <i class="fas fa-edit"></i> Editar

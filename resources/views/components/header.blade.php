@@ -1,12 +1,11 @@
 
-<header class="mb-5">
+<header class="mb-1">
     <div class="header-top">
         <div class="container">
             <div class="logo"> 
                 <a href="/"><img src="{{asset('assets/compiled/svg/humanitas_gris.svg')}}" alt="Logo"></a>
             </div>
             <div class="header-top-right">
-
                 <div class="dropdown">
                     <a href="#" id="topbarUserDropdown" class="user-dropdown d-flex align-items-center dropend dropdown-toggle " data-bs-toggle="dropdown" aria-expanded="false">
                         <div class="avatar avatar-md2" >
@@ -21,7 +20,6 @@
                         <li><a class="dropdown-item" href="#">Mi Cuenta</a></li>
                         <li><a class="dropdown-item" href="#">Configuración</a></li>
                         <li><hr class="dropdown-divider"></li>
-
 
                         <li>
                             <a  class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

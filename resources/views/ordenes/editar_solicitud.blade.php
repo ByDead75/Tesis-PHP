@@ -3,15 +3,16 @@
 @section('title', 'Editar Solicitud')
 
 @push('css')
-    <link rel="stylesheet" href="{{asset('assets/compiled/css/generar-solicitud.css')}}">
-    
+
 @endpush
 
 @section('content')
-    <div id="main-content" class="pb-1">
+
+<div id="main-content" class="">
         <div>
             <h2 class="card-title text-center mb-4 pb-2">Editar Solicitud de Pago</h2>
         </div>
+    <form class="form">
         <section id="multiple-column-form">
             <div class="row match-height">
                 <div class="col-12">
@@ -21,7 +22,6 @@
                         </div>
                         <div class="card-content">
                             <div class="card-body">
-                                <form class="form">
                                     <div class="row">
                                         <div class="col-md-4 col-12">
                                             <div class="form-group">
@@ -54,28 +54,22 @@
                                         </div>
                                         </div>
                                     </div>
-                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-    </div>
 
-
-<div id="main-content" class="pt-1">
-    <section id="multiple-column-form">
-        <div class="row match-height">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h2 class="card-title text-center">Datos del Pago</h2>
-                    </div>
-
-                    <div class="card-content">
-                        <div class="card-body">
-                            <form class="form">
+        <section id="multiple-column-form">
+            <div class="row match-height">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title text-center">Datos del Pago</h2>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
@@ -83,14 +77,15 @@
                                             <input type="text" id="tipo_proveedor" class="form-control" placeholder="Seleccione el proveedor" name="tipo_proveedor" readonly>
                                         </div>
                                     </div>
+
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="proveedor_nombre" class="form-label">Nombre o Razón Social / Beneficiario del Pago</label>
                                             <input type="text" id="proveedor_nombre" class="form-control" placeholder="Clic para seleccionar un proveedor" name="proveedor_nombre">
                                             <input type="hidden" id="proveedor_codigo" class="form-control"  name="proveedor_codigo">
                                         </div>
-                                        
                                     </div>
+
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="tipo_solicitud" class="form-label">Factura/Presupuesto</label>
@@ -101,12 +96,14 @@
                                                 </select>
                                         </div>
                                     </div>
+
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="proveedor_rif" class="form-label">Rif del Proveedor</label>
                                             <input type="text" id="proveedor_rif" class="form-control" name="proveedor_rif" placeholder="Seleccione el proveedor" readonly>
                                         </div>
                                     </div>
+
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="forma_pago" class="form-label">Forma de Pago</label>
@@ -117,12 +114,14 @@
                                                 </select>
                                         </div>
                                     </div>
+
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="numero_tipo_solicitud" class="form-label">N° de la Factura/Presupuesto</label>
                                             <input type="text" id="numero_tipo_solicitud" class="form-control" name="numero_tipo_solicitud" placeholder="">
                                         </div>
                                     </div>
+
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="proveedor_banco" class="form-label">Banco del Proveedor</label>
@@ -134,15 +133,17 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="proveedor_numero_cuenta" class="form-label">N° de Cuenta</label>
-                                                <input type="number" id="proveedor_numero_cuenta" class="form-control" name="proveedor_numero_cuenta" placeholder="Seleccione el banco" readonly>
+                                            <input type="number" id="proveedor_numero_cuenta" class="form-control" name="proveedor_numero_cuenta" placeholder="Seleccione el banco" readonly>
                                         </div>
                                     </div>
+
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="numero_control" class="form-label">N° de Control</label>
                                             <input type="text" id="numero_control" class="form-control" name="numero_control" placeholder="">
                                         </div>
                                     </div>
+
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="monto_neto" class="form-label">Monto Neto - ej: 1200.00</label>
@@ -156,6 +157,7 @@
                                             <input type="number" step="any" id="monto_iva" class="form-control" name="monto_iva" placeholder="">
                                         </div>
                                     </div>
+
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="monto_total" class="form-label">Monto Total</label>
@@ -168,6 +170,7 @@
                                     <div>
                                         <h3 class="card-title text-center pt-4 pb-2">Concepto de Pago</h3>
                                     </div>
+                                    
                                     <div class="form-group mt-2">
                                         <textarea class="form-control" id="concepto_de_pago" rows="3"></textarea>
                                     </div>
@@ -176,25 +179,21 @@
                                 <div class="row pt-4 pb-2">
                                     <x-file_upload/>
                                 </div>
-                                
+
                                 <div class="row">
                                     <div class="col-12 d-flex justify-content-between align-items-center">
                                         <button type="button" class="btn btn-secondary me-1 mb-1">Regresar</button>
                                         <button type="submit" class="btn btn-primary me-1 mb-1">Enviar Solicitud</button>
                                     </div>
                                 </div>
-                                
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </form>
 </div>
-
-
-
 
 @include('components.modal')
 
