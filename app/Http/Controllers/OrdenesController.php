@@ -88,8 +88,8 @@ class OrdenesController extends Controller
                 ->addIndexColumn()
                 ->addColumn('actions', function($row) {
                     //$editarUrl = route('ordenes.solicitud.actualizar', $row->id);
-                    $button = '<div class="btn-group btn-group-sm" role="group">
-                                    <a class="btn btn-secondary icon"  onclick="RedireccionEditarSolicitud('.$row->id_solicitud.') "title="Clic para editar">
+                    $button = '<div class="btn-group" role="group">
+                                    <a class="btn btn-sm btn-secondary icon"  onclick="RedireccionEditarSolicitud('.$row->id_solicitud.') "title="Clic para editar">
                                         <i class="fas fa-edit"></i> Editar
                                     </a>
                                 </div>';

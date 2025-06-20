@@ -82,17 +82,51 @@ class Solicitudes extends Model{
         return $resultado;
     }
 
+    
 
     public function GetSolicitudesPorId($id_solicitud) {
         $resultado = self::select('solicitudes.id_pago', 
                 'solicitudes.id_solicitud',
                 'solicitudes.fecha_solicitud',
-                'solicitudes.id_solicitante', 
+
+                'solicitudes.cod_empresa',
+                'solicitudes.cod_sucursal',
+                'solicitudes.centro_de_costo',
+                'solicitudes.id_solicitante',
+                
+
+                'solicitudes.beneficiario_de_pago',
+                'solicitudes.id_banco',
+                'solicitudes.cuenta',
+                'solicitudes.factura',
+                'solicitudes.n_control',
+                'solicitudes.monto',
+                'solicitudes.monto_iva',
+                'solicitudes.concepto_de_pago',
                 'solicitudes.rif',
                 'solicitudes.monto_total',
                 'solicitudes.status_solicitud',
-                'empleados1.nombre as nombre_solicitante' )
+                'solicitudes.TipoProveedor',
+                'solicitudes.factupuesto',
+                'solicitudes.imagen',
+                'solicitudes.aprobador_sol',
+
+                'empresa.nb_empresa as empresa',
+                'sucursales.NB_SUCURSAL as sucursal',
+                'centro_costo.centro as centro_de_costo',
+                'empleados1.nombre as nombre_solicitante',
+                'aprobador.nombre as nombre_aprobador',
+                
+                'proveedores.nb_auxiliar as proveedor_de_nombre',
+                'bancos.nb_banco as banco_nombre',
+                )
+                ->join('empleados1 as aprobador', 'solicitudes.aprobador_sol', '=', 'aprobador.cedula') 
+                ->join('empresa', 'solicitudes.cod_empresa', '=', 'empresa.cod_empresa')
+                ->join('sucursales', 'solicitudes.cod_sucursal', '=', 'sucursales.COD_SUCURSAL')
+                ->join('centro_costo', 'solicitudes.centro_de_costo', '=', 'centro_costo.id_centro')
                 ->join('empleados1', 'solicitudes.id_solicitante', '=', 'empleados1.cedula')
+                ->join('proveedores', 'solicitudes.beneficiario_de_pago', '=', 'proveedores.cod_auxiliar')
+                ->join('bancos', 'solicitudes.id_banco', '=', 'bancos.cod_banco')
                 ->where('solicitudes.id_solicitud', $id_solicitud)
                 ->first();
 
