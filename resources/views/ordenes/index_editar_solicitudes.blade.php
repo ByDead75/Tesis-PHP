@@ -120,8 +120,11 @@
 
 <script>
     function RedireccionEditarSolicitud(idSolicitud) {
-    //
-    window.location.href = editUrl; // Redirige el navegador
+
+        console.log('Se hizo clic en Editar para el ID de Pago:', idSolicitud);
+
+        const baseUrl = "{{ url('/solicitud/editar') }}"; // Obtiene la URL base de pagos
+            window.location.href = baseUrl + '/'+idSolicitud+'';
 }
 </script>
 @endpush 

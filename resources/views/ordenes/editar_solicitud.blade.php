@@ -12,7 +12,9 @@
         <div>
             <h2 class="card-title text-center mb-4 pb-2">Editar Solicitud de Pago</h2>
         </div>
-    <form class="form">
+    <form class="form" action="{{ route('ordenes.solicitud.registros.selecionada', $solicitud->id_solicitud) }}" method="POST">
+    @csrf
+    @method('PUT')
         <section id="multiple-column-form">
             <div class="row match-height">
                 <div class="col-12">
@@ -44,7 +46,7 @@
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
                                                 <label class="text-center d-block" for="disabledInput">Nombre y Apellido</label>
-                                                <p class="form-control-static text-center d-block" id="staticInput">"Nombre y Apellido aqui"</p>
+                                                <p class="form-control-static text-center d-block" id="nombre_solicitante">{{ old('nombre_solicitante', $solicitud->nombre_solicitante) }}</p>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
@@ -100,7 +102,8 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="proveedor_rif" class="form-label">Rif del Proveedor</label>
-                                            <input type="text" id="proveedor_rif" class="form-control" name="proveedor_rif" placeholder="Seleccione el proveedor" readonly>
+                                            <input type="text" id="proveedor_rif" class="form-control" name="proveedor_rif" value="{{ old('proveedor_rif', $solicitud->rif) }}"
+                                                    placeholder="Seleccione el proveedor" readonly>
                                         </div>
                                     </div>
 
@@ -161,7 +164,7 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="monto_total" class="form-label">Monto Total</label>
-                                            <input type="number" step="any" id="monto_total" class="form-control" name="monto_total" placeholder="">
+                                            <input type="number" step="any" id="monto_total" class="form-control" name="monto_total" value="{{ old('monto_total', $solicitud->monto_total) }}">
                                         </div>
                                     </div>
                                 </div>

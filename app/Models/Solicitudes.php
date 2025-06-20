@@ -51,7 +51,7 @@ class Solicitudes extends Model{
         'firma_4',
     ];
 
-        public function get_solicitudes($id_solicitud, $id_solicitante, $status_solicitud, $fecha_desde, $fecha_hasta) {
+    public function get_solicitudes($id_solicitud, $id_solicitante, $status_solicitud, $fecha_desde, $fecha_hasta) {
         $resultado = self::select('solicitudes.id_pago', 
                 'solicitudes.id_solicitud',
                 'solicitudes.fecha_solicitud',
@@ -78,6 +78,23 @@ class Solicitudes extends Model{
 
                 $resultado->orderBy('solicitudes.fecha_solicitud', 'desc')->distinct()
                 ->get();
+
+        return $resultado;
+    }
+
+
+    public function GetSolicitudesPorId($id_solicitud) {
+        $resultado = self::select('solicitudes.id_pago', 
+                'solicitudes.id_solicitud',
+                'solicitudes.fecha_solicitud',
+                'solicitudes.id_solicitante', 
+                'solicitudes.rif',
+                'solicitudes.monto_total',
+                'solicitudes.status_solicitud',
+                'empleados1.nombre as nombre_solicitante' )
+                ->join('empleados1', 'solicitudes.id_solicitante', '=', 'empleados1.cedula')
+                ->where('solicitudes.id_solicitud', $id_solicitud)
+                ->first();
 
         return $resultado;
     }

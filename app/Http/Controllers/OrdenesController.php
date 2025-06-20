@@ -113,10 +113,16 @@ class OrdenesController extends Controller
         return view('ordenes.editar_solicitud');
     }
 
-    public function EditarSolicitudSeleccionada($id_solicitud) 
+    public function EditarSolicitudSeleccionada(Request $request, $id_solicitud) 
     {   
-        $solicitud = Solicitudes::find($id_solicitud);
+        
+        $solicitudes_model = new Solicitudes;
+        $solicitud = $solicitudes_model->GetSolicitudesPorId($id_solicitud);
 
-        return view('ordenes.editar_solicitud');
+        if (!$solicitud) {
+            abort(404, 'Solicitud de pago no encontrada.');
+        }
+
+        return view('ordenes.editar_solicitud', compact('solicitud'));
     }
 }
