@@ -28,4 +28,17 @@ class Usuarios extends Authenticatable {
 
         return $this->password;
     }
+
+    public function GetUsuarios($cedula) {
+        $resultado = self::select('gestiones.usuarios.cedula');
+                if($cedula != null){
+                    $resultado->where('gestiones.usuarios.cedula', $cedula);
+                }else {
+                    $resultado->limit(100);
+                }
+                $resultado->orderBy('gestiones.usuarios.cedula', 'desc')->distinct()
+                ->get();
+                
+        return $resultado;
+    }
 }

@@ -6,6 +6,8 @@ use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\CuentasController;
 use App\Http\Controllers\OrdenesController;
 use App\Http\Controllers\UsuariosController;
+use App\Http\Controllers\DepartamentosController;
+use App\Http\Controllers\EmpresasController;
 use App\Http\Controllers\ProveedoresController;
 use App\Http\Controllers\HistorialController;
 
@@ -32,15 +34,26 @@ Route::controller(LoginController::class)->group(function () {
 
 //Controlador Cambio de Contraseña
 
-Route::get('/cambiar_password', [PasswordController::class, 'MuestraCambioPasswordIndex'])->name('auth.password');
-//Route::put('/cambio_password', [PasswordController::class, 'CambiarPassword'])->name('index');
+Route::get('/cambiar/password', [PasswordController::class, 'MuestraCambioPasswordIndex'])->name('auth.password');
+//Route::put('/cambio/password', [PasswordController::class, 'CambiarPassword'])->name('index');
 
 
 //Controladores de Gestiones (Usuarios, Proveedores, Departamentos y Empresas)
 
 Route::controller(UsuariosController::class)->group(function () {
-    Route::get('/crear_usuario', 'CrearUsuarios')->name('gestiones.usuarios.crear.usuarios');
-    Route::get('/editar_usuario', 'EditarUsuarios')->name('gestiones.usuarios.editar.usuarios');
+    Route::get('/mostrar/usuario', 'MostrarUsuarios')->name('gestiones.usuarios.registros.obtener');
+    Route::get('/crear/usuario', 'CrearUsuarios')->name('gestiones.usuarios.crear.usuarios');
+    Route::get('/editar/usuario', 'EditarUsuarios')->name('gestiones.usuarios.editar.usuarios');
+});
+
+Route::controller(EmpresasController::class)->group(function () {
+    Route::get('/agregar/empresa', 'AgregarEmpresas')->name('gestiones.empresas.agregar.empresas');
+    Route::get('/editar/empresa', 'EditarEmpresas')->name('gestiones.empresas.editar.empresas');
+});
+
+Route::controller(DepartamentosController::class)->group(function () {
+    Route::get('/agregar/departamento', 'AgregarDepartamentos')->name('gestiones.departamentos.agregar.departamentos');
+    Route::get('/editar/departamento', 'EditarDepartamentos')->name('gestiones.departamentos.editar.departamentos');
 });
 
 
@@ -54,6 +67,8 @@ Route::controller(HistorialController::class)->group(function () {
 //Controladores de Crear/Editar/Aprobar Solicitudes
 
 Route::controller(ProveedoresController::class)->group(function () {
+    Route::get('/agregar/proveedor', 'AgregarProveedores')->name('gestiones.proveedores.agregar.proveedores');
+    Route::get('/editar/proveedor', 'EditarProveedores')->name('gestiones.proveedores.editar.proveedores');
     Route::get('proveedores/index', 'BuscarProveedores')->name('buscar.proveedores');
 });
 
@@ -74,6 +89,8 @@ Route::controller(OrdenesController::class)->group(function () {
     
     //Route::put('/solicitudes/{id_solicitud}', 'ActualizarSolicitud')->name('ordenes.solicitud.actualizar.seleccionada');
 });
+
+
 
 
 //Rutas sueltas (provisionales)

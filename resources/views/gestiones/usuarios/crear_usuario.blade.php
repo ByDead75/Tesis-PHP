@@ -107,13 +107,15 @@
                                             <div class="row mt-2">
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="cargo">Cargo</label>
-                                                        <select class="form-select" id="cargo">
+                                                        <label class="form-label" for="user_master">Cargo</label>
+                                                        <select class="form-select" id="user_master">
                                                             <option value="">---</option>
-                                                            <option value="1">Empleado</option>
-                                                            <option value="2">Supervisor</option>
-                                                            <option value="3">Gerente</option>
-                                                            <option value="4">Administrador</option>
+                                                            <option value="0">Empleado</option>
+                                                            <option value="1">Supervisor</option>
+                                                            <option value="2">Gerente</option>
+                                                            <option value="3">Administrador</option>
+                                                            <option value="4">---</option>
+                                                            <option value="6">---</option>
                                                         </select>
                                                     </div>
                                                 </div>

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use App\Helpers\StatusHelper;
-
 use App\Models\CentroCosto;
 use App\Models\Empleados1;
 use App\Models\Sucursales;

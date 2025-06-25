@@ -70,7 +70,7 @@
                                     </li>
                                     
                                     <li class="subsubmenu-item ">
-                                        <a href="{{ route('gestiones.usuarios.editar.usuarios') }}" class="subsubmenu-link">Editar Usuario</a>
+                                        <a href="{{ route('gestiones.usuarios.registros.obtener') }}" class="subsubmenu-link">Editar Usuario</a>
                                     </li>
                                 </ul>
                                 
@@ -80,11 +80,11 @@
                                 <a href="#" class='submenu-link'>Proovedores</a>
                                 <ul class="subsubmenu">
                                     <li class="subsubmenu-item ">
-                                        <a href="/#" class="subsubmenu-link">Agregar Proovedor</a>
+                                        <a href="{{ route('gestiones.proveedores.agregar.proveedores') }}" class="subsubmenu-link">Agregar Proovedor</a>
                                     </li>
 
                                     <li class="subsubmenu-item ">
-                                        <a href="/#" class="subsubmenu-link">Editar Proovedor</a>
+                                        <a href="{{ route('gestiones.proveedores.editar.proveedores') }}" class="subsubmenu-link">Editar Proovedor</a>
                                     </li>
                                 </ul>
                             </li>
@@ -93,11 +93,11 @@
                                 <a href="#" class='submenu-link'>Departamentos</a>
                                 <ul class="subsubmenu">
                                     <li class="subsubmenu-item ">
-                                        <a href="/#" class="subsubmenu-link">Agregar Departamento</a>
+                                        <a href="{{ route('gestiones.departamentos.agregar.departamentos') }}" class="subsubmenu-link">Agregar Departamento</a>
                                     </li>
                                     
                                     <li class="subsubmenu-item ">
-                                        <a href="/#" class="subsubmenu-link">Editar Departamento</a>
+                                        <a href="{{ route('gestiones.departamentos.editar.departamentos') }}" class="subsubmenu-link">Editar Departamento</a>
                                     </li>
                                 </ul>
                             </li>
@@ -106,11 +106,11 @@
                                 <a href="#" class='submenu-link'>Empresas</a>
                                 <ul class="subsubmenu">
                                     <li class="subsubmenu-item ">
-                                        <a href="/#" class="subsubmenu-link">Agregar Empresa</a>
+                                        <a href="{{ route('gestiones.empresas.agregar.empresas') }}" class="subsubmenu-link">Agregar Empresa</a>
                                     </li>
                                     
                                     <li class="subsubmenu-item ">
-                                        <a href="/#" class="subsubmenu-link">Editar Empresa</a>
+                                        <a href="{{ route('gestiones.empresas.editar.empresas') }}" class="subsubmenu-link">Editar Empresa</a>
                                     </li>
                                 </ul>
                             </li>
