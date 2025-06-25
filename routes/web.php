@@ -5,6 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\CuentasController;
 use App\Http\Controllers\OrdenesController;
+use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\ProveedoresController;
 use App\Http\Controllers\HistorialController;
 
@@ -32,8 +33,15 @@ Route::controller(LoginController::class)->group(function () {
 //Controlador Cambio de Contraseña
 
 Route::get('/cambiar_password', [PasswordController::class, 'MuestraCambioPasswordIndex'])->name('auth.password');
-
 //Route::put('/cambio_password', [PasswordController::class, 'CambiarPassword'])->name('index');
+
+
+//Controladores de Gestiones (Usuarios, Proveedores, Departamentos y Empresas)
+
+Route::controller(UsuariosController::class)->group(function () {
+    Route::get('/crear_usuario', 'CrearUsuarios')->name('gestiones.usuarios.crear.usuarios');
+    Route::get('/editar_usuario', 'EditarUsuarios')->name('gestiones.usuarios.editar.usuarios');
+});
 
 
 //Controladores de Historial

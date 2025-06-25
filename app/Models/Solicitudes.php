@@ -97,7 +97,6 @@ class Solicitudes extends Model{
                 'solicitudes.centro_de_costo',
                 'solicitudes.id_solicitante',
                 
-
                 'solicitudes.beneficiario_de_pago',
                 'solicitudes.id_banco',
                 'solicitudes.cuenta',
