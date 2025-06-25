@@ -9,102 +9,104 @@
 @section('content')
 
 <div id="main-content" class="">
-    <form class="mb-4">
-        <section class="section">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title text-center">Registros para Editar Solicitudes</h3>
-                </div>
-                <div class="card-body pb-0">
-                        <div class="row">
-                            <div class="col-md-4 col-12">
-                                <div class="form-group">
-                                    <label for="first-name-column" >ID de Solicitud</label>
-                                    <input type="text" id="id_solicitud" class="form-control" placeholder="Ingrese la ID de la Solicitud" name="id_solicitud">
-                                </div>
-                            </div>
-                            
-                            <div class="col-md-4 col-12">
-                                <div class="form-group">
-                                    <label for="first-name-column" >ID de Solicitante</label>
-                                    <input type="text" id="id_solicitante" class="form-control" placeholder="Ingrese la ID del Solicitante" name="id_solicitante">
-                                </div>
-                            </div>
-
-                            <div class="col-md-4 col-12">
-                                <div class="form-group">
-                                    <label for="first-name-column">Status</label>
-                                        <select class="form-select" id="status_solicitud">
-                                            <option value="">Seleccionar</option>
-                                            <option value="1">POR APROBACION</option>
-                                            <option value="2">APROBADA</option>
-                                            <option value="3">RECHAZADA</option>
-                                            <option value="4">PAGADA</option>
-                                            <option value="5">RECIBIDO ADM</option>
-                                        </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6 col-12">
-                                <div class="form-group">
-                                    <label for="first-name-column">Fecha desde</label>
-                                    <input type="date" id="fecha_desde" class="form-control"name="fecha_desde">
-                                </div>
-                            </div>
-
-                            <div class="col-md-6 col-12">
-                                <div class="form-group">
-                                    <label for="first-name-column">Fecha hasta</label>
-                                    <input type="date" id="fecha_hasta" class="form-control" name="fecha_hasta">
-                                </div>
-                            </div>
-
-                            <div class="col-sm-12 d-flex justify-content-end pt-3 mb-3">
-                                <button type="button" class="btn btn-primary me-1" id="buscar">Buscar</button>
-                                <a href="" class="btn btn-secondary">Limpiar</a>
-                            </div>
-                        </div>
-                </div>
+    <section class="section">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title text-center">Registros para Editar Solicitudes</h3>
             </div>
-        </section>
-        <section class="section">
-                <div class="card">
-                    <div class="card-body pb-0">
+            <div class="card-body pb-0">
+                <form class="mb-4">
+                    <div class="row">
+                        <div class="col-md-4 col-12">
+                            <div class="form-group">
+                                <label class="form-label" for="id_solicitud" >ID de Solicitud</label>
+                                <input type="text" id="id_solicitud" class="form-control" placeholder="Ingrese la ID de la Solicitud" name="id_solicitud">
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4 col-12">
+                            <div class="form-group">
+                                <label class="form-label" for="id_solicitante" >ID de Solicitante</label>
+                                <input type="text" id="id_solicitante" class="form-control" placeholder="Ingrese la ID del Solicitante" name="id_solicitante">
+                            </div>
+                        </div>
 
-                        <!-- Tabla para el Historial en jQuery -->
+                        <div class="col-md-4 col-12">
+                            <div class="form-group">
+                                <label class="form-label" for="status_solicitud">Status</label>
+                                    <select class="form-select" id="status_solicitud">
+                                        <option value="">Seleccionar</option>
+                                        <option value="1">POR APROBACION</option>
+                                        <option value="2">APROBADA</option>
+                                        <option value="3">RECHAZADA</option>
+                                        <option value="4">PAGADA</option>
+                                        <option value="5">RECIBIDO ADM</option>
+                                    </select>
+                            </div>
+                        </div>
+                    </div>
 
-                        <div class="table">
-                            <table class="table table-striped" id="registros_editar_solicitudes">
-                                <thead>
-                                    <tr>
-                                        <th>Acciones</th>
-                                        <th>ID de Solicitud</th>
-                                        <th>Solicitante</th>
-                                        <th>ID de Solicitante</th>
-                                        <th>Fecha de la Solicitud</th>
-                                        <th>RIF</th>
-                                        <th>Monto Total</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
+                    <div class="row mt-2">
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <label class="form-label" for="fecha_desde">Fecha desde</label>
+                                <input type="date" id="fecha_desde" class="form-control"name="fecha_desde">
+                            </div>
+                        </div>
 
-                                </tbody>
-                            </table>
-                            <div class="row">
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <label class="form-label" for="fecha_hasta">Fecha hasta</label>
+                                <input type="date" id="fecha_hasta" class="form-control" name="fecha_hasta">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-sm-12 d-flex justify-content-end">
+                            <button type="button" class="btn btn-primary me-1" id="buscar">Buscar</button>
+                            <a href="" class="btn btn-secondary">Limpiar</a>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+            <div class="card">
+                <div class="card-body pb-0">
+                    <!-- Tabla para el Historial en jQuery -->
+
+                    <div class="table">
+                        <table class="table table-striped" id="registros_editar_solicitudes">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">Acciones</th>
+                                    <th class="text-center">ID de Solicitud</th>
+                                    <th class="text-center">Solicitante</th>
+                                    <th class="text-center">ID de Solicitante</th>
+                                    <th class="text-center">Fecha de la Solicitud</th>
+                                    <th class="text-center">RIF</th>
+                                    <th class="text-center">Monto Total</th>
+                                    <th class="text-center">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-center">
+
+                            </tbody>
+                        </table>
+                        <div class="row">
+                            <div>
                                 <div>
-                                    <div>
-                                        <div class="col-12 d-flex justify-content-center mt-4"> </div>
-                                    </div>
+                                    <div class="col-12 d-flex justify-content-center mt-4"> </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </form>
                 </div>
-        </section>
-    </form>
+            </div>
+    </section>
+    
 </div>
     
 @endsection

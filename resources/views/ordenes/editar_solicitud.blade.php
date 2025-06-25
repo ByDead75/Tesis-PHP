@@ -24,38 +24,47 @@
                         </div>
                         <div class="card-content">
                             <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-4 col-12">
-                                            <div class="form-group">
-                                                <label class="text-center d-block" for="disabledInput">Empresa</label>
-                                                <p class="form-control-static text-center d-block" id="empresa">{{ old('empresa', $solicitud->empresa) }}</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 col-12">
-                                            <div class="form-group">
-                                                <label class="text-center d-block" for="disabledInput">Surcusal / Oficina</label>
-                                                <p class="form-control-static text-center d-block" id="sucursal">{{ old('sucursal', $solicitud->sucursal) }}</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 col-12">
-                                            <div class="form-group">
-                                                <label class="text-center d-block" for="disabledInput">Centro de Costo / Departamento </label>
-                                                <p class="form-control-static text-center d-block" id="centro_de_costo">{{ old('centro_de_costo', $solicitud->centro_de_costo) }}</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-12">
-                                            <div class="form-group">
-                                                <label class="text-center d-block" for="disabledInput">Nombre y Apellido</label>
-                                                <p class="form-control-static text-center d-block" id="nombre_solicitante">{{ old('nombre_solicitante', $solicitud->nombre_solicitante) }}</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-12">
-                                            <div class="form-group">
-                                            <label class="text-center d-block" for="disabledInput">Aprobador del Centro</label>
-                                            <p class="form-control-static text-center d-block" id="nombre_aprobador">{{ old('nombre_aprobador', $solicitud->nombre_aprobador) }}</p>
-                                        </div>
+                                <div class="row">
+                                    <div class="col-md-4 col-12">
+                                        <div class="form-group">
+                                            <label class="form-label text-center d-block" for="disabledInput">Empresa</label>
+                                            <p class="form-control-static text-center d-block" id="empresa">{{ old('empresa', $solicitud->empresa) }}</p>
                                         </div>
                                     </div>
+                                    <div class="col-md-4 col-12">
+                                        <div class="form-group">
+                                            <label class="form-label text-center d-block" for="disabledInput">Surcusal / Oficina</label>
+                                            <p class="form-control-static text-center d-block" id="sucursal">{{ old('sucursal', $solicitud->sucursal) }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-12">
+                                        <div class="form-group">
+                                            <label class="form-label text-center d-block" for="disabledInput">Centro de Costo / Departamento </label>
+                                            <p class="form-control-static text-center d-block" id="centro_de_costo">{{ old('centro_de_costo', $solicitud->centro_de_costo) }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mt-2">
+                                    <div class="col-md-4 col-12">
+                                        <div class="form-group">
+                                            <label class="form-label text-center d-block" for="disabledInput">Nombre y Apellido</label>
+                                            <p class="form-control-static text-center d-block" id="nombre_solicitante">{{ old('nombre_solicitante', $solicitud->nombre_solicitante) }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-12">
+                                        <div class="form-group">
+                                            <label class="form-label text-center d-block" for="disabledInput">Aprobador del Centro</label>
+                                            <p class="form-control-static text-center d-block" id="nombre_aprobador">{{ old('nombre_aprobador', $solicitud->nombre_aprobador) }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-12">
+                                        <div class="form-group">
+                                            <label  class="form-label text-center d-block" for="disabledInput">Fecha de Solicitud</label>
+                                            <p class="form-control-static text-center d-block" name="fecha_solicitud" id="fecha_solicitud">{{ old('fecha_solicitud', \Carbon\Carbon::parse($solicitud->fecha_solicitud)->format('d-m-Y')) }}</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -100,7 +109,9 @@
                                                 </select>
                                         </div>
                                     </div>
+                                </div>
 
+                                <div class="row mt-2">
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="proveedor_rif" class="form-label">Rif del Proveedor</label>
@@ -128,7 +139,9 @@
                                                     value="{{ old('numero_tipo_solicitud', $solicitud->factura) }}">
                                         </div>
                                     </div>
+                                </div>
 
+                                <div class="row mt-2">
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="proveedor_banco" class="form-label">Banco del Proveedor</label>
@@ -153,7 +166,9 @@
                                                     value="{{ old('numero_control', $solicitud->n_control) }}">
                                         </div>
                                     </div>
+                                </div>
 
+                                <div class="row mt-2">
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="monto_neto" class="form-label">Monto Neto - ej: 1200.00</label>
@@ -178,7 +193,7 @@
                                     </div>
                                 </div>
 
-                                <div class="row">
+                                <div class="row mt-2">
                                     <div>
                                         <h3 class="card-title text-center pt-4 pb-2">Concepto de Pago</h3>
                                     </div>

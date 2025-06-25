@@ -19,21 +19,21 @@
                     <div class="row">
                         <div class="col-md-4 col-12">
                             <div class="form-group">
-                                <label for="first-name-column" >ID de Solicitud</label>
+                                <label class="form-label" for="id_solicitud" >ID de Solicitud</label>
                                 <input type="text" id="id_solicitud" class="form-control" placeholder="Ingrese la ID de la Solicitud" name="id_solicitud">
                             </div>
                         </div>
 
                         <div class="col-md-4 col-12">
                             <div class="form-group">
-                                <label for="first-name-column" >ID de Solicitante</label>
+                                <label class="form-label" for="id_solicitante" >ID de Solicitante</label>
                                 <input type="text" id="id_solicitante" class="form-control" placeholder="Ingrese la ID del Solicitante" name="id_solicitante">
                             </div>
                         </div>
 
                         <div class="col-md-4 col-12">
                             <div class="form-group">
-                                <label for="first-name-column">Status</label>
+                                <label class="form-label" for="status_solicitud">Status</label>
                                     <select class="form-select" id="status_solicitud">
                                         <option value="">Seleccionar</option>
                                         <option value="1">POR APROBACION</option>
@@ -46,22 +46,24 @@
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row mt-2">
                         <div class="col-md-6 col-12">
                             <div class="form-group">
-                                <label for="first-name-column">Fecha desde</label>
+                                <label class="form-label" for="fecha_desde">Fecha desde</label>
                                 <input type="date" id="fecha_desde" class="form-control"name="fecha_desde">
                             </div>
                         </div>
 
                         <div class="col-md-6 col-12">
                             <div class="form-group">
-                                <label for="first-name-column">Fecha hasta</label>
+                                <label class="form-label" for="fecha_hasta">Fecha hasta</label>
                                 <input type="date" id="fecha_hasta" class="form-control" name="fecha_hasta">
                             </div>
                         </div>
+                    </div>
 
-                        <div class="col-sm-12 d-flex justify-content-end pt-3">
+                    <div class="row mt-3">
+                        <div class="col-sm-12 d-flex justify-content-end">
                             <button type="button" class="btn btn-primary me-1" id="buscar">Buscar</button>
                             <a href="" class="btn btn-secondary">Limpiar</a>
                         </div>
@@ -76,18 +78,18 @@
                     <!-- Tabla para el Historial en jQuery -->
                     <div class="table">
                         <table class="table table-striped" id="tabla_historial">
-                            <thead>
+                            <thead >
                                 <tr>
-                                    <th>ID Solicitud</th>
-                                    <th>Solicitante</th>
-                                    <th>ID Solicitante</th>
-                                    <th>Fecha de la Solicitud</th>
-                                    <th>RIF</th>
-                                    <th>Monto Total</th>
-                                    <th>Status</th>
+                                    <th class="text-center">ID de Solicitud</th>
+                                    <th class="text-center">Solicitante</th>
+                                    <th class="text-center">ID de Solicitante</th>
+                                    <th class="text-center">Fecha de la Solicitud</th>
+                                    <th class="text-center">RIF</th>
+                                    <th class="text-center">Monto Total</th>
+                                    <th class="text-center">Status</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="text-center">
                             </tbody>
                         </table>
                         <div class="row">

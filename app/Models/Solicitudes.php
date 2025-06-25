@@ -12,6 +12,9 @@ class Solicitudes extends Model{
     
     protected $primaryKey = "id_solicitud";
     public $timestamps = false;
+    protected $casts = [
+        'fecha_solicitud' => 'datetime:d-m-Y', // Formatea al serializar a JSON
+    ];
 
     protected $fillable = [
         
@@ -76,7 +79,7 @@ class Solicitudes extends Model{
                     $resultado->limit(100);
                 }
 
-                $resultado->orderBy('solicitudes.fecha_solicitud', 'desc')->distinct()
+                $resultado->orderBy('solicitudes.id_solicitud', 'desc')->distinct()
                 ->get();
 
         return $resultado;
