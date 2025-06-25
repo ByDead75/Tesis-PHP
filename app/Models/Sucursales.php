@@ -27,4 +27,14 @@ class Sucursales extends Model{
 
         return $resultado;
     }
+
+    public function get_sucursales_empresas($codigo_empresa) {
+        $resultado = self::select('sucursales.COD_SUCURSAL',
+                    'sucursales.NB_SUCURSAL')
+                    ->where('sucursales.COD_EMPRESA', $codigo_empresa)
+                    ->distinct()
+                    ->get();
+
+        return $resultado;
+    }
 }

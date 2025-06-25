@@ -4,12 +4,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\CuentasController;
+use App\Http\Controllers\DireccionController;
+use App\Http\Controllers\EmpresasController;
 use App\Http\Controllers\OrdenesController;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\DepartamentosController;
-use App\Http\Controllers\EmpresasController;
 use App\Http\Controllers\ProveedoresController;
 use App\Http\Controllers\HistorialController;
+use App\Http\Controllers\SucursalesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,6 +77,18 @@ Route::controller(ProveedoresController::class)->group(function () {
 Route::controller(CuentasController::class)->group(function () {
     Route::get('cuentas/proveedores/index', 'BuscarCuentasProveedores')->name('buscar.cuentas.proveedores');
 });
+
+
+Route::controller(EmpresasController::class)->group(function () {
+    Route::get('empresas/index', 'BuscarEmpresas')->name('buscar.empresas');
+});
+Route::controller(SucursalesController::class)->group(function () {
+    Route::get('sucursales/empresa/index', 'BuscarSucursalesEmpresa')->name('buscar.sucursales.empresa');
+});
+Route::controller(DireccionController::class)->group(function () {
+    Route::get('direccion/empresa/index', 'BuscarDireccionEmpresa')->name('buscar.direccion.empresa');
+});
+
 
 Route::controller(OrdenesController::class)->group(function () {
     Route::get('solicitudes/crear', 'MostrarCrearSolicitud')->name('ordenes.solicitud.crear');

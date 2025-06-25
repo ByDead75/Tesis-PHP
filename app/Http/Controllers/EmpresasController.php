@@ -2,8 +2,21 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use App\Models\Empresa;
+use Illuminate\Contracts\Support\Jsonable;
+use Nette\Utils\Json;
 
-class EmpresasController extends Controller {
+class EmpresasController extends Controller
+{
+    public function BuscarEmpresas (Request $request)
+    {
+        if ($request->ajax()) {
+            $empresas_model = new Empresa;
+            $empresas = $empresas_model->get_empresas();
+
+            return response()->json($empresas);
+        }
+    } 
 
     public function AgregarEmpresas () {
 
@@ -13,5 +26,5 @@ class EmpresasController extends Controller {
     public function EditarEmpresas () {
 
     return view('gestiones.empresas.editar_empresa');
-    } 
+    }
 }

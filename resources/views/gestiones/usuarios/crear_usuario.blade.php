@@ -59,6 +59,7 @@
                                                         <label class="form-label" for="empresa">Empresa</label>
                                                         <input type="text" id="empresa" class="form-control"
                                                             name="empresa" placeholder="Click para seleccionar su Empresa">
+                                                        <input type="hidden" id="empresa_codigo" class="form-control"  name="empresa_codigo">
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
@@ -66,6 +67,7 @@
                                                         <label class="form-label" for="sucursal">Sucursal</label>
                                                         <input type="text" id="sucursal" class="form-control"
                                                             name="sucursal" placeholder="Click para seleccionar su Sucursal">
+                                                            <input type="hidden" id="sucursal_codigo" class="form-control"  name="sucursal_codigo">
                                                     </div>
                                                 </div>
                                             </div>
@@ -76,6 +78,7 @@
                                                         <label class="form-label" for="direccion">Dirección</label>
                                                         <input type="text" id="direccion" class="form-control"
                                                             name="direccion" placeholder="Click para seleccionar su Dirección">
+                                                            <input type="hidden" id="direccion_codigo" class="form-control"  name="direccion_codigo">
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
@@ -166,4 +169,41 @@
             </section>
         </form>
     </div>
+
+    @include('components.modal')
+
 @endsection
+
+@push('js')
+    <script src="{{asset('assets/compiled/js/empresas_modal.js')}}"></script>
+    <script src="{{asset('assets/compiled/js/sucursales_modal.js')}}"></script>
+    <script src="{{asset('assets/compiled/js/direccion_modal.js')}}"></script>
+
+    <script>
+        $('#empresa').on('click', function () {
+            empresas('{{ route("buscar.empresas") }}')  
+        })
+    </script>
+
+    <script>
+        $('#sucursal').on('click', function () {
+            if ($('#empresa').val() === "") {
+                alert('Debes seleccionar una empresa primero');
+                empresas('{{ route("buscar.empresas") }}')   
+                return
+            }
+            sucursales('{{ route("buscar.sucursales.empresa") }}')
+        })
+    </script>
+
+    <script>
+        $('#direccion').on('click', function () {
+            if ($('#empresa').val() === "") {
+                alert('Debes seleccionar una empresa primero');
+                empresas('{{ route("buscar.empresas") }}')   
+                return
+            }
+            direccion('{{ route("buscar.direccion.empresa") }}')
+        })
+    </script>
+@endpush
