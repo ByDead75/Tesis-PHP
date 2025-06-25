@@ -1,4 +1,4 @@
-<nav class="main-navbar" >
+<nav class="main-navbar active" >
     <div class="container">
         <ul>
             <li class="menu-item active">
