@@ -21,4 +21,15 @@ class Gerencia extends Model{
         'nb_gerencia',
         'fecha inactivacion',
     ];
+
+    public function get_gerencia_direccion($codigo_empresa, $codigo_direccion) {
+        $resultado = self::select('gerencia.cod_gerencia',
+                    'gerencia.nb_gerencia')
+                    ->where('gerencia.cod_empresa', $codigo_empresa)
+                    ->where('gerencia.cod_direccion', $codigo_direccion)
+                    ->distinct()
+                    ->get();
+
+        return $resultado;
+    }
 }

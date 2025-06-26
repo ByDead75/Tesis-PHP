@@ -24,4 +24,16 @@ class Departamento extends Model{
         'NB_ALTERNO',
         'fecha_inactivacion',
     ];
+
+    public function get_departamento_gerencia($codigo_empresa, $codigo_direccion, $codigo_gerencia) {
+        $resultado = self::select('departamento.cod_departamento',
+                    'departamento.nb_departamento')
+                    ->where('departamento.cod_empresa', $codigo_empresa)
+                    ->where('departamento.cod_direccion', $codigo_direccion)
+                    ->where('departamento.cod_gerencia', $codigo_gerencia)
+                    ->distinct()
+                    ->get();
+
+        return $resultado;
+    }
 }

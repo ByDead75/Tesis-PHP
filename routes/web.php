@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CentroCostoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PasswordController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\EmpresasController;
 use App\Http\Controllers\OrdenesController;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\DepartamentosController;
+use App\Http\Controllers\GerenciasController;
 use App\Http\Controllers\ProveedoresController;
 use App\Http\Controllers\HistorialController;
 use App\Http\Controllers\SucursalesController;
@@ -51,11 +53,15 @@ Route::controller(UsuariosController::class)->group(function () {
 Route::controller(EmpresasController::class)->group(function () {
     Route::get('/agregar/empresa', 'AgregarEmpresas')->name('gestiones.empresas.agregar.empresas');
     Route::get('/editar/empresa', 'EditarEmpresas')->name('gestiones.empresas.editar.empresas');
+
+    Route::get('empresas/index', 'BuscarEmpresas')->name('buscar.empresas');
 });
 
 Route::controller(DepartamentosController::class)->group(function () {
     Route::get('/agregar/departamento', 'AgregarDepartamentos')->name('gestiones.departamentos.agregar.departamentos');
     Route::get('/editar/departamento', 'EditarDepartamentos')->name('gestiones.departamentos.editar.departamentos');
+
+    Route::get('departamento/gerencia/index', 'BuscarDepartamentoGerencia')->name('buscar.departamento.gerencia');
 });
 
 
@@ -79,15 +85,20 @@ Route::controller(CuentasController::class)->group(function () {
 });
 
 
-Route::controller(EmpresasController::class)->group(function () {
-    Route::get('empresas/index', 'BuscarEmpresas')->name('buscar.empresas');
-});
+
 Route::controller(SucursalesController::class)->group(function () {
     Route::get('sucursales/empresa/index', 'BuscarSucursalesEmpresa')->name('buscar.sucursales.empresa');
 });
 Route::controller(DireccionController::class)->group(function () {
     Route::get('direccion/empresa/index', 'BuscarDireccionEmpresa')->name('buscar.direccion.empresa');
 });
+Route::controller(GerenciasController::class)->group(function () {
+    Route::get('gerencia/direccion/index', 'BuscarGerenciasDireccion')->name('buscar.gerencia.direccion');
+});
+Route::controller(CentroCostoController::class)->group(function () {
+    Route::get('centro_costo/gerencia/index', 'BuscarCentroCostoGerencia')->name('buscar.centrocosto.gerencia');
+});
+
 
 
 Route::controller(OrdenesController::class)->group(function () {

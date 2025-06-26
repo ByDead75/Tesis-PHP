@@ -86,6 +86,7 @@
                                                         <label class="form-label" for="gerencia">Gerencia</label>
                                                         <input type="text" id="gerencia" class="form-control"
                                                             name="gerencia" placeholder="Click para seleccionar su Gerencia">
+                                                        <input type="hidden" id="gerencia_codigo" class="form-control"  name="gerencia_codigo">
                                                     </div>
                                                 </div>
                                             </div>
@@ -96,6 +97,7 @@
                                                         <label class="form-label" for="departamento">Departamento</label>
                                                         <input type="text" id="departamento" class="form-control"
                                                             name="departamento" placeholder="Click para seleccionar su Departamento">
+                                                        <input type="hidden" id="departamento_codigo" class="form-control"  name="departamento_codigo">
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
@@ -103,6 +105,7 @@
                                                         <label class="form-label" for="centro_costo">Centro de Costo</label>
                                                         <input type="text" id="centro_costo" class="form-control"
                                                             name="centro_costo" placeholder="Click para seleccionar su Centro de Costo">
+                                                        <input type="hidden" id="centro_costo_codigo" class="form-control"  name="centro_costo_codigo">
                                                     </div>
                                                 </div>
                                             </div>
@@ -141,14 +144,14 @@
                                                     <div class="form-group">
                                                         <label class="form-label" for="password-vertical">Contraseña</label>
                                                         <input type="password" id="password-vertical" class="form-control"
-                                                            name="contact" placeholder="Ingrese su Contraseña">
+                                                            name="contact" placeholder="Ingrese la Contraseña">
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="form-group">
                                                         <label class="form-label" for="password-vertical">Confirmar Contraseña</label>
                                                         <input type="password" id="password-vertical" class="form-control"
-                                                            name="contact" placeholder="Confirme su Contraseña">
+                                                            name="contact" placeholder="Confirme la Contraseña">
                                                     </div>
                                                 </div>
                                             </div>
@@ -178,6 +181,9 @@
     <script src="{{asset('assets/compiled/js/empresas_modal.js')}}"></script>
     <script src="{{asset('assets/compiled/js/sucursales_modal.js')}}"></script>
     <script src="{{asset('assets/compiled/js/direccion_modal.js')}}"></script>
+    <script src="{{asset('assets/compiled/js/gerencia_modal.js')}}"></script>
+    <script src="{{asset('assets/compiled/js/departamento_modal.js')}}"></script>
+    <script src="{{asset('assets/compiled/js/centro_costo_modal.js')}}"></script>
 
     <script>
         $('#empresa').on('click', function () {
@@ -204,6 +210,59 @@
                 return
             }
             direccion('{{ route("buscar.direccion.empresa") }}')
+        })
+    </script>
+
+    <script>
+        $('#gerencia').on('click', function () {
+            if ($('#empresa').val() === "") {
+                alert('Debes seleccionar una empresa primero');
+                empresas('{{ route("buscar.empresas") }}')   
+                return;
+            } else if ($('#direccion').val() === "") {
+                alert('Debes seleccionar una dirección primero');
+                direccion('{{ route("buscar.direccion.empresa") }}')   
+                return;
+            }
+            gerencia('{{ route("buscar.gerencia.direccion") }}')
+        })
+    </script>
+
+    <script>
+        $('#departamento').on('click', function () {
+            if ($('#empresa').val() === "") {
+                alert('Debes seleccionar una empresa primero');
+                empresas('{{ route("buscar.empresas") }}')   
+                return;
+            } else if ($('#direccion').val() === "") {
+                alert('Debes seleccionar una dirección primero');
+                direccion('{{ route("buscar.direccion.empresa") }}')   
+                return;
+            } else if ($('#gerencia').val() === "") {
+                alert('Debes seleccionar una gerencia primero');
+                gerencia('{{ route("buscar.gerencia.direccion") }}') 
+                return;
+            }
+            departamento('{{ route("buscar.departamento.gerencia") }}')
+        })
+    </script>
+
+    <script>
+        $('#centro_costo').on('click', function () {
+            if ($('#empresa').val() === "") {
+                alert('Debes seleccionar una empresa primero');
+                empresas('{{ route("buscar.empresas") }}')   
+                return;
+            } else if ($('#direccion').val() === "") {
+                alert('Debes seleccionar una dirección primero');
+                direccion('{{ route("buscar.direccion.empresa") }}')   
+                return;
+            } else if ($('#gerencia').val() === "") {
+                alert('Debes seleccionar una gerencia primero');
+                gerencia('{{ route("buscar.gerencia.direccion") }}') 
+                return;
+            }
+            centro_costo('{{ route("buscar.centrocosto.gerencia") }}')
         })
     </script>
 @endpush
