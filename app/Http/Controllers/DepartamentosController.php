@@ -7,12 +7,22 @@ use Illuminate\Http\Request;
 
 class DepartamentosController extends Controller {
 
+    public function MostrarDepartamentos () {
+
+    return view('gestiones.departamentos.mostrar_departamento');
+    }
+
     public function AgregarDepartamentos () {
 
     return view('gestiones.departamentos.agregar_departamento');
     }
 
     public function EditarDepartamentos () {
+
+    return view('');
+    }
+
+    public function EditarDepartamentoSeleccionado () {
 
     return view('gestiones.departamentos.editar_departamento');
     } 

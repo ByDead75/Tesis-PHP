@@ -51,6 +51,7 @@ Route::controller(UsuariosController::class)->group(function () {
 });
 
 Route::controller(EmpresasController::class)->group(function () {
+    Route::get('/mostrar/empresa', 'MostrarEmpresas')->name('gestiones.empresas.registros.obtener');
     Route::get('/agregar/empresa', 'AgregarEmpresas')->name('gestiones.empresas.agregar.empresas');
     Route::get('/editar/empresa', 'EditarEmpresas')->name('gestiones.empresas.editar.empresas');
 
@@ -58,6 +59,7 @@ Route::controller(EmpresasController::class)->group(function () {
 });
 
 Route::controller(DepartamentosController::class)->group(function () {
+    Route::get('/mostrar/departamento', 'MostrarDepartamentos')->name('gestiones.departamentos.registros.obtener');
     Route::get('/agregar/departamento', 'AgregarDepartamentos')->name('gestiones.departamentos.agregar.departamentos');
     Route::get('/editar/departamento', 'EditarDepartamentos')->name('gestiones.departamentos.editar.departamentos');
 
@@ -75,6 +77,7 @@ Route::controller(HistorialController::class)->group(function () {
 //Controladores de Crear/Editar/Aprobar Solicitudes
 
 Route::controller(ProveedoresController::class)->group(function () {
+    Route::get('/mostrar/proveedor', 'MostrarProveedores')->name('gestiones.proveedores.registros.obtener');
     Route::get('/agregar/proveedor', 'AgregarProveedores')->name('gestiones.proveedores.agregar.proveedores');
     Route::get('/editar/proveedor', 'EditarProveedores')->name('gestiones.proveedores.editar.proveedores');
     Route::get('proveedores/index', 'BuscarProveedores')->name('buscar.proveedores');
@@ -108,7 +111,7 @@ Route::controller(OrdenesController::class)->group(function () {
     Route::get('/solicitudes/registros', 'MostrarIndexEditarSolicitudes')->name('ordenes.solicitud.registros');
     Route::get('/solicitudes/registros/obtener', 'RegistrosEditarSolicitudes')->name('ordenes.solicitud.registros.obtener');
 
-                
+    
     Route::get('/solicitud/editar', 'MostrarSolicitudSeleccionada')->name('ordenes.mostrar.solicitud.selecionada');
     Route::get('/solicitud/editar/{id_solicitud}', 'EditarSolicitudSeleccionada')->name('ordenes.solicitud.registros.selecionada'); 
     

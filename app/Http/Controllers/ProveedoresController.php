@@ -8,6 +8,11 @@ use Nette\Utils\Json;
 
 class ProveedoresController extends Controller
 {
+    public function MostrarProveedores () {
+
+    return view('gestiones.proveedores.mostrar_proveedor');
+    }
+
     public function AgregarProveedores () {
 
     return view('gestiones.proveedores.agregar_proveedor');
@@ -15,8 +20,13 @@ class ProveedoresController extends Controller
 
     public function EditarProveedores () {
 
+    return view('');
+    }
+
+    public function EditarProveedorSeleccionado () {
+
     return view('gestiones.proveedores.editar_proveedor');
-    } 
+    }
 
     public function BuscarProveedores (Request $request)
     {

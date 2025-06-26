@@ -84,7 +84,7 @@
                                     </li>
 
                                     <li class="subsubmenu-item ">
-                                        <a href="{{ route('gestiones.proveedores.editar.proveedores') }}" class="subsubmenu-link">Editar Proovedor</a>
+                                        <a href="{{ route('gestiones.proveedores.registros.obtener') }}" class="subsubmenu-link">Editar Proovedor</a>
                                     </li>
                                 </ul>
                             </li>
@@ -97,7 +97,7 @@
                                     </li>
                                     
                                     <li class="subsubmenu-item ">
-                                        <a href="{{ route('gestiones.departamentos.editar.departamentos') }}" class="subsubmenu-link">Editar Departamento</a>
+                                        <a href="{{ route('gestiones.departamentos.registros.obtener') }}" class="subsubmenu-link">Editar Departamento</a>
                                     </li>
                                 </ul>
                             </li>
@@ -110,7 +110,7 @@
                                     </li>
                                     
                                     <li class="subsubmenu-item ">
-                                        <a href="{{ route('gestiones.empresas.editar.empresas') }}" class="subsubmenu-link">Editar Empresa</a>
+                                        <a href="{{ route('gestiones.empresas.registros.obtener') }}" class="subsubmenu-link">Editar Empresa</a>
                                     </li>
                                 </ul>
                             </li>
