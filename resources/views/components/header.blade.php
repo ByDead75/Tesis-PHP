@@ -11,10 +11,17 @@
                         <div class="avatar avatar-md2" >
                             <img src="{{asset('assets/compiled/jpg/1.jpg')}}" alt="Avatar">
                         </div>
+                        @if($usuario)
                         <div class="text">
-                            <h6 class="user-dropdown-name">Admin</h6>
+                            <h6 class="user-dropdown-name">{{ $usuario->nombre }}</h6>
                             <p class="user-dropdown-status text-sm text-muted">Usuario</p>
                         </div>
+                            @else
+                            <div class="text">
+                                <h6 class="user-dropdown-name">Admin</h6>
+                                <p class="user-dropdown-status text-sm text-muted">Usuario</p>
+                            </div>
+                        @endif
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end shadow-lg" aria-labelledby="topbarUserDropdown">
                         <li><a class="dropdown-item" href="#">Mi Cuenta</a></li>

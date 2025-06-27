@@ -28,12 +28,18 @@ use App\Http\Controllers\SucursalesController;
 
 //Controladores de Login
 
+
 Route::controller(LoginController::class)->group(function () {
     Route::get('login', 'MostrarLoginForm')->name('login');
+
     Route::post('usuario/login', 'login')->name('usuario.login');
     Route::post('usuario/logout', 'logout')->name('usuario.logout');
     Route::get('/', 'MostrarInicio')->name('index');
-});
+}); 
+
+
+
+
 
 
 //Controlador Cambio de Contraseña
@@ -105,7 +111,7 @@ Route::controller(CentroCostoController::class)->group(function () {
 
 
 Route::controller(OrdenesController::class)->group(function () {
-    Route::get('solicitudes/crear', 'MostrarCrearSolicitud')->name('ordenes.solicitud.crear');
+    Route::get('solicitudes/crear', 'MostrarSolicitud')->name('ordenes.solicitud.crear');
 
 
     Route::get('/solicitudes/registros', 'MostrarIndexEditarSolicitudes')->name('ordenes.solicitud.registros');

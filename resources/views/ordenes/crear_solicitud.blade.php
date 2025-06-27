@@ -21,6 +21,7 @@
                             </div>
                             <div class="card-content">
                                 <div class="card-body">
+                                    @if($usuario)
                                     <div class="row">
                                         <div class="col-md-4 col-12">
                                             <div class="form-group">
@@ -48,7 +49,7 @@
                                         <div class="col-md-4 col-12">
                                             <div class="form-group">
                                                 <label class="form-label text-center d-block" for="disabledInput">Nombre y Apellido</label>
-                                                <p class="form-control-static text-center d-block" id="staticInput">"Nombre y Apellido aqui"</p>
+                                                <p class="form-control-static text-center d-block" id="staticInput">{{ $usuario->nombre }}</p>
                                             </div>
                                         </div>
 
@@ -66,6 +67,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>

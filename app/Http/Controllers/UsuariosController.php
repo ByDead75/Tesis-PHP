@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Yajra\DataTables\DataTables;
 use Illuminate\Http\Request;
 use App\Models\Empleados1;
+use App\Models\Usuarios;
 
 class UsuariosController extends Controller {
 
@@ -19,6 +20,7 @@ class UsuariosController extends Controller {
     return view('gestiones.usuarios.crear_usuario');
     }
 
+    /*
     public function EditarUsuarios () {
 
     if ($request->ajax()) {
@@ -40,7 +42,7 @@ class UsuariosController extends Controller {
             return $datatables;
         }
     }
-
+*/
     public function EditarUsuarioSeleccionado(Request $request, $cedula) 
     {   
         $usuarios_model = new Usuarios;

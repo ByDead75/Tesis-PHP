@@ -30,6 +30,21 @@ class OrdenesController extends Controller
         return view('ordenes.crear_solicitud');
     } 
 
+    public function MostrarSolicitud()
+    {
+        $usuario = auth()->guard('usuarios')->user();
+        return view('ordenes.crear_solicitud', compact('usuario')); 
+    }
+ /*
+    public function MostrarDatosSolicitante(Request $request, $id_usuario)
+    {
+
+        $usuario_model = new Usuario;
+        $usuario = $usuario_model->GetUsuarioLogeado($id_usuario);
+        
+        return view('ordenes.crear_solicitud', compact('usuario')); 
+    }
+*/
     // Funciones de Editar
 
     public function MostrarIndexEditarSolicitudes ()

@@ -20,11 +20,12 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->only(['cedula', 'password']);
+        
 
-        $usuario = \App\Models\Usuarios::find($credentials['cedula']);
-
+        $usuario = \App\Models\Usuario::where('cedula',$credentials['cedula'])->first();
+        
         if ($usuario && md5($credentials['password']) === $usuario->password) {
-
+                
             Auth::guard('usuarios')->login($usuario);
             return redirect()->intended('/');
         }else {

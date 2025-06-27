@@ -1,7 +1,7 @@
 <!-- Modal proveedores -->
 <div class="modal fade" id="proveedoresModal" tabindex="-1" aria-labelledby="Label" aria-hidden="true" 
             data-bs-backdrop="static" data-bs-keyboard="false">
-    <div class="modal-dialog modal-xl">
+    <div class="modal-dialog modal-dialog-scrollable modal-xl">
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5">Listado de Proveedores</h1>
@@ -58,7 +58,7 @@
 <!-- Modal Empresas -->
 <div class="modal fade" id="empresasModal" tabindex="-1" aria-labelledby="Label" aria-hidden="true" 
             data-bs-backdrop="static" data-bs-keyboard="false">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5">Listado de Empresas</h1>
@@ -114,7 +114,7 @@
 <!-- Modal Direccion -->
 <div class="modal fade" id="direccionModal" tabindex="-1" aria-labelledby="Label" aria-hidden="true" 
             data-bs-backdrop="static" data-bs-keyboard="false">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5">Listado de Direcciones</h1>
@@ -142,7 +142,7 @@
 <!-- Modal Gerencia -->
 <div class="modal fade" id="gerenciaModal" tabindex="-1" aria-labelledby="Label" aria-hidden="true" 
             data-bs-backdrop="static" data-bs-keyboard="false">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5">Listado de Gerencias</h1>
@@ -170,7 +170,7 @@
 <!-- Modal Departamento -->
 <div class="modal fade" id="departamentoModal" tabindex="-1" aria-labelledby="Label" aria-hidden="true" 
             data-bs-backdrop="static" data-bs-keyboard="false">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5">Listado de Departamentos</h1>
@@ -198,7 +198,7 @@
 <!-- Modal Centros De Costo -->
 <div class="modal fade" id="centroDeCostoModal" tabindex="-1" aria-labelledby="Label" aria-hidden="true" 
             data-bs-backdrop="static" data-bs-keyboard="false">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5">Listado de Centros De Costo</h1>
