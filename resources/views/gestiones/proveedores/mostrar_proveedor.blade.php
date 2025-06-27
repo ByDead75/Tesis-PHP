@@ -15,7 +15,6 @@
                 <h3 class="card-title text-center">Registro de Proveedores Existentes</h3>
             </div>
             <div class="card-body pb-0">
-                <h3 class="card-title text-center mb-4">Filtrar por Búsqueda</h3>
                 <form class="mb-4">
                     <div class="row">
                         <div class="col-md-6 col-12">
@@ -30,8 +29,8 @@
                                 <label class="form-label" for="">Tipo de Proveedor</label>
                                 <select class="form-select" id="">
                                     <option value="">---</option>
-                                    <option value="0">---</option>
-                                    <option value="1">COMI</option>
+                                    <option value="0">PROSER</option>
+                                    <option value="1">COMIS</option>
                                 </select>
                             </div>
                         </div>
@@ -74,7 +73,6 @@
                                     <th class="text-center">Código del Proveedor</th>
                                     <th class="text-center">RIF</th>
                                     <th class="text-center">NIT</th>
-                                    <th class="text-center">Rol</th>
                                     <th class="text-center">Tipo de Proveedor</th>
                                 </tr>
                             </thead>

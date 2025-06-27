@@ -24,131 +24,29 @@
                                             <div class="row">
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="nombre_apellido_usuario">Nombre y Apellido</label>
-                                                        <input type="text" id="nombre_apellido_usuario" class="form-control"
-                                                            name="nombre_apellido_usuario" placeholder="Ingrese el Nombre y Apellido del usuario">
+                                                        <label class="form-label" for="">Codigo de la Empresa</label>
+                                                        <input type="text" id="" class="form-control"
+                                                            name="" placeholder="Ingrese el Codigo de la Empresa">
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="cedula">Cedula</label>
+                                                        <label class="form-label" for="cedula">Nombre de la Empresa</label>
                                                         <input type="text" id="cedula" class="form-control"
-                                                            name="cedula" placeholder="Ingrese la cédula del usuario">
+                                                            name="cedula" placeholder="Ingrese el Nombre de la Empresa">
+                                                        <input type="hidden" id="empresa_codigo" class="form-control" name="empresa_codigo">
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div class="row mt-2">
-                                                <div class="col-6">
-                                                    <div class="form-group">
-                                                        <label class="form-label" for="fecha_nacimiento">Fecha de Nacimiento</label>
-                                                        <input type="date" id="fecha_nacimiento" class="form-control" name="fecha_nacimiento">
+                                            <div class="row mt-4">
+                                                <div class="col-12">
+                                                    <div>
+                                                        <h5 class="card-title text-center">Subir Logo (Opcional)</h5>
                                                     </div>
-                                                </div>
-                                                <div class="col-6">
-                                                    <div class="form-group">
-                                                        <label class="form-label" for="fecha_ingreso">Fecha de Ingreso</label>
-                                                        <input type="date" id="fecha_ingreso" class="form-control" name="fecha_ingreso">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row mt-2">
-                                                <div class="col-6">
-                                                    <div class="form-group">
-                                                        <label class="form-label" for="empresa">Empresa</label>
-                                                        <input type="text" id="empresa" class="form-control"
-                                                            name="empresa" placeholder="Click para seleccionar su Empresa">
-                                                        <input type="hidden" id="empresa_codigo" class="form-control"  name="empresa_codigo">
-                                                    </div>
-                                                </div>
-                                                <div class="col-6">
-                                                    <div class="form-group">
-                                                        <label class="form-label" for="sucursal">Sucursal</label>
-                                                        <input type="text" id="sucursal" class="form-control"
-                                                            name="sucursal" placeholder="Click para seleccionar su Sucursal">
-                                                            <input type="hidden" id="sucursal_codigo" class="form-control"  name="sucursal_codigo">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row mt-2">
-                                                <div class="col-6">
-                                                    <div class="form-group">
-                                                        <label class="form-label" for="direccion">Dirección</label>
-                                                        <input type="text" id="direccion" class="form-control"
-                                                            name="direccion" placeholder="Click para seleccionar su Dirección">
-                                                            <input type="hidden" id="direccion_codigo" class="form-control"  name="direccion_codigo">
-                                                    </div>
-                                                </div>
-                                                <div class="col-6">
-                                                    <div class="form-group">
-                                                        <label class="form-label" for="gerencia">Gerencia</label>
-                                                        <input type="text" id="gerencia" class="form-control"
-                                                            name="gerencia" placeholder="Click para seleccionar su Gerencia">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row mt-2">
-                                                <div class="col-6">
-                                                    <div class="form-group">
-                                                        <label class="form-label" for="departamento">Departamento</label>
-                                                        <input type="text" id="departamento" class="form-control"
-                                                            name="departamento" placeholder="Click para seleccionar su Departamento">
-                                                    </div>
-                                                </div>
-                                                <div class="col-6">
-                                                    <div class="form-group">
-                                                        <label class="form-label" for="centro_costo">Centro de Costo</label>
-                                                        <input type="text" id="centro_costo" class="form-control"
-                                                            name="centro_costo" placeholder="Click para seleccionar su Centro de Costo">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row mt-2">
-                                                <div class="col-6">
-                                                    <div class="form-group">
-                                                        <label class="form-label" for="user_master">Cargo</label>
-                                                        <select class="form-select" id="user_master">
-                                                            <option value="">---</option>
-                                                            <option value="0">Empleado</option>
-                                                            <option value="1">Supervisor</option>
-                                                            <option value="2">Gerente</option>
-                                                            <option value="3">Administrador</option>
-                                                            <option value="4">---</option>
-                                                            <option value="6">---</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-6">
-                                                    <div class="form-group">
-                                                        <label class="form-label" for="tipo_usuario">Tipo de Usuario</label>
-                                                        <select class="form-select" id="tipo_usuario">
-                                                            <option value="">---</option>
-                                                            <option value="1">Empleado</option>
-                                                            <option value="2">Supervisor</option>
-                                                            <option value="3">Gerente</option>
-                                                            <option value="4">Administrador</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row mt-2">
-                                                <div class="col-6">
-                                                    <div class="form-group">
-                                                        <label class="form-label" for="password-vertical">Contraseña</label>
-                                                        <input type="password" id="password-vertical" class="form-control"
-                                                            name="contact" placeholder="Ingrese su Contraseña">
-                                                    </div>
-                                                </div>
-                                                <div class="col-6">
-                                                    <div class="form-group">
-                                                        <label class="form-label" for="password-vertical">Confirmar Contraseña</label>
-                                                        <input type="password" id="password-vertical" class="form-control"
-                                                            name="contact" placeholder="Confirme su Contraseña">
+                                                    <div class="card-body">
+                                                        <p class="card-text">Los archivos a subir deben estar en formato PNG</p>
+                                                        <input type="file" name="image" class="imgbb-filepond">
                                                     </div>
                                                 </div>
                                             </div>

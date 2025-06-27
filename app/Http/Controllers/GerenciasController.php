@@ -6,6 +6,26 @@ use Illuminate\Http\Request;
 
 class GerenciasController extends Controller
 {
+    public function MostrarGerencias () {
+
+    return view('gestiones.gerencias.mostrar_gerencia');
+    }
+
+    public function AgregarGerencias () {
+
+    return view('gestiones.gerencias.agregar_gerencia');
+    }
+
+    public function EditarGerencias () {
+
+    return view('');
+    }
+
+    public function EditarGerenciaSeleccionada () {
+
+    return view('gestiones.gerencias.editar_gerencia');
+    }
+
     public function BuscarGerenciasDireccion (Request $request)
     {
 

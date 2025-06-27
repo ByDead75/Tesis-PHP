@@ -114,6 +114,45 @@
                                     </li>
                                 </ul>
                             </li>
+
+                            <li class="submenu-item  has-sub">
+                                <a href="#" class='submenu-link'>Direcciones</a>
+                                <ul class="subsubmenu">
+                                    <li class="subsubmenu-item ">
+                                        <a href="{{ route('gestiones.direcciones.agregar.direccion') }}" class="subsubmenu-link">Agregar Direccion</a>
+                                    </li>
+                                    
+                                    <li class="subsubmenu-item ">
+                                        <a href="{{ route('gestiones.direcciones.registros.obtener') }}" class="subsubmenu-link">Editar Direccion</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="submenu-item  has-sub">
+                                <a href="#" class='submenu-link'>Sucursales</a>
+                                <ul class="subsubmenu">
+                                    <li class="subsubmenu-item ">
+                                        <a href="{{ route('gestiones.sucursales.agregar.sucursal') }}" class="subsubmenu-link">Agregar Sucursal</a>
+                                    </li>
+                                    
+                                    <li class="subsubmenu-item ">
+                                        <a href="{{ route('gestiones.sucursales.registros.obtener') }}" class="subsubmenu-link">Editar Sucursal</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="submenu-item  has-sub">
+                                <a href="#" class='submenu-link'>Gerencias</a>
+                                <ul class="subsubmenu">
+                                    <li class="subsubmenu-item ">
+                                        <a href="{{ route('gestiones.gerencias.agregar.gerencia') }}" class="subsubmenu-link">Agregar Gerencia</a>
+                                    </li>
+                                    
+                                    <li class="subsubmenu-item ">
+                                        <a href="{{ route('gestiones.gerencias.registros.obtener') }}" class="subsubmenu-link">Editar Gerencia</a>
+                                    </li>
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                 </div>
