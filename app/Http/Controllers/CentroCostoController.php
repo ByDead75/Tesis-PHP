@@ -7,6 +7,17 @@ use Illuminate\Http\Request;
 
 class CentroCostoController extends Controller {
 
+    public function BuscarCentroCostoEmpresa(Request $request)
+    {
+
+        if ($request->ajax()) {
+            $centro_costo_empresa_model = new CentroCosto;
+            $centro_costo_empresa = $centro_costo_empresa_model->get_centro_costo_empresa($request->codigo_empresa);
+            return response()->json($centro_costo_empresa);
+        }
+
+    } 
+
     public function BuscarCentroCostoGerencia (Request $request)
     {
 

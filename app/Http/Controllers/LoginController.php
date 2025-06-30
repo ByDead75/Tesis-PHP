@@ -27,7 +27,8 @@ class LoginController extends Controller
         if ($usuario && md5($credentials['password']) === $usuario->password) {
                 
             Auth::guard('usuarios')->login($usuario);
-            return redirect()->intended('/');
+            session(['nombre_usuario' => Auth::guard('usuarios')->user()->nombre]);
+            return redirect()->intended('');
         }else {
             throw ValidationException::withMessages([
                 'cedula' => ['El usuario o la contraseña son incorrectos.'], 
@@ -48,7 +49,7 @@ class LoginController extends Controller
     }
 
     public function MostrarInicio(){
-        $usuario = auth()->guard('usuarios')->user();
-        return view('index', compact('usuario')); 
+        
+        return view('index'); 
     }
 }

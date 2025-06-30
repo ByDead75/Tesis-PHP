@@ -116,18 +116,17 @@ Route::controller(GerenciasController::class)->group(function () {
 
 Route::controller(CentroCostoController::class)->group(function () {
     Route::get('centro_costo/gerencia/index', 'BuscarCentroCostoGerencia')->name('buscar.centrocosto.gerencia');
+    Route::get('centro_costo/empresa/index', 'BuscarCentroCostoEmpresa')->name('buscar.centrocosto.empresa');
 });
 
 
 Route::controller(OrdenesController::class)->group(function () {
-    Route::get('solicitudes/crear', 'MostrarSolicitud')->name('ordenes.solicitud.crear');
+    Route::get('solicitudes/crear', 'MostrarCrearSolicitud')->name('ordenes.solicitud.crear');
 
 
     Route::get('/solicitudes/registros', 'MostrarIndexEditarSolicitudes')->name('ordenes.solicitud.registros');
     Route::get('/solicitudes/registros/obtener', 'RegistrosEditarSolicitudes')->name('ordenes.solicitud.registros.obtener');
 
-    
-    Route::get('/solicitud/editar', 'MostrarSolicitudSeleccionada')->name('ordenes.mostrar.solicitud.selecionada');
     Route::get('/solicitud/editar/{id_solicitud}', 'EditarSolicitudSeleccionada')->name('ordenes.solicitud.registros.selecionada'); 
     
     //Route::put('/solicitudes/{id_solicitud}', 'ActualizarSolicitud')->name('ordenes.solicitud.actualizar.seleccionada');

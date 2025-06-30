@@ -34,6 +34,23 @@ class CentroCosto extends Model{
         return $resultado;
     }
 
+    public function get_centro_costo_empresa($codigo_empresa) {
+        $resultado = self::select('centro_costo.id_centro',
+                    DB::raw("TRIM(REPLACE(REPLACE(REPLACE(centro_costo.centro, CHAR(13), ''), CHAR(10), ''), '\t', '')) as centro"),
+                    'centro_costo.cod_gerencia',
+                    'centro_costo.cod_aprobador',
+                    'gerencia.nb_gerencia as gerencia',
+                    'empleados1.nombre as aprobador'
+                    )
+                    ->join('gerencia', 'centro_costo.cod_gerencia', '=', 'gerencia.cod_gerencia')
+                    ->join('empleados1', 'centro_costo.cod_aprobador', '=', 'empleados1.cedula')
+                    ->where('centro_costo.cod_empresa', $codigo_empresa)
+                    ->distinct()
+                    ->get();
+
+        return $resultado;
+    }
+
     public function get_centro_costo_gerencia($codigo_empresa, $codigo_gerencia) {
         $resultado = self::select('centro_costo.id_centro',
                     DB::raw("TRIM(REPLACE(REPLACE(REPLACE(centro_costo.centro, CHAR(13), ''), CHAR(10), ''), '\t', '')) as centro")

@@ -94,7 +94,7 @@ class Solicitudes extends Model{
 
                 'solicitudes.cod_empresa',
                 'solicitudes.cod_sucursal',
-                'solicitudes.centro_de_costo',
+                'solicitudes.centro_de_costo as codigo_centro_costo',
                 'solicitudes.id_solicitante',
                 
                 'solicitudes.beneficiario_de_pago',
@@ -113,13 +113,13 @@ class Solicitudes extends Model{
                 'solicitudes.imagen',
                 'solicitudes.aprobador_sol',
 
-                'empresa.nb_empresa as empresa',
+                'empresa.nb_empresa as nombre_empresa',
                 'sucursales.NB_SUCURSAL as sucursal',
-                'centro_costo.centro as centro_de_costo',
+                'centro_costo.centro as nombre_centro_costo',
                 'empleados1.nombre as nombre_solicitante',
                 'aprobador.nombre as nombre_aprobador',
                 
-                'proveedores.nb_auxiliar as proveedor_de_nombre',
+                'proveedores.nb_auxiliar as nombre_proveedor',
                 'bancos.nb_banco as banco_nombre',
                 )
                 ->join('empleados1 as aprobador', 'solicitudes.aprobador_sol', '=', 'aprobador.cedula') 

@@ -74,4 +74,9 @@ class Usuario extends Authenticatable {
 
         return $resultado;
     }
+
+    public function empresa()
+    {
+        return $this->belongsTo(Empresa::class, 'cod_empresa');
+    }
 }

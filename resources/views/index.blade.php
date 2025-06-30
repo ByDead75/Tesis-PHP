@@ -15,8 +15,8 @@
         </div>
         <div class="card-content">
             <div class="card-body">
-                @if($usuario)
-                    <h1 class="mt-5 text-center">Hola, {{ $usuario->nombre }}</h1>
+                @if(session('nombre_usuario'))
+                    <h1 class="mt-5 text-center">Hola, {{ session('nombre_usuario') }}</h1>
 
                     <div class="row justify-content-center mt-5">
                         <div class="col-md-8">

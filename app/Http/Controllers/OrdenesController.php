@@ -10,41 +10,27 @@ use App\Models\Sucursales;
 use App\Models\Empresa;
 use App\Models\Proveedores;
 use App\Models\Solicitudes;
-
+use Illuminate\Support\Facades\Auth;
 
 class OrdenesController extends Controller
 {
 
-    public function MostrarCrearSolicitud ()
+    public function MostrarCrearSolicitud(Request $request)
     {
-        $empleados1_model = new Empleados1;
-        $empresa_model = new Empresa;
-        $centro_costo_model = new CentroCosto;
-        $sucursales_model = new Sucursales;
 
-        $empleados1 = $empleados1_model->get_empleados1();
-        $empresas = $empresa_model->get_empresas();
-        $centro_costo = $centro_costo_model->get_centro_costo();
-        $sucursales = $sucursales_model->get_sucursales();
+        $usuario = Auth::guard('usuarios')->user();
 
-        return view('ordenes.crear_solicitud');
-    } 
+    $empresa_model = new Empresa;
+    $empresas = $empresa_model->get_empresas();
 
-    public function MostrarSolicitud()
-    {
-        $usuario = auth()->guard('usuarios')->user();
-        return view('ordenes.crear_solicitud', compact('usuario')); 
+    return view('ordenes.crear_solicitud', [
+        'nombre' => $usuario->nombre,
+        'empresas' => $empresas,
+        ]);
     }
- /*
-    public function MostrarDatosSolicitante(Request $request, $id_usuario)
-    {
 
-        $usuario_model = new Usuario;
-        $usuario = $usuario_model->GetUsuarioLogeado($id_usuario);
-        
-        return view('ordenes.crear_solicitud', compact('usuario')); 
-    }
-*/
+
+
     // Funciones de Editar
 
     public function MostrarIndexEditarSolicitudes ()
@@ -121,11 +107,6 @@ class OrdenesController extends Controller
         
     }
 
-    public function MostrarSolicitudSeleccionada() 
-    {
-
-        return view('ordenes.editar_solicitud');
-    }
 
     public function EditarSolicitudSeleccionada(Request $request, $id_solicitud) 
     {   
@@ -133,10 +114,15 @@ class OrdenesController extends Controller
         $solicitudes_model = new Solicitudes;
         $solicitud = $solicitudes_model->GetSolicitudesPorId($id_solicitud);
 
+        $empresa_model = new Empresa;
+        $empresas = $empresa_model->get_empresas();
+
         if (!$solicitud) {
             abort(404, 'Solicitud de pago no encontrada.');
         }
 
-        return view('ordenes.editar_solicitud', compact('solicitud'));
+        return view('ordenes.editar_solicitud', compact('solicitud', 'empresas'));
+
+        
     }
 }
