@@ -90,8 +90,8 @@
             <div class="row match-height">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title text-center">Datos del Pago</h3>
+                        <div class="card-header pb-1">
+                            <h3 class="card-title text-center mb-0">Datos del Pago</h3>
                         </div>
                         <div class="card-content">
                             <div class="card-body">
@@ -225,10 +225,9 @@
                                                     <h5 class="card-title">Subir Archivo (Opcional)</h5>
                                                 </div>
                                                 <div class="card-body">
-                                                    <p class="card-text">Los archivos a subir deben estar en formato PDF, PNG, JPEG, GIF...</p>
+                                                    <p class="card-text">Los archivos a subir deben estar en formato PDF, PNG, JPEG, JPG...</p>
                                                     <!-- imgBB file uploader -->
-                                                    <input type="file" name="image" id="image" class="imgbb-filepond" 
-                                                            value="{{ old('image', $solicitud->imagen) }}">
+                                                    <input type="file" id="archivo" name="archivo[]" class="imgbb-filepond" multiple>
                                                 </div>
                                             </div>
                                         </div>

@@ -14,20 +14,9 @@ $(document).ready(function() {
             columns: [
                 {data: 'cedula', name: 'cedula' },
             ],
-            "language": {
-                        "sLengthMenu": "Mostrar _MENU_ registros",
-                        "sSearch": "Buscar ",
-                        "searchPlaceholder": "Buscar...",
-                        "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
-                        "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ entradas",
-                        "oPaginate": {
-                                "sNext": "Siguiente",
-                                "sPrevious": "Anterior"
-                            },
-                            "emptyTable": "No hay datos disponibles en la tabla",
-                            "lengthMenu": "Mostrar _MENU_ entradas",
-                            "processing": "Procesando..."
-                    },
+            language: {
+            url: "https://cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+        },
             
         });
 
@@ -37,5 +26,3 @@ $(document).ready(function() {
     })
 });
 
-
-                

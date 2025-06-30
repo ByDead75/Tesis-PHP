@@ -16,9 +16,6 @@
 
     <link rel="stylesheet" href="{{asset('assets/extensions/datatables.net-bs5/css/dataTables.bootstrap5.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/compiled/css/table-datatable-jquery.css')}}">
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.3.2/js/dataTables.js">
-    
-
 
     <link rel="stylesheet" href="{{asset('assets/extensions/filepond/filepond.css')}}">
     <link rel="stylesheet" href="{{asset('assets/extensions/filepond-plugin-image-preview/filepond-plugin-image-preview.css')}}">
@@ -46,14 +43,12 @@
 
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/2.3.2/js/dataTables.js"></script>
+    <script src="{{asset('assets/extensions/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('assets/extensions/datatables.net-bs5/js/dataTables.bootstrap5.min.js')}}"></script>
 
     <script src="{{asset('assets/static/js/pages/horizontal-layout.js')}}"></script>
     <script src="{{asset('assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
     
-
-    <script src="{{asset('assets/extensions/datatables.net/js/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('assets/extensions/datatables.net-bs5/js/dataTables.bootstrap5.min.js')}}"></script>
-
     <script src="{{asset('assets/extensions/filepond-plugin-file-validate-size/filepond-plugin-file-validate-size.min.js')}}"></script>
     <script src="{{asset('assets/extensions/filepond-plugin-file-validate-type/filepond-plugin-file-validate-type.min.js')}}"></script>
     <script src="{{asset('assets/extensions/filepond-plugin-image-crop/filepond-plugin-image-crop.min.js')}}"></script>
@@ -65,9 +60,36 @@
     <script src="{{asset('assets/static/js/pages/filepond.js')}}"></script>
     
     <script src="{{asset('assets/extensions/toastify-js/src/toastify.js')}}"></script>
+
+    <script>
+        var filepond = {
+            create: function(field) {
+                const inputElement = document.getElementById(field.id);
+                const pond = FilePond.create(inputElement, {
+                    allowReorder: true,
+                    acceptedFileTypes: ['image/png', 'image/jpg', 'image/jpeg', 'application/pdf'],
+                    server: {
+                        process: {
+                            url: '{{ url("/base/cargar_archivo_temporal") }}',
+                            method: 'POST',
+                            headers: {
+                                'x-CSRF-TOKEN': '{{ csrf_token() }}',
+                            },
+                        },
+                        revert: {
+                            url: '{{ url("/base/eliminar_archivo_temporal") }}',
+                            method: 'DELETE',
+                            headers: {
+                                'x-CSRF-TOKEN': '{{ csrf_token() }}',
+                            },
+                        }
+                    },
+                });
+            }
+        };
+    </script>
     
-    
-        <script src="{{asset('assets/compiled/js/app.js')}}"></script>
+    <script src="{{asset('assets/compiled/js/app.js')}}"></script>
     
     @stack('js')
     

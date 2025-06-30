@@ -30,7 +30,6 @@ class OrdenesController extends Controller
     }
 
 
-
     // Funciones de Editar
 
     public function MostrarIndexEditarSolicitudes ()

@@ -49,11 +49,11 @@
         </div>
     </div>
     
-    <x-navbar/>
+    @include('components.navbar')
+
 
 </header>
 
 @push('js')
-    <!--Funcionalidad de Perfil de Usuario (Header) -->
-    <script src="{{asset('assets/compiled/js/app.js')}}"></script>
+    
 @endpush

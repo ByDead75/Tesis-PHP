@@ -30,22 +30,9 @@ $(document).ready(function() {
                 
 
             ],
-            "language": {
-                        "sLengthMenu": "Mostrar _MENU_ registros",
-                        "sSearch": "Buscar ",
-                        "searchPlaceholder": "Buscar...",
-                        "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
-                        "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ entradas",
-                        "oPaginate": {
-                                "sNext": "Siguiente",
-                                "sPrevious": "Anterior"
-                            },
-                            "emptyTable": "No hay datos disponibles en la tabla",
-                            // Personaliza el texto del "Mostrando X entradas" del select
-                            "lengthMenu": "Mostrar _MENU_ entradas",
-                            // Personaliza el texto cuando está procesando (cargando)
-                            "processing": "Procesando..."
-                    },
+            language: {
+            url: "https://cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
+        },
             
         });
 
@@ -54,6 +41,3 @@ $(document).ready(function() {
         });
     })
 });
-
-
-                
