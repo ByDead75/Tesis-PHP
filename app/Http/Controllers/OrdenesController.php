@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Auth;
 class OrdenesController extends Controller
 {
 
-    public function MostrarCrearSolicitud(Request $request)
+    public function MostrarCrearSolicitud()
     {
 
         $usuario = Auth::guard('usuarios')->user();
@@ -25,9 +25,92 @@ class OrdenesController extends Controller
 
     return view('ordenes.crear_solicitud', [
         'nombre' => $usuario->nombre,
+        'cedula'=> $usuario->cedula,
         'empresas' => $empresas,
         ]);
     }
+
+    public function GuardarSolicitud(Request $request){
+/*
+        $request->validate([
+
+            'fecha_solicitud'   => 'required|date',
+            'cod_empresa'   => 'required|int',
+            'centro_de_costo' => 'required|int',
+            'id_solicitante' => 'required|int',
+            'concepto_de_pago' => 'nullable|string|max:500',
+            'beneficiario_de_pago' => 'nullable|string|max:500',
+            'id_pago' => 'required|int',
+            'id_banco' => 'required|int',          
+            'cuenta' => 'nullable|string|max:20',
+            'factura' => 'nullable|string|max:10',
+            'n_control' => 'nullable|string|max:10',
+            'monto' => 'required|numeric|regex:/^\d{1,28}(\.\d{1,2})?$/',
+            'monto_iva' => 'nullable|numeric|regex:/^\d{1,28}(\.\d{1,2})?$/',
+            'monto_total' => 'required|numeric|regex:/^\d{1,63}(\.\d{1,2})?$/',
+            'rif' => 'nullable|string|max:20',
+            'cod_sucursal'   => 'required|int',
+            'factupuesto' => 'required|int',
+            'aprobador_sol' => 'required|int',
+            'TipoProveedor' => 'nullable|string|max:20',
+            
+            'cod_departamento' => 'required|int',
+            'observaciones' => 'nullable|string|max:500',
+            'status_solicitud' => 'required|int',
+            'cod_direccion'   => 'required|int',
+        ]);
+        */
+
+        $solicitud = new Solicitudes();
+
+        $solicitud->fecha_solicitud = $request->input('fecha_solicitud');
+        $solicitud->cod_empresa = $request->input('empresa_codigo');
+        $solicitud->centro_de_costo = $request->input('centro_costo_empresa_codigo'); 
+        $solicitud->id_solicitante = $request->input('id_solicitante');
+
+        $solicitud->cod_departamento = 0;
+
+        $solicitud->concepto_de_pago = $request->input('concepto_de_pago');
+        $solicitud->beneficiario_de_pago = $request->input('proveedor_codigo'); 
+        $solicitud->id_pago = $request->input('forma_pago'); 
+        $solicitud->id_banco = $request->input('proveedor_banco_codigo');
+        $solicitud->cuenta = $request->input('proveedor_numero_cuenta'); 
+        $solicitud->factura = $request->input('numero_tipo_solicitud'); 
+        $solicitud->n_control = $request->input('numero_control'); 
+        $solicitud->monto = $request->input('monto_neto');
+        $solicitud->monto_iva = $request->input('monto_iva');
+        $solicitud->monto_total = $request->input('monto_total');
+
+        $solicitud->observaciones = "";
+        $solicitud->status_solicitud = 1;
+
+        $solicitud->rif = $request->input('proveedor_rif');
+        $solicitud->cod_sucursal= $request->input('sucursal_codigo');
+
+        $solicitud->cod_direccion = 0;  
+
+        $solicitud->TipoProveedor= $request->input('tipo_proveedor'); 
+        
+        $solicitud->firma = 0;
+
+        $solicitud->factupuesto = $request->input('tipo_solicitud');   
+
+        $solicitud->imagen = "";
+        $solicitud->firma_1 = 0;
+        $solicitud->firma_2 = 0;
+        $solicitud->firma_3 = 0;
+
+        $solicitud->aprobador_sol= $request->input('aprobador_codigo');
+
+        $solicitud->firma_4 = 0;
+
+        $solicitud->save();
+
+        return redirect()->route('historial.index')
+        ->with('success', 'Solicitud actualizada correctamente!');
+    }
+
+
 
 
     // Funciones de Editar

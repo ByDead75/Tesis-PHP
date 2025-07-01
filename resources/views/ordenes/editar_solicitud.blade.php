@@ -48,7 +48,7 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label class="form-label text-center d-block" for="disabledInput">Centro de Costo / Departamento </label>
-                                            <input type="text" id="centro_costo_empresa" class="form-control" placeholder="Click para seleccionar el Centro de Costo" name="centro_costo_empresa"
+                                            <input type="text" id="centro_costo_empresa" class="form-control text-center" placeholder="Click para seleccionar el Centro de Costo" name="centro_costo_empresa"
                                                     value="{{ old('centro_costo_empresa', $solicitud->nombre_centro_costo) }}">
                                             <input type="hidden" id="centro_costo_empresa_codigo" name="centro_costo_empresa_codigo"  class="form-control"  
                                                     value="{{ old('centro_costo_empresa_codigo', $solicitud->codigo_centro_costo) }}">
@@ -61,6 +61,7 @@
                                         <div class="form-group">
                                             <label class="form-label text-center d-block" for="disabledInput">Nombre y Apellido</label>
                                             <p class="form-control-static text-center d-block" id="nombre_solicitante" name="nombre_solicitante">{{ old('nombre_solicitante', $solicitud->nombre_solicitante) }}</p>
+                                            <input type="hidden" id="id_solicitante" class="form-control"  name="id_solicitante" value="{{ old('id_solicitante', $solicitud->id_solicitante) }}">
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
@@ -227,7 +228,7 @@
                                                 <div class="card-body">
                                                     <p class="card-text">Los archivos a subir deben estar en formato PDF, PNG, JPEG, JPG...</p>
                                                     <!-- imgBB file uploader -->
-                                                    <input type="file" id="archivo" name="archivo[]" class="imgbb-filepond" multiple>
+                                                    <input type="file" id="archivos" name="archivos[]" class="basic-filepond" multiple>
                                                 </div>
                                             </div>
                                         </div>
@@ -299,6 +300,12 @@
                 return;
             }
             centroCosto_empresa('{{ route("buscar.centrocosto.empresa") }}')
+        })
+    </script>
+
+    <script>
+        $('input[type=file]').each(function(){
+            filepond.create({id : $(this).attr("id") });
         })
     </script>
 

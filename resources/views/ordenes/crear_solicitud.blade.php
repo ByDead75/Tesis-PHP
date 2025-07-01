@@ -60,6 +60,7 @@
                                             <div class="form-group">
                                                 <label class="form-label text-center d-block" for="nombre_solicitante">Nombre y Apellido</label>
                                                 <p class="form-control-static text-center d-block" id="nombre_solicitante" name="nombre_solicitante">{{ $nombre }}</p>
+                                                <input type="hidden" id="id_solicitante" class="form-control"  name="id_solicitante" value="{{ $cedula }}">
                                             </div>
                                         </div>
 
@@ -73,8 +74,9 @@
 
                                         <div class="col-md-4 col-12">
                                             <div class="form-group">
-                                                <label  class="form-label text-center d-block" for="fecha_solicitud">Fecha de Solicitud</label>
-                                                <p class="form-control-static text-center d-block" name="fecha_solicitud" id="fecha_solicitud">{{now()->format('d-m-Y')}}</p>
+                                                <label  class="form-label text-center d-block" for="fecha">Fecha de Solicitud</label>
+                                                <p class="form-control-static text-center d-block" name="fecha" id="fecha" val>{{now()->format('d-m-Y')}}</p>
+                                                <input type="hidden" id="fecha_solicitud" class="form-control"  name="fecha_solicitud" value="{{ now()->format('Y-m-d') }}">
                                             </div>
                                         </div>
                                     </div>
@@ -202,7 +204,7 @@
                                             </div>
 
                                             <div class="form-group mt-2">
-                                                <textarea class="form-control" id="concepto_de_pago" rows="3"></textarea>
+                                                <textarea class="form-control" id="concepto_de_pago" name="concepto_de_pago" rows="3"></textarea>
                                             </div>
                                         </div>
 
@@ -215,8 +217,7 @@
                                                         </div>
                                                         <div class="card-body">
                                                             <p class="card-text">Los archivos a subir deben estar en formato PDF, PNG, JPEG, JPG...</p>
-                                                            <!-- imgBB file uploader -->
-                                                            <input type="file" id="archivo" name="archivo[]" class="imgbb-filepond" multiple>
+                                                            <input type="file" id="archivos" name="archivos[]" class="basic-filepond" multiple>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -290,8 +291,8 @@
 
     <script>
         $('input[type=file]').each(function(){
-                filepond.create({id : $(this).attr("id") });
-            })
+            filepond.create({id : $(this).attr("id") });
+        })
     </script>
 
     <script>

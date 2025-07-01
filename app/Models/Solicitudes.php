@@ -14,6 +14,7 @@ class Solicitudes extends Model{
     public $timestamps = false;
     protected $casts = [
         'fecha_solicitud' => 'datetime:d-m-Y', // Formatea al serializar a JSON
+        //'fecha_firma1' => 'datetime:Y-m-d',
     ];
 
     protected $fillable = [

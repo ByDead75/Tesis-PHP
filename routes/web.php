@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ArchivosController;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\CentroCostoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
@@ -41,9 +41,9 @@ Route::controller(LoginController::class)->group(function () {
 
 // Rutas para cargar/elimianar archivos
 
-Route::controller(ArchivosController::class)->group(function () {
-    Route::post('/archivo/cargar', 'cargar_archivo_temporal')->name('cargar.archivo');
-    Route::delete('/archivo/eliminar','eliminar_archivo_temporal')->name('eliminar.archivo');
+Route::controller(Controller::class)->group(function () {
+    Route::post('/base/cargar_archivo_temporal', 'cargar_archivo_temporal')->name('cargar.archivo');
+    Route::delete('/base/eliminar_archivo_temporal','eliminar_archivo_temporal')->name('eliminar.archivo');
 });
 
 
@@ -127,6 +127,7 @@ Route::controller(CentroCostoController::class)->group(function () {
 
 Route::controller(OrdenesController::class)->group(function () {
     Route::get('solicitudes/crear', 'MostrarCrearSolicitud')->name('ordenes.solicitud.crear');
+    Route::post('solicitudes/crear', 'GuardarSolicitud')->name('ordenes.solicitud.crear');
 
     Route::get('/solicitudes/registros', 'MostrarIndexEditarSolicitudes')->name('ordenes.solicitud.registros');
     Route::get('/solicitudes/registros/obtener', 'RegistrosEditarSolicitudes')->name('ordenes.solicitud.registros.obtener');

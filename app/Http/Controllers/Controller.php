@@ -13,6 +13,7 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+
     protected function cargar_archivo_temporal(Request $request)
     {
         if ($request->hasFile('archivos')) {
