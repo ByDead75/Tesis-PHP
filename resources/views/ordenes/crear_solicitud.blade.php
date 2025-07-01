@@ -40,7 +40,7 @@
                                             <div class="form-group">
                                                 <label class="form-label text-center d-block" for="sucursal">Surcusal / Oficina</label>
                                                 <input type="text" id="sucursal" name="sucursal" class="form-control text-center"
-                                                            placeholder="Click para seleccionar su Sucursal">
+                                                            placeholder="Click para seleccionar su Sucursal" required>
                                                             <input type="hidden" id="sucursal_codigo" name="sucursal_codigo" class="form-control">
                                             </div>
                                         </div>
@@ -67,7 +67,7 @@
                                         <div class="col-md-4 col-12">
                                             <div class="form-group">
                                                 <label class="form-label text-center d-block" for="aprobador_nombre">Aprobador del Centro</label>
-                                                <input type="text" class="form-control text-center" id="aprobador_nombre" name='aprobador_nombre' readonly>
+                                                <input type="text" class="form-control text-center" id="aprobador_nombre" name='aprobador_nombre' readonly required>
                                                 <input type="hidden" id="aprobador_codigo" class="form-control"  name="aprobador_codigo">
                                             </div>
                                         </div>
@@ -100,14 +100,14 @@
                                         <div class="col-md-4 col-12">
                                             <div class="form-group">
                                                 <label for="tipo_proveedor" class="form-label text-center d-block">Tipo de Proveedor</label>
-                                                <input type="text" id="tipo_proveedor" class="form-control text-center" placeholder="Seleccione el proveedor" name="tipo_proveedor" readonly>
+                                                <input type="text" id="tipo_proveedor" class="form-control text-center" placeholder="Seleccione el proveedor" name="tipo_proveedor" readonly required>
                                             </div>
                                         </div>
 
                                         <div class="col-md-4 col-12">
                                             <div class="form-group">
                                                 <label for="proveedor_nombre" class="form-label text-center d-block">Nombre o Razón Social / Beneficiario del Pago</label>
-                                                <input type="text" id="proveedor_nombre" class="form-control text-center" placeholder="Clic para seleccionar un proveedor" name="proveedor_nombre">
+                                                <input type="text" id="proveedor_nombre" class="form-control text-center" placeholder="Clic para seleccionar un proveedor" name="proveedor_nombre" required>
                                                 <input type="hidden" id="proveedor_codigo" class="form-control "  name="proveedor_codigo">
                                             </div>
                                         </div>
@@ -115,8 +115,8 @@
                                         <div class="col-md-4 col-12">
                                             <div class="form-group">
                                                 <label for="tipo_solicitud" class="form-label text-center d-block">Factura/Presupuesto</label>
-                                                    <select class="form-select text-center" id="tipo_solicitud" name="tipo_solicitud">
-                                                        <option value="">Seleccionar</option>
+                                                    <select class="form-select text-center" id="tipo_solicitud" name="tipo_solicitud" required>
+                                                        <option value="0">Seleccionar</option>
                                                         <option value="1">FACTURA</option>
                                                         <option value="2">PRESUPUESTO</option>
                                                     </select>
@@ -128,15 +128,15 @@
                                         <div class="col-md-4 col-12">
                                             <div class="form-group">
                                                 <label for="proveedor_rif" class="form-label text-center d-block">Rif del Proveedor</label>
-                                                <input type="text" id="proveedor_rif" class="form-control text-center" name="proveedor_rif" placeholder="Seleccione el proveedor" readonly>
+                                                <input type="text" id="proveedor_rif" class="form-control text-center" name="proveedor_rif" placeholder="Seleccione el proveedor" readonly required>
                                             </div>
                                         </div>
 
                                         <div class="col-md-4 col-12">
                                             <div class="form-group">
                                                 <label for="forma_pago" class="form-label text-center d-block">Forma de Pago</label>
-                                                    <select class="form-select text-center" id="forma_pago" name="forma_pago">
-                                                        <option value="">Seleccionar</option>
+                                                    <select class="form-select text-center" id="forma_pago" name="forma_pago" required>
+                                                        <option value="0">Seleccionar</option>
                                                         <option value="1">CHEQUE</option>
                                                         <option value="2">TRANSFERENCIA</option>
                                                     </select>
@@ -146,7 +146,7 @@
                                         <div class="col-md-4 col-12">
                                             <div class="form-group">
                                                 <label for="numero_tipo_solicitud" class="form-label text-center d-block">N° de la Factura/Presupuesto</label>
-                                                <input type="text" id="numero_tipo_solicitud" class="form-control text-center" name="numero_tipo_solicitud" placeholder="">
+                                                <input type="text" id="numero_tipo_solicitud" class="form-control text-center" name="numero_tipo_solicitud" required>
                                             </div>
                                         </div>
                                     </div>
@@ -155,7 +155,7 @@
                                         <div class="col-md-4 col-12">
                                             <div class="form-group">
                                                 <label for="proveedor_banco" class="form-label text-center d-block">Banco del Proveedor</label>
-                                                <input type="text" id="proveedor_banco" class="form-control text-center" placeholder="Clic para seleccionar un banco" name="proveedor_banco">
+                                                <input type="text" id="proveedor_banco" class="form-control text-center" placeholder="Clic para seleccionar un banco" name="proveedor_banco" required>
                                                 <input type="hidden" id="proveedor_banco_codigo" class="form-control "  name="proveedor_banco_codigo">
                                             </div>
                                         </div>
@@ -179,7 +179,7 @@
                                         <div class="col-md-4 col-12">
                                             <div class="form-group">
                                                 <label for="monto_neto" class="form-label text-center d-block">Monto Neto - ej: 1200.00</label>
-                                                <input type="number" step="any" id="monto_neto" class="form-control text-center" name="monto_neto" placeholder="">
+                                                <input type="number" step="any" id="monto_neto" class="form-control text-center" name="monto_neto" placeholder="" required>
                                             </div>
                                         </div>
 
@@ -193,7 +193,7 @@
                                         <div class="col-md-4 col-12">
                                             <div class="form-group">
                                                 <label for="monto_total" class="form-label text-center d-block">Monto Total</label>
-                                                <input type="number" step="any" id="monto_total" class="form-control text-center" name="monto_total">
+                                                <input type="number" step="any" id="monto_total" class="form-control text-center" name="monto_total" required>
                                             </div>
                                         </div>
                                     </div>
@@ -204,7 +204,7 @@
                                             </div>
 
                                             <div class="form-group mt-2">
-                                                <textarea class="form-control" id="concepto_de_pago" name="concepto_de_pago" rows="3"></textarea>
+                                                <textarea class="form-control" id="concepto_de_pago" name="concepto_de_pago" rows="3" required></textarea>
                                             </div>
                                         </div>
 

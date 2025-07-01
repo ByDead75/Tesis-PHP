@@ -41,9 +41,9 @@ class Solicitudes extends Model{
         'cod_sucursal',
         'cod_direccion',
         'firma',
-        'fecha_firma1',
-        'fecha_firma2',
-        'fecha_firma3',
+        'fecha_firma_1',
+        'fecha_firma_2',
+        'fecha_firma_3',
         'factupuesto',
         'imagen',
         'aprobador_sol',
@@ -51,7 +51,7 @@ class Solicitudes extends Model{
         'firma_2',
         'firma_3',
         'TipoProveedor',
-        'fecha_firma4',
+        'fecha_firma_4',
         'firma_4',
     ];
 

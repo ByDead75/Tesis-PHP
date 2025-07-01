@@ -13,7 +13,7 @@ var proveedores = function(url){
                     <tr>
                         <td class="text-bold-500">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="codigo_proveedor" id="codigo_proveedor" value="634" onclick="proveedor_selecionado('POR DEFINIR','634', 'PROVEEDOR POR DEFINIR', 'POR DEFINIR')">
+                                <input class="form-check-input" type="radio" name="codigo_proveedor" id="codigo_proveedor" value="" onclick="proveedor_selecionado(' ',' ', 'PROVEEDOR POR DEFINIR', ' ')">
                             </div>
                         </td>
                         <td class="text-bold-500"></td>

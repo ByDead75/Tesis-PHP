@@ -15,7 +15,7 @@ var bancos = function(url){
                     <tr>
                         <td class="text-bold-500">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="codigo_banco" id="codigo_banco" value="" onclick="banco_selecionado('634', 'CUENTA BANCARIA POR DEFINIR', 'POR DEFINIR')">
+                                <input class="form-check-input" type="radio" name="codigo_banco" id="codigo_banco" value="0" onclick="banco_selecionado('0', 'CUENTA BANCARIA POR DEFINIR', '0')">
                             </div>
                         </td>
                         <td class="text-bold-500"></td>

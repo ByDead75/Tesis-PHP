@@ -15,7 +15,7 @@ var sucursales = function(url){
                     <tr>
                         <td class="text-bold-500">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="sucursal_codigo" id="sucursal_codigo" value="634" onclick="sucursal_selecionada('634', 'SUCURSAL POR DEFINIR')">
+                                <input class="form-check-input" type="radio" name="sucursal_codigo" id="sucursal_codigo" value="0" onclick="sucursal_selecionada('0', 'SUCURSAL POR DEFINIR')">
                             </div>
                         </td>
                         <td class="text-bold-500"></td>
