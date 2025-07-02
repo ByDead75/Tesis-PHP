@@ -170,26 +170,33 @@ class OrdenesController extends Controller
 
 
     public function ActualizarSolicitudSeleccionada(Request $request, $id_solicitud){
+
         $request->validate([
-            
-            'concepto_de_pago' => 'nullable|string|max:500',
-            /*
-            'cuenta' => 'required|string|max:30',
-            'factura' => 'required|string|max:20',
-            'n_control' => 'required|string|max:10',
-            'rif'               => 'required|string|max:20',
-            'monto'        => 'required|string|max:20',
-            'monto_iva'       => 'required|numeric|min:0',
             'fecha_solicitud'   => 'required|date',
-            */
+            'empresa_codigo'   => 'required|int',
+            'centro_costo_empresa_codigo' => 'required|int',
+            'id_solicitante' => 'required|int',
+            'concepto_de_pago' => 'required|string|max:500',
+            'proveedor_codigo' => 'required|string|max:500',
+            'forma_pago' => 'required|int',
+            'proveedor_banco_codigo' => 'required|int',         
+            'proveedor_numero_cuenta' => 'required|string|max:20',
+            'numero_tipo_solicitud' => 'required|string|max:10',
+            'numero_control' => 'required|string|max:20',
+            'monto_neto' => 'required|numeric|regex:/^\d{1,28}(\.\d{1,2})?$/',
+            'monto_iva' => 'required|numeric|regex:/^\d{1,28}(\.\d{1,2})?$/',
+            'monto_total' => 'required|numeric|regex:/^\d{1,63}(\.\d{1,2})?$/',
+            'proveedor_rif' => 'required|string|max:20',
+            'sucursal_codigo'   => 'required|int',
+            'tipo_solicitud' => 'required|int',
+            'aprobador_codigo' => 'required|int',
+            'tipo_proveedor' => 'required|string|max:20',
         ]);
 
         $solicitudes_model = new Solicitudes;
         $solicitud = $solicitudes_model->GetSolicitudesPorId($id_solicitud);
 
-        Log::info($request->all());
-
-        $fecha_solicitud_actual = $solicitud->fecha_solicitud; 
+        //$fecha_solicitud_actual = $solicitud->fecha_solicitud; 
 
         $cod_departamento_actual = $solicitud->cod_departamento;
         $observaciones_actual = $solicitud->observaciones;
@@ -260,8 +267,7 @@ class OrdenesController extends Controller
 
         $solicitud->save();
 
-        return redirect()->route('ordenes.solicitud.registros')
-        ->with('success', 'Solicitud actualizada correctamente!');
+        return redirect()->route('ordenes.solicitud.registros');
     }
     
 }
