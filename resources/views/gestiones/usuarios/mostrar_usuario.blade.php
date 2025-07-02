@@ -19,22 +19,22 @@
                     <div class="row">
                         <div class="col-md-4 col-12">
                             <div class="form-group">
-                                <label class="form-label" for="" >Cedula del Usuario</label>
-                                <input type="text" id="" class="form-control" placeholder="Ingrese la Cédula del Usuario" name="">
+                                <label class="form-label" for="cedula" >Cedula del Usuario</label>
+                                <input type="text" id="cedula" class="form-control" placeholder="Ingrese la Cédula del Usuario" name="cedula">
                             </div>
                         </div>
 
                         <div class="col-md-4 col-12">
                             <div class="form-group">
-                                <label class="form-label" for="" >Nombre de Usuario</label>
-                                <input type="text" id="" class="form-control" placeholder="Ingrese el nombre del Usuario" name="">
+                                <label class="form-label" for="nombre" >Nombre de Usuario</label>
+                                <input type="text" id="nombre" class="form-control" placeholder="Ingrese el nombre del Usuario" name="nombre">
                             </div>
                         </div>
 
                         <div class="col-md-4 col-12">
                             <div class="form-group">
-                                <label class="form-label" for="">Cargo en la Empresa</label>
-                                <select class="form-select" id="">
+                                <label class="form-label" for="user_master">Cargo en la Empresa</label>
+                                <select class="form-select" id="user_master">
                                     <option value="">---</option>
                                     <option value="0">---</option>
                                     <option value="1">---</option>
@@ -50,15 +50,15 @@
                     <div class="row mt-2">
                         <div class="col-md-6 col-12">
                             <div class="form-group">
-                                <label class="form-label" for="">Fecha de Ingreso</label>
-                                <input type="date" id="" class="form-control"name="">
+                                <label class="form-label" for="fecha_registro">Fecha de Ingreso</label>
+                                <input type="date" id="fecha_registro" class="form-control"name="fecha_registro">
                             </div>
                         </div>
 
                         <div class="col-md-6 col-12">
                             <div class="form-group">
-                                <label class="form-label" for="">Fecha de Egreso</label>
-                                <input type="date" id="" class="form-control" name="">
+                                <label class="form-label" for="fecha_egreso">Fecha de Egreso</label>
+                                <input type="date" id=fecha_egreso" class="form-control" name="fecha_egreso">
                             </div>
                         </div>
                     </div>
@@ -80,20 +80,13 @@
                         <table class="table table-striped" id="tabla_usuario">
                             <thead >
                                 <tr>
-                                    <th class="text-center">ID</th>
                                     <th class="text-center">Cédula</th>
                                     <th class="text-center">Nombre y Apellido</th>
-                                    <!--
-                                    <th class="text-center">Empresa</th>
-                                    <th class="text-center">Direccion</th>
                                     <th class="text-center">Departamento</th>
-                                    <th class="text-center">Gerencia</th>
-                                    <th class="text-center">Sucursal</th>
                                     <th class="text-center">Fecha de Registro</th>
                                     <th class="text-center">Tipo de Usuario</th>
                                     <th class="text-center">Email</th>
                                     <th class="text-center">Centro de Costo</th>
-                                    <!-->
                                 </tr>
                             </thead>
                             <tbody class="text-center">

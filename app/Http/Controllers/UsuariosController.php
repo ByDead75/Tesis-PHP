@@ -15,22 +15,15 @@ class UsuariosController extends Controller {
     public function DataUsuario (Request $request) {
 
         if ($request->ajax()) {
-
-            dd("!ssfsf");
             
             $usuario_model = new Usuario;
-            $usuarios = $usuario_model->GetUsuarios($request->$id,
-                                                    $request->$cedula,
-                                                    $request->$nombre, 
-                                                    $request->$cod_empresa, 
-                                                    $request->$cod_direccion, 
-                                                    $request->$cod_departamento, 
-                                                    $request->$cod_gerencia, 
-                                                    $request->$cod_sucursal,
-                                                    $request->$fecha_registro, 
-                                                    $request->$user_master,
-                                                    $request->$email, 
-                                                    $request->$cod_centro_costo
+            $usuarios = $usuario_model->get_usuarios($request->cedula,
+                                                    $request->nombre,
+                                                    $request->cod_departamento, 
+                                                    $request->fecha_registro,
+                                                    $request->user_master,
+                                                    $request->email, 
+                                                    $request->cod_centro_costo
                                                     );
             $datatables = DataTables::of($usuarios)
             ->addIndexColumn()

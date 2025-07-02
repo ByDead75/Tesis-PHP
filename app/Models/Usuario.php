@@ -36,30 +36,47 @@ class Usuario extends Authenticatable {
         'password',
     ];
 
-    public function GetUsuarios() {
-                                $resultado = self::select('usuario.id', 
-                                    'usuario.cedula',
-                                    'usuario.nombre', 
-                                    'usuario.cod_empresa',
-                                    'usuario.cod_direccion',
+    public function get_usuarios($cedula, $nombre, $cod_departamento, 
+                                $fecha_registro, $user_master, $email, $cod_centro_costo) {
+                                $resultado = self::select('usuario.cedula',
+                                    'usuario.nombre',
                                     'usuario.cod_departamento',
-                                    'usuario.cod_gerencia',
-                                    'usuario.cod_sucursal',
                                     'usuario.fecha_registro',
                                     'usuario.user_master',
                                     'usuario.email',
                                     'usuario.cod_centro_costo',
                                 );
-                                /*->join('empresa', 'usuario.cod_empresa', '=', 'empresa.cod_empresa')
-                                ->join('sucursales', 'usuario.cod_sucursal', '=', 'sucursales.COD_SUCURSAL')
-                                ->join('centro_costo', 'usuario.cod_centro_costo', '=', 'centro_costo.id_centro')
-                                ->where('usuario.cedula', $id_usuario);
-                                */
+                                //->join('empresa', 'usuario.cod_empresa', '=', 'empresa.cod_empresa')
+                                //->join('sucursales', 'usuario.cod_sucursal', '=', 'sucursales.COD_SUCURSAL')
+                                //->join('centro_costo', 'usuario.cod_centro_costo', '=', 'centro_costo.id_centro')
+                                //->where('usuario.cedula', $id);
+                if($cedula != null){
+                    $resultado->where('usuario.cedula', $cedula);
+                }
+                if($nombre != null){
+                    $resultado->where('usuario.nombre', $nombre);
+                }
+                if($cod_departamento != null){
+                    $resultado->where('usuario.cod_departamento', $cod_departamento);
+                }
+                if($fecha_registro != null){
+                    $resultado->where('usuario.fecha_registro', $fecha_registro);
+                }
+                if($user_master != null){
+                    $resultado->where('usuario.user_master', $user_master);
+                }
+                if($email != null){
+                    $resultado->where('usuario.email', $email);
+                }
+                if($cod_centro_costo != null){
+                    $resultado->where('usuario.cod_centro_costo', $cod_centro_costo);
+                }else{
+                    $resultado->limit(50);
+                }
+                $resultado->orderBy('usuario.id', 'desc')->distinct()
+                ->get();
                 
-                            $resultado->orderBy('usuario.id', 'desc')->distinct()
-                            ->get();
-                            
-                    return $resultado;
+        return $resultado;
     }
 
     public function GetUsuarioLogeado($id_usuario){
