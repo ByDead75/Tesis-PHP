@@ -11,6 +11,7 @@ use App\Models\Empresa;
 use App\Models\Proveedores;
 use App\Models\Solicitudes;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class OrdenesController extends Controller
 {
@@ -112,38 +113,6 @@ class OrdenesController extends Controller
     }
 
 
-    /*
-    public function EditarSolicitud(Solicitud $solicitud)
-    {
-        return view('solicitudes.edit', compact('solicitud'));
-    }
-
-    public function ActualizarSolicitud(Request $request, Solicitud $solicitud){
-        $request->validate([
-            
-            'concepto_pago' => 'nullable|string|max:500',
-            'cuenta' => 'required|string|max:30',
-            'factura' => 'required|string|max:20',
-            'n_control' => 'required|string|max:10',
-            'rif'               => 'required|string|max:20',
-            'monto'        => 'required|string|max:20',
-            'monto_iva'       => 'required|numeric|min:0',
-            'fecha_solicitud'   => 'required|date',
-        ]);
-
-        $solicitud->concepto_pago = $request->input('concepto_pago');
-        $solicitud->rif = $request->input('rif');
-        $solicitud->monto_total = $request->input('monto_total');
-        $solicitud->fecha_solicitud = $request->input('fecha_solicitud');
-        $solicitud->descripcion = $request->input('descripcion');
-
-        $solicitud->save();
-
-        return redirect()->route('historial.index')
-        ->with('success', 'Solicitud actualizada correctamente!');
-    }
-    */
-
     public function RegistrosEditarSolicitudes (Request $request)
     {
 
@@ -198,4 +167,101 @@ class OrdenesController extends Controller
 
         
     }
+
+
+    public function ActualizarSolicitudSeleccionada(Request $request, $id_solicitud){
+        $request->validate([
+            
+            'concepto_de_pago' => 'nullable|string|max:500',
+            /*
+            'cuenta' => 'required|string|max:30',
+            'factura' => 'required|string|max:20',
+            'n_control' => 'required|string|max:10',
+            'rif'               => 'required|string|max:20',
+            'monto'        => 'required|string|max:20',
+            'monto_iva'       => 'required|numeric|min:0',
+            'fecha_solicitud'   => 'required|date',
+            */
+        ]);
+
+        $solicitudes_model = new Solicitudes;
+        $solicitud = $solicitudes_model->GetSolicitudesPorId($id_solicitud);
+
+        Log::info($request->all());
+
+        $fecha_solicitud_actual = $solicitud->fecha_solicitud; 
+
+        $cod_departamento_actual = $solicitud->cod_departamento;
+        $observaciones_actual = $solicitud->observaciones;
+        $status_solicitud_actual = $solicitud->status_solicitud;
+
+        $cod_direccion_actual = $solicitud->cod_direccion;  
+        $firma_actual = $solicitud->firma;
+        $fecha_firma_1_actual = $solicitud->fecha_firma_1;
+        $fecha_firma_2_actual = $solicitud->fecha_firma_2;
+        $fecha_firma_3_actual = $solicitud->fecha_firma_3;
+
+        $imagen_actual =  $solicitud->imagen;
+
+        $firma_1_actual = $solicitud->firma_1;
+        $firma_2_actual = $solicitud->firma_2;
+        $firma_3_actual = $solicitud->firma_3;
+
+        $fecha_firma_4_actual = $solicitud->fecha_firma_4;
+        $firma_4_actual = $solicitud->firma_4;
+
+        $solicitud->fecha_solicitud = $request->input('fecha_solicitud');
+        //$solicitud->fecha_solicitud = $fecha_solicitud_actual;
+
+        $solicitud->cod_empresa = $request->input('empresa_codigo');
+        $solicitud->centro_de_costo = $request->input('centro_costo_empresa_codigo'); 
+        $solicitud->id_solicitante = $request->input('id_solicitante');
+
+        $solicitud->cod_departamento = $cod_departamento_actual;
+
+        $solicitud->concepto_de_pago = $request->input('concepto_de_pago');
+
+        $solicitud->beneficiario_de_pago = $request->input('proveedor_codigo'); 
+        $solicitud->id_pago = $request->input('forma_pago'); 
+        $solicitud->id_banco = $request->input('proveedor_banco_codigo');
+        $solicitud->cuenta = $request->input('proveedor_numero_cuenta'); 
+        $solicitud->factura = $request->input('numero_tipo_solicitud'); 
+        $solicitud->n_control = $request->input('numero_control'); 
+        $solicitud->monto = $request->input('monto_neto');
+        $solicitud->monto_iva = $request->input('monto_iva');
+        $solicitud->monto_total = $request->input('monto_total');
+
+        $solicitud->observaciones = $observaciones_actual;
+        $solicitud->status_solicitud = $status_solicitud_actual;
+
+        $solicitud->rif = $request->input('proveedor_rif');
+        $solicitud->cod_sucursal= $request->input('sucursal_codigo');
+
+        $solicitud->cod_direccion = $cod_direccion_actual;  
+        $solicitud->firma = $firma_actual;
+        $solicitud->fecha_firma_1 = $fecha_firma_1_actual;
+        $solicitud->fecha_firma_2 = $fecha_firma_2_actual;
+        $solicitud->fecha_firma_3 = $fecha_firma_3_actual;
+
+        $solicitud->factupuesto = $request->input('tipo_solicitud');   
+        
+        $solicitud->imagen = $imagen_actual;
+
+        $solicitud->aprobador_sol= $request->input('aprobador_codigo');
+
+        $solicitud->firma_1 = $firma_1_actual;
+        $solicitud->firma_2 = $firma_2_actual;
+        $solicitud->firma_3 = $firma_3_actual;
+
+        $solicitud->TipoProveedor= $request->input('tipo_proveedor'); 
+        
+        $solicitud->fecha_firma_4 = $fecha_firma_4_actual;
+        $solicitud->firma_4 = $firma_4_actual;
+
+        $solicitud->save();
+
+        return redirect()->route('ordenes.solicitud.registros')
+        ->with('success', 'Solicitud actualizada correctamente!');
+    }
+    
 }

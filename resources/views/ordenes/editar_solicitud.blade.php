@@ -12,7 +12,7 @@
         <div>
             <h2 class="card-title text-center mb-4 pb-2">Editar Solicitud de Pago</h2>
         </div>
-    <form class="form" action="{{ route('ordenes.solicitud.registros.selecionada', $solicitud->id_solicitud) }}" method="POST">
+    <form class="form" action="{{ route('ordenes.solicitud.editar', $solicitud->id_solicitud) }}" method="POST">
     @csrf
     @method('PUT')
         <section id="multiple-column-form " class="pb-1">
@@ -47,7 +47,7 @@
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
-                                            <label class="form-label text-center d-block" for="disabledInput">Centro de Costo / Departamento </label>
+                                            <label class="form-label text-center d-block" for="centro_costo_empresa">Centro de Costo / Departamento </label>
                                             <input type="text" id="centro_costo_empresa" class="form-control text-center" placeholder="Click para seleccionar el Centro de Costo" name="centro_costo_empresa"
                                                     value="{{ old('centro_costo_empresa', $solicitud->nombre_centro_costo) }}">
                                             <input type="hidden" id="centro_costo_empresa_codigo" name="centro_costo_empresa_codigo"  class="form-control"  
@@ -59,14 +59,14 @@
                                 <div class="row mt-2">
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
-                                            <label class="form-label text-center d-block" for="disabledInput">Nombre y Apellido</label>
+                                            <label class="form-label text-center d-block" for="nombre_solicitante">Nombre y Apellido</label>
                                             <p class="form-control-static text-center d-block" id="nombre_solicitante" name="nombre_solicitante">{{ old('nombre_solicitante', $solicitud->nombre_solicitante) }}</p>
                                             <input type="hidden" id="id_solicitante" class="form-control"  name="id_solicitante" value="{{ old('id_solicitante', $solicitud->id_solicitante) }}">
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
-                                            <label class="form-label text-center d-block" for="disabledInput">Aprobador del Centro</label>
+                                            <label class="form-label text-center d-block" for="aprobador_nombre">Aprobador del Centro</label>
                                             <input type="text" class="form-control text-center" id="aprobador_nombre" name='aprobador_nombre' 
                                                     value="{{ old('aprobador_nombre', $solicitud->nombre_aprobador) }}" readonly>
                                                 <input type="hidden" id="aprobador_codigo"  name="aprobador_codigo" class="form-control" 
@@ -75,8 +75,9 @@
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
-                                            <label  class="form-label text-center d-block" for="disabledInput">Fecha de Solicitud</label>
-                                            <p class="form-control-static text-center d-block" name="fecha_solicitud" id="fecha_solicitud">{{ old('fecha_solicitud', \Carbon\Carbon::parse($solicitud->fecha_solicitud)->format('d-m-Y')) }}</p>
+                                            <label  class="form-label text-center d-block" for="fecha">Fecha de Solicitud</label>
+                                            <p class="form-control-static text-center d-block" name="fecha" id="fecha">{{ old('fecha', \Carbon\Carbon::parse($solicitud->fecha_solicitud)->format('d-m-Y')) }}</p>
+                                            <input type="hidden" id="fecha_solicitud" class="form-control"  name="fecha_solicitud" value="{{  \Carbon\Carbon::parse($solicitud->fecha_solicitud)->format('Y-m-d') }}">
                                         </div>
                                     </div>
                                 </div>
@@ -110,7 +111,7 @@
                                             <label for="proveedor_nombre" class="form-label text-center d-block">Nombre o Razón Social / Beneficiario del Pago</label>
                                             <input type="text" id="proveedor_nombre" class="form-control text-center" placeholder="Clic para seleccionar un proveedor" name="proveedor_nombre"
                                                     value="{{ old('proveedor_nombre', $solicitud->nombre_proveedor) }}">
-                                            <input type="hidden" id="proveedor_codigo" class="form-control"  name="proveedor_codigo">
+                                            <input type="hidden" id="proveedor_codigo" class="form-control"  name="proveedor_codigo" value="{{ old('proveedor_codigo', $solicitud->beneficiario_de_pago) }}">
                                         </div>
                                     </div>
 
@@ -118,7 +119,7 @@
                                         <div class="form-group">
                                             <label for="tipo_solicitud" class="form-label text-center d-block">Factura/Presupuesto</label>
                                                 <select class="form-select text-center" id="tipo_solicitud" name="tipo_solicitud">
-                                                    <option value="">Seleccionar</option>
+                                                    <option value="0">Seleccionar</option>
                                                     <option value="1" {{ old('tipo_solicitud', $solicitud->factupuesto) == '1' ? 'selected' : '' }}>FACTURA</option>
                                                     <option value="2" {{ old('tipo_solicitud', $solicitud->factupuesto) == '2' ? 'selected' : '' }}>PRESUPUESTO</option>
                                                 </select>
@@ -140,7 +141,7 @@
                                         <div class="form-group">
                                             <label for="forma_pago" class="form-label text-center d-block">Forma de Pago</label>
                                                 <select class="form-select text-center" id="forma_pago" name="forma_pago">
-                                                    <option value="">Seleccionar</option>
+                                                    <option value="0">Seleccionar</option>
                                                     <option value="1" {{ old('forma_pago', $solicitud->id_pago) == '1' ? 'selected' : '' }}>CHEQUE</option>
                                                     <option value="2" {{ old('forma_pago', $solicitud->id_pago) == '2' ? 'selected' : '' }}>TRANSFERENCIA</option>
                                                 </select>
@@ -162,7 +163,7 @@
                                             <label for="proveedor_banco" class="form-label text-center d-block">Banco del Proveedor</label>
                                             <input type="text" id="proveedor_banco" class="form-control text-center" placeholder="Clic para seleccionar un banco" name="proveedor_banco"
                                                     value="{{ old('proveedor_banco', $solicitud->banco_nombre) }}">
-                                            <input type="hidden" id="proveedor_banco_codigo" class="form-control"  name="proveedor_banco_codigo">
+                                            <input type="hidden" id="proveedor_banco_codigo" class="form-control"  name="proveedor_banco_codigo" value="{{ old('proveedor_banco_codigo', $solicitud->id_banco) }}">
                                         </div>
                                     </div>
 
@@ -214,7 +215,7 @@
                                     </div>
                                     
                                     <div class="form-group mt-2">
-                                        <textarea class="form-control" id="concepto_de_pago" rows="3">{{ old('concepto_de_pago', $solicitud->concepto_de_pago) }}</textarea>
+                                        <textarea class="form-control"  id="concepto_de_pago" name="concepto_de_pago" required>{{ old('concepto_de_pago', $solicitud->concepto_de_pago) }}</textarea>
                                     </div>
                                 </div>
 
