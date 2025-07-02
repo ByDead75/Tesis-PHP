@@ -36,22 +36,30 @@ class Usuario extends Authenticatable {
         'password',
     ];
 
-    public function get_usuario_password(){
-
-        return $this->password;
-    }
-
-    public function GetUsuarios($cedula) {
-        $resultado = self::select('gestiones.usuarios.cedula');
-                if($cedula != null){
-                    $resultado->where('gestiones.usuarios.cedula', $cedula);
-                }else {
-                    $resultado->limit(100);
-                }
-                $resultado->orderBy('gestiones.usuarios.cedula', 'desc')->distinct()
-                ->get();
+    public function GetUsuarios() {
+                                $resultado = self::select('usuario.id', 
+                                    'usuario.cedula',
+                                    'usuario.nombre', 
+                                    'usuario.cod_empresa',
+                                    'usuario.cod_direccion',
+                                    'usuario.cod_departamento',
+                                    'usuario.cod_gerencia',
+                                    'usuario.cod_sucursal',
+                                    'usuario.fecha_registro',
+                                    'usuario.user_master',
+                                    'usuario.email',
+                                    'usuario.cod_centro_costo',
+                                );
+                                /*->join('empresa', 'usuario.cod_empresa', '=', 'empresa.cod_empresa')
+                                ->join('sucursales', 'usuario.cod_sucursal', '=', 'sucursales.COD_SUCURSAL')
+                                ->join('centro_costo', 'usuario.cod_centro_costo', '=', 'centro_costo.id_centro')
+                                ->where('usuario.cedula', $id_usuario);
+                                */
                 
-        return $resultado;
+                            $resultado->orderBy('usuario.id', 'desc')->distinct()
+                            ->get();
+                            
+                    return $resultado;
     }
 
     public function GetUsuarioLogeado($id_usuario){
@@ -71,7 +79,6 @@ class Usuario extends Authenticatable {
                             ->join('centro_costo', 'usuario.cod_centro_costo', '=', 'centro_costo.id_centro')
                             ->where('usuario.cedula', $id_usuario)
                             ->first();
-
         return $resultado;
     }
 

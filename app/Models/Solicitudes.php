@@ -86,8 +86,6 @@ class Solicitudes extends Model{
         return $resultado;
     }
 
-    
-
     public function GetSolicitudesPorId($id_solicitud) {
         $resultado = self::select('solicitudes.id_solicitud',
                 'solicitudes.fecha_solicitud',

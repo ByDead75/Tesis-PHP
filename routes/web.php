@@ -56,9 +56,10 @@ Route::get('/cambiar/password', [PasswordController::class, 'MuestraCambioPasswo
 //Controladores de Gestiones (Usuarios, Proveedores, Departamentos y Empresas)
 
 Route::controller(UsuariosController::class)->group(function () {
-    Route::get('/mostrar/usuario', 'MostrarUsuarios')->name('gestiones.usuarios.registros.obtener');
+    Route::get('/mostrar/usuario', 'MostrarIndexUsuarios')->name('gestiones.usuarios.registros.obtener');
     Route::get('/crear/usuario', 'CrearUsuarios')->name('gestiones.usuarios.crear.usuarios');
     Route::get('/editar/usuario', 'EditarUsuarios')->name('gestiones.usuarios.editar.usuarios');
+    Route::get('/editar/usuario', 'DataUsuario')->name('usuario.data');
 });
 
 Route::controller(EmpresasController::class)->group(function () {

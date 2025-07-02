@@ -3,16 +3,41 @@
 namespace App\Http\Controllers;
 use Yajra\DataTables\DataTables;
 use Illuminate\Http\Request;
-use App\Models\Empleados1;
-use App\Models\Usuarios;
+use App\Models\Usuario;
 
 class UsuariosController extends Controller {
 
-    public function MostrarUsuarios () {
-
-        $empleados1_model = new Empleados1;
+    public function MostrarIndexUsuarios () {
 
     return view('gestiones.usuarios.mostrar_usuario');
+    }
+
+    public function DataUsuario (Request $request) {
+
+        if ($request->ajax()) {
+
+            dd("!ssfsf");
+            
+            $usuario_model = new Usuario;
+            $usuarios = $usuario_model->GetUsuarios($request->$id,
+                                                    $request->$cedula,
+                                                    $request->$nombre, 
+                                                    $request->$cod_empresa, 
+                                                    $request->$cod_direccion, 
+                                                    $request->$cod_departamento, 
+                                                    $request->$cod_gerencia, 
+                                                    $request->$cod_sucursal,
+                                                    $request->$fecha_registro, 
+                                                    $request->$user_master,
+                                                    $request->$email, 
+                                                    $request->$cod_centro_costo
+                                                    );
+            $datatables = DataTables::of($usuarios)
+            ->addIndexColumn()
+            ->make(true);
+            return $datatables;
+        }
+        
     }
 
     public function CrearUsuarios () {

@@ -105,7 +105,7 @@
                                                         <label class="form-label" for="centro_costo">Centro de Costo</label>
                                                         <input type="text" id="centro_costo" class="form-control"
                                                             name="centro_costo" placeholder="Click para seleccionar su Centro de Costo">
-                                                        <input type="hidden" id="centro_costo_codigo" class="form-control"  name="centro_costo_codigo">
+                                                        <input type="hidden" id="centro_costo_codigo" class="form-control" name="centro_costo_codigo">
                                                     </div>
                                                 </div>
                                             </div>
@@ -143,14 +143,14 @@
                                                 <div class="col-6">
                                                     <div class="form-group">
                                                         <label class="form-label" for="password-vertical">Contraseña</label>
-                                                        <input type="password" id="password-vertical" class="form-control"
+                                                        <input type="password" id="password" class="form-control"
                                                             name="contact" placeholder="Ingrese la Contraseña">
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="form-group">
                                                         <label class="form-label" for="password-vertical">Confirmar Contraseña</label>
-                                                        <input type="password" id="password-vertical" class="form-control"
+                                                        <input type="password" id="password_confirmar" class="form-control"
                                                             name="contact" placeholder="Confirme la Contraseña">
                                                     </div>
                                                 </div>
@@ -158,7 +158,7 @@
 
                                             <div class="row mt-2">
                                                 <div class="col-12 d-flex justify-content-end offset-md-4 col-md-8">
-                                                    <button type="reset" class="btn btn-secondary me-1 mb-1">Regresar</button>
+                                                    <button type="button" class="btn btn-secondary me-1 mb-1" id="btn_regresar" name="btn_regresar">Regresar</button>
                                                     <button type="submit"class="btn btn-primary me-1 mb-1">Confirmar</button>
                                                 </div>
                                             </div>
@@ -184,6 +184,88 @@
     <script src="{{asset('assets/compiled/js/gerencia_modal.js')}}"></script>
     <script src="{{asset('assets/compiled/js/departamento_modal.js')}}"></script>
     <script src="{{asset('assets/compiled/js/centro_costo_modal.js')}}"></script>
+nombre_apellido_usuario, fecha_nacimiento, fecha_ingreso, empresa, sucursal, 
+direccion, gerencia, departamento, centro_costo, user_master, tipo_usuario, 
+    <script>
+    $('#crearUsuario').validate({
+        rules: { // <-- Alertas para cada input según su ID
+            nombre_apellido_usuario: {
+                required: true
+            },
+            cedula: {
+                required: true
+            },
+            empresa: {
+                required: true
+            },
+            sucursal: {
+                required: true
+            },
+            direccion: {
+                required: true
+            },
+            gerencia: {
+                required: true
+            },
+            departamento: {
+                required: true
+            },
+            centro_costo: {
+                required: true
+            },
+            user_master: {
+                required: true
+            },
+            tipo_usuario: {
+                required: true
+            },
+            password: {
+                required: true
+            },
+            password_confirmar: {
+                required: true
+            },
+        },
+        messages: { // <-- Mensajes personalizados para cada alerta según su ID
+            nombre_apellido_usuario: {
+                required: "Nombre y Apellido requeridos"
+            },
+            cedula: {
+                required: "Cédula requerida"
+            },
+            empresa: {
+                required: "Empresa requerida"
+            },
+            sucursal: {
+                required: "Sucursal requerida"
+            },
+            direccion: {
+                required: "Dirección requerida"
+            },
+            gerencia: {
+                required: "Gerencia requerida"
+            },
+            departamento: {
+                required: "Departamento requerido"
+            },
+            centro_costo: {
+                required: "Centro de Costo requerido"
+            },
+            user_master: {
+                required: "Rol requerido"
+            },
+            tipo_usuario: {
+                required: "Tipo de Usuario requerido"
+            },
+            password: {
+                required: "Contraseña requerida"
+            },
+            password_confirmar: {
+                required: "Confirmación requerida"
+            },
+        }
+    });
+    </script>
 
     <script>
         $('#empresa').on('click', function () {

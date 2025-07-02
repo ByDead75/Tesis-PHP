@@ -33,8 +33,8 @@
 
                         <div class="col-md-4 col-12">
                             <div class="form-group">
-                                <label class="form-label" for="user_master">Cargo en la Empresa</label>
-                                <select class="form-select" id="user_master">
+                                <label class="form-label" for="">Cargo en la Empresa</label>
+                                <select class="form-select" id="">
                                     <option value="">---</option>
                                     <option value="0">---</option>
                                     <option value="1">---</option>
@@ -50,15 +50,15 @@
                     <div class="row mt-2">
                         <div class="col-md-6 col-12">
                             <div class="form-group">
-                                <label class="form-label" for="fecha_ingreso">Fecha de Ingreso</label>
-                                <input type="date" id="fecha_ingreso" class="form-control"name="fecha_ingreso">
+                                <label class="form-label" for="">Fecha de Ingreso</label>
+                                <input type="date" id="" class="form-control"name="">
                             </div>
                         </div>
 
                         <div class="col-md-6 col-12">
                             <div class="form-group">
-                                <label class="form-label" for="fecha_egreso">Fecha de Egreso</label>
-                                <input type="date" id="fecha_egreso" class="form-control" name="fecha_egreso">
+                                <label class="form-label" for="">Fecha de Egreso</label>
+                                <input type="date" id="" class="form-control" name="">
                             </div>
                         </div>
                     </div>
@@ -77,18 +77,23 @@
             <div class="card">
                 <div class="card-body pb-0">
                     <div class="table">
-                        <table class="table table-striped" id="tabla_usuarios">
+                        <table class="table table-striped" id="tabla_usuario">
                             <thead >
                                 <tr>
+                                    <th class="text-center">ID</th>
                                     <th class="text-center">Cédula</th>
                                     <th class="text-center">Nombre y Apellido</th>
-                                    <th class="text-center">Fecha de Nacimiento</th>
-                                    <th class="text-center">Cargo en la Empresa</th>
-                                    <th class="text-center">Rol</th>
-                                    <th class="text-center">Fecha de Ingreso</th>
-                                    <th class="text-center">Fecha de Egreso</th>
-                                    <th class="text-center">Departamento</th>
+                                    <!--
                                     <th class="text-center">Empresa</th>
+                                    <th class="text-center">Direccion</th>
+                                    <th class="text-center">Departamento</th>
+                                    <th class="text-center">Gerencia</th>
+                                    <th class="text-center">Sucursal</th>
+                                    <th class="text-center">Fecha de Registro</th>
+                                    <th class="text-center">Tipo de Usuario</th>
+                                    <th class="text-center">Email</th>
+                                    <th class="text-center">Centro de Costo</th>
+                                    <!-->
                                 </tr>
                             </thead>
                             <tbody class="text-center">
@@ -110,8 +115,12 @@
     
 @endsection
 
-@push('js') 
+@push('js')
 
-<script src="{{asset('assets/compiled/js/tabla-usuarios.js')}}"></script>
+<script>
+    var route_usuario = '{{ route("usuario.data") }}'
+</script>
+
+<script src="{{asset('assets/compiled/js/tabla-usuario.js')}}"></script>
 
 @endpush 
