@@ -11,7 +11,7 @@
         <div>
             <h2 class="card-title text-center mb-4 pb-2">Solicitud de Pago para Compras y Servicios</h2>
         </div>
-        <form class="form"  action="{{ route('ordenes.solicitud.crear') }}" method="POST">
+        <form class="form" id="crearSolicitud" action="{{ route('ordenes.solicitud.crear') }}" method="POST">
         @csrf
             <section id="multiple-column-form" class="pb-1">
                 <div class="row match-height">
@@ -251,6 +251,10 @@
     
     <script src="{{asset('assets/compiled/js/sucursales_modal.js')}}"></script>
     <script src="{{asset('assets/compiled/js/centrocosto_empresa_modal.js')}}"></script>
+
+    <script>
+        $('#crearSolicitud').validate();
+    </script>
 
     <script>
         $('#proveedor_nombre').on('click', function () {

@@ -45,6 +45,8 @@
     <script src="https://cdn.datatables.net/2.3.2/js/dataTables.js"></script>
     <script src="{{asset('assets/extensions/datatables.net/js/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('assets/extensions/datatables.net-bs5/js/dataTables.bootstrap5.min.js')}}"></script>
+    
+    <script src="{{asset('assets/extensions/jquery-validation/jquery.validate.js')}}"></script>
 
     <script src="{{asset('assets/static/js/pages/horizontal-layout.js')}}"></script>
     <script src="{{asset('assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
