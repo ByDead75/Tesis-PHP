@@ -6,6 +6,8 @@ use App\Models\Dual;
 use App\Models\Documento;
 use Illuminate\Support\Facades\Storage;
 
+use function PHPUnit\Framework\returnSelf;
+
 class DocumentoService 
 {
 
@@ -56,4 +58,19 @@ class DocumentoService
 
         return;
     }
+
+    public static function obtenerDocumentosPorSolicitudId($id_solicitud)
+    {   
+        $documento_model = new Documento;
+        $documentos = $documento_model->GetDocumentoPorId($id_solicitud);
+
+        return $documentos->filter(function ($documento) {
+        return Storage::exists($documento->ruta);
+    })->map(function ($documento) {
+        // Agregar metadatos útiles
+        $documento->extension = pathinfo($documento->nombre_documento, PATHINFO_EXTENSION);
+        $documento->url_descarga = asset($documento->ruta);
+        return $documento;
+    });
+      }
 }

@@ -25,4 +25,15 @@ class Documento extends Model{
         'ruta',
         'observacion',
     ];
+
+    public function GetDocumentoPorId($id_factura) {
+        $resultado = self::select('documentos.id',
+                                'documentos.nombre_documento',
+                                'documentos.id_factura',
+                                'documentos.ruta')
+                    ->where('documentos.id_factura', $id_factura)
+                    ->get();
+
+        return $resultado;
+    }
 }

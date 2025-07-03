@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Documento;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -54,4 +55,18 @@ class Controller extends BaseController
 
         return false;
     } 
+
+    public function consultar_documento(Request $request)
+    {
+        $documento_model = new Documento;
+
+        if($request->ajax()){
+
+            $documento = $documento_model->GetDocumentoPorId($request->id);
+
+            if (!$documento->isEmpty()) { 
+                return response()->json($documento->ruta);
+            }  
+        }
+    }
 }

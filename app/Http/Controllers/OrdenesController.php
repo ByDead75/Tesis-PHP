@@ -13,6 +13,8 @@ use App\Models\Solicitudes;
 use App\Services\DocumentoService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use App\Models\Documento;
+use Illuminate\Support\Facades\Storage;
 
 class OrdenesController extends Controller
 {
@@ -93,7 +95,6 @@ class OrdenesController extends Controller
 
         $solicitud->save();
 
-        //dd($solicitud->id_solicitud);
 
         foreach($request->get('archivos') as $key => $archivo){
 
@@ -177,11 +178,15 @@ class OrdenesController extends Controller
         $empresa_model = new Empresa;
         $empresas = $empresa_model->get_empresas();
 
+        $documento_model = new Documento;
+        $documentos = $documento_model->GetDocumentoPorId($id_solicitud);
+
+
         if (!$solicitud) {
             abort(404, 'Solicitud de pago no encontrada.');
         }
 
-        return view('ordenes.editar_solicitud', compact('solicitud', 'empresas'));
+        return view('ordenes.editar_solicitud', compact('solicitud', 'empresas', 'documentos'));
 
         
     }
@@ -284,6 +289,28 @@ class OrdenesController extends Controller
         $solicitud->firma_4 = $firma_4_actual;
 
         $solicitud->save();
+
+        foreach($request->get('archivos') as $key => $archivo){
+
+            if ($archivo !== null && !empty($archivo)) {
+
+                $nombre_archivo = $solicitud->id_solicitud.'datosSolicitud.'.pathinfo($archivo, PATHINFO_EXTENSION);
+                    
+                DocumentoService::copiar('public/temp/'.$archivo, 'public/documentos/'.$nombre_archivo);
+
+                DocumentoService::guardar([
+                        'nombre_documento' => $nombre_archivo,
+                        'id_factura' => $solicitud->id_solicitud,
+                        'id_usuario' => $solicitud->id_solicitante,
+                        'tipo_documento' => 1,
+                        'fecha_registro' => $solicitud->fecha_solicitud,
+                        'ruta' => 'public/documentos/',
+                        'observacion' => '',
+                    ]);
+
+                DocumentoService::eliminar('public/temp/'.$archivo);
+            }
+        }
 
         return redirect()->route('ordenes.solicitud.registros');
     }

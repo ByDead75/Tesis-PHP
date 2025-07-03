@@ -12,7 +12,7 @@
         <div>
             <h2 class="card-title text-center mb-4 pb-2">Editar Solicitud de Pago</h2>
         </div>
-    <form class="form" action="{{ route('ordenes.solicitud.editar', $solicitud->id_solicitud) }}" method="POST">
+    <form class="form" action="{{ route('ordenes.solicitud.editar', $solicitud->id_solicitud) }}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
         <section id="multiple-column-form " class="pb-1">
@@ -229,7 +229,20 @@
                                                 <div class="card-body">
                                                     <p class="card-text">Los archivos a subir deben estar en formato PDF, PNG, JPEG, JPG...</p>
                                                     <!-- imgBB file uploader -->
-                                                    <input type="file" id="archivos" name="archivos[]" class="basic-filepond" multiple>
+                                                    <input type="file" id="archivos" name="archivos[]" class="basic-filepond" multiple value="">
+                                                    <!-- @foreach($documentos as $documento)
+                                                    {{ old('archivos', $documento->nombre_documento) }}
+                                                    @endforeach-->
+                                                    @if($documentos->isEmpty())
+                                                        <p>No hay documentos cargados para esta solicitud.</p>
+                                                    @else
+                                                        <ul>
+                                                            @foreach($documentos as $documento)
+                                                                <li>{{ $documento->nombre_documento }} - <a href="{{ asset('storage/' . $documento->ruta) }}">Ver</a></li>
+                                                            @endforeach
+                                                        </ul>
+                                                    @endif
+
                                                 </div>
                                             </div>
                                         </div>
