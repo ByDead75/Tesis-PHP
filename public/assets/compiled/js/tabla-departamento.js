@@ -1,12 +1,12 @@
 $(document).ready(function() {
     $(function () { 
-        var table = $('#tabla_usuario').DataTable({
+        var table = $('#tabla_departamento').DataTable({
             processing: true,
             serverSide: true,
             bLengthChange: true,
             searching: true,
             ajax: {
-                url: route_usuario,
+                url: route_departamento,
                 data: function (d) {
                     d.cedula = $('#cedula').val(),
                     d.nombre = $('#nombre').val(),

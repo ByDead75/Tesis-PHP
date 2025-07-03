@@ -62,4 +62,17 @@ class CentroCosto extends Model{
 
         return $resultado;
     }
+
+    public function get_centro_costo_usuario($codigo_empresa, $codigo_gerencia) {
+        $resultado = self::select('centro_costo.id_centro',
+                    DB::raw("TRIM(REPLACE(REPLACE(REPLACE(centro_costo.centro, CHAR(13), ''), CHAR(10), ''), '\t', '')) as centro")
+                    )
+                    ->where('centro_costo.cod_empresa', $codigo_empresa)
+                    ->where('centro_costo.cod_gerencia', $codigo_gerencia)
+                    ->distinct()
+                    ->get();
+
+        return $resultado;
+    }
+
 }

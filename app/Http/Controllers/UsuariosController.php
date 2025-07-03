@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Helpers\UserMasterHelper;
 use Yajra\DataTables\DataTables;
 use Illuminate\Http\Request;
 use App\Models\Usuario;
@@ -17,7 +18,7 @@ class UsuariosController extends Controller {
         if ($request->ajax()) {
             
             $usuario_model = new Usuario;
-            $usuarios = $usuario_model->get_usuarios($request->cedula,
+            $usuarios = $usuario_model->obtener_usuarios($request->cedula,
                                                     $request->nombre,
                                                     $request->cod_departamento, 
                                                     $request->fecha_registro,
@@ -30,7 +31,6 @@ class UsuariosController extends Controller {
             ->make(true);
             return $datatables;
         }
-        
     }
 
     public function CrearUsuarios () {

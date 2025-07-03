@@ -109,6 +109,10 @@
 
 @push('js') 
 
-<script src="{{asset('assets/compiled/js/tabla-usuarios.js')}}"></script>
+<script>
+    var route_gerencia = '{{ route("gerencia.data") }}'
+</script>
+
+<script src="{{asset('assets/compiled/js/tabla-gerencia.js')}}"></script>
 
 @endpush 

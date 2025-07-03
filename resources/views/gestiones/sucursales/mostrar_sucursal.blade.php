@@ -76,6 +76,10 @@
 
 @push('js') 
 
-<script src="{{asset('assets/compiled/js/tabla-usuarios.js')}}"></script>
+<script>
+    var route_sucursal = '{{ route("sucursal.data") }}'
+</script>
+
+<script src="{{asset('assets/compiled/js/tabla-sucursal.js')}}"></script>
 
 @endpush 

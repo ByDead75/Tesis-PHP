@@ -35,34 +35,18 @@
                             <div class="form-group">
                                 <label class="form-label" for="user_master">Cargo en la Empresa</label>
                                 <select class="form-select" id="user_master">
-                                    <option value="">---</option>
-                                    <option value="0">---</option>
-                                    <option value="1">---</option>
-                                    <option value="2">---</option>
-                                    <option value="3">---</option>
-                                    <option value="4">---</option>
-                                    <option value="6">---</option>
+                                    <option value="">Seleccionar</option>
+                                    <option value="0">Empleado</option>
+                                    <option value="1">Supervisor</option>
+                                    <option value="2">Director</option>
+                                    <option value="3">Gerente</option>
+                                    <option value="4">Administrador</option>
+                                    <option value="6">Superadministrador</option>
                                 </select>
                             </div>
                         </div>
                     </div>
-
-                    <div class="row mt-2">
-                        <div class="col-md-6 col-12">
-                            <div class="form-group">
-                                <label class="form-label" for="fecha_registro">Fecha de Ingreso</label>
-                                <input type="date" id="fecha_registro" class="form-control"name="fecha_registro">
-                            </div>
-                        </div>
-
-                        <div class="col-md-6 col-12">
-                            <div class="form-group">
-                                <label class="form-label" for="fecha_egreso">Fecha de Egreso</label>
-                                <input type="date" id=fecha_egreso" class="form-control" name="fecha_egreso">
-                            </div>
-                        </div>
-                    </div>
-
+                    
                     <div class="row mt-3">
                         <div class="col-sm-12 d-flex justify-content-end">
                             <button type="button" class="btn btn-primary me-1" id="buscar">Buscar</button>

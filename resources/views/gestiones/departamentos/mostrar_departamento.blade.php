@@ -125,6 +125,10 @@
 
 @push('js') 
 
-<script src="{{asset('assets/compiled/js/tabla-usuarios.js')}}"></script>
+<script>
+    var route_departamento = '{{ route("departamento.data") }}'
+</script>
+
+<script src="{{asset('assets/compiled/js/tabla-departamento.js')}}"></script>
 
 @endpush 

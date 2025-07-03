@@ -19,18 +19,19 @@
                     <div class="row">
                         <div class="col-md-6 col-12">
                             <div class="form-group">
-                                <label class="form-label" for="">Nombre del Proveedor</label>
-                                <input type="text" id="" class="form-control" placeholder="Ingrese el Nombre del Proveedor" name="">
+                                <label class="form-label" for="nb_auxiliar">Nombre del Proveedor</label>
+                                <input type="text" id="nb_auxiliar" class="form-control" 
+                                placeholder="Ingrese el Nombre del Proveedor" name="nb_auxiliar">
                             </div>
                         </div>
 
                         <div class="col-md-6 col-12">
                             <div class="form-group">
-                                <label class="form-label" for="">Tipo de Proveedor</label>
-                                <select class="form-select" id="">
+                                <label class="form-label" for="cod_tipo_auxiliar">Tipo de Proveedor</label>
+                                <select class="form-select" id="cod_tipo_auxiliar" name="cod_tipo_auxiliar">
                                     <option value="">---</option>
-                                    <option value="0">PROSER</option>
-                                    <option value="1">COMIS</option>
+                                    <option value="PROSER">PROSER</option>
+                                    <option value="COMIS">COMIS</option>
                                 </select>
                             </div>
                         </div>
@@ -39,15 +40,17 @@
                     <div class="row mt-2">
                         <div class="col-md-6 col-12">
                             <div class="form-group">
-                                <label class="form-label" for="" >RIF del Proveedor</label>
-                                <input type="text" id="" class="form-control" placeholder="Ingrese el RIF del Proveedor" name="">
+                                <label class="form-label" for="rif" >RIF del Proveedor</label>
+                                <input type="text" id="rif" class="form-control" 
+                                placeholder="Ingrese el RIF del Proveedor" name="rif">
                             </div>
                         </div>
 
                         <div class="col-md-6 col-12">
                             <div class="form-group">
-                                <label class="form-label" for="" >NIT del Proveedor</label>
-                                <input type="text" id="" class="form-control" placeholder="Ingrese el NIT del Proveedor" name="">
+                                <label class="form-label" for="nit" >NIT del Proveedor</label>
+                                <input type="text" id="nit" class="form-control" 
+                                placeholder="Ingrese el NIT del Proveedor" name="nit">
                             </div>
                         </div>
 
@@ -65,10 +68,9 @@
             <div class="card">
                 <div class="card-body pb-0">
                     <div class="table">
-                        <table class="table table-striped" id="tabla_proveedores">
+                        <table class="table table-striped" id="tabla_proveedor">
                             <thead >
                                 <tr>
-                                    <th class="text-center">Acciones</th>
                                     <th class="text-center">Nombre del Proveedor</th>
                                     <th class="text-center">Código del Proveedor</th>
                                     <th class="text-center">RIF</th>
@@ -97,6 +99,10 @@
 
 @push('js') 
 
-<script src="{{asset('assets/compiled/js/tabla-usuarios.js')}}"></script>
+<script>
+    var route_proveedor = '{{ route("proveedor.data") }}'
+</script>
+
+<script src="{{asset('assets/compiled/js/tabla-proveedor.js')}}"></script>
 
 @endpush 

@@ -66,6 +66,7 @@ Route::controller(EmpresasController::class)->group(function () {
     Route::get('/mostrar/empresa', 'MostrarEmpresas')->name('gestiones.empresas.registros.obtener');
     Route::get('/agregar/empresa', 'AgregarEmpresas')->name('gestiones.empresas.agregar.empresas');
     Route::get('/editar/empresa', 'EditarEmpresas')->name('gestiones.empresas.editar.empresas');
+    Route::get('/editar/empresa', 'DataEmpresa')->name('empresa.data');
 
     Route::get('empresas/index', 'BuscarEmpresas')->name('buscar.empresas');
 });
@@ -74,6 +75,7 @@ Route::controller(DepartamentosController::class)->group(function () {
     Route::get('/mostrar/departamento', 'MostrarDepartamentos')->name('gestiones.departamentos.registros.obtener');
     Route::get('/agregar/departamento', 'AgregarDepartamentos')->name('gestiones.departamentos.agregar.departamentos');
     Route::get('/editar/departamento', 'EditarDepartamentos')->name('gestiones.departamentos.editar.departamentos');
+    Route::get('/editar/departamento', 'DataDepartamento')->name('departamento.data');
 
     Route::get('departamento/gerencia/index', 'BuscarDepartamentoGerencia')->name('buscar.departamento.gerencia');
 });
@@ -92,6 +94,8 @@ Route::controller(ProveedoresController::class)->group(function () {
     Route::get('/mostrar/proveedor', 'MostrarProveedores')->name('gestiones.proveedores.registros.obtener');
     Route::get('/agregar/proveedor', 'AgregarProveedores')->name('gestiones.proveedores.agregar.proveedores');
     Route::get('/editar/proveedor', 'EditarProveedores')->name('gestiones.proveedores.editar.proveedores');
+    Route::get('/editar/proveedor', 'DataProveedor')->name('proveedor.data');
+
     Route::get('proveedores/index', 'BuscarProveedores')->name('buscar.proveedores');
 });
 
@@ -103,6 +107,8 @@ Route::controller(SucursalesController::class)->group(function () {
     Route::get('/mostrar/sucursal', 'MostrarSucursales')->name('gestiones.sucursales.registros.obtener');
     Route::get('/agregar/sucursal', 'AgregarSucursales')->name('gestiones.sucursales.agregar.sucursal');
     Route::get('/editar/sucursal', 'EditarSucursales')->name('gestiones.sucursales.editar.sucursal');
+    Route::get('/editar/sucursal', 'DataSucursal')->name('sucursal.data');
+
     Route::get('sucursales/empresa/index', 'BuscarSucursalesEmpresa')->name('buscar.sucursales.empresa');
 });
 
@@ -110,6 +116,7 @@ Route::controller(DireccionController::class)->group(function () {
     Route::get('/mostrar/direccion', 'MostrarDirecciones')->name('gestiones.direcciones.registros.obtener');
     Route::get('/agregar/direccion', 'AgregarDirecciones')->name('gestiones.direcciones.agregar.direccion');
     Route::get('/editar/direccion', 'EditarDirecciones')->name('gestiones.direcciones.editar.direccion');
+    Route::get('/editar/direccion', 'DataDireccion')->name('direccion.data');
     Route::get('direccion/empresa/index', 'BuscarDireccionEmpresa')->name('buscar.direccion.empresa');
 });
 
@@ -117,6 +124,8 @@ Route::controller(GerenciasController::class)->group(function () {
     Route::get('/mostrar/gerencia', 'MostrarGerencias')->name('gestiones.gerencias.registros.obtener');
     Route::get('/agregar/gerencia', 'AgregarGerencias')->name('gestiones.gerencias.agregar.gerencia');
     Route::get('/editar/gerencia', 'EditarGerencias')->name('gestiones.gerencias.editar.gerencia');
+    Route::get('/editar/gerencia', 'DataGerencia')->name('gerencia.data');
+    
     Route::get('gerencia/direccion/index', 'BuscarGerenciasDireccion')->name('buscar.gerencia.direccion');
 });
 
