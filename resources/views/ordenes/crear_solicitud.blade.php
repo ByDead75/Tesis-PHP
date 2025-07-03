@@ -59,7 +59,7 @@
                                         <div class="col-md-4 col-12">
                                             <div class="form-group">
                                                 <label class="form-label text-center d-block" for="nombre_solicitante">Nombre y Apellido</label>
-                                                    <p class="form-control-static text-center d-block" id="nombre_solicitante" name="nombre_solicitante">{{ $nombre }}</p>
+                                                    <p class="form-control-static text-center" id="nombre_solicitante" name="nombre_solicitante">{{ $nombre }}</p>
                                                 <input type="hidden" id="id_solicitante" class="form-control" name="id_solicitante" value="{{ $cedula }}">
                                             </div>
                                         </div>
@@ -75,13 +75,8 @@
                                         <div class="col-md-4 col-12">
                                             <div class="form-group">
                                                 <label  class="form-label text-center d-block" for="fecha">Fecha de Solicitud</label>
-<<<<<<< Updated upstream
-                                                <p class="form-control-static text-center d-block" name="fecha" id="fecha">{{now()->format('d-m-Y')}}</p>
-                                                <input type="hidden" id="fecha_solicitud" class="form-control"  name="fecha_solicitud" value="{{ now()->format('Y-m-d') }}">
-=======
-                                                <p class="form-control-static text-center d-block" name="fecha" id="fecha" val>{{now()->format('d-m-Y')}}</p>
+                                                <p class="form-control-static text-center" name="fecha" id="fecha" val>{{now()->format('d-m-Y')}}</p>
                                                 <input type="hidden" id="fecha_solicitud" class="form-control" name="fecha_solicitud" value="{{ now()->format('Y-m-d') }}">
->>>>>>> Stashed changes
                                             </div>
                                         </div>
                                     </div>

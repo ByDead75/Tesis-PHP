@@ -60,7 +60,7 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label class="form-label text-center d-block" for="nombre_solicitante">Nombre y Apellido</label>
-                                            <p class="form-control-static text-center d-block" id="nombre_solicitante" name="nombre_solicitante">{{ old('nombre_solicitante', $solicitud->nombre_solicitante) }}</p>
+                                            <p class="form-control-static text-center" id="nombre_solicitante" name="nombre_solicitante">{{ old('nombre_solicitante', $solicitud->nombre_solicitante) }}</p>
                                             <input type="hidden" id="id_solicitante" class="form-control"  name="id_solicitante" value="{{ old('id_solicitante', $solicitud->id_solicitante) }}">
                                         </div>
                                     </div>
@@ -76,7 +76,7 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label  class="form-label text-center d-block" for="fecha">Fecha de Solicitud</label>
-                                            <p class="form-control-static text-center d-block" name="fecha" id="fecha">{{ old('fecha', \Carbon\Carbon::parse($solicitud->fecha_solicitud)->format('d-m-Y')) }}</p>
+                                            <p class="form-control-static text-center" name="fecha" id="fecha">{{ old('fecha', \Carbon\Carbon::parse($solicitud->fecha_solicitud)->format('d-m-Y')) }}</p>
                                             <input type="hidden" id="fecha_solicitud" class="form-control"  name="fecha_solicitud" value="{{  \Carbon\Carbon::parse($solicitud->fecha_solicitud)->format('Y-m-d') }}">
                                         </div>
                                     </div>

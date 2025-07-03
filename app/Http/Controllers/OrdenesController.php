@@ -10,6 +10,7 @@ use App\Models\Sucursales;
 use App\Models\Empresa;
 use App\Models\Proveedores;
 use App\Models\Solicitudes;
+use App\Services\DocumentoService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
@@ -34,35 +35,29 @@ class OrdenesController extends Controller
     public function GuardarSolicitud(Request $request){
 
         $request->validate([
-            /*
             'fecha_solicitud'   => 'required|date',
-            'cod_empresa'   => 'required|int',
-            'centro_de_costo' => 'required|int',
-            'id_solicitante' => 'required|int',*/
-            'concepto_de_pago' => 'nullable|string|max:500',
-            /*
-            'beneficiario_de_pago' => 'nullable|string|max:500',
-            'id_pago' => 'required|int',
-            'id_banco' => 'required|int',          
-            'cuenta' => 'nullable|string|max:20',
-            'factura' => 'nullable|string|max:10',
-            'n_control' => 'nullable|string|max:10',
-            'monto' => 'required|numeric|regex:/^\d{1,28}(\.\d{1,2})?$/',
-            'monto_iva' => 'nullable|numeric|regex:/^\d{1,28}(\.\d{1,2})?$/',
+            'empresa_codigo'   => 'required|int',
+            'centro_costo_empresa_codigo' => 'required|int',
+            'id_solicitante' => 'required|int',
+            'concepto_de_pago' => 'required|string|max:500',
+            'proveedor_codigo' => 'required|string|max:500',
+            'forma_pago' => 'required|int',
+            'proveedor_banco_codigo' => 'required|int',         
+            'proveedor_numero_cuenta' => 'required|string|max:20',
+            'numero_tipo_solicitud' => 'required|string|max:10',
+            'numero_control' => 'required|string|max:20',
+            'monto_neto' => 'required|numeric|regex:/^\d{1,28}(\.\d{1,2})?$/',
+            'monto_iva' => 'required|numeric|regex:/^\d{1,28}(\.\d{1,2})?$/',
             'monto_total' => 'required|numeric|regex:/^\d{1,63}(\.\d{1,2})?$/',
-            'rif' => 'nullable|string|max:20',
-            'cod_sucursal'   => 'required|int',
-            'factupuesto' => 'required|int',
-            'aprobador_sol' => 'required|int',
-            'TipoProveedor' => 'nullable|string|max:20',
-            
-            'cod_departamento' => 'required|int',
-            'observaciones' => 'nullable|string|max:500',
-            'status_solicitud' => 'required|int',
-            'cod_direccion'   => 'required|int',
-            */
+            'proveedor_rif' => 'required|string|max:20',
+            'sucursal_codigo'   => 'required|int',
+            'tipo_solicitud' => 'required|int',
+            'aprobador_codigo' => 'required|int',
+            'tipo_proveedor' => 'required|string|max:20',
         ]);
         
+        //Log::info($request->all());
+        //local.INFO: array
 
         $solicitud = new Solicitudes();
 
@@ -98,8 +93,31 @@ class OrdenesController extends Controller
 
         $solicitud->save();
 
-        return redirect()->route('historial.index')
-        ->with('success', 'Solicitud actualizada correctamente!');
+        //dd($solicitud->id_solicitud);
+
+        foreach($request->get('archivos') as $key => $archivo){
+
+            if ($archivo !== null && !empty($archivo)) {
+
+                $nombre_archivo = $solicitud->id_solicitud.'datosSolicitud.'.pathinfo($archivo, PATHINFO_EXTENSION);
+                    
+                DocumentoService::copiar('public/temp/'.$archivo, 'public/documentos/'.$nombre_archivo);
+
+                DocumentoService::guardar([
+                        'nombre_documento' => $nombre_archivo,
+                        'id_factura' => $solicitud->id_solicitud,
+                        'id_usuario' => $solicitud->id_solicitante,
+                        'tipo_documento' => 1,
+                        'fecha_registro' => $solicitud->fecha_solicitud,
+                        'ruta' => 'public/documentos/',
+                        'observacion' => '',
+                    ]);
+
+                DocumentoService::eliminar('public/temp/'.$archivo);
+            }
+        }
+
+        return redirect()->route('historial.index');
     }
 
 
