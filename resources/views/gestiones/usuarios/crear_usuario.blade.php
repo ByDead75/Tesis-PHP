@@ -11,7 +11,8 @@
         <div>
             <h2 class="card-title text-center mb-4 pb-2">Registro de Nuevos Usuarios</h2>
         </div>
-        <form class="form">
+        <form class="form" action="{{ route('gestiones.usuarios.crear.usuarios') }}" method="POST">
+        @csrf
             <section id="basic-vertical-layouts">
                 <div class="row match-height">
                     <div class="col-md-8 col-12 mx-auto">
@@ -41,14 +42,22 @@
                                             <div class="row mt-2">
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="fecha_nacimiento">Fecha de Nacimiento</label>
-                                                        <input type="date" id="fecha_nacimiento" class="form-control" name="fecha_nacimiento">
-                                                    </div>
-                                                </div>
-                                                <div class="col-6">
-                                                    <div class="form-group">
                                                         <label class="form-label" for="fecha_ingreso">Fecha de Ingreso</label>
                                                         <input type="date" id="fecha_ingreso" class="form-control" name="fecha_ingreso">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <label class="form-label" for="user_master">Tipo de Usuario</label>
+                                                        <select class="form-select" id="user_master" name="user_master">
+                                                            <option value="0">0</option>
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="6">6</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
@@ -111,47 +120,27 @@
                                             </div>
 
                                             <div class="row mt-2">
-                                                <div class="col-6">
+                                                <div class="col-12">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="user_master">Cargo</label>
-                                                        <select class="form-select" id="user_master">
-                                                            <option value="">---</option>
-                                                            <option value="0">Empleado</option>
-                                                            <option value="1">Supervisor</option>
-                                                            <option value="2">Gerente</option>
-                                                            <option value="3">Administrador</option>
-                                                            <option value="4">---</option>
-                                                            <option value="6">---</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-6">
-                                                    <div class="form-group">
-                                                        <label class="form-label" for="tipo_usuario">Tipo de Usuario</label>
-                                                        <select class="form-select" id="tipo_usuario">
-                                                            <option value="">---</option>
-                                                            <option value="1">Empleado</option>
-                                                            <option value="2">Supervisor</option>
-                                                            <option value="3">Gerente</option>
-                                                            <option value="4">Administrador</option>
-                                                        </select>
+                                                        <label class="form-label" for="email">Email</label>
+                                                        <input type="email" id="email" class="form-control"
+                                                            name="email" placeholder="Ingrese el Email">
                                                     </div>
                                                 </div>
                                             </div>
-
                                             <div class="row mt-2">
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="password-vertical">Contraseña</label>
+                                                        <label class="form-label" for="password">Contraseña</label>
                                                         <input type="password" id="password" class="form-control"
-                                                            name="contact" placeholder="Ingrese la Contraseña">
+                                                            name="password" placeholder="Confirme la Contraseña">
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="password-vertical">Confirmar Contraseña</label>
+                                                        <label class="form-label" for="password_confirmar">Confirmar Contraseña</label>
                                                         <input type="password" id="password_confirmar" class="form-control"
-                                                            name="contact" placeholder="Confirme la Contraseña">
+                                                            name="password_confirmar" placeholder="Confirme la Contraseña">
                                                     </div>
                                                 </div>
                                             </div>
@@ -184,8 +173,7 @@
     <script src="{{asset('assets/compiled/js/gerencia_modal.js')}}"></script>
     <script src="{{asset('assets/compiled/js/departamento_modal.js')}}"></script>
     <script src="{{asset('assets/compiled/js/centro_costo_modal.js')}}"></script>
-nombre_apellido_usuario, fecha_nacimiento, fecha_ingreso, empresa, sucursal, 
-direccion, gerencia, departamento, centro_costo, user_master, tipo_usuario, 
+    
     <script>
     $('#crearUsuario').validate({
         rules: { // <-- Alertas para cada input según su ID

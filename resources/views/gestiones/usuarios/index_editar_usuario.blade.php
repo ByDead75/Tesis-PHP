@@ -1,6 +1,6 @@
 @extends('template')
 
-@section('title', 'Listado de Usuarios')
+@section('title', 'Editar Usuarios')
 
 @push('css')
     
@@ -64,7 +64,6 @@
                         <table class="table table-striped" id="tabla_usuario">
                             <thead >
                                 <tr>
-                                    <th class="text-center">Acciones</th>
                                     <th class="text-center">Cédula</th>
                                     <th class="text-center">Nombre y Apellido</th>
                                     <th class="text-center">Departamento</th>
@@ -100,15 +99,5 @@
 </script>
 
 <script src="{{asset('assets/compiled/js/tabla-usuario.js')}}"></script>
-
-<script>
-    function RedireccionEditarUsuario(idUsuario) {
-
-        console.log('Se hizo clic en Editar para el ID de Pago:', idUsuario);
-
-        const baseUrl = "{{ url('/editar/usuario') }}"; // Obtiene la URL base de pagos
-            window.location.href = baseUrl + '/'+idUsuario+'';
-}
-</script>
 
 @endpush 

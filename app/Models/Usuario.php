@@ -31,7 +31,7 @@ class Usuario extends Authenticatable {
         'firma_digitaL',
         'cod_centro_costo',
     ];
-
+    
     protected $hidden = [
         'password',
     ];
@@ -39,6 +39,7 @@ class Usuario extends Authenticatable {
     public function obtener_usuarios($cedula, $nombre, $cod_departamento, 
                                 $fecha_registro, $user_master, $email, $cod_centro_costo) {
                                 $resultado = self::select('usuario.cedula',
+                                    'usuario.id',
                                     'usuario.nombre',
                                     'usuario.cod_empresa',
                                     'usuario.cod_direccion',
@@ -87,7 +88,7 @@ class Usuario extends Authenticatable {
                 }else{
                     $resultado->limit(50);
                 }
-                $resultado = $resultado->orderBy('usuario.id', 'desc')->distinct()->get();
+                $resultado = $resultado->orderBy('usuario.id', 'asc')->distinct()->get();
                 
         return $resultado;
     }
@@ -108,6 +109,27 @@ class Usuario extends Authenticatable {
                             ->join('sucursales', 'usuario.cod_sucursal', '=', 'sucursales.COD_SUCURSAL')
                             ->join('centro_costo', 'usuario.cod_centro_costo', '=', 'centro_costo.id_centro')
                             ->where('usuario.cedula', $id_usuario)
+                            ->first();
+        return $resultado;
+    }
+
+    public function GetUsuariosPorId($id_usuario){
+
+        $resultado = self::select('usuario.id',
+                                'usuario.cedula',
+                                'usuario.nombre',
+                                'usuario.cod_empresa',
+                                'usuario.cod_sucursal',
+                                'usuario.cod_centro_costo',
+
+                                'empresa.nb_empresa as empresa',
+                                'sucursales.NB_SUCURSAL as sucursal',
+                                'centro_costo.centro as centro_de_costo',
+                                )
+                            ->join('empresa', 'usuario.cod_empresa', '=', 'empresa.cod_empresa')
+                            ->join('sucursales', 'usuario.cod_sucursal', '=', 'sucursales.COD_SUCURSAL')
+                            ->join('centro_costo', 'usuario.cod_centro_costo', '=', 'centro_costo.id_centro')
+                            ->where('usuario.id', $id_usuario)
                             ->first();
         return $resultado;
     }

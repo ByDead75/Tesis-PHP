@@ -90,7 +90,7 @@ var centroCosto_empresa = function(url){
 }
 
 var centro_costo_empresa_selecionado = function(codigo, nombre, codigo_aprobador, aprobador){
-    $('#centro_costo_empresa_codigo').val(codigo);
+    $('#centro_costo_codigo').val(codigo);
     $('#centro_costo_empresa').val(nombre);
     $('#aprobador_codigo').val(codigo_aprobador);
     $('#aprobador_nombre').val(aprobador);

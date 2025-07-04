@@ -18,6 +18,11 @@ $(document).ready(function() {
                 },
             },
             columns: [
+                {data: 'actions',
+                    name: 'actions',
+                    orderable: false, 
+                    searchable: false,
+                },
                 {data: 'cedula', name: 'cedula' },
                 {data: 'nombre', name: 'nombre' },
                 {data: 'nombre_departamento', name: 'departamento.nb_departamento' },

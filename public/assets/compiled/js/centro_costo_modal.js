@@ -17,7 +17,7 @@ var centro_costo = function(url){
                     <tr>
                         <td class="text-bold-500">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="centro_costo_codigo" id="centro_costo_codigo" value="634" onclick="centro_costo_selecionado('634', 'CENTRO DE COSTO POR DEFINIR')">
+                                <input class="form-check-input" type="radio" name="centro_costo_codigo" id="centro_costo_codigo" value="634" onclick="centro_costo_selecionado('0', 'CENTRO DE COSTO POR DEFINIR')">
                             </div>
                         </td>
                         <td class="text-bold-500"></td>

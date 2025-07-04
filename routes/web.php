@@ -54,13 +54,19 @@ Route::get('/cambiar/password', [PasswordController::class, 'MuestraCambioPasswo
 //Route::put('/cambio/password', [PasswordController::class, 'CambiarPassword'])->name('index');
 
 
-//Controladores de Gestiones (Usuarios, Proveedores, Departamentos y Empresas)
+//Controladores de Gestiones (Usuarios, Proveedores, Departamentos, Gerencias, Sucursales, Direcciones y Empresas)
 
 Route::controller(UsuariosController::class)->group(function () {
     Route::get('/mostrar/usuario', 'MostrarIndexUsuarios')->name('gestiones.usuarios.registros.obtener');
-    Route::get('/crear/usuario', 'CrearUsuarios')->name('gestiones.usuarios.crear.usuarios');
-    Route::get('/editar/usuario', 'EditarUsuarios')->name('gestiones.usuarios.editar.usuarios');
-    Route::get('/editar/usuario', 'DataUsuario')->name('usuario.data');
+    Route::get('/obtener/usuario', 'DataUsuario')->name('usuario.data');
+
+    Route::get('/usuario/crear', 'MostrarCrearUsuarios')->name('gestiones.usuarios.crear.usuarios');
+    Route::post('/usuario/crear', 'CrearUsuarios')->name('gestiones.usuarios.crear.usuarios');
+
+    Route::get('/editar/usuario/{id_usuario}', 'EditarUsuarioSeleccionado')->name('gestiones.usuarios.editar');
+
+    //Route::get('/usuario/editar/{id}', 'EditarUsuarioSeleccionado')->name('gestiones.usuarios.usuario.editar'); 
+    //Route::put('/usuario/editar/{id}', 'ActualizarUsuarioSeleccionado')->name('gestiones.usuarios.usuario.editar');
 });
 
 Route::controller(EmpresasController::class)->group(function () {
@@ -151,7 +157,6 @@ Route::controller(OrdenesController::class)->group(function () {
 
     Route::get('/solicitud/status/cambiar/{id_solicitud}', 'CambiarStatusSolicitud')->name('ordenes.solicitud.status.cambiar'); 
 });
-
 
 
 
