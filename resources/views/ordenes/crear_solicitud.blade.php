@@ -27,30 +27,30 @@
                                         <div class="col-md-4 col-12">
                                             <div class="form-group">
                                                 <label class="form-label text-center d-block" for="empresa_codigo">Empresa</label>
-                                                <select class="form-select text-center" id="empresa_codigo" name="empresa_codigo" >
-                                                    <option value="">Click para seleccionar su empresa</option>
-                                                    @foreach($empresas as $empresa)
-                                                        <option value="{{ $empresa->cod_empresa }}">{{ $empresa->nb_empresa }}</option>
-                                                    @endforeach
-                                                </select>
+                                                    <select class="form-select text-center" id="empresa_codigo" name="empresa_codigo" >
+                                                        <option value="0">Click para seleccionar su empresa</option>
+                                                        @foreach($empresas as $empresa)
+                                                            <option value="{{ $empresa->cod_empresa }}">{{ $empresa->nb_empresa }}</option>
+                                                        @endforeach
+                                                    </select>
                                             </div>
                                         </div>
 
                                         <div class="col-md-4 col-12">
                                             <div class="form-group">
                                                 <label class="form-label text-center d-block" for="sucursal">Surcusal / Oficina</label>
-                                                <input type="text" id="sucursal" name="sucursal" class="form-control text-center"
-                                                    placeholder="Click para seleccionar su Sucursal" >
-                                                <input type="hidden" id="sucursal_codigo" name="sucursal_codigo" class="form-control">
+                                                    <input type="text" id="sucursal" name="sucursal" class="form-control text-center"
+                                                        placeholder="Click para seleccionar su Sucursal" >
+                                                    <input type="hidden" id="sucursal_codigo" name="sucursal_codigo" class="form-control">
                                             </div>
                                         </div>
 
                                         <div class="col-md-4 col-12">
                                             <div class="form-group">
                                                 <label class="form-label text-center d-block" for="centro_costo_empresa">Centro de Costo / Departamento </label>
-                                                <input type="text" id="centro_costo_empresa" name="centro_costo_empresa" class="form-control text-center"
-                                                    placeholder="Click para seleccionar su Centro de Costo" >
-                                                <input type="hidden" id="centro_costo_empresa_codigo" class="form-control" name="centro_costo_empresa_codigo">
+                                                    <input type="text" id="centro_costo_empresa" name="centro_costo_empresa" class="form-control text-center"
+                                                        placeholder="Click para seleccionar su Centro de Costo" >
+                                                    <input type="hidden" id="centro_costo_empresa_codigo" class="form-control" name="centro_costo_empresa_codigo">
                                             </div>
                                         </div>
                                     </div>
@@ -58,25 +58,25 @@
                                     <div class="row mt-2">
                                         <div class="col-md-4 col-12">
                                             <div class="form-group">
-                                                <label class="form-label text-center d-block" for="nombre_solicitante">Nombre y Apellido</label>
+                                                <label class="form-label text-center d-block" for="nombre_solicitante">Solicitante</label>
                                                     <p class="form-control-static text-center" id="nombre_solicitante" name="nombre_solicitante">{{ $nombre }}</p>
-                                                <input type="hidden" id="id_solicitante" class="form-control" name="id_solicitante" value="{{ $cedula }}">
+                                                    <input type="hidden" id="id_solicitante" class="form-control" name="id_solicitante" value="{{ $cedula }}">
                                             </div>
                                         </div>
 
                                         <div class="col-md-4 col-12">
                                             <div class="form-group">
                                                 <label class="form-label text-center d-block" for="aprobador_nombre">Aprobador del Centro</label>
-                                                <input type="text" class="form-control text-center" id="aprobador_nombre" name='aprobador_nombre' readonly >
-                                                <input type="hidden" id="aprobador_codigo" class="form-control" name="aprobador_codigo">
+                                                    <input type="text" class="form-control text-center" id="aprobador_nombre" name='aprobador_nombre' disabled >
+                                                    <input type="hidden" id="aprobador_codigo" class="form-control" name="aprobador_codigo">
                                             </div>
                                         </div>
 
                                         <div class="col-md-4 col-12">
                                             <div class="form-group">
                                                 <label  class="form-label text-center d-block" for="fecha">Fecha de Solicitud</label>
-                                                <p class="form-control-static text-center" name="fecha" id="fecha" val>{{now()->format('d-m-Y')}}</p>
-                                                <input type="hidden" id="fecha_solicitud" class="form-control" name="fecha_solicitud" value="{{ now()->format('Y-m-d') }}">
+                                                    <p class="form-control-static text-center" name="fecha" id="fecha" val>{{now()->format('d-m-Y')}}</p>
+                                                    <input type="hidden" id="fecha_solicitud" class="form-control" name="fecha_solicitud" value="{{ now()->format('Y-m-d') }}">
                                             </div>
                                         </div>
                                     </div>
@@ -100,17 +100,17 @@
                                         <div class="col-md-4 col-12">
                                             <div class="form-group">
                                                 <label for="tipo_proveedor" class="form-label text-center d-block">Tipo de Proveedor</label>
-                                                <input type="text" id="tipo_proveedor" class="form-control text-center" 
-                                                placeholder="Seleccione el proveedor" name="tipo_proveedor" readonly >
+                                                    <input type="text" id="tipo_proveedor" class="form-control text-center" 
+                                                    placeholder="Seleccione el proveedor" name="tipo_proveedor" readonly >
                                             </div>
                                         </div>
 
                                         <div class="col-md-4 col-12">
                                             <div class="form-group">
                                                 <label for="proveedor_nombre" class="form-label text-center d-block">Nombre o Razón Social / Beneficiario del Pago</label>
-                                                <input type="text" id="proveedor_nombre" class="form-control text-center" 
-                                                    placeholder="Clic para seleccionar un proveedor" name="proveedor_nombre" >
-                                                <input type="hidden" id="proveedor_codigo" class="form-control" name="proveedor_codigo">
+                                                    <input type="text" id="proveedor_nombre" class="form-control text-center" 
+                                                        placeholder="Clic para seleccionar un proveedor" name="proveedor_nombre" >
+                                                    <input type="hidden" id="proveedor_codigo" class="form-control" name="proveedor_codigo">
                                             </div>
                                         </div>
 
@@ -130,8 +130,8 @@
                                         <div class="col-md-4 col-12">
                                             <div class="form-group">
                                                 <label for="proveedor_rif" class="form-label text-center d-block">Rif del Proveedor</label>
-                                                <input type="text" id="proveedor_rif" class="form-control text-center" name="proveedor_rif" 
-                                                placeholder="Seleccione el proveedor" readonly >
+                                                    <input type="text" id="proveedor_rif" class="form-control text-center" name="proveedor_rif" 
+                                                    placeholder="Seleccione el proveedor" readonly >
                                             </div>
                                         </div>
 
@@ -149,10 +149,11 @@
                                         <div class="col-md-4 col-12">
                                             <div class="form-group">
                                                 <label for="numero_tipo_solicitud" class="form-label text-center d-block">N° de la Factura/Presupuesto</label>
-                                                <input type="text" id="numero_tipo_solicitud" class="form-control text-center" name="numero_tipo_solicitud" 
-                                                placeholder="Ingrese el N° de la Factura" maxlength="10" oninput="checkLength1(this)">
-                                                <div id="alert" style="color: red; display: none;">El número de cuenta no puede exceder los 10 caracteres.</div>
-                                                <div id="limit-message1" style="color: red; display: none;">Has alcanzado el límite de caracteres.</div>
+                                                    <input type="text" id="numero_tipo_solicitud" class="form-control text-center" name="numero_tipo_solicitud" 
+                                                    placeholder="Ingrese el Número de la Factura" maxlength="10" oninput="checkLength1(this)">
+                                                        <div id="limit-message1" style="color: red; display: none;">
+                                                            El número de factura no puede exceder los 10 caracteres.
+                                                        </div>
                                             </div>
                                         </div>
                                     </div>
@@ -161,26 +162,28 @@
                                         <div class="col-md-4 col-12">
                                             <div class="form-group">
                                                 <label for="proveedor_banco" class="form-label text-center d-block">Banco del Proveedor</label>
-                                                <input type="text" id="proveedor_banco" class="form-control text-center" placeholder="Clic para seleccionar un banco" name="proveedor_banco" >
-                                                <input type="hidden" id="proveedor_banco_codigo" class="form-control" name="proveedor_banco_codigo">
+                                                    <input type="text" id="proveedor_banco" class="form-control text-center" placeholder="Clic para seleccionar un banco" name="proveedor_banco" >
+                                                    <input type="hidden" id="proveedor_banco_codigo" class="form-control" name="proveedor_banco_codigo">
                                             </div>
                                         </div>
 
                                         <div class="col-md-4 col-12">
                                             <div class="form-group">
                                                 <label for="proveedor_numero_cuenta" class="form-label text-center d-block">N° de Cuenta</label>
-                                                <input type="number" id="proveedor_numero_cuenta" class="form-control text-center" name="proveedor_numero_cuenta" 
-                                                placeholder="Seleccione el banco" readonly>
+                                                    <input type="number" id="proveedor_numero_cuenta" class="form-control text-center" name="proveedor_numero_cuenta" 
+                                                    placeholder="Seleccione el banco" readonly>
                                             </div>
                                         </div>
 
                                         <div class="col-md-4 col-12">
                                             <div class="form-group">
                                                 <label for="numero_control" class="form-label text-center d-block">N° de Control</label>
-                                                <input type="text" id="numero_control" class="form-control text-center" name="numero_control" 
-                                                placeholder="Ingrese el N° de Control" maxlength="20" oninput="checkLength2(this)">
-                                                <div id="alert" style="color: red; display: none;">El número de cuenta no puede exceder los 20 caracteres.</div>
-                                                <div id="limit-message2" style="color: red; display: none;">Has alcanzado el límite de caracteres.</div>
+                                                    <input type="text" id="numero_control" class="form-control text-center" name="numero_control" 
+                                                    placeholder="Ingrese el Número de Control" maxlength="20" oninput="checkLength2(this)">
+                                                        <div id="alert" style="color: red; display: none;"></div>
+                                                        <div id="limit-message2" style="color: red; display: none;">
+                                                            El número de cuenta no puede exceder los 20 caracteres.
+                                                        </div>
                                             </div>
                                         </div>
                                     </div>
@@ -189,59 +192,53 @@
                                         <div class="col-md-4 col-12">
                                             <div class="form-group">
                                                 <label for="monto_neto" class="form-label text-center d-block">Monto Neto - ej: 1200.00</label>
-                                                <input type="number" step="any" id="monto_neto" class="form-control text-center" name="monto_neto" 
-                                                placeholder="" >
-                                                
+                                                    <input type="number" step="any" min="0" id="monto_neto" class="form-control text-center" name="monto_neto" placeholder="Ingrese el Monto Neto">
                                             </div>
                                         </div>
 
                                         <div class="col-md-4 col-12">
                                             <div class="form-group">
                                                 <label for="monto_iva" class="form-label text-center d-block">Monto del IVA - ej: 144.00</label>
-                                                <input type="number" step="any" id="monto_iva" class="form-control text-center" name="monto_iva" placeholder="">
+                                                    <input type="number" step="any" min="0" id="monto_iva" class="form-control text-center" name="monto_iva" placeholder="Ingrese el Monto del IVA">
                                             </div>
                                         </div>
 
                                         <div class="col-md-4 col-12">
                                             <div class="form-group">
                                                 <label for="monto_total" class="form-label text-center d-block">Monto Total</label>
-                                                <input type="number" step="any" id="monto_total" class="form-control text-center" name="monto_total" >
+                                                    <input type="number" step="any" min="0" id="monto_total" class="form-control text-center" name="monto_total" >
                                             </div>
                                         </div>
                                     </div>
 
-                                        <div class="row mt-2">
+                                    <div class="row mt-2">
+                                        <div>
+                                            <h3 class="card-title text-center pt-4 pb-2">Concepto de Pago</h3>
+                                        </div>
+
+                                        <div class="form-group mt-2">
+                                            <textarea class="form-control" id="concepto_de_pago" name="concepto_de_pago" rows="3" ></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="row pt-4 pb-2">
+                                        <div class="col-12">
                                             <div>
-                                                <h3 class="card-title text-center pt-4 pb-2">Concepto de Pago</h3>
+                                                <h5 class="card-title">Subir Archivo (Opcional)</h5>
                                             </div>
-
-                                            <div class="form-group mt-2">
-                                                <textarea class="form-control" id="concepto_de_pago" name="concepto_de_pago" rows="3" ></textarea>
-                                            </div>
-                                        </div>
-
-                                        <div class="row pt-4 pb-2">
-                                            <div class="col-12">
-                                                <div class="card">
-                                                    <div class="card-content">
-                                                        <div>
-                                                            <h5 class="card-title">Subir Archivo (Opcional)</h5>
-                                                        </div>
-                                                        <div class="card-body">
-                                                            <p class="card-text">Los archivos a subir deben estar en formato PDF, PNG, JPEG, JPG...</p>
-                                                            <input type="file" id="archivos" name="archivos[]" class="basic-filepond" multiple>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                            <div class="card-body">
+                                                <p class="card-text">Los archivos a subir deben estar en formato PDF, PNG, JPEG, JPG...</p>
+                                                    <input type="file" id="archivos" name="archivos[]" class="basic-filepond" multiple>
                                             </div>
                                         </div>
+                                    </div>
 
-                                        <div class="row">
-                                            <div class="col-12 d-flex justify-content-between align-items-center">
-                                                <button type="button" class="btn btn-secondary me-1 mb-1" id="btn_regresar" name="btn_regresar">Regresar</button>
-                                                <button type="submit" class="btn btn-primary me-1 mb-1">Enviar Solicitud</button>
-                                            </div>
+                                    <div class="row">
+                                        <div class="col-12 d-flex justify-content-between align-items-center">
+                                            <button type="button" class="btn btn-secondary me-1 mb-1" id="btn_regresar" name="btn_regresar">Regresar</button>
+                                            <button type="submit" class="btn btn-primary me-1 mb-1">Enviar Solicitud</button>
                                         </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -419,7 +416,8 @@
     <script>
         document.getElementById('btn_regresar').addEventListener('click', function() {
             if(confirm('¿Está seguro de que desea salir? Los cambios no guardados se perderán.')) {
-                window.location.href="{{ route('index') }}";
+                window.history.back();
+                
             }
         });
     </script>

@@ -315,4 +315,63 @@ class OrdenesController extends Controller
         return redirect()->route('ordenes.solicitud.registros');
     }
     
+    // Funciones de Aprobar/Canbiar Status
+
+    public function MostrarIndexStatusSolicitudes ()
+    {
+        return view('ordenes.index_status_solicitudes');
+    }
+
+    public function RegistrosStatusSolicitudes (Request $request)
+    {
+
+        if ($request->ajax()) {
+            
+            $solicitudes_model = new Solicitudes;
+            $solicitudes = $solicitudes_model->get_solicitudes_por_aprobacion($request->id_solicitud, 
+                                                                            $request->id_solicitante, 
+                                                                            $request->fecha_desde,
+                                                                            $request->fecha_hasta,
+                                                            );
+
+            $datatables = DataTables::of($solicitudes)
+                ->addIndexColumn()
+                ->addColumn('actions', function($row) {
+                    $button = '<div class="btn-group" role="group">
+                                    <a class="btn btn-sm btn-primary icon"  onclick="RedireccionStatusSolicitud('.$row->id_solicitud.') "title="Clic para modificar status">
+                                        <i class="fas fa-edit"></i> 
+                                    </a>
+                                </div>';
+                    return $button;
+                })
+                ->addColumn('status_solicitud', function ($row) {
+                    $td = '<span class="badge '.StatusHelper::getStatusColor($row->status_solicitud).'">'.StatusHelper::getStatus($row->status_solicitud).'</span>';
+                    return $td;
+                })
+                ->rawColumns(['actions', 'status_solicitud'])
+                ->make(true);
+
+            return $datatables;
+        }
+        
+    }
+
+    public function CambiarStatusSolicitud(Request $request, $id_solicitud) 
+    {   
+        
+        $solicitudes_model = new Solicitudes;
+        $solicitud = $solicitudes_model->GetSolicitudesPorId($id_solicitud);
+
+        $documento_model = new Documento;
+        $documentos = $documento_model->GetDocumentoPorId($id_solicitud);
+
+
+        if (!$solicitud) {
+            abort(404, 'Solicitud de pago no encontrada.');
+        }
+
+        return view('ordenes.status_solicitud', compact('solicitud', 'documentos'));
+
+        
+    }
 }

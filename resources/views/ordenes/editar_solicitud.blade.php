@@ -28,30 +28,30 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label class="form-label text-center d-block" for="disabledInput">Empresa</label>
-                                            <select class="form-select text-center" id="empresa_codigo" name="empresa_codigo" required>
-                                                <option value="{{ old('empresa_codigo', $solicitud->cod_empresa) }}">{{ old('nombre_empresa', $solicitud->nombre_empresa) }}</option>
-                                                @foreach($empresas as $empresa)
-                                                    <option value="{{ $empresa->cod_empresa }}">{{ $empresa->nb_empresa }}</option>
-                                                @endforeach
-                                            </select>
+                                                <select class="form-select text-center" id="empresa_codigo" name="empresa_codigo" required>
+                                                    <option value="{{ old('empresa_codigo', $solicitud->cod_empresa) }}">{{ old('nombre_empresa', $solicitud->nombre_empresa) }}</option>
+                                                    @foreach($empresas as $empresa)
+                                                        <option value="{{ $empresa->cod_empresa }}">{{ $empresa->nb_empresa }}</option>
+                                                    @endforeach
+                                                </select>
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label class="form-label text-center d-block" for="disabledInput">Surcusal / Oficina</label>
-                                            <input type="text" id="sucursal" name="sucursal" class="form-control text-center" placeholder="Click para seleccionar la Sucursal" 
-                                                    value="{{ old('sucursal', $solicitud->sucursal) }}">
-                                            <input type="hidden" id="sucursal_codigo" name="sucursal_codigo" class="form-control" 
-                                                    value="{{ old('sucursal_codigo', $solicitud->cod_sucursal) }}">
+                                                <input type="text" id="sucursal" name="sucursal" class="form-control text-center" placeholder="Click para seleccionar la Sucursal" 
+                                                        value="{{ old('sucursal', $solicitud->sucursal) }}">
+                                                <input type="hidden" id="sucursal_codigo" name="sucursal_codigo" class="form-control" 
+                                                        value="{{ old('sucursal_codigo', $solicitud->cod_sucursal) }}">
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label class="form-label text-center d-block" for="centro_costo_empresa">Centro de Costo / Departamento </label>
-                                            <input type="text" id="centro_costo_empresa" class="form-control text-center" placeholder="Click para seleccionar el Centro de Costo" name="centro_costo_empresa"
-                                                    value="{{ old('centro_costo_empresa', $solicitud->nombre_centro_costo) }}">
-                                            <input type="hidden" id="centro_costo_empresa_codigo" name="centro_costo_empresa_codigo"  class="form-control"  
-                                                    value="{{ old('centro_costo_empresa_codigo', $solicitud->codigo_centro_costo) }}">
+                                                <input type="text" id="centro_costo_empresa" class="form-control text-center" placeholder="Click para seleccionar el Centro de Costo" name="centro_costo_empresa"
+                                                        value="{{ old('centro_costo_empresa', $solicitud->nombre_centro_costo) }}">
+                                                <input type="hidden" id="centro_costo_empresa_codigo" name="centro_costo_empresa_codigo"  class="form-control"  
+                                                        value="{{ old('centro_costo_empresa_codigo', $solicitud->codigo_centro_costo) }}">
                                         </div>
                                     </div>
                                 </div>
@@ -59,25 +59,25 @@
                                 <div class="row mt-2">
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
-                                            <label class="form-label text-center d-block" for="nombre_solicitante">Nombre y Apellido</label>
-                                            <p class="form-control-static text-center" id="nombre_solicitante" name="nombre_solicitante">{{ old('nombre_solicitante', $solicitud->nombre_solicitante) }}</p>
-                                            <input type="hidden" id="id_solicitante" class="form-control"  name="id_solicitante" value="{{ old('id_solicitante', $solicitud->id_solicitante) }}">
+                                            <label class="form-label text-center d-block" for="nombre_solicitante">Solicitante</label>
+                                                <p class="form-control-static text-center" id="nombre_solicitante" name="nombre_solicitante">{{ old('nombre_solicitante', $solicitud->nombre_solicitante) }}</p>
+                                                <input type="hidden" id="id_solicitante" class="form-control"  name="id_solicitante" value="{{ old('id_solicitante', $solicitud->id_solicitante) }}">
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label class="form-label text-center d-block" for="aprobador_nombre">Aprobador del Centro</label>
-                                            <input type="text" class="form-control text-center" id="aprobador_nombre" name='aprobador_nombre' 
-                                                    value="{{ old('aprobador_nombre', $solicitud->nombre_aprobador) }}" readonly>
-                                                <input type="hidden" id="aprobador_codigo"  name="aprobador_codigo" class="form-control" 
-                                                        value="{{ old('aprobador_codigo', $solicitud->aprobador_sol) }}">
+                                                <input type="text" class="form-control text-center" id="aprobador_nombre" name='aprobador_nombre' 
+                                                        value="{{ old('aprobador_nombre', $solicitud->nombre_aprobador) }}" readonly>
+                                                    <input type="hidden" id="aprobador_codigo"  name="aprobador_codigo" class="form-control" 
+                                                            value="{{ old('aprobador_codigo', $solicitud->aprobador_sol) }}">
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label  class="form-label text-center d-block" for="fecha">Fecha de Solicitud</label>
-                                            <p class="form-control-static text-center" name="fecha" id="fecha">{{ old('fecha', \Carbon\Carbon::parse($solicitud->fecha_solicitud)->format('d-m-Y')) }}</p>
-                                            <input type="hidden" id="fecha_solicitud" class="form-control"  name="fecha_solicitud" value="{{  \Carbon\Carbon::parse($solicitud->fecha_solicitud)->format('Y-m-d') }}">
+                                                <p class="form-control-static text-center" name="fecha" id="fecha">{{ old('fecha', \Carbon\Carbon::parse($solicitud->fecha_solicitud)->format('d-m-Y')) }}</p>
+                                                <input type="hidden" id="fecha_solicitud" class="form-control"  name="fecha_solicitud" value="{{  \Carbon\Carbon::parse($solicitud->fecha_solicitud)->format('Y-m-d') }}">
                                         </div>
                                     </div>
                                 </div>
@@ -101,17 +101,17 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="tipo_proveedor" class="form-label text-center d-block">Tipo de Proveedor</label>
-                                            <input type="text" id="tipo_proveedor" class="form-control text-center" placeholder="Seleccione el proveedor" name="tipo_proveedor" readonly 
-                                                    value="{{ old('tipo_proveedor', $solicitud->TipoProveedor) }}">
+                                                <input type="text" id="tipo_proveedor" class="form-control text-center" placeholder="Seleccione el proveedor" name="tipo_proveedor" readonly 
+                                                        value="{{ old('tipo_proveedor', $solicitud->TipoProveedor) }}">
                                         </div>
                                     </div>
 
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="proveedor_nombre" class="form-label text-center d-block">Nombre o Razón Social / Beneficiario del Pago</label>
-                                            <input type="text" id="proveedor_nombre" class="form-control text-center" placeholder="Clic para seleccionar un proveedor" name="proveedor_nombre"
-                                                    value="{{ old('proveedor_nombre', $solicitud->nombre_proveedor) }}">
-                                            <input type="hidden" id="proveedor_codigo" class="form-control"  name="proveedor_codigo" value="{{ old('proveedor_codigo', $solicitud->beneficiario_de_pago) }}">
+                                                <input type="text" id="proveedor_nombre" class="form-control text-center" placeholder="Clic para seleccionar un proveedor" name="proveedor_nombre"
+                                                        value="{{ old('proveedor_nombre', $solicitud->nombre_proveedor) }}">
+                                                <input type="hidden" id="proveedor_codigo" class="form-control"  name="proveedor_codigo" value="{{ old('proveedor_codigo', $solicitud->beneficiario_de_pago) }}">
                                         </div>
                                     </div>
 
@@ -131,9 +131,8 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="proveedor_rif" class="form-label text-center d-block">Rif del Proveedor</label>
-                                            <input type="text" id="proveedor_rif" class="form-control text-center" name="proveedor_rif" 
-                                                    value="{{ old('proveedor_rif', $solicitud->rif) }}"
-                                                    placeholder="Seleccione el proveedor" readonly>
+                                                <input type="text" id="proveedor_rif" class="form-control text-center" name="proveedor_rif" 
+                                                        value="{{ old('proveedor_rif', $solicitud->rif) }}" readonly>
                                         </div>
                                     </div>
 
@@ -151,8 +150,8 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="numero_tipo_solicitud" class="form-label text-center d-block">N° de la Factura/Presupuesto</label>
-                                            <input type="text" id="numero_tipo_solicitud" class="form-control text-center" name="numero_tipo_solicitud" 
-                                                    value="{{ old('numero_tipo_solicitud', $solicitud->factura) }}">
+                                                <input type="text" id="numero_tipo_solicitud" class="form-control text-center" name="numero_tipo_solicitud" 
+                                                        value="{{ old('numero_tipo_solicitud', $solicitud->factura) }}">
                                         </div>
                                     </div>
                                 </div>
@@ -161,25 +160,25 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="proveedor_banco" class="form-label text-center d-block">Banco del Proveedor</label>
-                                            <input type="text" id="proveedor_banco" class="form-control text-center" placeholder="Clic para seleccionar un banco" name="proveedor_banco"
-                                                    value="{{ old('proveedor_banco', $solicitud->banco_nombre) }}">
-                                            <input type="hidden" id="proveedor_banco_codigo" class="form-control"  name="proveedor_banco_codigo" value="{{ old('proveedor_banco_codigo', $solicitud->id_banco) }}">
+                                                <input type="text" id="proveedor_banco" class="form-control text-center" name="proveedor_banco"
+                                                        value="{{ old('proveedor_banco', $solicitud->banco_nombre) }}">
+                                                <input type="hidden" id="proveedor_banco_codigo" class="form-control"  name="proveedor_banco_codigo" value="{{ old('proveedor_banco_codigo', $solicitud->id_banco) }}">
                                         </div>
                                     </div>
 
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="proveedor_numero_cuenta" class="form-label text-center d-block">N° de Cuenta</label>
-                                            <input type="number" id="proveedor_numero_cuenta" class="form-control text-center" name="proveedor_numero_cuenta" placeholder="Seleccione el banco" readonly
-                                                    value="{{ old('proveedor_numero_cuenta', $solicitud->cuenta) }}">
+                                                <input type="number" id="proveedor_numero_cuenta" class="form-control text-center" name="proveedor_numero_cuenta" readonly
+                                                        value="{{ old('proveedor_numero_cuenta', $solicitud->cuenta) }}">
                                         </div>
                                     </div>
 
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="numero_control" class="form-label text-center d-block">N° de Control</label>
-                                            <input type="text" id="numero_control" class="form-control text-center" name="numero_control" 
-                                                    value="{{ old('numero_control', $solicitud->n_control) }}">
+                                                <input type="text" id="numero_control" class="form-control text-center" name="numero_control" 
+                                                        value="{{ old('numero_control', $solicitud->n_control) }}">
                                         </div>
                                     </div>
                                 </div>
@@ -188,23 +187,23 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="monto_neto" class="form-label text-center d-block">Monto Neto - ej: 1200.00</label>
-                                            <input type="number" step="any" id="monto_neto" class="form-control text-center" name="monto_neto" 
-                                                    value="{{ old('monto_neto', $solicitud->monto) }}">
+                                                <input type="number" step="any" min="0" id="monto_neto" class="form-control text-center" name="monto_neto" 
+                                                        value="{{ old('monto_neto', $solicitud->monto) }}">
                                         </div>
                                     </div>
 
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="monto_iva" class="form-label text-center d-block">Monto del IVA - ej: 144.00</label>
-                                            <input type="number" step="any" id="monto_iva" class="form-control text-center" name="monto_iva" 
-                                                value="{{ old('monto_iva', $solicitud->monto_iva) }}">
+                                                <input type="number" step="any" min="0" id="monto_iva" class="form-control text-center" name="monto_iva" 
+                                                    value="{{ old('monto_iva', $solicitud->monto_iva) }}">
                                         </div>
                                     </div>
 
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="monto_total" class="form-label text-center d-block">Monto Total</label>
-                                            <input type="number" step="any" id="monto_total" class="form-control text-center" name="monto_total" value="{{ old('monto_total', $solicitud->monto_total) }}">
+                                                <input type="number" step="any" min="0" id="monto_total" class="form-control text-center" name="monto_total" value="{{ old('monto_total', $solicitud->monto_total) }}">
                                         </div>
                                     </div>
                                 </div>
@@ -221,30 +220,21 @@
 
                                 <div class="row pt-4 pb-2">
                                     <div class="col-12">
-                                        <div class="card">
-                                            <div class="card-content">
-                                                <div>
-                                                    <h5 class="card-title">Subir Archivo (Opcional)</h5>
-                                                </div>
-                                                <div class="card-body">
-                                                    <p class="card-text">Los archivos a subir deben estar en formato PDF, PNG, JPEG, JPG...</p>
-                                                    <!-- imgBB file uploader -->
-                                                    <input type="file" id="archivos" name="archivos[]" class="basic-filepond" multiple value="">
-                                                    <!-- @foreach($documentos as $documento)
-                                                    {{ old('archivos', $documento->nombre_documento) }}
-                                                    @endforeach-->
-                                                    @if($documentos->isEmpty())
-                                                        <p>No hay documentos cargados para esta solicitud.</p>
-                                                    @else
-                                                        <ul>
-                                                            @foreach($documentos as $documento)
-                                                                <li>{{ $documento->nombre_documento }} - <a href="{{ asset('storage/' . $documento->ruta) }}">Ver</a></li>
-                                                            @endforeach
-                                                        </ul>
-                                                    @endif
-
-                                                </div>
-                                            </div>
+                                        <div>
+                                            <h5 class="card-title">Subir Archivo (Opcional)</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <p class="card-text">Los archivos a subir deben estar en formato PDF, PNG, JPEG, JPG...</p>
+                                            <input type="file" id="archivos" name="archivos[]" class="basic-filepond" multiple value="">
+                                            @if($documentos->isEmpty())
+                                                <p>No hay documentos cargados para esta solicitud.</p>
+                                            @else
+                                                <ul>
+                                                    @foreach($documentos as $documento)
+                                                        <li>{{ $documento->nombre_documento }} - <a href="{{ asset('storage/' . $documento->ruta) }}">Ver</a></li>
+                                                    @endforeach
+                                                </ul>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -326,7 +316,8 @@
     <script>
         document.getElementById('btn_regresar').addEventListener('click', function() {
             if(confirm('¿Está seguro de que desea salir? Los cambios no guardados se perderán.')) {
-                window.location.href="{{ route('index') }}";
+                window.history.back();
+                //window.location.href="{{ route('index') }}";
             }
         });
     </script>

@@ -29,7 +29,9 @@
 
                             <li
                                 class="submenu-item">
-                                <a href="/#" class='submenu-link'>Cambiar Status de Solicitud</a>
+                                <a href="{{ route('ordenes.solicitud.status') }}" 
+                                    class='submenu-link'>Status de Solicitud</a>
+                                
                             </li>
                         </ul>
                         

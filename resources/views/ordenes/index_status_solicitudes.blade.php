@@ -1,6 +1,6 @@
 @extends('template')
 
-@section('title', 'Editar Solicitudes')
+@section('title', 'Status de Solicitudes')
 
 @push('css')
     
@@ -12,36 +12,22 @@
     <section class="section">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title text-center">Registros para Editar Solicitudes</h3>
+                <h3 class="card-title text-center">Registros de Solicitudes por Aprobación</h3>
             </div>
             <div class="card-body pb-0">
                 <form class="mb-4">
                     <div class="row">
-                        <div class="col-md-4 col-12">
+                        <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label class="form-label" for="id_solicitud" >ID de Solicitud</label>
                                 <input type="text" id="id_solicitud" class="form-control" placeholder="Ingrese la ID de la Solicitud" name="id_solicitud">
                             </div>
                         </div>
                         
-                        <div class="col-md-4 col-12">
+                        <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label class="form-label" for="id_solicitante" >ID de Solicitante</label>
                                 <input type="text" id="id_solicitante" class="form-control" placeholder="Ingrese la ID del Solicitante" name="id_solicitante">
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 col-12">
-                            <div class="form-group">
-                                <label class="form-label" for="status_solicitud">Status</label>
-                                    <select class="form-select" id="status_solicitud">
-                                        <option value="">Seleccionar</option>
-                                        <option value="1">POR APROBACION</option>
-                                        <option value="2">APROBADA</option>
-                                        <option value="3">RECHAZADA</option>
-                                        <option value="4">PAGADA</option>
-                                        <option value="5">RECIBIDO ADM</option>
-                                    </select>
                             </div>
                         </div>
                     </div>
@@ -77,7 +63,7 @@
                     <!-- Tabla para el Historial en jQuery -->
 
                     <div class="table">
-                        <table class="table table-striped" id="registros_editar_solicitudes">
+                        <table class="table table-striped" id="registros_status_solicitudes">
                             <thead>
                                 <tr>
                                     <th class="text-center">Acciones</th>
@@ -85,7 +71,7 @@
                                     <th class="text-center">Solicitante</th>
                                     <th class="text-center">ID de Solicitante</th>
                                     <th class="text-center">Fecha de la Solicitud</th>
-                                    <th class="text-center">RIF</th>
+                                    <th class="text-center">Nombre del Proveedor</th>
                                     <th class="text-center">Monto Total</th>
                                     <th class="text-center">Status</th>
                                 </tr>
@@ -113,19 +99,19 @@
 
 @push('js') 
 <script>
-    var route_registros = '{{ route("ordenes.solicitud.registros.obtener") }}'
+    var route_registros_status = '{{ route("ordenes.solicitud.status.obtener") }}'
 </script>
 
 
 
-<script src="{{asset('assets/compiled/js/tabla_editar_solicitudes.js')}}"></script>
+<script src="{{asset('assets/compiled/js/tabla_status_solicitudes.js')}}"></script>
 
 <script>
-    function RedireccionEditarSolicitud(idSolicitud) {
+    function RedireccionStatusSolicitud(idSolicitud) {
 
-        console.log('Se hizo clic en Editar para el ID de Pago:', idSolicitud);
+        console.log('Se hizo clic en el ID de Pago:', idSolicitud);
 
-        const baseUrl = "{{ url('/solicitud/editar') }}";
+        const baseUrl = "{{ url('/solicitud/status/cambiar') }}"; 
             window.location.href = baseUrl + '/'+idSolicitud+'';
 }
 </script>

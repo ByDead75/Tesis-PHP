@@ -86,6 +86,39 @@ class Solicitudes extends Model{
         return $resultado;
     }
 
+
+    public function get_solicitudes_por_aprobacion($id_solicitud, $id_solicitante,  $fecha_desde, $fecha_hasta) {
+        $resultado = self::select('solicitudes.id_pago', 
+                'solicitudes.id_solicitud',
+                'solicitudes.fecha_solicitud',
+                'solicitudes.id_solicitante', 
+                'solicitudes.beneficiario_de_pago',
+                'solicitudes.monto_total',
+                'solicitudes.status_solicitud',
+                'empleados1.nombre as nombre_solicitante',
+                'proveedores.nb_auxiliar as nombre_proveedor')
+                ->join('empleados1', 'solicitudes.id_solicitante', '=', 'empleados1.cedula')
+                ->join('proveedores', 'solicitudes.beneficiario_de_pago', '=', 'proveedores.cod_auxiliar')
+                ->where('solicitudes.status_solicitud', 1);
+                if($id_solicitud != null){
+                    $resultado->where('solicitudes.id_solicitud', $id_solicitud);
+                }
+                if($id_solicitante != null){
+                    $resultado->where('solicitudes.id_solicitante', $id_solicitante);
+                }
+                if ($fecha_desde != null) {
+                    $resultado->whereBetween('solicitudes.fecha_solicitud', [$fecha_desde, $fecha_hasta]);
+                }else {
+                    $resultado->limit(100);
+                }
+
+                $resultado->orderBy('solicitudes.id_solicitud', 'desc')->distinct()
+                ->get();
+
+        return $resultado;
+    }
+
+
     public function GetSolicitudesPorId($id_solicitud) {
         $resultado = self::select('solicitudes.id_solicitud',
                 'solicitudes.fecha_solicitud',

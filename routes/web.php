@@ -145,8 +145,11 @@ Route::controller(OrdenesController::class)->group(function () {
 
     Route::get('/solicitud/editar/{id_solicitud}', 'EditarSolicitudSeleccionada')->name('ordenes.solicitud.editar'); 
     Route::put('/solicitud/editar/{id_solicitud}', 'ActualizarSolicitudSeleccionada')->name('ordenes.solicitud.editar'); 
-    
-    //Route::put('/solicitudes/{id_solicitud}', 'ActualizarSolicitud')->name('ordenes.solicitud.actualizar.seleccionada');
+
+    Route::get('/solicitudes/status', 'MostrarIndexStatusSolicitudes')->name('ordenes.solicitud.status');
+    Route::get('/solicitudes/status/obtener', 'RegistrosStatusSolicitudes')->name('ordenes.solicitud.status.obtener');
+
+    Route::get('/solicitud/status/cambiar/{id_solicitud}', 'CambiarStatusSolicitud')->name('ordenes.solicitud.status.cambiar'); 
 });
 
 
