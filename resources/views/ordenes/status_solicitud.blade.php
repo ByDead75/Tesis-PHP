@@ -216,7 +216,7 @@
                                                     @else
                                                         <ul>
                                                             @foreach($documentos as $documento)
-                                                                <li>{{ $documento->nombre_documento }} - <a href="{{ asset('storage/' . $documento->ruta) }}">Ver</a></li>
+                                                                <li>{{ $documento->nombre_documento }} - <a href="{{ asset('/' . $documento->ruta.$documento->nombre_documento) }}" target="_blank">Ver</a></li>
                                                             @endforeach
                                                         </ul>
                                                     @endif

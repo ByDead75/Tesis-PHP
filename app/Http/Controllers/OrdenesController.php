@@ -110,7 +110,7 @@ class OrdenesController extends Controller
                         'id_usuario' => $solicitud->id_solicitante,
                         'tipo_documento' => 1,
                         'fecha_registro' => $solicitud->fecha_solicitud,
-                        'ruta' => 'public/documentos/',
+                        'ruta' => 'storage/documentos/',
                         'observacion' => '',
                     ]);
 
@@ -304,7 +304,7 @@ class OrdenesController extends Controller
                         'id_usuario' => $solicitud->id_solicitante,
                         'tipo_documento' => 1,
                         'fecha_registro' => $solicitud->fecha_solicitud,
-                        'ruta' => 'public/documentos/',
+                        'ruta' => 'storage/documentos/',
                         'observacion' => '',
                     ]);
 

@@ -17,7 +17,7 @@ var centro_costo = function(url){
                     <tr>
                         <td class="text-bold-500">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="centro_costo_codigo" id="centro_costo_codigo" value="634" onclick="centro_costo_selecionado('0', 'CENTRO DE COSTO POR DEFINIR')">
+                                <input class="form-check-input" type="radio" name="centro_costo_codigo" id="centro_costo_codigo" value="0" onclick="centro_costo_selecionado('0', 'CENTRO DE COSTO POR DEFINIR')">
                             </div>
                         </td>
                         <td class="text-bold-500"></td>
@@ -69,17 +69,9 @@ var centro_costo = function(url){
                 
 
                 new DataTable('#centro_costo_table', {
-                    "language": {
-                    "sLengthMenu": "Mostrar _MENU_ registros",
-                    "sSearch": "Buscar ",
-                    "searchPlaceholder": "Buscar...",
-                    "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
-                    "sInfo": "Página _PAGE_ de _PAGES_",
-                    "oPaginate": {
-                            "sNext": "Siguiente",
-                            "sPrevious": "Anterior"
+                    language: {
+                            url: "https://cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
                         },
-                },
                 });
 
                 

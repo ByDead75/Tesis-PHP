@@ -70,17 +70,9 @@ var centroCosto_empresa = function(url){
                 
 
                 new DataTable('#centro_costo_empresa_table', {
-                    "language": {
-                    "sLengthMenu": "Mostrar _MENU_ registros",
-                    "sSearch": "Buscar ",
-                    "searchPlaceholder": "Buscar...",
-                    "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
-                    "sInfo": "Página _PAGE_ de _PAGES_",
-                    "oPaginate": {
-                            "sNext": "Siguiente",
-                            "sPrevious": "Anterior"
+                    language: {
+                            url: "https://cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
                         },
-                },
                 });
 
                 

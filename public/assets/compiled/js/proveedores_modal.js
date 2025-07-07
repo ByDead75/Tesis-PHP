@@ -13,12 +13,13 @@ var proveedores = function(url){
                     <tr>
                         <td class="text-bold-500">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="codigo_proveedor" id="codigo_proveedor" value="" onclick="proveedor_selecionado(' ',' ', 'PROVEEDOR POR DEFINIR', ' ')">
+                                <input class="form-check-input" type="radio" name="codigo_proveedor" id="codigo_proveedor" value="" onclick="proveedor_selecionado('','0', 'PROVEEDOR POR DEFINIR', '0')">
                             </div>
                         </td>
-                        <td class="text-bold-500"></td>
+                        <td></td>
+                        <td></td>
                         <td class="text-bold-500">PROVEEDOR POR DEFINIR</td>
-                        <td class="text-bold-500"></td>
+                        <td></td>
                     </tr>
                 `
 
@@ -31,6 +32,7 @@ var proveedores = function(url){
                                     <input class="form-check-input" type="radio" name="codigo_proveedor" id="codigo_proveedor" value="`+data[i]['cod_auxiliar']+`" onclick="proveedor_selecionado('`+data[i]['cod_tipo_auxiliar']+`','`+data[i]['cod_auxiliar']+`','`+data[i]['nb_auxiliar']+`','`+data[i]['rif']+`' )">
                                 </div>
                             </td>
+                            <td class="text-bold-500">`+data[i]['cod_tipo_auxiliar']+`</td>
                             <td class="text-bold-500">`+data[i]['cod_auxiliar']+`</td>
                             <td class="text-bold-500">`+data[i]['nb_auxiliar']+`</td>
                             <td class="text-bold-500">`+data[i]['rif']+`</td>
@@ -49,6 +51,7 @@ var proveedores = function(url){
                                             <thead>
                                                 <tr>
                                                     <th></th>
+                                                    <th>Tipo de proveedor</th>
                                                     <th>Código</th>
                                                     <th>Nombre del proveedor</th>
                                                     <th>RIF</th>
@@ -68,17 +71,9 @@ var proveedores = function(url){
                 
 
                 new DataTable('#proveedores_table', {
-                    "language": {
-                    "sLengthMenu": "Mostrar _MENU_ registros",
-                    "sSearch": "Buscar ",
-                    "searchPlaceholder": "Buscar...",
-                    "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
-                    "sInfo": "Página _PAGE_ de _PAGES_",
-                    "oPaginate": {
-                            "sNext": "Siguiente",
-                            "sPrevious": "Anterior"
+                    language: {
+                            url: "https://cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
                         },
-                },
                 });
 
                 

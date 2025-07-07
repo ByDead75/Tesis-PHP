@@ -28,7 +28,7 @@
                                             <div class="form-group">
                                                 <label class="form-label text-center d-block" for="empresa_codigo">Empresa</label>
                                                     <select class="form-select text-center" id="empresa_codigo" name="empresa_codigo" >
-                                                        <option value="0">Click para seleccionar su empresa</option>
+                                                        <option value="">Click para seleccionar su empresa</option>
                                                         @foreach($empresas as $empresa)
                                                             <option value="{{ $empresa->cod_empresa }}">{{ $empresa->nb_empresa }}</option>
                                                         @endforeach
