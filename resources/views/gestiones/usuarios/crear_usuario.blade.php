@@ -11,7 +11,7 @@
         <div>
             <h2 class="card-title text-center mb-4 pb-2">Registro de Nuevos Usuarios</h2>
         </div>
-        <form class="form" action="{{ route('gestiones.usuarios.crear.usuarios') }}" method="POST">
+        <form id="crearUsuario" class="form" action="{{ route('gestiones.usuarios.crear.usuarios') }}" method="POST">
         @csrf
             <section id="basic-vertical-layouts">
                 <div class="row match-height">
@@ -138,9 +138,11 @@
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="password_confirmar">Confirmar Contraseña</label>
-                                                        <input type="password" id="password_confirmar" class="form-control"
-                                                            name="password_confirmar" placeholder="Confirme la Contraseña">
+                                                        <label class="form-label" for="confirmPassword">Confirmar Contraseña</label>
+                                                        <input type="password" id="confirmPassword" class="form-control"
+                                                            name="confirmPassword" placeholder="Confirme la Contraseña">
+                                                        <div id="confirmError" class="error-message">Las contraseñas no coinciden</div>
+                                                        <div id="confirmSuccess" class="success-message">¡Las contraseñas coinciden!</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -148,7 +150,7 @@
                                             <div class="row mt-2">
                                                 <div class="col-12 d-flex justify-content-end offset-md-4 col-md-8">
                                                     <button type="button" class="btn btn-secondary me-1 mb-1" id="btn_regresar" name="btn_regresar">Regresar</button>
-                                                    <button type="submit"class="btn btn-primary me-1 mb-1">Confirmar</button>
+                                                    <button type="submit"class="btn btn-primary me-1 mb-1" id="btn_confirmar" name="btn_confirmar">Confirmar</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -173,6 +175,71 @@
     <script src="{{asset('assets/compiled/js/gerencia_modal.js')}}"></script>
     <script src="{{asset('assets/compiled/js/departamento_modal.js')}}"></script>
     <script src="{{asset('assets/compiled/js/centro_costo_modal.js')}}"></script>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const passwordInput = document.getElementById('password');
+            const confirmInput = document.getElementById('confirmPassword');
+            const passwordError = document.getElementById('passwordError');
+            const confirmError = document.getElementById('confirmError');
+            const confirmSuccess = document.getElementById('confirmSuccess');
+            const submitBtn = document.getElementById('btn_confirmar');
+            const form = document.getElementById('crearUsuario');
+            
+            // Variables para rastrear el estado de validación
+            let isPasswordValid = false;
+            let isConfirmValid = false;
+            
+            // Validación cuando se escribe en el campo de contraseña
+            passwordInput.addEventListener('input', function() {
+                isPasswordValid = true;
+                validateForm();
+                checkPasswordMatch();
+            });
+
+            // Validación cuando se escribe en el campo de confirmación
+            confirmInput.addEventListener('input', checkPasswordMatch);
+            
+            function checkPasswordMatch() {
+                if (passwordInput.value === confirmInput.value && passwordInput.value !== '') {
+                    confirmInput.classList.remove('input-error');
+                    confirmInput.classList.add('input-success');
+                    confirmError.style.display = 'none';
+                    confirmSuccess.style.display = 'block';
+                    isConfirmValid = true;
+                } else {
+                    confirmInput.classList.remove('input-success');
+                    confirmInput.classList.add('input-error');
+                    confirmError.style.display = 'block';
+                    confirmSuccess.style.display = 'none';
+                    isConfirmValid = false;
+                }
+                validateForm();
+
+                }
+            
+            function validateForm() {
+                submitBtn.disabled = !(isPasswordValid && isConfirmValid);
+            }
+            
+            // Prevenir envío del formulario si la validación falla
+            form.addEventListener('submit', function(e) {
+                if (!isPasswordValid || !isConfirmValid) {
+                    e.preventDefault();
+                    if (!isPasswordValid) {
+                        passwordInput.classList.add('input-error');
+                        passwordError.style.display = 'block';
+                    }
+                    if (!isConfirmValid) {
+                        confirmInput.classList.add('input-error');
+                        confirmError.style.display = 'block';
+                    }
+                }
+            });
+        });
+    </script>
+
     
     <script>
     $('#crearUsuario').validate({

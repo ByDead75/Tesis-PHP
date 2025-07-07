@@ -49,6 +49,7 @@ class UsuariosController extends Controller {
 
     public function CrearUsuarios (Request $request) {
 
+
         $usuario = new Usuario();
 
         $usuario->nombre = $request->input('nombre_apellido_usuario');
@@ -62,7 +63,8 @@ class UsuariosController extends Controller {
         $usuario->email = $request->input('email');
         $usuario->fecha_registro = $request->input('fecha_ingreso');
         $usuario->user_master = $request->input('user_master');
-        $usuario->password = $request->input('password'); 
+
+        $usuario->password = md5($request->input('password'));
 
         $usuario->save();
 
