@@ -42,7 +42,7 @@
                                             <div class="row mt-2">
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="fecha_ingreso">Fecha de Ingreso</label>
+                                                        <label class="form-label" for="fecha_ingreso">Fecha de Registro</label>
                                                         <input type="date" id="fecha_ingreso" class="form-control" name="fecha_ingreso">
                                                     </div>
                                                 </div>

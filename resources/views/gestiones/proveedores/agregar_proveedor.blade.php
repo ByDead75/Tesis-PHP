@@ -11,7 +11,8 @@
         <div>
             <h2 class="card-title text-center mb-4 pb-2">Registro de Nuevos Proveedores</h2>
         </div>
-        <form class="form">
+        <form id="agregarProveedor" class="form" action="{{ route('gestiones.proveedores.agregar.proveedores') }}" method="POST">
+        @csrf
             <section id="basic-vertical-layouts">
                 <div class="row match-height">
                     <div class="col-md-8 col-12 mx-auto">
@@ -24,17 +25,17 @@
                                             <div class="row">
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="">Nombre del Proveedor</label>
-                                                        <input type="text" id="" class="form-control"
-                                                            name="" placeholder="Ingrese el Nombre del Proveedor">
+                                                        <label class="form-label" for="nb_auxiliar">Nombre del Proveedor</label>
+                                                        <input type="text" id="nb_auxiliar" class="form-control"
+                                                            name="nb_auxiliar" placeholder="Ingrese el Nombre del Proveedor">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="">Código del Proveedor</label>
-                                                        <input type="text" id="" class="form-control"
-                                                            name="" placeholder="Ingrese el Código del Proveedor">
+                                                        <label class="form-label" for="cod_auxiliar">Código del Proveedor</label>
+                                                        <input type="text" id="cod_auxiliar" class="form-control"
+                                                            name="cod_auxiliar" placeholder="Ingrese el Código del Proveedor">
                                                     </div>
                                                 </div>
                                             </div>
@@ -42,17 +43,15 @@
                                             <div class="row mt-2">
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="">Banco</label>
-                                                        <input type="text" id="" class="form-control"
-                                                            name="" placeholder="Click para registrar nuevo banco">
-                                                        <input type="hidden" id="" class="form-control"  name="">
+                                                        <label class="form-label" for="rif">RIF</label>
+                                                        <input type="text" id="rif" class="form-control" name="rif" placeholder="Ingrese el RIF del Proveedor">
                                                     </div>
                                                 </div>
-
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="">RIF</label>
-                                                        <input type="text" id="" class="form-control" name="" placeholder="Ingrese el RIF del Proveedor">
+                                                        <label class="form-label" for="nit">NIT</label>
+                                                        <input type="text" id="nit" class="form-control"
+                                                            name="nit" placeholder="Ingrese el NIT del Proveedor">
                                                     </div>
                                                 </div>
                                             </div>
@@ -60,33 +59,30 @@
                                             <div class="row mt-2">
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="">NIT</label>
-                                                        <input type="text" id="" class="form-control"
-                                                            name="" placeholder="Ingrese el NIT del Proveedor">
+                                                        <label class="form-label" for="registro_banco">Banco</label>
+                                                            <input type="text" id="registro_banco" class="form-control"
+                                                                name="registro_banco" placeholder="Click para seleccionar un banco" readonly>
+                                                            <input type="hidden" id="registro_banco_codigo" name="registro_banco_codigo">
                                                     </div>
                                                 </div>
+
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="">Tipo de Proveedor</label>
-                                                        <select class="form-select" id="">
+                                                        <label class="form-label" for="numero_cuenta">N° de Cuenta</label>
+                                                        <input type="text" id="numero_cuenta" class="form-control"
+                                                            name="numero_cuenta" placeholder="Click para registrar nueva cuenta">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mt-2">
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <label class="form-label" for="cod_tipo_auxiliar">Tipo de Proveedor</label>
+                                                        <select class="form-select" id="cod_tipo_auxiliar">
                                                             <option value="">---</option>
-                                                            <option value="0">PROSER</option>
-                                                            <option value="1">COMIS</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row mt-2">
-                                                <div class="col-8">
-                                                    <div class="form-group">
-                                                        <label class="form-label" for="">Banco</label>
-                                                        <select class="form-select" id="">
-                                                            <option value="">---</option>
-                                                            <option value="0">0102 - Banco de Venezuela - 01020123450000000123</option>
-                                                            <option value="1">0108 - Banco Provincial - 01080123450000000123</option>
-                                                            <option value="0">0105 - Banco Mercantil - 01050001234567890123</option>
-                                                            <option value="1">0134 - Banco Banesco - 01340001234567890123</option>
+                                                            <option value="PROSER">PROSER</option>
+                                                            <option value="COMIS">COMIS</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -109,4 +105,71 @@
         </form>
     </div>
 
+    @include('components.modal')
+
 @endsection
+
+@push('js')
+    <script src="{{asset('assets/compiled/js/registrar_banco_modal.js')}}"></script>
+
+    <script>
+    $('#agregarProveedor').validate({
+        rules: { // <-- Alertas para cada input según su ID
+            cod_tipo_auxiliar: {
+                required: true
+            },
+            cod_auxiliar: {
+                required: true
+            },
+            nb_auxiliar: {
+                required: true
+            },
+            rif: {
+                required: true
+            },
+            nit: {
+                required: true
+            },
+            numero_cuenta: {
+                required: true
+            },
+            registro_banco: {
+                required: true
+            },
+            proveedor_rif: {
+                required: true
+            },
+        },
+        messages: { // <-- Mensajes personalizados para cada alerta según su ID
+            cod_tipo_auxiliar: {
+                required: "Tipo de Proveedor requerido"
+            },
+            cod_auxiliar: {
+                required: "Código del Proveedor requerido"
+            },
+            nb_auxiliar: {
+                required: "Nombre del Proveedor requerido"
+            },
+            rif: {
+                required: "RIF requerido"
+            },
+            nit: {
+                required: "NIT requerido"
+            },
+            numero_cuenta: {
+                required: "N° de Cuenta requerido"
+            },
+            registro_banco: {
+                required: "Banco requerido"
+            },
+        }
+    });
+    </script>
+
+    <script>
+        $('#registro_banco').on('click', function () {
+            registro_bancos('{{ route("buscar.bancos.registrar") }}')  
+        })
+    </script>
+    
+@endpush

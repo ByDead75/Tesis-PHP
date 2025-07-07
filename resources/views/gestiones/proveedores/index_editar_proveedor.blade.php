@@ -1,6 +1,6 @@
 @extends('template')
 
-@section('title', 'Listado de Proveedores')
+@section('title', 'Editar Proveedores')
 
 @push('css')
     
@@ -100,22 +100,10 @@
 
 @push('js') 
 
-    <script src="{{asset('assets/compiled/js/tabla-proveedor.js')}}"></script>
+<script>
+    var route_proveedor = '{{ route("proveedor.data") }}'
+</script>
 
-    <script>
-        var route_proveedor = '{{ route("proveedor.data") }}'
-    </script>
-
-
-
-    <script>
-        function RedireccionEditarProveedor(cod_auxiliarProveedor) {
-
-            console.log('Se hizo click en Editar para el ID del Proveedor:', cod_auxiliarProveedor);
-
-            const baseUrl = "{{ url('/editar/proveedor') }}";
-                window.location.href = baseUrl + '/'+cod_auxiliarProveedor+'';
-    }
-    </script>
+<script src="{{asset('assets/compiled/js/tabla-proveedor.js')}}"></script>
 
 @endpush 

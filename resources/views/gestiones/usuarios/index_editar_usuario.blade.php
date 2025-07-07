@@ -64,6 +64,7 @@
                         <table class="table table-striped" id="tabla_usuario">
                             <thead >
                                 <tr>
+                                    <th class="text-center">Acciones</th>
                                     <th class="text-center">Cédula</th>
                                     <th class="text-center">Nombre y Apellido</th>
                                     <th class="text-center">Departamento</th>

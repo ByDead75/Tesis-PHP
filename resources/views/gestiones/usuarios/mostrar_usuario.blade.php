@@ -33,15 +33,14 @@
 
                         <div class="col-md-4 col-12">
                             <div class="form-group">
-                                <label class="form-label" for="user_master">Cargo en la Empresa</label>
+                                <label class="form-label" for="user_master">Tipo de Usuario</label>
                                 <select class="form-select" id="user_master">
-                                    <option value="">Seleccionar</option>
-                                    <option value="0">Empleado</option>
-                                    <option value="1">Supervisor</option>
-                                    <option value="2">Director</option>
-                                    <option value="3">Gerente</option>
-                                    <option value="4">Administrador</option>
-                                    <option value="6">Superadministrador</option>
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="6">6</option>
                                 </select>
                             </div>
                         </div>
@@ -104,7 +103,7 @@
 <script>
     function RedireccionEditarUsuario(idUsuario) {
 
-        console.log('Se hizo clic en Editar para el ID de Pago:', idUsuario);
+        console.log('Se hizo clic en Editar para el ID del Usuario:', idUsuario);
 
         const baseUrl = "{{ url('/editar/usuario') }}"; // Obtiene la URL base de pagos
             window.location.href = baseUrl + '/'+idUsuario+'';

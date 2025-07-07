@@ -10,14 +10,14 @@ class TipoProveedorHelper
         $tipoProveedor = "";
 
         switch ($tipoProveedorId) {
-            case 'PROSER':
+            case '0':
                 $tipoProveedor = 'PROSER';
                 break;
-            case 'COMIS':
+            case '1':
                 $tipoProveedor = 'COMIS';
                 break;
             default:
-                $tipoProveedor = '';
+                $tipoProveedor = 'PROSER';
                 break;
         }
         return $tipoProveedor;

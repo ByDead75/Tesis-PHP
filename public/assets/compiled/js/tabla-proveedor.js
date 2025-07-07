@@ -16,6 +16,11 @@ $(document).ready(function() {
                 },
             },
             columns: [
+                {data: 'actions',
+                    name: 'actions',
+                    orderable: false, 
+                    searchable: false,
+                },
                 {data: 'nb_auxiliar', name: 'nb_auxiliar' },
                 {data: 'cod_auxiliar', name: 'cod_auxiliar' },
                 {data: 'rif', name: 'rif' },

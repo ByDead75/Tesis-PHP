@@ -30,7 +30,7 @@ class UsuariosController extends Controller {
             ->addIndexColumn()
             ->addColumn('actions', function($row) {
                     $button = '<div class="btn-group" role="group">
-                                    <a class="btn btn-sm btn-secondary icon"  onclick="RedireccionEditarUsuario('.$row->id.') "title="Clic para editar">
+                                    <a class="btn btn-sm btn-secondary icon" onclick="RedireccionEditarUsuario('.$row->id.') "title="Clic para editar">
                                         <i class="fas fa-edit"></i> Editar
                                     </a>
                                 </div>';
@@ -71,7 +71,6 @@ class UsuariosController extends Controller {
         return redirect()->route('gestiones.usuarios.registros.obtener');
     }
 
-    
     public function EditarUsuarioSeleccionado(Request $request, $id_usuario) 
     {   
         $usuarios_model = new Usuario;

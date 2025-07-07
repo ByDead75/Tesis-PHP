@@ -5,6 +5,7 @@ use App\Http\Controllers\CentroCostoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PasswordController;
+use App\Http\Controllers\BancosController;
 use App\Http\Controllers\CuentasController;
 use App\Http\Controllers\DireccionController;
 use App\Http\Controllers\EmpresasController;
@@ -69,6 +70,10 @@ Route::controller(UsuariosController::class)->group(function () {
     //Route::put('/usuario/editar/{id}', 'ActualizarUsuarioSeleccionado')->name('gestiones.usuarios.usuario.editar');
 });
 
+Route::controller(BancosController::class)->group(function () {
+    Route::get('bancos/registrar/index', 'BuscarBancos')->name('buscar.bancos.registrar');
+});
+
 Route::controller(EmpresasController::class)->group(function () {
     Route::get('/mostrar/empresa', 'MostrarEmpresas')->name('gestiones.empresas.registros.obtener');
     Route::get('/agregar/empresa', 'AgregarEmpresas')->name('gestiones.empresas.agregar.empresas');
@@ -98,10 +103,13 @@ Route::controller(HistorialController::class)->group(function () {
 //Controladores de Crear/Editar/Aprobar Solicitudes
 
 Route::controller(ProveedoresController::class)->group(function () {
-    Route::get('/mostrar/proveedor', 'MostrarProveedores')->name('gestiones.proveedores.registros.obtener');
-    Route::get('/agregar/proveedor', 'AgregarProveedores')->name('gestiones.proveedores.agregar.proveedores');
-    Route::get('/editar/proveedor', 'EditarProveedores')->name('gestiones.proveedores.editar.proveedores');
-    Route::get('/editar/proveedor', 'DataProveedor')->name('proveedor.data');
+    Route::get('/mostrar/proveedor', 'MostrarIndexProveedores')->name('gestiones.proveedores.registros.obtener');
+    Route::get('/obtener/proveedor', 'DataProveedor')->name('proveedor.data');
+
+    Route::get('/proveedor/agregar', 'MostrarAgregarProveedores')->name('gestiones.proveedores.agregar.proveedores');
+    Route::post('/proveedor/agregar', 'AgregarProveedores')->name('gestiones.proveedores.agregar.proveedores');
+
+    Route::get('/editar/proveedor/{id_proveedor}', 'EditarProveedorSeleccionado')->name('gestiones.proveedores.editar');
 
     Route::get('proveedores/index', 'BuscarProveedores')->name('buscar.proveedores');
 });
