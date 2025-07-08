@@ -12,10 +12,68 @@
         <div>
             <h2 class="card-title text-center mb-4 pb-2">Cambiar Status de la Solicitud de Pago</h2>
         </div>
-    <form class="form" action="{{ route('ordenes.solicitud.editar', $solicitud->id_solicitud) }}" method="POST" enctype="multipart/form-data">
+    <form class="form" action="{{ route('ordenes.solicitud.status.cambiar', $solicitud->id_solicitud) }}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
-        <section id="multiple-column-form " class="pb-1">
+
+        <section id="multiple-column-form" class="pb-1">
+            <div class="row match-height">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header pb-1">
+                            <h3 class="card-title text-center mb-0">Status de Solicitud</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="row col-12 d-flex justify-content-center">
+                                    <div class="col-md-4 col-sm-12 text-center">
+                                        <h5 class="card-title ml-0 mr-0">Cambiar Status</h5>
+                                    </div>
+                                    <div class="col-md-4 col-sm-12">
+                                        <div class="form-group">
+                                            <select class="form-select" id="status_solicitud" name="status_solicitud">
+                                                <option value="">Seleccionar</option>
+                                                <option value="2">APROBADA</option>
+                                                <option value="3">RECHAZADA</option>
+                                                <option value="4">PAGADA</option>
+                                                <option value="5">RECIBIDO ADM</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-12">
+                                        <div class="">
+                                            <button type="submit" class="btn btn-primary me-1 mb-1">Cambiar Status</button>
+                                            <button type="button" class="btn btn-secondary me-1 mb-1" id="btn_regresar" name="btn_regresar">Regresar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row mt-2" id="observaciones-section" style="display:none;">
+                                    <div>
+                                        <h5 class="card-title text-center pt-4 pb-2">Observaciones</h5>
+                                    </div>
+                                    <div class="form-group mt-2">
+                                        <textarea class="form-control"  id="observaciones" name="observaciones"></textarea>
+                                    </div>
+                                </div>
+
+                                <!--
+
+                                <div class="row mt-3">
+                                    <div class="col-12 d-flex justify-content-between align-items-center">
+                                        <button type="button" class="btn btn-secondary me-1 mb-1" id="btn_regresar" name="btn_regresar">Regresar</button>
+                                        <button type="submit" class="btn btn-primary me-1 mb-1">Cambiar Status</button>
+                                    </div>
+                                </div>
+                                -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="multiple-column-form ">
             <div class="row match-height">
                 <div class="col-12">
                     <div class="card">
@@ -203,14 +261,14 @@
                                     </div>
                                 </div>
 
-                                <div class="row pt-4 pb-2">
+                                <div class="row pt-4">
                                     <div class="col-12">
-                                        <div class="card">
+                                        <div class="card mb-0">
                                             <div class="card-content">
                                                 <div>
                                                     <h5 class="card-title">Archivos Adjuntos</h5>
                                                 </div>
-                                                <div class="card-body">
+                                                <div class="card-body pt-1 pb-0">
                                                     @if($documentos->isEmpty())
                                                         <p>No hay documentos cargados para esta solicitud.</p>
                                                     @else
@@ -224,13 +282,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-12 d-flex justify-content-between align-items-center">
-                                        <button type="button" class="btn btn-secondary me-1 mb-1" id="btn_regresar" name="btn_regresar">Regresar</button>
-                                        <button type="submit" class="btn btn-primary me-1 mb-1">Guardar Cambios</button>
                                     </div>
                                 </div>
                             </div>
@@ -247,8 +298,32 @@
 @endsection
 
 @push('js')
-<!--Funcionalidad de Modales-->
+<!---->
     
+    <script>
+        $(document).ready(function() {
+            // Escuchar cambios en el dropdown
+            $('#status_solicitud').change(function() {
+                if ($(this).val() == '3') { // Si es RECHAZADA
+                    $('#observaciones-section').show();
+                    $('#observaciones').prop('required', true);
+                } else {
+                    $('#observaciones-section').hide();
+                    $('#observaciones').prop('required', false);
+                    $('#observaciones').val(''); // Limpiar el textarea
+                }
+            });
+            
+            // Opcional: Validar antes de enviar el formulario
+            $('form').submit(function(e) {
+                if ($('#status_solicitud').val() == '3' && $('#observaciones').val().trim() == '') {
+                    e.preventDefault();
+                    alert('Por favor ingresa las observaciones para el status RECHAZADA');
+                    $('#observaciones').focus();
+                }
+            });
+        });
+    </script>
 
 
     <script>

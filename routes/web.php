@@ -163,7 +163,8 @@ Route::controller(OrdenesController::class)->group(function () {
     Route::get('/solicitudes/status', 'MostrarIndexStatusSolicitudes')->name('ordenes.solicitud.status');
     Route::get('/solicitudes/status/obtener', 'RegistrosStatusSolicitudes')->name('ordenes.solicitud.status.obtener');
 
-    Route::get('/solicitud/status/cambiar/{id_solicitud}', 'CambiarStatusSolicitud')->name('ordenes.solicitud.status.cambiar'); 
+    Route::get('/solicitud/status/cambiar/{id_solicitud}', 'CambiarStatusSolicitud')->name('ordenes.solicitud.status.cambiar');
+    Route::put('/solicitud/status/cambiar/{id_solicitud}', 'ActualizarStatusSolicitud')->name('ordenes.solicitud.status.cambiar');  
 });
 
 

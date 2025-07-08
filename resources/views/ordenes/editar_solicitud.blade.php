@@ -220,21 +220,25 @@
 
                                 <div class="row pt-4 pb-2">
                                     <div class="col-12">
-                                        <div>
-                                            <h5 class="card-title">Subir Archivo (Opcional)</h5>
-                                        </div>
-                                        <div class="card-body">
-                                            <p class="card-text">Los archivos a subir deben estar en formato PDF, PNG, JPEG, JPG...</p>
-                                            <input type="file" id="archivos" name="archivos[]" class="basic-filepond" multiple value="">
-                                            @if($documentos->isEmpty())
-                                                <p>No hay documentos cargados para esta solicitud.</p>
-                                            @else
-                                                <ul>
-                                                    @foreach($documentos as $documento)
-                                                        <li>{{ $documento->nombre_documento }} - <a href="{{ asset('/' . $documento->ruta.$documento->nombre_documento) }}" target="_blank">Ver</a></li>
-                                                    @endforeach
-                                                </ul>
-                                            @endif
+                                        <div class="card mb-0">
+                                            <div class="card-content">
+                                                <div>
+                                                    <h5 class="card-title">Subir Archivo (Opcional)</h5>
+                                                </div>
+                                                <div class="card-body pt-1 pb-0">
+                                                    <p class="card-text">Los archivos a subir deben estar en formato PDF, PNG, JPEG, JPG...</p>
+                                                    <input type="file" id="archivos" name="archivos[]" class="basic-filepond" multiple value="">
+                                                    @if($documentos->isEmpty())
+                                                        <p>No hay documentos cargados para esta solicitud.</p>
+                                                    @else
+                                                        <ul class="mt-4">
+                                                            @foreach($documentos as $documento)
+                                                                <li>{{ $documento->nombre_documento }} - <a href="{{ asset('/' . $documento->ruta.$documento->nombre_documento) }}" target="_blank">Ver</a></li>
+                                                            @endforeach
+                                                        </ul>
+                                                    @endif
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

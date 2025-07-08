@@ -225,12 +225,16 @@
 
                                     <div class="row pt-4 pb-2">
                                         <div class="col-12">
-                                            <div>
-                                                <h5 class="card-title">Subir Archivo (Opcional)</h5>
-                                            </div>
-                                            <div class="card-body">
-                                                <p class="card-text">Los archivos a subir deben estar en formato PDF, PNG, JPEG, JPG...</p>
-                                                    <input type="file" id="archivos" name="archivos[]" class="basic-filepond" multiple>
+                                            <div class="card mb-0">
+                                                <div class="card-content">
+                                                    <div>
+                                                        <h5 class="card-title">Subir Archivo (Opcional)</h5>
+                                                    </div>
+                                                    <div class="card-body pt-1 pb-0">
+                                                        <p class="card-text">Los archivos a subir deben estar en formato PDF, PNG, JPEG, JPG...</p>
+                                                        <input type="file" id="archivos" name="archivos[]" class="basic-filepond" multiple>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

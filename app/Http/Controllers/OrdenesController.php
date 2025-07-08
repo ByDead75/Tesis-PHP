@@ -100,6 +100,8 @@ class OrdenesController extends Controller
 
             if ($archivo !== null && !empty($archivo)) {
 
+                $id_documento = 
+
                 $nombre_archivo = $solicitud->id_solicitud . 'datosSolicitud_' . ($key + 1) . '.' . pathinfo($archivo, PATHINFO_EXTENSION);
 
                 DocumentoService::copiar('public/temp/'.$archivo, 'public/documentos/'.$nombre_archivo);
@@ -221,26 +223,7 @@ class OrdenesController extends Controller
         $solicitudes_model = new Solicitudes;
         $solicitud = $solicitudes_model->GetSolicitudesPorId($id_solicitud);
 
-        //$fecha_solicitud_actual = $solicitud->fecha_solicitud; 
-
-        $cod_departamento_actual = $solicitud->cod_departamento;
-        $observaciones_actual = $solicitud->observaciones;
-        $status_solicitud_actual = $solicitud->status_solicitud;
-
-        $cod_direccion_actual = $solicitud->cod_direccion;  
-        $firma_actual = $solicitud->firma;
-        $fecha_firma_1_actual = $solicitud->fecha_firma_1;
-        $fecha_firma_2_actual = $solicitud->fecha_firma_2;
-        $fecha_firma_3_actual = $solicitud->fecha_firma_3;
-
-        $imagen_actual =  $solicitud->imagen;
-
-        $firma_1_actual = $solicitud->firma_1;
-        $firma_2_actual = $solicitud->firma_2;
-        $firma_3_actual = $solicitud->firma_3;
-
-        $fecha_firma_4_actual = $solicitud->fecha_firma_4;
-        $firma_4_actual = $solicitud->firma_4;
+        
 
         $solicitud->fecha_solicitud = $request->input('fecha_solicitud');
         //$solicitud->fecha_solicitud = $fecha_solicitud_actual;
@@ -249,7 +232,6 @@ class OrdenesController extends Controller
         $solicitud->centro_de_costo = $request->input('centro_costo_empresa_codigo'); 
         $solicitud->id_solicitante = $request->input('id_solicitante');
 
-        $solicitud->cod_departamento = $cod_departamento_actual;
 
         $solicitud->concepto_de_pago = $request->input('concepto_de_pago');
 
@@ -263,56 +245,41 @@ class OrdenesController extends Controller
         $solicitud->monto_iva = $request->input('monto_iva');
         $solicitud->monto_total = $request->input('monto_total');
 
-        $solicitud->observaciones = $observaciones_actual;
-        $solicitud->status_solicitud = $status_solicitud_actual;
 
         $solicitud->rif = $request->input('proveedor_rif');
         $solicitud->cod_sucursal= $request->input('sucursal_codigo');
-
-        $solicitud->cod_direccion = $cod_direccion_actual;  
-        $solicitud->firma = $firma_actual;
-        $solicitud->fecha_firma_1 = $fecha_firma_1_actual;
-        $solicitud->fecha_firma_2 = $fecha_firma_2_actual;
-        $solicitud->fecha_firma_3 = $fecha_firma_3_actual;
-
         $solicitud->factupuesto = $request->input('tipo_solicitud');   
-        
-        $solicitud->imagen = $imagen_actual;
-
         $solicitud->aprobador_sol= $request->input('aprobador_codigo');
-
-        $solicitud->firma_1 = $firma_1_actual;
-        $solicitud->firma_2 = $firma_2_actual;
-        $solicitud->firma_3 = $firma_3_actual;
-
         $solicitud->TipoProveedor= $request->input('tipo_proveedor'); 
-        
-        $solicitud->fecha_firma_4 = $fecha_firma_4_actual;
-        $solicitud->firma_4 = $firma_4_actual;
 
         $solicitud->save();
 
-        foreach($request->get('archivos') as $key => $archivo){
+        if ($request->get('archivos') !== null) {
 
-            if ($archivo !== null && !empty($archivo)) {
+            foreach($request->get('archivos') as $key => $archivo){
 
-                $nombre_archivo = $solicitud->id_solicitud . 'datosSolicitud_' . ($key + 1) . '.' . pathinfo($archivo, PATHINFO_EXTENSION);
-                    
-                DocumentoService::copiar('public/temp/'.$archivo, 'public/documentos/'.$nombre_archivo);
+                if ($archivo !== null && !empty($archivo)) {
 
-                DocumentoService::guardar([
-                        'nombre_documento' => $nombre_archivo,
-                        'id_factura' => $solicitud->id_solicitud,
-                        'id_usuario' => $solicitud->id_solicitante,
-                        'tipo_documento' => 1,
-                        'fecha_registro' => $solicitud->fecha_solicitud,
-                        'ruta' => 'storage/documentos/',
-                        'observacion' => '',
-                    ]);
+                    $nombre_archivo = $solicitud->id_solicitud . 'datosSolicitud_' . ($key + 1) . '.' . pathinfo($archivo, PATHINFO_EXTENSION);
+                        
+                    DocumentoService::copiar('public/temp/'.$archivo, 'public/documentos/'.$nombre_archivo);
 
-                DocumentoService::eliminar('public/temp/'.$archivo);
+                    DocumentoService::guardar([
+                            'nombre_documento' => $nombre_archivo,
+                            'id_factura' => $solicitud->id_solicitud,
+                            'id_usuario' => $solicitud->id_solicitante,
+                            'tipo_documento' => 1,
+                            'fecha_registro' => $solicitud->fecha_solicitud,
+                            'ruta' => 'storage/documentos/',
+                            'observacion' => '',
+                        ]);
+
+                    DocumentoService::eliminar('public/temp/'.$archivo);
+                }
             }
         }
+
+        
 
         return redirect()->route('ordenes.solicitud.registros');
     }
@@ -375,5 +342,28 @@ class OrdenesController extends Controller
         return view('ordenes.status_solicitud', compact('solicitud', 'documentos'));
 
         
+    }
+
+    public function ActualizarStatusSolicitud(Request $request, $id_solicitud) 
+    {   
+        
+        $solicitudes_model = new Solicitudes;
+        $solicitud = $solicitudes_model->GetSolicitudesPorId($id_solicitud);
+
+
+        $observaciones_actual = $solicitud->observaciones;
+        
+        $solicitud->status_solicitud = $request->input('status_solicitud');
+
+        if ($solicitud->status_solicitud != 3) {
+            $solicitud->observaciones = $observaciones_actual;
+        } else {
+            $solicitud->observaciones = $request->input('observaciones');
+        }
+
+        $solicitud->save();
+
+        return redirect()->route('ordenes.solicitud.status');
+
     }
 }
