@@ -13,6 +13,9 @@ class Usuario extends Authenticatable {
     
     protected $primaryKey = "id";
     public $timestamps = false;
+    protected $casts = [
+        'fecha_registro' => 'datetime:d-m-Y', 
+    ];
 
     protected $fillable = [
         'id',
@@ -88,7 +91,7 @@ class Usuario extends Authenticatable {
                 }else{
                     $resultado->limit(50);
                 }
-                $resultado = $resultado->orderBy('usuario.id', 'asc')->distinct()->get();
+                $resultado = $resultado->orderBy('usuario.id', 'desc')->distinct()->get();
                 
         return $resultado;
     }

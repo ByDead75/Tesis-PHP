@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="{{asset('assets/extensions/toastify-js/src/toastify.css')}}">
 
     <link rel="stylesheet" href="{{asset('assets/extensions/@fortawesome/fontawesome-free/css/all.min.css')}}">
+
+    <link rel="stylesheet" href="{{asset('assets/compiled/css/jquery-validation.css')}}">
     
     @stack('css')
 </head>

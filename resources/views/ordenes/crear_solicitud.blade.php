@@ -118,7 +118,8 @@
                                             <div class="form-group">
                                                 <label for="tipo_solicitud" class="form-label text-center d-block">Factura/Presupuesto</label>
                                                     <select class="form-select text-center" id="tipo_solicitud" name="tipo_solicitud" >
-                                                        <option value="0">Seleccionar</option>
+                                                        <option value="">Seleccionar</option>
+                                                        <option value="0">N/A</option>
                                                         <option value="1">FACTURA</option>
                                                         <option value="2">PRESUPUESTO</option>
                                                     </select>
@@ -139,7 +140,8 @@
                                             <div class="form-group">
                                                 <label for="forma_pago" class="form-label text-center d-block">Forma de Pago</label>
                                                     <select class="form-select text-center" id="forma_pago" name="forma_pago" >
-                                                        <option value="0">Seleccionar</option>
+                                                        <option value="">Seleccionar</option>
+                                                        <option value="0">N/A</option>
                                                         <option value="1">CHEQUE</option>
                                                         <option value="2">TRANSFERENCIA</option>
                                                     </select>
@@ -152,7 +154,7 @@
                                                     <input type="text" id="numero_tipo_solicitud" class="form-control text-center" name="numero_tipo_solicitud" 
                                                     placeholder="Ingrese el Número de la Factura" maxlength="10" oninput="checkLength1(this)">
                                                         <div id="limit-message1" style="color: red; display: none;">
-                                                            El número de factura no puede exceder los 10 caracteres.
+                                                            Número maximo de caracteres alcanzado.
                                                         </div>
                                             </div>
                                         </div>
@@ -182,7 +184,7 @@
                                                     placeholder="Ingrese el Número de Control" maxlength="20" oninput="checkLength2(this)">
                                                         <div id="alert" style="color: red; display: none;"></div>
                                                         <div id="limit-message2" style="color: red; display: none;">
-                                                            El número de cuenta no puede exceder los 20 caracteres.
+                                                            Número maximo de caracteres alcanzado.
                                                         </div>
                                             </div>
                                         </div>
@@ -261,6 +263,7 @@
     <script src="{{asset('assets/compiled/js/sucursales_modal.js')}}"></script>
     <script src="{{asset('assets/compiled/js/centrocosto_empresa_modal.js')}}"></script>
 
+    
     <script>
     $('#crearSolicitud').validate({
         rules: { // <-- Alertas para cada input según su ID
@@ -273,12 +276,6 @@
             centro_costo_empresa: {
                 required: true
             },
-            nombre_solicitante: {
-                required: true
-            },
-            aprobador_nombre: {
-                required: true
-            },
             tipo_proveedor: {
                 required: true
             },
@@ -296,42 +293,71 @@
             },
             numero_tipo_solicitud: {
                 required: true
-            }
+            },
+            proveedor_banco: {
+                required: true
+            },
+            proveedor_numero_cuenta: {
+                required: true
+            },
+            numero_control: {
+                required: true
+            },
+            monto_neto: {
+                required: true
+            },
+            concepto_de_pago: {
+                required: true
+            },
         },
         messages: { // <-- Mensajes personalizados para cada alerta según su ID
             empresa_codigo: {
-                required: "Empresa requerida"
+                required: "Seleccione una empresa."
             },
-            sucursal_codigo: {
-                required: "Sucursal requerida"
+            sucursal: {
+                required: "Seleccione una sucursal."
             },
             centro_costo_empresa: {
-                required: "Centro de costo requerido"
-            },
-            nombre_solicitante: {
-                required: "Nombre del solicitante requerido"
-            },
-            aprobador_nombre: {
-                required: "Nombre del aprobador requerido"
+                required: "Seleccione un centro de costo."
             },
             tipo_proveedor: {
-                required: "Tipo de proveedor requerido"
+                required: "Seleccione un proveedor."
             },
             proveedor_nombre: {
-                required: "Nombre del proveedor requerido"
+                required: "Seleccione un proveedor."
             },
             tipo_solicitud: {
-                required: "Tipo de solicitud requerido"
+                required: "Seleccione un tipo de solicitud."
             },
             proveedor_rif: {
-                required: "RIF del proveedor requerido"
+                required: "Seleccione un proveedor."
             },
             forma_pago: {
-                required: "Forma de pago requerida"
+                required: "Seleccione un forma de pago."
             },
             numero_tipo_solicitud: {
-                required: "Número de tipo de solicitud requerido"
-            }
+                required: "Ingrese el número de Factura/Presupuesto."
+            },
+            proveedor_banco: {
+                required: "Seleccione una cuenta bancaria."
+            },
+            proveedor_numero_cuenta: {
+                required: "Seleccione una cuenta bancaria."
+            },
+            numero_control: {
+                required: "Ingrese el número de control."
+            },
+            monto_neto: {
+                required: "Ingrese el monto en Bs."
+            },
+            concepto_de_pago: {
+                required: "Ingrese el concepto de pago."
+            },
+        },
+
+        errorClass: "error-message", // Clase CSS para los mensajes de error
+        errorPlacement: function(error, element) {
+            error.insertAfter(element); // Coloca el mensaje de error después del elemento
         }
     });
     </script>

@@ -95,13 +95,13 @@ class OrdenesController extends Controller
 
         $solicitud->save();
 
-
+        
         foreach($request->get('archivos') as $key => $archivo){
 
             if ($archivo !== null && !empty($archivo)) {
 
-                $nombre_archivo = $solicitud->id_solicitud.'datosSolicitud.'.pathinfo($archivo, PATHINFO_EXTENSION);
-                    
+                $nombre_archivo = $solicitud->id_solicitud . 'datosSolicitud_' . ($key + 1) . '.' . pathinfo($archivo, PATHINFO_EXTENSION);
+
                 DocumentoService::copiar('public/temp/'.$archivo, 'public/documentos/'.$nombre_archivo);
 
                 DocumentoService::guardar([
@@ -117,6 +117,8 @@ class OrdenesController extends Controller
                 DocumentoService::eliminar('public/temp/'.$archivo);
             }
         }
+
+        
 
         return redirect()->route('historial.index');
     }
@@ -294,7 +296,7 @@ class OrdenesController extends Controller
 
             if ($archivo !== null && !empty($archivo)) {
 
-                $nombre_archivo = $solicitud->id_solicitud.'datosSolicitud.'.pathinfo($archivo, PATHINFO_EXTENSION);
+                $nombre_archivo = $solicitud->id_solicitud . 'datosSolicitud_' . ($key + 1) . '.' . pathinfo($archivo, PATHINFO_EXTENSION);
                     
                 DocumentoService::copiar('public/temp/'.$archivo, 'public/documentos/'.$nombre_archivo);
 

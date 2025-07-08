@@ -35,6 +35,7 @@
                             <div class="form-group">
                                 <label class="form-label" for="user_master">Tipo de Usuario</label>
                                 <select class="form-select" id="user_master">
+                                    <option value="">Seleccionar</option>
                                     <option value="0">0</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
