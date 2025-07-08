@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Helpers\TipoProveedorHelper;
 use App\Models\Proveedores;
+use App\Models\Cuentas;
 use Yajra\DataTables\DataTables;
 use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Http\Request;
@@ -24,13 +25,13 @@ class ProveedoresController extends Controller
                                                             $request->cod_auxiliar,
                                                             $request->nb_auxiliar,
                                                             $request->rif,
-                                                            $request->nit
+                                                            $request->cod_departamento
                                                             );
             $datatables = DataTables::of($proveedores)
             ->addIndexColumn()
             ->addColumn('actions', function($row) {
                     $button = '<div class="btn-group" role="group">
-                                    <a class="btn btn-sm btn-secondary icon" onclick="RedireccionEditarProveedor('.$row->cod_auxiliar.') "title="Clic para editar">
+                                    <a class="btn btn-sm btn-secondary icon" onclick="RedireccionEditarDepartamento('.$row->cod_auxiliar.') "title="Clic para editar">
                                         <i class="fas fa-edit"></i> Editar
                                     </a>
                                 </div>';
@@ -50,13 +51,16 @@ class ProveedoresController extends Controller
     public function AgregarProveedores(Request $request) {
 
     $request->validate([
-        'cod_tipo_auxiliar' => 'required|string|max:80',
-        'cod_auxiliar' => 'required|int|max:10',
-        'nb_auxiliar' => 'required|string|max:255',
-        'rif' => 'required|string|max:30',
-        'nit' => 'required|string|max:30',
+        'cod_tipo_auxiliar' => 'required',
+        'cod_auxiliar' => 'required',
+        'nb_auxiliar' => 'required',
+        'rif' => 'required',
+        'nit' => 'required',
+        'registro_banco_codigo' => 'required',
+        'numero_cuenta' => 'required',
     ]);
 
+    try {
         $proveedor = new Proveedores();
         $proveedor->cod_tipo_auxiliar = $request->input('cod_tipo_auxiliar');
         $proveedor->cod_auxiliar = $request->input('cod_auxiliar');
@@ -66,11 +70,21 @@ class ProveedoresController extends Controller
 
         $proveedor->save();
 
-        //Try catch y $cuentas
+        $cuentas = new Cuentas();
+        $cuentas->cod_banco = $request->input('registro_banco_codigo');
+        $cuentas->nu_cuenta = $request->input('numero_cuenta');
+        $cuentas->destino = 'L';
+        $cuentas->cod_auxiliar = $proveedor->cod_auxiliar;
+        $cuentas->cod_tipo_auxiliar = $proveedor->cod_tipo_auxiliar;
+
+        $cuentas->save();
 
         return redirect()->route('gestiones.proveedores.registros.obtener');
+    } catch (\Exception $e) {
+        dd($e);
+        return back()->withErrors(['error' => 'Ocurrió un error al guardar los datos.']);
+    }
 }
-
     public function EditarProveedorSeleccionado (Request $request, $cod_auxiliar) {
 
         $proveedores_model = new Proveedores;

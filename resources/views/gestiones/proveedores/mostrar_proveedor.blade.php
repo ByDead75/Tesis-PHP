@@ -106,8 +106,6 @@
         var route_proveedor = '{{ route("proveedor.data") }}'
     </script>
 
-
-
     <script>
         function RedireccionEditarProveedor(cod_auxiliarProveedor) {
 

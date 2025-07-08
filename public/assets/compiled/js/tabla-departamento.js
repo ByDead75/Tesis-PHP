@@ -8,13 +8,11 @@ $(document).ready(function() {
             ajax: {
                 url: route_departamento,
                 data: function (d) {
-                    d.cedula = $('#').val(),
-                    d.nombre = $('#').val(),
-                    d.cod_departamento = $('#').val(),
-                    d.fecha_registro = $('#').val(),
-                    d.user_master = $('#').val(),
-                    d.email = $('#').val(),
-                    d.cod_centro_costo = $('#').val()
+                    d.cod_empresa = $('#cod_empresa').val(),
+                    d.cod_direccion = $('#cod_direccion').val(),
+                    d.cod_gerencia = $('#cod_gerencia').val(),
+                    d.cod_departamento = $('#cod_departamento').val(),
+                    d.nb_departamento = $('#nb_departamento').val()
                 },
             },
             columns: [
@@ -23,13 +21,11 @@ $(document).ready(function() {
                     orderable: false, 
                     searchable: false,
                 },
-                {data: '', name: '' },
-                {data: '', name: '' },
-                {data: '', name: '' },
-                {data: '', name: '' },
-                {data: '', name: '' },
-                {data: '', name: '' },
-                {data: '', name: '' },
+                {data: 'nombre_empresa', name: 'empresa.nb_empresa' },
+                {data: 'nombre_direccion', name: 'direccion.nb_direccion' },
+                {data: 'nombre_gerencia', name: 'gerencia.nb_gerencia' },
+                {data: 'cod_departamento', name: 'cod_departamento' },
+                {data: 'nb_departamento', name: 'nb_departamento' },
             ],
             language: {
                 url: "https://cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"

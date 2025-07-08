@@ -1,6 +1,6 @@
 @extends('template')
 
-@section('title', 'Listado de Departamentos')
+@section('title', 'Editar Departamentos')
 
 @push('css')
     
@@ -17,45 +17,61 @@
             <div class="card-body pb-0">
                 <form class="mb-4">
                     <div class="row">
-                        <div class="col-md-4 col-12">
+                        <div class="col-md-3 col-12">
                             <div class="form-group">
-                                <label class="form-label" for="cod_empresa">Código de la Empresa</label>
-                                <input type="text" id="cod_empresa" class="form-control" 
-                                placeholder="Ingrese el Código de la Empresa" name="cod_empresa">
+                                <label class="form-label" for="" >Código de la Empresa</label>
+                                <input type="text" id="" class="form-control" placeholder="Ingrese el Código de la Empresa" name="">
                             </div>
                         </div>
 
-                        <div class="col-md-4 col-12">
+                        <div class="col-md-3 col-12">
                             <div class="form-group">
-                                <label class="form-label" for="cod_direccion" >Código de la Direccion</label>
-                                <input type="text" id="cod_direccion" class="form-control" 
-                                placeholder="Ingrese el Código de la Direccion" name="cod_direccion">
+                                <label class="form-label" for="" >Código de la Direccion</label>
+                                <input type="text" id="" class="form-control" placeholder="Ingrese el Código de la Direccion" name="">
                             </div>
                         </div>
 
-                        <div class="col-md-4 col-12">
+                        <div class="col-md-3 col-12">
                             <div class="form-group">
-                                <label class="form-label" for="cod_gerencia">Código de la Gerencia</label>
-                                <input type="text" id="cod_gerencia" class="form-control" 
-                                placeholder="Ingrese el Código de la Gerencia" name="cod_gerencia">
+                                <label class="form-label" for="">Código de la Gerencia</label>
+                                <input type="text" id="" class="form-control"placeholder="Ingrese el Código de la Gerencia" name="">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-12">
+                            <div class="form-group">
+                                <label class="form-label" for="">Código del Departamento</label>
+                                <input type="text" id="" class="form-control"placeholder="Ingrese el Código del Departamento" name="">
                             </div>
                         </div>
                     </div>
 
                     <div class="row mt-2">
-                        <div class="col-md-4 col-12">
+                        <div class="col-md-3 col-12">
                             <div class="form-group">
-                                <label class="form-label" for="cod_departamento">Código del Departamento</label>
-                                <input type="text" id="cod_departamento" class="form-control" 
-                                placeholder="Ingrese el Código del Departamento" name="cod_departamento">
+                                <label class="form-label" for="" >Nombre de la Empresa</label>
+                                <input type="text" id="" class="form-control" placeholder="Ingrese el Nombre de la Empresa" name="">
                             </div>
                         </div>
 
-                        <div class="col-md-4 col-12">
+                        <div class="col-md-3 col-12">
                             <div class="form-group">
-                                <label class="form-label" for="nb_departamento">Nombre del Departamento</label>
-                                <input type="text" id="nb_departamento" class="form-control" 
-                                placeholder="Ingrese el Nombre del Departamento" name="nb_departamento">
+                                <label class="form-label" for="" >Nombre de la Direccion</label>
+                                <input type="text" id="" class="form-control" placeholder="Ingrese el Nombre de la Direccion" name="">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-12">
+                            <div class="form-group">
+                                <label class="form-label" for="">Nombre de la Gerencia</label>
+                                <input type="text" id="" class="form-control"placeholder="Ingrese el Nombre de la Gerencia" name="">
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-12">
+                            <div class="form-group">
+                                <label class="form-label" for="">Nombre del Departamento</label>
+                                <input type="text" id="" class="form-control"placeholder="Ingrese el Nombre del Departamento" name="">
                             </div>
                         </div>
                     </div>
@@ -74,15 +90,15 @@
             <div class="card">
                 <div class="card-body pb-0">
                     <div class="table">
-                        <table class="table table-striped" id="tabla_departamento">
+                        <table class="table table-striped" id="tabla_departamentos">
                             <thead >
                                 <tr>
                                     <th class="text-center">Acciones</th>
-                                    <!--<th class="text-center">Código de la Empresa</th>-->
+                                    <th class="text-center">Código de la Empresa</th>
                                     <th class="text-center">Nombre de la Empresa</th>
-                                    <!--<th class="text-center">Código de la Dirección</th>-->
+                                    <th class="text-center">Código de la Dirección</th>
                                     <th class="text-center">Nombre de la Dirección</th>
-                                    <!--<th class="text-center">Código de la Gerencia</th>-->
+                                    <th class="text-center">Código de la Gerencia</th>
                                     <th class="text-center">Nombre de la Gerencia</th>
                                     <th class="text-center">Código del Departamento</th>
                                     <th class="text-center">Nombre del Departamento</th>
@@ -114,15 +130,5 @@
 </script>
 
 <script src="{{asset('assets/compiled/js/tabla-departamento.js')}}"></script>
-
-<script>
-    function RedireccionEditarDepartamento(cod_departamentoDepartamento) {
-
-        console.log('Se hizo click en Editar para el ID del Departamento:', cod_departamentoDepartamento);
-
-        const baseUrl = "{{ url('/editar/departamento') }}";
-            window.location.href = baseUrl + '/'+cod_departamentoDepartamento+'';
-}
-</script>
 
 @endpush 

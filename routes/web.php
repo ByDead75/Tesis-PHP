@@ -84,10 +84,13 @@ Route::controller(EmpresasController::class)->group(function () {
 });
 
 Route::controller(DepartamentosController::class)->group(function () {
-    Route::get('/mostrar/departamento', 'MostrarDepartamentos')->name('gestiones.departamentos.registros.obtener');
-    Route::get('/agregar/departamento', 'AgregarDepartamentos')->name('gestiones.departamentos.agregar.departamentos');
-    Route::get('/editar/departamento', 'EditarDepartamentos')->name('gestiones.departamentos.editar.departamentos');
-    Route::get('/editar/departamento', 'DataDepartamento')->name('departamento.data');
+    Route::get('/mostrar/departamento', 'MostrarIndexDepartamentos')->name('gestiones.departamentos.registros.obtener');
+    Route::get('/obtener/departamento', 'DataDepartamento')->name('departamento.data');
+
+    Route::get('/departamento/agregar', 'MostrarAgregarDepartamentos')->name('gestiones.departamentos.agregar.departamentos');
+    Route::post('/departamento/agregar', 'AgregarDepartamentos')->name('gestiones.departamentos.agregar.departamentos');
+
+    Route::get('/editar/departamento{id_departamento}', 'EditarDepartamentoSeleccionado')->name('gestiones.departamentos.editar');
 
     Route::get('departamento/gerencia/index', 'BuscarDepartamentoGerencia')->name('buscar.departamento.gerencia');
 });

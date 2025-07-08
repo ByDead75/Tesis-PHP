@@ -11,31 +11,32 @@
         <div>
             <h2 class="card-title text-center mb-4 pb-2">Registro de Nuevo Departamento</h2>
         </div>
-        <form class="form">
+        <form id="agregarDepartamento" class="form" action="{{ route('gestiones.departamentos.agregar.departamentos') }}" method="POST">
+        @csrf
             <section id="basic-vertical-layouts">
                 <div class="row match-height">
                     <div class="col-md-8 col-12 mx-auto">
                         <div class="card">
                             <div class="card-content">
                                 <div class="card-body">
-                                    <form class="form form-vertical">
+                                    <!--<form class="form form-vertical"> -->
                                         <div class="form-body">
 
                                             <div class="row">
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="">Nombre de la Empresa</label>
-                                                        <input type="text" id="" class="form-control"
-                                                            name="" placeholder="Ingrese el Nombre de la Empresa">
-                                                        <input type="hidden" id="empresa_codigo" class="form-control"  name="empresa_codigo">
+                                                        <label class="form-label" for="empresa">Código de la Empresa</label>
+                                                        <input type="text" id="empresa" class="form-control"
+                                                            name="empresa" placeholder="Click para seleccionar la Empresa">
+                                                        <input type="hidden" id="empresa_codigo" class="form-control" name="empresa_codigo">
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="">Nombre de la Direccion</label>
-                                                        <input type="text" id="" class="form-control"
-                                                            name="" placeholder="Ingrese el Nombre de la Direccion">
-                                                        <input type="hidden" id="direccion_codigo" class="form-control"  name="direccion_codigo">
+                                                        <label class="form-label" for="direccion">Código de la Direccion</label>
+                                                        <input type="text" id="direccion" class="form-control"
+                                                            name="direccion" placeholder="Click para seleccionar la Direccion">
+                                                        <input type="hidden" id="direccion_codigo" class="form-control" name="direccion_codigo">
                                                     </div>
                                                 </div>
                                             </div>
@@ -43,30 +44,29 @@
                                             <div class="row mt-2">
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="">Nombre de la Gerencia</label>
-                                                        <input type="text" id="" class="form-control" 
-                                                        name="" placeholder="Ingrese el Nombre de la Direccion">
-                                                        <input type="hidden" id="gerencia_codigo" class="form-control"  name="gerencia_codigo">
+                                                        <label class="form-label" for="gerencia">Código de la Gerencia</label>
+                                                        <input type="text" id="gerencia" class="form-control" 
+                                                        name="gerencia" placeholder="Click para seleccionar la Gerencia">
+                                                        <input type="hidden" id="gerencia_codigo" class="form-control" name="gerencia_codigo">
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="">Nombre del Departamento</label>
-                                                        <input type="text" id="" class="form-control" 
-                                                        name="" placeholder="Ingrese el Nombre del Departamento">
-                                                        <input type="hidden" id="departamento_codigo" class="form-control"  name="departamento_codigo">
+                                                        <label class="form-label" for="nb_departamento">Nombre del Departamento</label>
+                                                        <input type="text" id="nb_departamento" class="form-control" 
+                                                        name="nb_departamento" placeholder="Ingrese el Nombre del Departamento">
                                                     </div>
                                                 </div>
                                             </div>
 
                                             <div class="row mt-2">
                                                 <div class="col-12 d-flex justify-content-end offset-md-4 col-md-8">
-                                                    <button type="reset" class="btn btn-secondary me-1 mb-1">Regresar</button>
-                                                    <button type="submit"class="btn btn-primary me-1 mb-1">Confirmar</button>
+                                                    <button type="reset" class="btn btn-secondary me-1 mb-1" id="btn_regresar" name="btn_regresar">Regresar</button>
+                                                    <button type="submit"class="btn btn-primary me-1 mb-1" id="btn_confirmar" name="btn_confirmar">Confirmar</button>
                                                 </div>
                                             </div>
                                         </div>
-                                    </form>
+                                    <!--</form>-->
                                 </div>
                             </div>
                         </div>
@@ -75,4 +75,86 @@
             </section>
         </form>
     </div>
+    
+    @include('components.modal')
+
 @endsection
+
+@push('js')
+    <script src="{{asset('assets/compiled/js/empresas_modal.js')}}"></script>
+    <script src="{{asset('assets/compiled/js/direccion_modal.js')}}"></script>
+    <script src="{{asset('assets/compiled/js/gerencia_modal.js')}}"></script>
+    <script src="{{asset('assets/compiled/js/departamento_modal.js')}}"></script>
+
+    <script>
+        $('#crearDepartamento').validate({
+            rules: { // <-- Alertas para cada input según su ID
+                empresa: {
+                    required: true
+                },
+                direccion: {
+                    required: true
+                },
+                gerencia: {
+                    required: true
+                },
+                departamento: {
+                    required: true
+                },
+                nb_departamento: {
+                    required: true
+                }
+            },
+            messages: { // <-- Mensajes personalizados para cada alerta según su ID
+                empresa: {
+                    required: "Empresa requerida"
+                },
+                direccion: {
+                    required: "Direccion requerida"
+                },
+                gerencia: {
+                    required: "Gerencia requerida"
+                },
+                departamento: {
+                    required: "Departamento requerido"
+                },
+                nb_departamento: {
+                    required: "Nombre del Departamento requerido"
+                }
+            }
+        });
+    </script>
+
+    <script>
+        $('#empresa').on('click', function () {
+            empresas('{{ route("buscar.empresas") }}')  
+        })
+    </script>
+
+    <script>
+        $('#direccion').on('click', function () {
+            if ($('#empresa').val() === "") {
+                alert('Debes seleccionar una empresa primero');
+                empresas('{{ route("buscar.empresas") }}')   
+                return
+            }
+            direccion('{{ route("buscar.direccion.empresa") }}')
+        })
+    </script>
+
+    <script>
+        $('#gerencia').on('click', function () {
+            if ($('#empresa').val() === "") {
+                alert('Debes seleccionar una empresa primero');
+                empresas('{{ route("buscar.empresas") }}')   
+                return;
+            } else if ($('#direccion').val() === "") {
+                alert('Debes seleccionar una dirección primero');
+                direccion('{{ route("buscar.direccion.empresa") }}')   
+                return;
+            }
+            gerencia('{{ route("buscar.gerencia.direccion") }}')
+        })
+    </script>
+
+@endpush
