@@ -87,7 +87,7 @@
     <script src="{{asset('assets/compiled/js/departamento_modal.js')}}"></script>
 
     <script>
-        $('#crearDepartamento').validate({
+        $('#agregarDepartamento').validate({
             rules: { // <-- Alertas para cada input según su ID
                 empresa: {
                     required: true

@@ -78,11 +78,8 @@
                             <thead >
                                 <tr>
                                     <th class="text-center">Acciones</th>
-                                    <!--<th class="text-center">Código de la Empresa</th>-->
                                     <th class="text-center">Nombre de la Empresa</th>
-                                    <!--<th class="text-center">Código de la Dirección</th>-->
                                     <th class="text-center">Nombre de la Dirección</th>
-                                    <!--<th class="text-center">Código de la Gerencia</th>-->
                                     <th class="text-center">Nombre de la Gerencia</th>
                                     <th class="text-center">Código del Departamento</th>
                                     <th class="text-center">Nombre del Departamento</th>

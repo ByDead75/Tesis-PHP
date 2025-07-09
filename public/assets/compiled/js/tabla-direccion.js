@@ -8,13 +8,9 @@ $(document).ready(function() {
             ajax: {
                 url: route_direccion,
                 data: function (d) {
-                    d.cedula = $('#').val(),
-                    d.nombre = $('#').val(),
-                    d.cod_departamento = $('#').val(),
-                    d.fecha_registro = $('#').val(),
-                    d.user_master = $('#').val(),
-                    d.email = $('#').val(),
-                    d.cod_centro_costo = $('#').val()
+                    d.cod_empresa = $('#cod_empresa').val(),
+                    d.cod_direccion = $('#cod_direccion').val(),
+                    d.nb_direccion = $('#nb_direccion').val()
                 },
             },
             columns: [
@@ -23,13 +19,9 @@ $(document).ready(function() {
                     orderable: false, 
                     searchable: false,
                 },
-                {data: '', name: '' },
-                {data: '', name: '' },
-                {data: '', name: '' },
-                {data: '', name: '' },
-                {data: '', name: '' },
-                {data: '', name: '' },
-                {data: '', name: '' },
+                {data: 'nombre_empresa', name: 'empresa.nb_empresa' },
+                {data: 'cod_direccion', name: 'cod_direccion' },
+                {data: 'nb_direccion', name: 'nb_direccion' },
             ],
             language: {
                 url: "https://cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"

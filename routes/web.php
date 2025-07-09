@@ -75,10 +75,13 @@ Route::controller(BancosController::class)->group(function () {
 });
 
 Route::controller(EmpresasController::class)->group(function () {
-    Route::get('/mostrar/empresa', 'MostrarEmpresas')->name('gestiones.empresas.registros.obtener');
-    Route::get('/agregar/empresa', 'AgregarEmpresas')->name('gestiones.empresas.agregar.empresas');
-    Route::get('/editar/empresa', 'EditarEmpresas')->name('gestiones.empresas.editar.empresas');
-    Route::get('/editar/empresa', 'DataEmpresa')->name('empresa.data');
+    Route::get('/mostrar/empresa', 'MostrarIndexEmpresas')->name('gestiones.empresas.registros.obtener');
+    Route::get('/obtener/empresa', 'DataEmpresa')->name('empresa.data');
+
+    Route::get('/empresa/agregar', 'MostrarAgregarEmpresas')->name('gestiones.empresas.agregar.empresas');
+    Route::post('/empresa/agregar', 'AgregarEmpresas')->name('gestiones.empresas.agregar.empresas');
+
+    Route::get('/editar/empresa/{id_empresa}', 'EditarEmpresaSeleccionada')->name('gestiones.empresas.editar');
 
     Route::get('empresas/index', 'BuscarEmpresas')->name('buscar.empresas');
 });
@@ -90,7 +93,7 @@ Route::controller(DepartamentosController::class)->group(function () {
     Route::get('/departamento/agregar', 'MostrarAgregarDepartamentos')->name('gestiones.departamentos.agregar.departamentos');
     Route::post('/departamento/agregar', 'AgregarDepartamentos')->name('gestiones.departamentos.agregar.departamentos');
 
-    Route::get('/editar/departamento{id_departamento}', 'EditarDepartamentoSeleccionado')->name('gestiones.departamentos.editar');
+    Route::get('/editar/departamento/{id_departamento}', 'EditarDepartamentoSeleccionado')->name('gestiones.departamentos.editar');
 
     Route::get('departamento/gerencia/index', 'BuscarDepartamentoGerencia')->name('buscar.departamento.gerencia');
 });
@@ -122,25 +125,32 @@ Route::controller(CuentasController::class)->group(function () {
 });
 
 Route::controller(SucursalesController::class)->group(function () {
-    Route::get('/mostrar/sucursal', 'MostrarSucursales')->name('gestiones.sucursales.registros.obtener');
-    Route::get('/agregar/sucursal', 'AgregarSucursales')->name('gestiones.sucursales.agregar.sucursal');
-    Route::get('/editar/sucursal', 'EditarSucursales')->name('gestiones.sucursales.editar.sucursal');
-    Route::get('/editar/sucursal', 'DataSucursal')->name('sucursal.data');
+    Route::get('/mostrar/sucursal', 'MostrarIndexSucursales')->name('gestiones.sucursales.registros.obtener');
+    Route::get('/obtener/sucursal', 'DataSucursal')->name('sucursal.data');
+
+    Route::get('/sucursal/agregar', 'MostrarAgregarSucursales')->name('gestiones.sucursales.agregar.sucursales');
+    Route::post('/sucursal/agregar', 'AgregarSucursales')->name('gestiones.sucursales.agregar.sucursales');
+
+    Route::get('/editar/sucursal/{id_sucursal}', 'EditarSucursalSeleccionada')->name('gestiones.sucursales.editar');
 
     Route::get('sucursales/empresa/index', 'BuscarSucursalesEmpresa')->name('buscar.sucursales.empresa');
 });
 
 Route::controller(DireccionController::class)->group(function () {
-    Route::get('/mostrar/direccion', 'MostrarDirecciones')->name('gestiones.direcciones.registros.obtener');
-    Route::get('/agregar/direccion', 'AgregarDirecciones')->name('gestiones.direcciones.agregar.direccion');
-    Route::get('/editar/direccion', 'EditarDirecciones')->name('gestiones.direcciones.editar.direccion');
-    Route::get('/editar/direccion', 'DataDireccion')->name('direccion.data');
+    Route::get('/mostrar/direccion', 'MostrarIndexDirecciones')->name('gestiones.direcciones.registros.obtener');
+    Route::get('/obtener/direccion', 'DataDireccion')->name('direccion.data');
+
+    Route::get('/direccion/agregar', 'MostrarAgregarDirecciones')->name('gestiones.direcciones.agregar.direcciones');
+    Route::post('/direccion/agregar', 'AgregarDirecciones')->name('gestiones.direcciones.agregar.direcciones');
+
+    Route::get('/editar/direccion/{id_direccion}', 'EditarDireccionSeleccionada')->name('gestiones.direcciones.editar');
+
     Route::get('direccion/empresa/index', 'BuscarDireccionEmpresa')->name('buscar.direccion.empresa');
 });
 
 Route::controller(GerenciasController::class)->group(function () {
     Route::get('/mostrar/gerencia', 'MostrarGerencias')->name('gestiones.gerencias.registros.obtener');
-    Route::get('/agregar/gerencia', 'AgregarGerencias')->name('gestiones.gerencias.agregar.gerencia');
+    Route::get('/agregar/gerencia', 'AgregarGerencias')->name('gestiones.gerencias.agregar.gerencias');
     Route::get('/editar/gerencia', 'EditarGerencias')->name('gestiones.gerencias.editar.gerencia');
     Route::get('/editar/gerencia', 'DataGerencia')->name('gerencia.data');
     

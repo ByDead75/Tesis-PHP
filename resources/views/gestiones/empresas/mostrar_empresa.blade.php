@@ -19,15 +19,17 @@
                     <div class="row">
                         <div class="col-md-6 col-12">
                             <div class="form-group">
-                                <label class="form-label" for="" >Código de la Empresa</label>
-                                <input type="text" id="" class="form-control" placeholder="Ingrese el Código de la Empresa" name="">
+                                <label class="form-label" for="cod_empresa" >Código de la Empresa</label>
+                                <input type="text" id="cod_empresa" class="form-control" 
+                                placeholder="Ingrese el Código de la Empresa" name="cod_empresa">
                             </div>
                         </div>
 
                         <div class="col-md-6 col-12">
                             <div class="form-group">
-                                <label class="form-label" for="" >Razon Social</label>
-                                <input type="text" id="" class="form-control" placeholder="Ingrese la Razon Social" name="">
+                                <label class="form-label" for="nb_empresa" >Razon Social</label>
+                                <input type="text" id="nb_empresa" class="form-control" 
+                                placeholder="Ingrese la Razon Social" name="nb_empresa">
                             </div>
                         </div>
                     </div>
@@ -46,13 +48,12 @@
             <div class="card">
                 <div class="card-body pb-0">
                     <div class="table">
-                        <table class="table table-striped" id="tabla_empresas">
+                        <table class="table table-striped" id="tabla_empresa">
                             <thead >
                                 <tr>
                                     <th class="text-center">Acciones</th>
                                     <th class="text-center">Codigo de la Empresa</th>
-                                    <th class="text-center">Nombre de la Empresa</th>
-                                    <th class="text-center">Logo de la Empresa</th>
+                                    <th class="text-center">Razon Social</th>
                                 </tr>
                             </thead>
                             <tbody class="text-center">
@@ -76,10 +77,20 @@
 
 @push('js') 
 
-<script>
-    var route_empresa = '{{ route("empresa.data") }}'
-</script>
+    <script>
+        var route_empresa = '{{ route("empresa.data") }}'
+    </script>
 
-<script src="{{asset('assets/compiled/js/tabla-empresa.js')}}"></script>
+    <script src="{{asset('assets/compiled/js/tabla-empresa.js')}}"></script>
+
+    <script>
+        function RedireccionEditarEmpresa(cod_empresaEmpresa) {
+
+            console.log('Se hizo click en Editar para el ID de la Empresa:', cod_empresaEmpresa);
+
+            const baseUrl = "{{ url('/editar/empresa') }}";
+                window.location.href = baseUrl + '/'+cod_empresaEmpresa+'';
+        }
+    </script>
 
 @endpush 

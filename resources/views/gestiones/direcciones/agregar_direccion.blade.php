@@ -11,7 +11,8 @@
         <div>
             <h2 class="card-title text-center mb-4 pb-2">Registro de Nuevas Direcciones</h2>
         </div>
-        <form class="form">
+        <form id="agregarDireccion" class="form" action="{{ route('gestiones.direcciones.agregar.direcciones') }}" method="POST">
+        @csrf
             <section id="basic-vertical-layouts">
                 <div class="row match-height">
                     <div class="col-md-8 col-12 mx-auto">
@@ -24,9 +25,9 @@
                                             <div class="row">
                                                 <div class="col-12">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="">Nombre de la Empresa</label>
-                                                        <input type="text" id="" class="form-control"
-                                                            name="" placeholder="Ingrese el Nombre de la Empresa">
+                                                        <label class="form-label" for="cod_empresa">Nombre de la Empresa</label>
+                                                        <input type="text" id="cod_empresa" class="form-control"
+                                                            name="cod_empresa" placeholder="Click para seleccionar la Empresa">
                                                         <input type="hidden" id="empresa_codigo" class="form-control" name="empresa_codigo">
                                                     </div>
                                                 </div>
@@ -35,9 +36,9 @@
                                             <div class="row mt-2">
                                                 <div class="col-12">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="">Código de la Direccion</label>
-                                                        <input type="text" id="" class="form-control"
-                                                            name="" placeholder="Ingrese el Código de la Direccion">
+                                                        <label class="form-label" for="cod_direccion">Código de la Direccion</label>
+                                                        <input type="text" id="cod_direccion" class="form-control"
+                                                            name="cod_direccion" placeholder="Ingrese el Código de la Direccion">
                                                     </div>
                                                 </div>
                                             </div>
@@ -45,17 +46,17 @@
                                             <div class="row mt-2">
                                                 <div class="col-12">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="">Nombre de la Dirección</label>
-                                                        <input type="text" id="" class="form-control"
-                                                            name="" placeholder="Ingrese el Nombre de la Dirección">
+                                                        <label class="form-label" for="nb_direccion">Nombre de la Dirección</label>
+                                                        <input type="text" id="nb_direccion" class="form-control"
+                                                            name="nb_direccion" placeholder="Ingrese el Nombre de la Dirección">
                                                     </div>
                                                 </div>
                                             </div>
 
                                             <div class="row mt-2">
                                                 <div class="col-12 d-flex justify-content-end offset-md-4 col-md-8">
-                                                    <button type="reset" class="btn btn-secondary me-1 mb-1">Regresar</button>
-                                                    <button type="submit"class="btn btn-primary me-1 mb-1">Confirmar</button>
+                                                    <button type="button" class="btn btn-secondary me-1 mb-1" id="btn_regresar" name="btn_regresar">Regresar</button>
+                                                    <button type="submit"class="btn btn-primary me-1 mb-1" id="btn_confirmar" name="btn_confirmar">Confirmar</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -75,90 +76,37 @@
 
 @push('js')
     <script src="{{asset('assets/compiled/js/empresas_modal.js')}}"></script>
-    <script src="{{asset('assets/compiled/js/sucursales_modal.js')}}"></script>
-    <script src="{{asset('assets/compiled/js/direccion_modal.js')}}"></script>
-    <script src="{{asset('assets/compiled/js/gerencia_modal.js')}}"></script>
-    <script src="{{asset('assets/compiled/js/departamento_modal.js')}}"></script>
-    <script src="{{asset('assets/compiled/js/centro_costo_modal.js')}}"></script>
+
+    <script>
+        $('#agregarDireccion').validate({
+            rules: { // <-- Alertas para cada input según su ID
+                cod_empresa: {
+                    required: true
+                },
+                cod_direccion: {
+                    required: true
+                },
+                nb_direccion: {
+                    required: true
+                },
+            },
+            messages: { // <-- Mensajes personalizados para cada alerta según su ID
+                cod_empresa: {
+                    required: "Empresa requerida"
+                },
+                cod_direccion: {
+                    required: "Código de Dirección requerida"
+                },
+                nb_direccion: {
+                    required: "Nombre de Direccion requerido"
+                },
+            }
+        });
+    </script>
 
     <script>
         $('#empresa').on('click', function () {
             empresas('{{ route("buscar.empresas") }}')  
-        })
-    </script>
-
-    <script>
-        $('#sucursal').on('click', function () {
-            if ($('#empresa').val() === "") {
-                alert('Debes seleccionar una empresa primero');
-                empresas('{{ route("buscar.empresas") }}')   
-                return
-            }
-            sucursales('{{ route("buscar.sucursales.empresa") }}')
-        })
-    </script>
-
-    <script>
-        $('#direccion').on('click', function () {
-            if ($('#empresa').val() === "") {
-                alert('Debes seleccionar una empresa primero');
-                empresas('{{ route("buscar.empresas") }}')   
-                return
-            }
-            direccion('{{ route("buscar.direccion.empresa") }}')
-        })
-    </script>
-
-    <script>
-        $('#gerencia').on('click', function () {
-            if ($('#empresa').val() === "") {
-                alert('Debes seleccionar una empresa primero');
-                empresas('{{ route("buscar.empresas") }}')   
-                return;
-            } else if ($('#direccion').val() === "") {
-                alert('Debes seleccionar una dirección primero');
-                direccion('{{ route("buscar.direccion.empresa") }}')   
-                return;
-            }
-            gerencia('{{ route("buscar.gerencia.direccion") }}')
-        })
-    </script>
-
-    <script>
-        $('#departamento').on('click', function () {
-            if ($('#empresa').val() === "") {
-                alert('Debes seleccionar una empresa primero');
-                empresas('{{ route("buscar.empresas") }}')   
-                return;
-            } else if ($('#direccion').val() === "") {
-                alert('Debes seleccionar una dirección primero');
-                direccion('{{ route("buscar.direccion.empresa") }}')   
-                return;
-            } else if ($('#gerencia').val() === "") {
-                alert('Debes seleccionar una gerencia primero');
-                gerencia('{{ route("buscar.gerencia.direccion") }}') 
-                return;
-            }
-            departamento('{{ route("buscar.departamento.gerencia") }}')
-        })
-    </script>
-
-    <script>
-        $('#centro_costo').on('click', function () {
-            if ($('#empresa').val() === "") {
-                alert('Debes seleccionar una empresa primero');
-                empresas('{{ route("buscar.empresas") }}')   
-                return;
-            } else if ($('#direccion').val() === "") {
-                alert('Debes seleccionar una dirección primero');
-                direccion('{{ route("buscar.direccion.empresa") }}')   
-                return;
-            } else if ($('#gerencia').val() === "") {
-                alert('Debes seleccionar una gerencia primero');
-                gerencia('{{ route("buscar.gerencia.direccion") }}') 
-                return;
-            }
-            centro_costo('{{ route("buscar.centrocosto.gerencia") }}')
         })
     </script>
 @endpush

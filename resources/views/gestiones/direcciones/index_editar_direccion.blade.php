@@ -66,6 +66,7 @@
                             <thead >
                                 <tr>
                                     <th class="text-center">Acción</th>
+                                    <th class="text-center">Código de la Empresa</th>
                                     <th class="text-center">Nombre de la Empresa</th>
                                     <th class="text-center">Código de la Dirección</th>
                                     <th class="text-center">Nombre de la Dirección</th>
@@ -92,19 +93,10 @@
 
 @push('js') 
 
-    <script>
-        var route_direccion = '{{ route("direccion.data") }}'
-    </script>
+<script>
+    var route_direccion = '{{ route("direccion.data") }}'
+</script>
 
-    <script src="{{asset('assets/compiled/js/tabla-direccion.js')}}"></script>
+<script src="{{asset('assets/compiled/js/tabla-direccion.js')}}"></script>
 
-    <script>
-        function RedireccionEditarDireccion(cod_direccionDireccion) {
-
-            console.log('Se hizo click en Editar para el ID de la Direccion:', cod_direccionDireccion);
-
-            const baseUrl = "{{ url('/editar/direccion') }}";
-                window.location.href = baseUrl + '/'+cod_direccionDireccion+'';
-        }
-    </script>
 @endpush 

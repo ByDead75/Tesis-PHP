@@ -1,6 +1,6 @@
 @extends('template')
 
-@section('title', 'Listado de Direcciones')
+@section('title', 'Editar Empresas')
 
 @push('css')
     
@@ -12,7 +12,7 @@
     <section class="section">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title text-center">Registro de Direcciones Existentes</h3>
+                <h3 class="card-title text-center">Registro de Empresas Existentes</h3>
             </div>
             <div class="card-body pb-0">
                 <form class="mb-4">
@@ -26,24 +26,8 @@
 
                         <div class="col-md-6 col-12">
                             <div class="form-group">
-                                <label class="form-label" for="" >Código de la Dirección</label>
-                                <input type="text" id="" class="form-control" placeholder="Ingrese el Código de la Dirección" name="">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row mt-2">
-                        <div class="col-md-6 col-12">
-                            <div class="form-group">
-                                <label class="form-label" for="">Nombre de la Empresa</label>
-                                <input type="text" id="" class="form-control" placeholder="Ingrese el Nombre de la Empresa" name="">
-                            </div>
-                        </div>
-
-                        <div class="col-md-6 col-12">
-                            <div class="form-group">
-                                <label class="form-label" for="">Nombre de la Direccion</label>
-                                <input type="text" id="" class="form-control" placeholder="Ingrese el Nombre de la Dirección" name="">
+                                <label class="form-label" for="" >Razon Social</label>
+                                <input type="text" id="" class="form-control" placeholder="Ingrese la Razon Social" name="">
                             </div>
                         </div>
                     </div>
@@ -62,13 +46,12 @@
             <div class="card">
                 <div class="card-body pb-0">
                     <div class="table">
-                        <table class="table table-striped" id="tabla_direccion">
+                        <table class="table table-striped" id="tabla_empresas">
                             <thead >
                                 <tr>
-                                    <th class="text-center">Acción</th>
+                                    <th class="text-center">Acciones</th>
+                                    <th class="text-center">Codigo de la Empresa</th>
                                     <th class="text-center">Nombre de la Empresa</th>
-                                    <th class="text-center">Código de la Dirección</th>
-                                    <th class="text-center">Nombre de la Dirección</th>
                                 </tr>
                             </thead>
                             <tbody class="text-center">
@@ -92,19 +75,10 @@
 
 @push('js') 
 
-    <script>
-        var route_direccion = '{{ route("direccion.data") }}'
-    </script>
+<script>
+    var route_empresa = '{{ route("empresa.data") }}'
+</script>
 
-    <script src="{{asset('assets/compiled/js/tabla-direccion.js')}}"></script>
+<script src="{{asset('assets/compiled/js/tabla-empresa.js')}}"></script>
 
-    <script>
-        function RedireccionEditarDireccion(cod_direccionDireccion) {
-
-            console.log('Se hizo click en Editar para el ID de la Direccion:', cod_direccionDireccion);
-
-            const baseUrl = "{{ url('/editar/direccion') }}";
-                window.location.href = baseUrl + '/'+cod_direccionDireccion+'';
-        }
-    </script>
 @endpush 

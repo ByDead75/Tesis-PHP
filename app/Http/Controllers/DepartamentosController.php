@@ -86,7 +86,7 @@ class DepartamentosController extends Controller {
         $gerencia->nb_gerencia = $departamento->nb_gerencia;
         $gerencia->save();
 
-            return redirect()->route('gestiones.proveedores.registros.obtener');
+            return redirect()->route('gestiones.departamentos.registros.obtener');
         } catch (\Exception $e) {
             
             return back()->withErrors(['error' => 'Ocurrió un error al guardar los datos.']);

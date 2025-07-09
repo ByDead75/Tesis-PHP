@@ -74,10 +74,6 @@
                                     <li class="subsubmenu-item ">
                                         <a href="{{ route('gestiones.usuarios.registros.obtener') }}" class="subsubmenu-link">Lista de Usuarios</a>
                                     </li>
-                                    
-                                    <li class="subsubmenu-item ">
-                                        <a href="{{ route('gestiones.usuarios.registros.obtener') }}" class="subsubmenu-link">Editar Usuario</a>
-                                    </li>
                                 </ul>
                             </li>
                             
@@ -90,10 +86,6 @@
 
                                     <li class="subsubmenu-item ">
                                         <a href="{{ route('gestiones.proveedores.registros.obtener') }}" class="subsubmenu-link">Lista de Proveedores</a>
-                                    </li>
-
-                                    <li class="subsubmenu-item ">
-                                        <a href="{{ route('gestiones.proveedores.registros.obtener') }}" class="subsubmenu-link">Editar Proovedor</a>
                                     </li>
                                 </ul>
                             </li>
@@ -108,10 +100,6 @@
                                     <li class="subsubmenu-item ">
                                         <a href="{{ route('gestiones.departamentos.registros.obtener') }}" class="subsubmenu-link">Lista de Departamentos</a>
                                     </li>
-                                    
-                                    <li class="subsubmenu-item ">
-                                        <a href="{{ route('gestiones.departamentos.registros.obtener') }}" class="subsubmenu-link">Editar Departamento</a>
-                                    </li>
                                 </ul>
                             </li>
 
@@ -125,10 +113,6 @@
                                     <li class="subsubmenu-item ">
                                         <a href="{{ route('gestiones.empresas.registros.obtener') }}" class="subsubmenu-link">Lista de Empresas</a>
                                     </li>
-                                    
-                                    <li class="subsubmenu-item ">
-                                        <a href="{{ route('gestiones.empresas.registros.obtener') }}" class="subsubmenu-link">Editar Empresa</a>
-                                    </li>
                                 </ul>
                             </li>
 
@@ -136,15 +120,11 @@
                                 <a href="#" class='submenu-link'>Direcciones</a>
                                 <ul class="subsubmenu">
                                     <li class="subsubmenu-item ">
-                                        <a href="{{ route('gestiones.direcciones.agregar.direccion') }}" class="subsubmenu-link">Agregar Direccion</a>
+                                        <a href="{{ route('gestiones.direcciones.agregar.direcciones') }}" class="subsubmenu-link">Agregar Direccion</a>
                                     </li>
 
                                     <li class="subsubmenu-item ">
                                         <a href="{{ route('gestiones.direcciones.registros.obtener') }}" class="subsubmenu-link">Lista de Direcciones</a>
-                                    </li>
-                                    
-                                    <li class="subsubmenu-item ">
-                                        <a href="{{ route('gestiones.direcciones.registros.obtener') }}" class="subsubmenu-link">Editar Direccion</a>
                                     </li>
                                 </ul>
                             </li>
@@ -153,15 +133,11 @@
                                 <a href="#" class='submenu-link'>Sucursales</a>
                                 <ul class="subsubmenu">
                                     <li class="subsubmenu-item ">
-                                        <a href="{{ route('gestiones.sucursales.agregar.sucursal') }}" class="subsubmenu-link">Agregar Sucursal</a>
+                                        <a href="{{ route('gestiones.sucursales.agregar.sucursales') }}" class="subsubmenu-link">Agregar Sucursal</a>
                                     </li>
 
                                     <li class="subsubmenu-item ">
                                         <a href="{{ route('gestiones.sucursales.registros.obtener') }}" class="subsubmenu-link">Lista de Sucursales</a>
-                                    </li>
-                                    
-                                    <li class="subsubmenu-item ">
-                                        <a href="{{ route('gestiones.sucursales.registros.obtener') }}" class="subsubmenu-link">Editar Sucursal</a>
                                     </li>
                                 </ul>
                             </li>
@@ -170,15 +146,11 @@
                                 <a href="#" class='submenu-link'>Gerencias</a>
                                 <ul class="subsubmenu">
                                     <li class="subsubmenu-item ">
-                                        <a href="{{ route('gestiones.gerencias.agregar.gerencia') }}" class="subsubmenu-link">Agregar Gerencia</a>
+                                        <a href="{{ route('gestiones.gerencias.agregar.gerencias') }}" class="subsubmenu-link">Agregar Gerencia</a>
                                     </li>
 
                                     <li class="subsubmenu-item ">
                                         <a href="{{ route('gestiones.gerencias.registros.obtener') }}" class="subsubmenu-link">Lista de Gerencias</a>
-                                    </li>
-                                    
-                                    <li class="subsubmenu-item ">
-                                        <a href="{{ route('gestiones.gerencias.registros.obtener') }}" class="subsubmenu-link">Editar Gerencia</a>
                                     </li>
                                 </ul>
                             </li>

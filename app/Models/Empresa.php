@@ -31,4 +31,31 @@ class Empresa extends Model{
 
         return $resultado;
     }
+
+    public function obtener_empresas($cod_empresa, $nb_empresa) {
+        $resultado = self::select('empresa.cod_empresa', 
+                                    'empresa.nb_empresa');
+        
+        if($cod_empresa != null){
+            $resultado->where('empresa.cod_empresa', $cod_empresa);
+        }
+        if($nb_empresa != null){
+            $resultado->whereRaw('LOWER(empresa.nb_empresa) LIKE ?', ['%' . strtolower($nb_empresa) . '%']);
+        }else{
+            $resultado->limit(100);
+        }
+        $resultado = $resultado->orderBy('empresa.cod_empresa', 'asc')->distinct()->get();
+
+        return $resultado;
+    }
+
+    public function GetEmpresaPorCodigo($cod_empresa){
+
+        $resultado = self::select('empresa.cod_empresa',
+                                'empresa.nb_empresa',
+                                )
+                            ->where('empresa.cod_empresa', $cod_empresa)
+                            ->first();
+        return $resultado;
+    }
 }

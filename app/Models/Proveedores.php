@@ -27,7 +27,7 @@ class Proveedores extends Model{
         $resultado = self::select(DB::raw("TRIM(REPLACE(REPLACE(REPLACE(proveedores.cod_tipo_auxiliar, CHAR(13), ''), CHAR(10), ''), '\t', '')) as cod_tipo_auxiliar"),
         'proveedores.cod_auxiliar',
         'proveedores.nb_auxiliar', 
-        'proveedores.rif')
+        'proveedores.rif',)
         ->distinct()->get();
 
         return $resultado;

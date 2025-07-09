@@ -76,3 +76,45 @@
         </form>
     </div>
 @endsection
+
+@push('js')
+
+    <script>
+        $('#agregarDepartamento').validate({
+            rules: { // <-- Alertas para cada input según su ID
+                empresa: {
+                    required: true
+                },
+                direccion: {
+                    required: true
+                },
+                gerencia: {
+                    required: true
+                },
+                departamento: {
+                    required: true
+                },
+                nb_departamento: {
+                    required: true
+                }
+            },
+            messages: { // <-- Mensajes personalizados para cada alerta según su ID
+                empresa: {
+                    required: "Empresa requerida"
+                },
+                direccion: {
+                    required: "Direccion requerida"
+                },
+                gerencia: {
+                    required: "Gerencia requerida"
+                },
+                departamento: {
+                    required: "Departamento requerido"
+                },
+                nb_departamento: {
+                    required: "Nombre del Departamento requerido"
+                }
+            }
+        });
+    </script>
+@endpush

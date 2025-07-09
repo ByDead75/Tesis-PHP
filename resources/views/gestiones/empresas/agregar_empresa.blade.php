@@ -11,7 +11,8 @@
         <div>
             <h2 class="card-title text-center mb-4 pb-2">Registro de Nuevas Empresas</h2>
         </div>
-        <form class="form">
+        <form id="agregarEmpresa" class="form" action="{{ route('gestiones.empresas.agregar.empresas') }}" method="POST">
+        @csrf
             <section id="basic-vertical-layouts">
                 <div class="row match-height">
                     <div class="col-md-8 col-12 mx-auto">
@@ -24,37 +25,24 @@
                                             <div class="row">
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="">Codigo de la Empresa</label>
-                                                        <input type="text" id="" class="form-control"
-                                                            name="" placeholder="Ingrese el Codigo de la Empresa">
+                                                        <label class="form-label" for="cod_empresa">Codigo de la Empresa</label>
+                                                        <input type="text" id="cod_empresa" class="form-control"
+                                                            name="cod_empresa" placeholder="Ingrese el Codigo de la Empresa">
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="cedula">Nombre de la Empresa</label>
-                                                        <input type="text" id="cedula" class="form-control"
-                                                            name="cedula" placeholder="Ingrese el Nombre de la Empresa">
-                                                        <input type="hidden" id="empresa_codigo" class="form-control" name="empresa_codigo">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row mt-4">
-                                                <div class="col-12">
-                                                    <div>
-                                                        <h5 class="card-title text-center">Subir Logo (Opcional)</h5>
-                                                    </div>
-                                                    <div class="card-body">
-                                                        <p class="card-text">Los archivos a subir deben estar en formato PNG</p>
-                                                        <input type="file" name="image" class="imgbb-filepond">
+                                                        <label class="form-label" for="nb_empresa">Ingrese la Razon Social</label>
+                                                        <input type="text" id="nb_empresa" class="form-control"
+                                                            name="nb_empresa" placeholder="Ingrese la Razon Social">
                                                     </div>
                                                 </div>
                                             </div>
 
                                             <div class="row mt-2">
                                                 <div class="col-12 d-flex justify-content-end offset-md-4 col-md-8">
-                                                    <button type="reset" class="btn btn-secondary me-1 mb-1">Regresar</button>
-                                                    <button type="submit"class="btn btn-primary me-1 mb-1">Confirmar</button>
+                                                    <button type="button" class="btn btn-secondary me-1 mb-1" id="btn_regresar" name="btn_regresar">Regresar</button>
+                                                    <button type="submit"class="btn btn-primary me-1 mb-1" id="btn_confirmar" name="btn_confirmar">Confirmar</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -68,40 +56,27 @@
         </form>
     </div>
 
-    @include('components.modal')
-
 @endsection
 
 @push('js')
-    <script src="{{asset('assets/compiled/js/empresas_modal.js')}}"></script>
-    <script src="{{asset('assets/compiled/js/sucursales_modal.js')}}"></script>
-    <script src="{{asset('assets/compiled/js/direccion_modal.js')}}"></script>
-
     <script>
-        $('#empresa').on('click', function () {
-            empresas('{{ route("buscar.empresas") }}')  
-        })
-    </script>
-
-    <script>
-        $('#sucursal').on('click', function () {
-            if ($('#empresa').val() === "") {
-                alert('Debes seleccionar una empresa primero');
-                empresas('{{ route("buscar.empresas") }}')   
-                return
+        $('#agregarEmpresa').validate({
+            rules: { // <-- Alertas para cada input según su ID
+                cod_empresa: {
+                    required: true
+                },
+                nb_empresa: {
+                    required: true
+                },
+            },
+            messages: { // <-- Mensajes personalizados para cada alerta según su ID
+                cod_empresa: {
+                    required: "Código de la Empresa requerido"
+                },
+                nb_empresa: {
+                    required: "Nombre de la Empresa requerido"
+                },
             }
-            sucursales('{{ route("buscar.sucursales.empresa") }}')
-        })
-    </script>
-
-    <script>
-        $('#direccion').on('click', function () {
-            if ($('#empresa').val() === "") {
-                alert('Debes seleccionar una empresa primero');
-                empresas('{{ route("buscar.empresas") }}')   
-                return
-            }
-            direccion('{{ route("buscar.direccion.empresa") }}')
-        })
+        });
     </script>
 @endpush
