@@ -96,13 +96,14 @@ class OrdenesController extends Controller
         $solicitud->save();
 
         
-        foreach($request->get('archivos') as $key => $archivo){
+        foreach($request->get('archivos') as $archivo){
 
             if ($archivo !== null && !empty($archivo)) {
 
-                $id_documento = 
+                $ultimoDocumento = Documento::orderby('id', 'desc')->first();
+                $nuevoIdDocumento = $ultimoDocumento ? $ultimoDocumento->id + 1 : 1;
 
-                $nombre_archivo = $solicitud->id_solicitud . 'datosSolicitud_' . ($key + 1) . '.' . pathinfo($archivo, PATHINFO_EXTENSION);
+                $nombre_archivo = $solicitud->id_solicitud . 'datosSolicitud_' . ($nuevoIdDocumento) . '.' . pathinfo($archivo, PATHINFO_EXTENSION);
 
                 DocumentoService::copiar('public/temp/'.$archivo, 'public/documentos/'.$nombre_archivo);
 
@@ -256,11 +257,14 @@ class OrdenesController extends Controller
 
         if ($request->get('archivos') !== null) {
 
-            foreach($request->get('archivos') as $key => $archivo){
+            foreach($request->get('archivos') as $archivo){
 
                 if ($archivo !== null && !empty($archivo)) {
 
-                    $nombre_archivo = $solicitud->id_solicitud . 'datosSolicitud_' . ($key + 1) . '.' . pathinfo($archivo, PATHINFO_EXTENSION);
+                    $ultimoDocumento = Documento::orderby('id', 'desc')->first();
+                    $nuevoIdDocumento = $ultimoDocumento ? $ultimoDocumento->id + 1 : 1;
+
+                    $nombre_archivo = $solicitud->id_solicitud . 'datosSolicitud_' . ($nuevoIdDocumento) . '.' . pathinfo($archivo, PATHINFO_EXTENSION);
                         
                     DocumentoService::copiar('public/temp/'.$archivo, 'public/documentos/'.$nombre_archivo);
 

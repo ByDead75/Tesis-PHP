@@ -119,7 +119,8 @@
                                         <div class="form-group">
                                             <label for="tipo_solicitud" class="form-label text-center d-block">Factura/Presupuesto</label>
                                                 <select class="form-select text-center" id="tipo_solicitud" name="tipo_solicitud">
-                                                    <option value="0">Seleccionar</option>
+                                                    <option value="">Seleccionar</option>
+                                                    <option value="0" {{ old('tipo_solicitud', $solicitud->factupuesto) == '0' ? 'selected' : '' }}>N/A</option>
                                                     <option value="1" {{ old('tipo_solicitud', $solicitud->factupuesto) == '1' ? 'selected' : '' }}>FACTURA</option>
                                                     <option value="2" {{ old('tipo_solicitud', $solicitud->factupuesto) == '2' ? 'selected' : '' }}>PRESUPUESTO</option>
                                                 </select>
@@ -140,7 +141,8 @@
                                         <div class="form-group">
                                             <label for="forma_pago" class="form-label text-center d-block">Forma de Pago</label>
                                                 <select class="form-select text-center" id="forma_pago" name="forma_pago">
-                                                    <option value="0">Seleccionar</option>
+                                                    <option value="">Seleccionar</option>
+                                                    <option value="0" {{ old('forma_pago', $solicitud->id_pago) == '0' ? 'selected' : '' }}>N/A</option>
                                                     <option value="1" {{ old('forma_pago', $solicitud->id_pago) == '1' ? 'selected' : '' }}>CHEQUE</option>
                                                     <option value="2" {{ old('forma_pago', $solicitud->id_pago) == '2' ? 'selected' : '' }}>TRANSFERENCIA</option>
                                                 </select>

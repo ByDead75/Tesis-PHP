@@ -56,16 +56,6 @@
                                         <textarea class="form-control"  id="observaciones" name="observaciones"></textarea>
                                     </div>
                                 </div>
-
-                                <!--
-
-                                <div class="row mt-3">
-                                    <div class="col-12 d-flex justify-content-between align-items-center">
-                                        <button type="button" class="btn btn-secondary me-1 mb-1" id="btn_regresar" name="btn_regresar">Regresar</button>
-                                        <button type="submit" class="btn btn-primary me-1 mb-1">Cambiar Status</button>
-                                    </div>
-                                </div>
-                                -->
                             </div>
                         </div>
                     </div>
