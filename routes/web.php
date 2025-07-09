@@ -125,13 +125,14 @@ Route::controller(CuentasController::class)->group(function () {
 });
 
 Route::controller(SucursalesController::class)->group(function () {
-    Route::get('/mostrar/sucursal', 'MostrarIndexSucursales')->name('gestiones.sucursales.registros.obtener');
-    Route::get('/obtener/sucursal', 'DataSucursal')->name('sucursal.data');
+    Route::get('/mostrar/sucursal', 'MostrarSucursales')->name('gestiones.sucursales.registros');
+    Route::get('/mostrar/sucursal/obtener', 'DataSucursales')->name('gestiones.sucursales.registros.obtener');
 
-    Route::get('/sucursal/agregar', 'MostrarAgregarSucursales')->name('gestiones.sucursales.agregar.sucursales');
-    Route::post('/sucursal/agregar', 'AgregarSucursales')->name('gestiones.sucursales.agregar.sucursales');
+    Route::get('/agregar/sucursal', 'MostrarAgregarSucursales')->name('gestiones.sucursales.agregar');
+    Route::post('/agregar/sucursal', 'AgregarSucursales')->name('gestiones.sucursales.agregar');
 
-    Route::get('/editar/sucursal/{id_sucursal}', 'EditarSucursalSeleccionada')->name('gestiones.sucursales.editar');
+    Route::get('/editar/sucursal/{codigo_empresa}/{codigo_sucursal}', 'EditarSucursalSeleccionada')->name('gestiones.sucursales.editar');
+    Route::post('/editar/sucursal', 'ActualizarSucursalSeleccionada')->name('gestiones.sucursales.actualizar');
 
     Route::get('sucursales/empresa/index', 'BuscarSucursalesEmpresa')->name('buscar.sucursales.empresa');
 });

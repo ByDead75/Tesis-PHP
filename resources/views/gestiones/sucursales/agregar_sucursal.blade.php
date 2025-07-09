@@ -11,55 +11,43 @@
         <div>
             <h2 class="card-title text-center mb-4 pb-2">Registro de Nuevas Sucursales</h2>
         </div>
-        <form class="form">
+        <form id="crearSucursal" class="form" action="{{ route('gestiones.sucursales.agregar') }}" method="POST">
+        @csrf
             <section id="basic-vertical-layouts">
                 <div class="row match-height">
                     <div class="col-md-8 col-12 mx-auto">
                         <div class="card">
                             <div class="card-content">
                                 <div class="card-body">
-                                    <form class="form form-vertical">
-                                        <div class="form-body">
-
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <div class="form-group">
-                                                        <label class="form-label" for="">Nombre de la Empresa</label>
-                                                        <input type="text" id="" class="form-control"
-                                                            name="" placeholder="Ingrese el Nombre de la Empresa">
-                                                        <input type="hidden" id="empresa_codigo" class="form-control" name="empresa_codigo">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row mt-2">
-                                                <div class="col-12">
-                                                    <div class="form-group">
-                                                        <label class="form-label" for="">Código de la Sucursal</label>
-                                                        <input type="text" id="" class="form-control"
-                                                            name="" placeholder="Ingrese el Código de la Sucursal">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row mt-2">
-                                                <div class="col-12">
-                                                    <div class="form-group">
-                                                        <label class="form-label" for="">Nombre de la Sucursal</label>
-                                                        <input type="text" id="" class="form-control"
-                                                            name="" placeholder="Ingrese el Nombre de la Sucursal">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row mt-2">
-                                                <div class="col-12 d-flex justify-content-end offset-md-4 col-md-8">
-                                                    <button type="reset" class="btn btn-secondary me-1 mb-1">Regresar</button>
-                                                    <button type="submit"class="btn btn-primary me-1 mb-1">Confirmar</button>
+                                    <div class="form-body">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label class="form-label" for="">Empresa</label>
+                                                    <input type="text" id="empresa" name="empresa" class="form-control"
+                                                        placeholder="Seleccione la Empresa">
+                                                    <input type="hidden" id="empresa_codigo" name="empresa_codigo" class="form-control">
                                                 </div>
                                             </div>
                                         </div>
-                                    </form>
+
+                                        <div class="row mt-2">
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label class="form-label" for="">Nombre de la Sucursal</label>
+                                                    <input type="text" id="sucursal" name="sucursal" class="form-control"
+                                                        placeholder="Ingrese el Nombre de la Sucursal">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mt-2">
+                                            <div class="col-12 d-flex justify-content-end offset-md-4 col-md-8">
+                                                <button type="reset" class="btn btn-secondary me-1 mb-1">Regresar</button>
+                                                <button type="submit"class="btn btn-primary me-1 mb-1">Confirmar</button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -75,11 +63,32 @@
 
 @push('js')
     <script src="{{asset('assets/compiled/js/empresas_modal.js')}}"></script>
-    <script src="{{asset('assets/compiled/js/sucursales_modal.js')}}"></script>
-    <script src="{{asset('assets/compiled/js/direccion_modal.js')}}"></script>
-    <script src="{{asset('assets/compiled/js/gerencia_modal.js')}}"></script>
-    <script src="{{asset('assets/compiled/js/departamento_modal.js')}}"></script>
-    <script src="{{asset('assets/compiled/js/centro_costo_modal.js')}}"></script>
+
+    <script>
+    $('#crearSucursal').validate({
+        rules: { // <-- Alertas para cada input según su ID
+            empresa: {
+                required: true
+            },
+            sucursal: {
+                required: true
+            },
+        },
+        messages: { // <-- Mensajes personalizados para cada alerta según su ID
+            empresa: {
+                required: "Seleccione la empresa en donde se agregará la sucursal."
+            },
+            sucursal: {
+                required: "Ingrese el nombre de la sucursal."
+            },
+        },
+
+        errorClass: "error-message", // Clase CSS para los mensajes de error
+        errorPlacement: function(error, element) {
+            error.insertAfter(element); // Coloca el mensaje de error después del elemento
+        }
+    });
+    </script>
 
     <script>
         $('#empresa').on('click', function () {
@@ -87,78 +96,5 @@
         })
     </script>
 
-    <script>
-        $('#sucursal').on('click', function () {
-            if ($('#empresa').val() === "") {
-                alert('Debes seleccionar una empresa primero');
-                empresas('{{ route("buscar.empresas") }}')   
-                return
-            }
-            sucursales('{{ route("buscar.sucursales.empresa") }}')
-        })
-    </script>
-
-    <script>
-        $('#direccion').on('click', function () {
-            if ($('#empresa').val() === "") {
-                alert('Debes seleccionar una empresa primero');
-                empresas('{{ route("buscar.empresas") }}')   
-                return
-            }
-            direccion('{{ route("buscar.direccion.empresa") }}')
-        })
-    </script>
-
-    <script>
-        $('#gerencia').on('click', function () {
-            if ($('#empresa').val() === "") {
-                alert('Debes seleccionar una empresa primero');
-                empresas('{{ route("buscar.empresas") }}')   
-                return;
-            } else if ($('#direccion').val() === "") {
-                alert('Debes seleccionar una dirección primero');
-                direccion('{{ route("buscar.direccion.empresa") }}')   
-                return;
-            }
-            gerencia('{{ route("buscar.gerencia.direccion") }}')
-        })
-    </script>
-
-    <script>
-        $('#departamento').on('click', function () {
-            if ($('#empresa').val() === "") {
-                alert('Debes seleccionar una empresa primero');
-                empresas('{{ route("buscar.empresas") }}')   
-                return;
-            } else if ($('#direccion').val() === "") {
-                alert('Debes seleccionar una dirección primero');
-                direccion('{{ route("buscar.direccion.empresa") }}')   
-                return;
-            } else if ($('#gerencia').val() === "") {
-                alert('Debes seleccionar una gerencia primero');
-                gerencia('{{ route("buscar.gerencia.direccion") }}') 
-                return;
-            }
-            departamento('{{ route("buscar.departamento.gerencia") }}')
-        })
-    </script>
-
-    <script>
-        $('#centro_costo').on('click', function () {
-            if ($('#empresa').val() === "") {
-                alert('Debes seleccionar una empresa primero');
-                empresas('{{ route("buscar.empresas") }}')   
-                return;
-            } else if ($('#direccion').val() === "") {
-                alert('Debes seleccionar una dirección primero');
-                direccion('{{ route("buscar.direccion.empresa") }}')   
-                return;
-            } else if ($('#gerencia').val() === "") {
-                alert('Debes seleccionar una gerencia primero');
-                gerencia('{{ route("buscar.gerencia.direccion") }}') 
-                return;
-            }
-            centro_costo('{{ route("buscar.centrocosto.gerencia") }}')
-        })
-    </script>
 @endpush
+

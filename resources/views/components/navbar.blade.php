@@ -133,11 +133,11 @@
                                 <a href="#" class='submenu-link'>Sucursales</a>
                                 <ul class="subsubmenu">
                                     <li class="subsubmenu-item ">
-                                        <a href="{{ route('gestiones.sucursales.agregar.sucursales') }}" class="subsubmenu-link">Agregar Sucursal</a>
+                                        <a href="{{ route('gestiones.sucursales.agregar') }}" class="subsubmenu-link">Agregar Sucursal</a>
                                     </li>
 
                                     <li class="subsubmenu-item ">
-                                        <a href="{{ route('gestiones.sucursales.registros.obtener') }}" class="subsubmenu-link">Lista de Sucursales</a>
+                                        <a href="{{ route('gestiones.sucursales.registros') }}" class="subsubmenu-link">Lista de Sucursales</a>
                                     </li>
                                 </ul>
                             </li>

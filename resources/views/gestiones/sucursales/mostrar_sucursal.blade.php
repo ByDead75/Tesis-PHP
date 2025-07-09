@@ -12,22 +12,38 @@
     <section class="section">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title text-center">Registro de Sucursales Existentes</h3>
+                <h3 class="card-title text-center">Listado de Sucursales</h3>
             </div>
             <div class="card-body pb-0">
                 <form class="mb-4">
                     <div class="row">
                         <div class="col-md-6 col-12">
                             <div class="form-group">
-                                <label class="form-label" for="" >Código de la Empresa</label>
-                                <input type="text" id="" class="form-control" placeholder="Ingrese el Código de la Empresa" name="">
+                                <label class="form-label" for="codigo_empresa" >Código de la Empresa</label>
+                                <input type="number" min="0" id="codigo_empresa" name="codigo_empresa" class="form-control" placeholder="Ingrese el Código de la Empresa">
                             </div>
                         </div>
 
                         <div class="col-md-6 col-12">
                             <div class="form-group">
-                                <label class="form-label" for="" >Código de la Sucursal</label>
-                                <input type="text" id="" class="form-control" placeholder="Ingrese el Código de la Sucursal" name="">
+                                <label class="form-label" for="nombre_empresa">Nombre de la Empresa</label>
+                                <input type="text" id="nombre_empresa" name="nombre_empresa" class="form-control" 
+                                placeholder="Ingrese el Nombre de la Empresa">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <label class="form-label" for="codigo_sucursal" >Código de la Sucursal</label>
+                                <input type="number" min="0" id="codigo_sucursal" name="codigo_sucursal" class="form-control" placeholder="Ingrese el Código de la Sucursal">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <label class="form-label" for="nombre_sucursal">Nombre de la Sucursal</label>
+                                <input type="text" id="nombre_sucursal" name="nombre_sucursal" class="form-control" 
+                                placeholder="Ingrese el Nombre de la Sucursal" >
                             </div>
                         </div>
 
@@ -45,7 +61,7 @@
             <div class="card">
                 <div class="card-body pb-0">
                     <div class="table">
-                        <table class="table table-striped" id="tabla_usuarios">
+                        <table class="table table-striped" id="tabla_sucursales">
                             <thead >
                                 <tr>
                                     <th class="text-center">Acciones</th>
@@ -76,10 +92,20 @@
 
 @push('js') 
 
-<script>
-    var route_sucursal = '{{ route("sucursal.data") }}'
-</script>
+    <script>
+        var route_sucursal = '{{ route("gestiones.sucursales.registros.obtener") }}'
+    </script>
 
-<script src="{{asset('assets/compiled/js/tabla-sucursal.js')}}"></script>
+    <script src="{{asset('assets/compiled/js/tabla-sucursal.js')}}"></script>
+
+    <script>
+        function RedireccionEditarSucursal(codigo_empresa, codigo_sucursal) {
+
+            console.log('Se hizo clic en Editar para el ID de Pago:', codigo_empresa, codigo_sucursal);
+
+            const baseUrl = "{{ url('/editar/sucursal') }}";
+                window.location.href = baseUrl + '/'+codigo_empresa+'/'+codigo_sucursal+'';
+    }
+    </script>
 
 @endpush 
