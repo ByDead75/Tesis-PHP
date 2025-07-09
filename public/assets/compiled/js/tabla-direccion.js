@@ -9,6 +9,7 @@ $(document).ready(function() {
                 url: route_direccion,
                 data: function (d) {
                     d.cod_empresa = $('#cod_empresa').val(),
+                    d.cod_empresa = $('#cod_empresa').val(),
                     d.cod_direccion = $('#cod_direccion').val(),
                     d.nb_direccion = $('#nb_direccion').val()
                 },
@@ -20,6 +21,7 @@ $(document).ready(function() {
                     searchable: false,
                 },
                 {data: 'nombre_empresa', name: 'empresa.nb_empresa' },
+                {data: 'cod_empresa', name: 'cod_empresa' },
                 {data: 'cod_direccion', name: 'cod_direccion' },
                 {data: 'nb_direccion', name: 'nb_direccion' },
             ],

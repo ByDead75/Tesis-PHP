@@ -7,7 +7,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\BancosController;
 use App\Http\Controllers\CuentasController;
-use App\Http\Controllers\DireccionController;
+use App\Http\Controllers\DireccionesController;
 use App\Http\Controllers\EmpresasController;
 use App\Http\Controllers\OrdenesController;
 use App\Http\Controllers\UsuariosController;
@@ -136,7 +136,7 @@ Route::controller(SucursalesController::class)->group(function () {
     Route::get('sucursales/empresa/index', 'BuscarSucursalesEmpresa')->name('buscar.sucursales.empresa');
 });
 
-Route::controller(DireccionController::class)->group(function () {
+Route::controller(DireccionesController::class)->group(function () {
     Route::get('/mostrar/direccion', 'MostrarIndexDirecciones')->name('gestiones.direcciones.registros.obtener');
     Route::get('/obtener/direccion', 'DataDireccion')->name('direccion.data');
 

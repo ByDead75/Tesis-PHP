@@ -6,7 +6,7 @@ use App\Models\Direccion;
 use Yajra\DataTables\DataTables;
 use Illuminate\Http\Request;
 
-class DireccionController extends Controller
+class DireccionesController extends Controller
 {
     public function MostrarIndexDirecciones () {
 
@@ -26,7 +26,7 @@ class DireccionController extends Controller
             ->addIndexColumn()
             ->addColumn('actions', function($row) {
                     $button = '<div class="btn-group" role="group">
-                                    <a class="btn btn-sm btn-secondary icon" onclick="RedireccionEditarDireccion('.$row->cod_empresa.') "title="Clic para editar">
+                                    <a class="btn btn-sm btn-secondary icon" onclick="RedireccionEditarDireccion('.$row->cod_direccion.') "title="Clic para editar">
                                         <i class="fas fa-edit"></i> Editar
                                     </a>
                                 </div>';
