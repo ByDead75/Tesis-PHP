@@ -8,13 +8,12 @@ $(document).ready(function() {
             ajax: {
                 url: route_gerencia,
                 data: function (d) {
-                    d.cedula = $('#').val(),
-                    d.nombre = $('#').val(),
-                    d.cod_departamento = $('#').val(),
-                    d.fecha_registro = $('#').val(),
-                    d.user_master = $('#').val(),
-                    d.email = $('#').val(),
-                    d.cod_centro_costo = $('#').val()
+                    d.codigo_empresa = $('#codigo_empresa').val(),
+                    d.nombre_empresa = $('#nombre_empresa').val(),
+                    d.codigo_direccion = $('#codigo_direccion').val(),
+                    d.nombre_direccion = $('#nombre_direccion').val(),
+                    d.codigo_gerencia = $('#codigo_gerencia').val(),
+                    d.nombre_gerencia = $('#nombre_gerencia').val()
                 },
             },
             columns: [
@@ -23,13 +22,12 @@ $(document).ready(function() {
                     orderable: false, 
                     searchable: false,
                 },
-                {data: '', name: '' },
-                {data: '', name: '' },
-                {data: '', name: '' },
-                {data: '', name: '' },
-                {data: '', name: '' },
-                {data: '', name: '' },
-                {data: '', name: '' },
+                {data: 'cod_empresa', name: 'cod_empresa' },
+                {data: 'nombre_empresa', name: 'empresa.nb_empresa' },
+                {data: 'cod_direccion', name: 'cod_direccion' },
+                {data: 'nombre_direccion', name: 'direccion.nb_direccion' },
+                {data: 'cod_gerencia', name: 'cod_gerencia' },
+                {data: 'nb_gerencia', name: 'nb_gerencia' },
             ],
             language: {
                 url: "https://cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"

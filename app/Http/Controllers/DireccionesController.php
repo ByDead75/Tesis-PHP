@@ -17,8 +17,9 @@ class DireccionesController extends Controller
 
         if ($request->ajax()) {
             
-            $direccion_model = new direccion;
+            $direccion_model = new Direccion;
             $direccion = $direccion_model->obtener_direcciones($request->cod_empresa,
+                                                        $request->nb_empresa,
                                                         $request->cod_direccion,
                                                         $request->nb_direccion,
                                                         );
@@ -46,16 +47,18 @@ class DireccionesController extends Controller
     public function AgregarDirecciones (Request $request) {
 
     $request->validate([
-        'cod_empresa' => 'required',
-        'cod_direccion' => 'required',
-        'nb_direccion' => 'required',
+        'empresa_codigo' => 'required',
+        'direccion_codigo' => 'required',
+        'direccion' => 'required',
     ]);
 
         $direccion = new Direccion();
 
         $direccion->cod_empresa = $request->input('empresa_codigo');
-        $direccion->cod_direccion = $request->input('cod_direccion');
-        $direccion->nb_direccion = $request->input('nb_direccion');
+        $direccion->cod_direccion = $request->input('direccion_codigo');
+
+        $direccionNombre = $request->input('direccion');
+        $direccion->nb_direccion = strtoupper(trim(preg_replace('/\s+/', ' ', $direccionNombre)));
 
         $direccion->save();
 

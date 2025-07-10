@@ -8,6 +8,11 @@ use App\Models\Usuario;
 
 class UsuariosController extends Controller {
 
+    public function MostrarPerfil()
+    {
+        return view('perfil.index'); 
+    }
+
     public function MostrarIndexUsuarios () {
 
         return view('gestiones.usuarios.mostrar_usuario');

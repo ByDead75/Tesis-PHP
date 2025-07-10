@@ -47,13 +47,16 @@ class EmpresasController extends Controller
 
     $request->validate([
         'cod_empresa' => 'required',
-        'nb_empresa' => 'required',
+        'empresa' => 'required',
     ]);
 
         $empresa = new Empresa();
 
         $empresa->cod_empresa = $request->input('cod_empresa');
-        $empresa->nb_empresa = $request->input('nb_empresa');
+
+        $empresaNombre = $request->input('empresa');
+        $empresa->nb_empresa = strtoupper(trim(preg_replace('/\s+/', ' ', $empresaNombre)));
+
         $empresa->logo_empresa = ' ';
 
         $empresa->save();

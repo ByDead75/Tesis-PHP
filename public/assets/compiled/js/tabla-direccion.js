@@ -9,7 +9,7 @@ $(document).ready(function() {
                 url: route_direccion,
                 data: function (d) {
                     d.cod_empresa = $('#cod_empresa').val(),
-                    d.cod_empresa = $('#cod_empresa').val(),
+                    d.nb_empresa = $('#nb_empresa').val(),
                     d.cod_direccion = $('#cod_direccion').val(),
                     d.nb_direccion = $('#nb_direccion').val()
                 },

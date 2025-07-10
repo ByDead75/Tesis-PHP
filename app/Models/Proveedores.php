@@ -33,7 +33,7 @@ class Proveedores extends Model{
         return $resultado;
     }
 
-    public function obtener_proveedores($cod_tipo_auxiliar, $cod_auxiliar, $nb_auxiliar, $rif, $nit) {
+    public function obtener_proveedores($nb_auxiliar, $cod_tipo_auxiliar, $rif) {
         $resultado = self::select('proveedores.cod_auxiliar', 
         DB::raw("TRIM(REPLACE(REPLACE(REPLACE(proveedores.cod_tipo_auxiliar, CHAR(13), ''), CHAR(10), ''), '\t', '')) as cod_tipo_auxiliar"),
         DB::raw("TRIM(REPLACE(REPLACE(REPLACE(proveedores.nb_auxiliar, CHAR(13), ''), CHAR(10), ''), '\t', '')) as nb_auxiliar"),
@@ -44,17 +44,11 @@ class Proveedores extends Model{
         if($nb_auxiliar != null){
             $resultado->whereRaw('LOWER(proveedores.nb_auxiliar) LIKE ?', ['%' . strtolower($nb_auxiliar) . '%']);
         }
-        if($cod_auxiliar != null){
-            $resultado->whereRaw('LOWER(proveedores.cod_auxiliar) LIKE ?', ['%' . strtolower($cod_auxiliar) . '%']);
-        }
-        if($rif != null){
-            $resultado->whereRaw('LOWER(proveedores.rif) LIKE ?', ['%' . strtolower($rif) . '%']);
-        }
-        if($nit != null){
-            $resultado->whereRaw('LOWER(proveedores.nit) LIKE ?', ['%' . strtolower($nit). '%']);
-        }
         if($cod_tipo_auxiliar != null){
             $resultado->whereRaw('LOWER(proveedores.cod_tipo_auxiliar) LIKE ?', ['%' . strtolower($cod_tipo_auxiliar) . '%']);
+        }   
+        if($rif != null){
+            $resultado->whereRaw('LOWER(proveedores.rif) LIKE ?', ['%' . strtolower($rif) . '%']);
         }else{
             $resultado->limit(100);
         }

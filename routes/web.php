@@ -37,6 +37,8 @@ Route::controller(LoginController::class)->group(function () {
     Route::post('usuario/login', 'login')->name('usuario.login');
     Route::post('usuario/logout', 'logout')->name('usuario.logout');
     Route::get('/', 'MostrarInicio')->name('index');
+
+
 }); 
 
 
@@ -58,6 +60,8 @@ Route::get('/cambiar/password', [PasswordController::class, 'MuestraCambioPasswo
 //Controladores de Gestiones (Usuarios, Proveedores, Departamentos, Gerencias, Sucursales, Direcciones y Empresas)
 
 Route::controller(UsuariosController::class)->group(function () {
+        Route::get('/perfil', 'MostrarPerfil')->name('usuario.perfil');
+
     Route::get('/mostrar/usuario', 'MostrarIndexUsuarios')->name('gestiones.usuarios.registros.obtener');
     Route::get('/obtener/usuario', 'DataUsuario')->name('usuario.data');
 
@@ -150,10 +154,14 @@ Route::controller(DireccionesController::class)->group(function () {
 });
 
 Route::controller(GerenciasController::class)->group(function () {
-    Route::get('/mostrar/gerencia', 'MostrarGerencias')->name('gestiones.gerencias.registros.obtener');
-    Route::get('/agregar/gerencia', 'AgregarGerencias')->name('gestiones.gerencias.agregar.gerencias');
+    Route::get('/mostrar/gerencia', 'MostrarGerencias')->name('gestiones.gerencias.registros');
+    Route::get('/mostrar/gerencia/obtener', 'DataGerencia')->name('gerencia.data');
+
+
+    Route::get('/agregar/gerencia', 'MostrarAgregarGerencias')->name('gestiones.gerencias.agregar.gerencias');
+    Route::post('/agregar/gerencia', 'AgregarGerencias')->name('gestiones.gerencias.agregar.gerencias');
+
     Route::get('/editar/gerencia', 'EditarGerencias')->name('gestiones.gerencias.editar.gerencia');
-    Route::get('/editar/gerencia', 'DataGerencia')->name('gerencia.data');
     
     Route::get('gerencia/direccion/index', 'BuscarGerenciasDireccion')->name('buscar.gerencia.direccion');
 });

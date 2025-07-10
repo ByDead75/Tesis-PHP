@@ -91,19 +91,6 @@
                             </li>
 
                             <li class="submenu-item  has-sub">
-                                <a href="#" class='submenu-link'>Departamentos</a>
-                                <ul class="subsubmenu">
-                                    <li class="subsubmenu-item ">
-                                        <a href="{{ route('gestiones.departamentos.agregar.departamentos') }}" class="subsubmenu-link">Agregar Departamento</a>
-                                    </li>
-
-                                    <li class="subsubmenu-item ">
-                                        <a href="{{ route('gestiones.departamentos.registros.obtener') }}" class="subsubmenu-link">Lista de Departamentos</a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li class="submenu-item  has-sub">
                                 <a href="#" class='submenu-link'>Empresas</a>
                                 <ul class="subsubmenu">
                                     <li class="subsubmenu-item ">
@@ -112,19 +99,6 @@
 
                                     <li class="subsubmenu-item ">
                                         <a href="{{ route('gestiones.empresas.registros.obtener') }}" class="subsubmenu-link">Lista de Empresas</a>
-                                    </li>
-                                </ul>
-                            </li>
-
-                            <li class="submenu-item  has-sub">
-                                <a href="#" class='submenu-link'>Direcciones</a>
-                                <ul class="subsubmenu">
-                                    <li class="subsubmenu-item ">
-                                        <a href="{{ route('gestiones.direcciones.agregar.direcciones') }}" class="subsubmenu-link">Agregar Direccion</a>
-                                    </li>
-
-                                    <li class="subsubmenu-item ">
-                                        <a href="{{ route('gestiones.direcciones.registros.obtener') }}" class="subsubmenu-link">Lista de Direcciones</a>
                                     </li>
                                 </ul>
                             </li>
@@ -143,6 +117,19 @@
                             </li>
 
                             <li class="submenu-item  has-sub">
+                                <a href="#" class='submenu-link'>Direcciones</a>
+                                <ul class="subsubmenu">
+                                    <li class="subsubmenu-item ">
+                                        <a href="{{ route('gestiones.direcciones.agregar.direcciones') }}" class="subsubmenu-link">Agregar Dirección</a>
+                                    </li>
+
+                                    <li class="subsubmenu-item ">
+                                        <a href="{{ route('gestiones.direcciones.registros.obtener') }}" class="subsubmenu-link">Lista de Direcciones</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="submenu-item  has-sub">
                                 <a href="#" class='submenu-link'>Gerencias</a>
                                 <ul class="subsubmenu">
                                     <li class="subsubmenu-item ">
@@ -150,7 +137,20 @@
                                     </li>
 
                                     <li class="subsubmenu-item ">
-                                        <a href="{{ route('gestiones.gerencias.registros.obtener') }}" class="subsubmenu-link">Lista de Gerencias</a>
+                                        <a href="{{ route('gestiones.gerencias.registros') }}" class="subsubmenu-link">Lista de Gerencias</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="submenu-item  has-sub">
+                                <a href="#" class='submenu-link'>Departamentos</a>
+                                <ul class="subsubmenu">
+                                    <li class="subsubmenu-item ">
+                                        <a href="{{ route('gestiones.departamentos.agregar.departamentos') }}" class="subsubmenu-link">Agregar Departamento</a>
+                                    </li>
+
+                                    <li class="subsubmenu-item ">
+                                        <a href="{{ route('gestiones.departamentos.registros.obtener') }}" class="subsubmenu-link">Lista de Departamentos</a>
                                     </li>
                                 </ul>
                             </li>

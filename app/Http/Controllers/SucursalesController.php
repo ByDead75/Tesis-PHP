@@ -14,8 +14,6 @@ class SucursalesController extends Controller
 
     public function DataSucursales (Request $request) {
 
-        
-
         if ($request->ajax()) {
             
             $sucursales_model = new Sucursales;

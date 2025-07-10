@@ -54,7 +54,7 @@ class DepartamentosController extends Controller {
         'empresa_codigo' => 'required',
         'direccion_codigo' => 'required',
         'gerencia_codigo' => 'required',
-        'nb_departamento' => 'required',
+        'departamento' => 'required',
     ]);
 
         // Obtener el último código de departamento
@@ -69,22 +69,12 @@ class DepartamentosController extends Controller {
         $departamento->cod_direccion = $request->input('direccion_codigo');
         $departamento->cod_gerencia = $request->input('gerencia_codigo');
         $departamento->cod_departamento = $nuevoCodDepartamento;
-        $departamento->nb_departamento = $request->input('nb_departamento');
+
+        $departamentoNombre = $request->input('departamento');
+        $departamento->nb_departamento = strtoupper(trim(preg_replace('/\s+/', ' ', $departamentoNombre)));
         $departamento->NB_ALTERNO = ' ';
         $departamento->fecha_inactivacion = null;
         $departamento->save();
-
-        $empresa = new Empresa();
-        $empresa->nb_empresa = $departamento->nb_empresa;
-        $empresa->save();
-
-        $direccion = new Direccion();
-        $direccion->nb_direccion = $departamento->nb_direccion;
-        $direccion->save();
-
-        $gerencia = new Gerencia();
-        $gerencia->nb_gerencia = $departamento->nb_gerencia;
-        $gerencia->save();
 
             return redirect()->route('gestiones.departamentos.registros.obtener');
         } catch (\Exception $e) {

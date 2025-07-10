@@ -32,7 +32,7 @@ class Direccion extends Model{
         return $resultado;
     }
 
-    public function obtener_direcciones($cod_empresa, $cod_direccion, $nb_direccion) {
+    public function obtener_direcciones($cod_empresa, $nb_empresa,  $cod_direccion, $nb_direccion) {
         $resultado = self::select('direccion.cod_empresa',
                                     'direccion.cod_direccion',
                                     'direccion.nb_direccion',
@@ -44,6 +44,9 @@ class Direccion extends Model{
         
         if($cod_empresa != null){
             $resultado->where('direccion.cod_empresa', $cod_empresa);
+        }
+        if($nb_empresa != null){
+            $resultado->whereRaw('LOWER(empresa.nb_empresa) LIKE ?', ['%' . strtolower($nb_empresa) . '%']);
         }
         if($cod_direccion != null){
             $resultado->where('direccion.cod_direccion', $cod_direccion);

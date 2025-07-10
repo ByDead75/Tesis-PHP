@@ -11,14 +11,13 @@
         <div>
             <h2 class="card-title text-center mb-4 pb-2">Registro de Nuevas Gerencias</h2>
         </div>
-        <form id="agregarGerencia" class="form">
+        <form id="agregarGerencia" class="form"  action="{{ route('gestiones.gerencias.agregar.gerencias') }}" method="POST">
             <section id="basic-vertical-layouts">
                 <div class="row match-height">
                     <div class="col-md-8 col-12 mx-auto">
                         <div class="card">
                             <div class="card-content">
                                 <div class="card-body">
-                                    <form class="form form-vertical">
                                         <div class="form-body">
 
                                             <div class="row">
@@ -35,7 +34,7 @@
                                             <div class="row mt-2">
                                                 <div class="col-12">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="direccion">Nombre de la Direccion</label>
+                                                        <label class="form-label" for="direccion">Nombre de la Dirección</label>
                                                         <input type="text" id="direccion" name="direccion" class="form-control"
                                                             placeholder="Ingrese el Nombre de la Direccion">
                                                         <input type="hidden" id="direccion_codigo" name="direccion_codigo" class="form-control">
@@ -46,9 +45,9 @@
                                             <div class="row mt-2">
                                                 <div class="col-12">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="">Código de la Gerencia</label>
-                                                        <input type="text" id="" class="form-control"
-                                                            name="" placeholder="Ingrese el Nombre de la Gerencia">
+                                                        <label class="form-label" for="gerencia_codigo">Código de la Gerencia</label>
+                                                        <input type="number" min="0" id="gerencia_codigo" name="gerencia_codigo" class="form-control"
+                                                            placeholder="Ingrese el Nombre de la Gerencia">
                                                     </div>
                                                 </div>
                                             </div>
@@ -70,7 +69,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </form>
                                 </div>
                             </div>
                         </div>

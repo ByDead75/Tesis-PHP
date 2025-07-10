@@ -21,11 +21,9 @@ class ProveedoresController extends Controller
         if ($request->ajax()) {
             
             $proveedores_model = new Proveedores;
-            $proveedores = $proveedores_model->obtener_proveedores($request->cod_tipo_auxiliar,
-                                                            $request->cod_auxiliar,
-                                                            $request->nb_auxiliar,
+            $proveedores = $proveedores_model->obtener_proveedores($request->nb_auxiliar,
+                                                            $request->cod_tipo_auxiliar,
                                                             $request->rif,
-                                                            $request->cod_departamento
                                                             );
             $datatables = DataTables::of($proveedores)
             ->addIndexColumn()

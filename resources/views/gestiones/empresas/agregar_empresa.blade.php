@@ -19,34 +19,36 @@
                         <div class="card">
                             <div class="card-content">
                                 <div class="card-body">
-                                    <form class="form form-vertical">
-                                        <div class="form-body">
+                                    <div class="form-body">
 
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    <div class="form-group">
-                                                        <label class="form-label" for="cod_empresa">Codigo de la Empresa</label>
-                                                        <input type="text" id="cod_empresa" class="form-control"
-                                                            name="cod_empresa" placeholder="Ingrese el Codigo de la Empresa">
-                                                    </div>
-                                                </div>
-                                                <div class="col-6">
-                                                    <div class="form-group">
-                                                        <label class="form-label" for="empresa">Ingrese la Razon Social</label>
-                                                        <input type="text" id="empresa" class="form-control"
-                                                            name="empresa" placeholder="Ingrese la Razon Social">
-                                                    </div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label class="form-label" for="cod_empresa">Codigo de la Empresa</label>
+                                                    <input type="number" min="0" id="cod_empresa" class="form-control"
+                                                        name="cod_empresa" placeholder="Ingrese el Codigo de la Empresa">
                                                 </div>
                                             </div>
+                                            
+                                        </div>
 
-                                            <div class="row mt-2">
-                                                <div class="col-12 d-flex justify-content-end offset-md-4 col-md-8">
-                                                    <button type="button" class="btn btn-secondary me-1 mb-1" id="btn_regresar" name="btn_regresar">Regresar</button>
-                                                    <button type="submit"class="btn btn-primary me-1 mb-1" id="btn_confirmar" name="btn_confirmar">Confirmar</button>
+                                        <div class="row mt-2" >
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label class="form-label" for="empresa">Ingrese la Razon Social</label>
+                                                    <input type="text" id="empresa" class="form-control"
+                                                        name="empresa" placeholder="Ingrese la Razon Social">
                                                 </div>
                                             </div>
                                         </div>
-                                    </form>
+
+                                        <div class="row mt-2">
+                                            <div class="col-12 d-flex justify-content-end offset-md-4 col-md-8">
+                                                <button type="button" class="btn btn-secondary me-1 mb-1" id="btn_regresar" name="btn_regresar">Regresar</button>
+                                                <button type="submit"class="btn btn-primary me-1 mb-1" id="btn_confirmar" name="btn_confirmar">Confirmar</button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

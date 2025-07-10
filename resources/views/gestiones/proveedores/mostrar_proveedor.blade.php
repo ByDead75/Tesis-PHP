@@ -17,7 +17,7 @@
             <div class="card-body pb-0">
                 <form class="mb-4">
                     <div class="row">
-                        <div class="col-md-6 col-12">
+                        <div class="col-md-4 col-12">
                             <div class="form-group">
                                 <label class="form-label" for="nb_auxiliar">Nombre del Proveedor</label>
                                 <input type="text" id="nb_auxiliar" class="form-control" 
@@ -25,34 +25,25 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6 col-12">
+                        <div class="col-md-4 col-12">
                             <div class="form-group">
                                 <label class="form-label" for="cod_tipo_auxiliar">Tipo de Proveedor</label>
                                 <select class="form-select" id="cod_tipo_auxiliar" name="cod_tipo_auxiliar">
                                     <option value="">---</option>
-                                    <option value="0">PROSER</option>
-                                    <option value="1">COMIS</option>
+                                    <option value="PROSER">PROSER</option>
+                                    <option value="COMIS">COMIS</option>
                                 </select>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="row mt-2">
-                        <div class="col-md-6 col-12">
+                        <div class="col-md-4 col-12">
                             <div class="form-group">
                                 <label class="form-label" for="rif" >RIF del Proveedor</label>
                                 <input type="text" id="rif" class="form-control" 
                                 placeholder="Ingrese el RIF del Proveedor" name="rif">
                             </div>
                         </div>
-
-                        <div class="col-md-6 col-12">
-                            <div class="form-group">
-                                <label class="form-label" for="nit" >NIT del Proveedor</label>
-                                <input type="text" id="nit" class="form-control" 
-                                placeholder="Ingrese el NIT del Proveedor" name="nit">
-                            </div>
-                        </div>
+                    </div>
 
                     <div class="row mt-3">
                         <div class="col-sm-12 d-flex justify-content-end">

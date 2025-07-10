@@ -20,16 +20,16 @@
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label class="form-label" for="cod_empresa" >Código de la Empresa</label>
-                                <input type="text" id="cod_empresa" class="form-control" 
-                                placeholder="Ingrese el Código de la Empresa" name="cod_empresa">
+                                <input type="number" min="0" id="cod_empresa" name="cod_empresa" class="form-control" 
+                                placeholder="Ingrese el Código de la Empresa">
                             </div>
                         </div>
 
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                                 <label class="form-label" for="nb_empresa" >Razon Social</label>
-                                <input type="text" id="nb_empresa" class="form-control" 
-                                placeholder="Ingrese la Razon Social" name="nb_empresa">
+                                <input type="text" id="nb_empresa" name="nb_empresa" class="form-control" 
+                                placeholder="Ingrese la Razon Social">
                             </div>
                         </div>
                     </div>
