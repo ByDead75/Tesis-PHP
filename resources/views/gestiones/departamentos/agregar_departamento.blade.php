@@ -19,24 +19,22 @@
                         <div class="card">
                             <div class="card-content">
                                 <div class="card-body">
-                                    <!--<form class="form form-vertical"> -->
                                         <div class="form-body">
-
                                             <div class="row">
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="empresa">Código de la Empresa</label>
-                                                        <input type="text" id="empresa" class="form-control"
-                                                            name="empresa" placeholder="Click para seleccionar la Empresa">
-                                                        <input type="hidden" id="empresa_codigo" class="form-control" name="empresa_codigo">
+                                                        <label class="form-label" for="empresa">Nombre de la Empresa</label>
+                                                        <input type="text" id="empresa" name="empresa" class="form-control"
+                                                            placeholder="Click para seleccionar la Empresa">
+                                                        <input type="hidden" id="empresa_codigo" name="empresa_codigo" class="form-control" >
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="direccion">Código de la Direccion</label>
-                                                        <input type="text" id="direccion" class="form-control"
-                                                            name="direccion" placeholder="Click para seleccionar la Direccion">
-                                                        <input type="hidden" id="direccion_codigo" class="form-control" name="direccion_codigo">
+                                                        <label class="form-label" for="direccion">Nombre de la Direccion</label>
+                                                        <input type="text" id="direccion" name="direccion" class="form-control"
+                                                            placeholder="Click para seleccionar la Direccion">
+                                                        <input type="hidden" id="direccion_codigo" name="direccion_codigo" class="form-control">
                                                     </div>
                                                 </div>
                                             </div>
@@ -44,17 +42,17 @@
                                             <div class="row mt-2">
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="gerencia">Código de la Gerencia</label>
-                                                        <input type="text" id="gerencia" class="form-control" 
-                                                        name="gerencia" placeholder="Click para seleccionar la Gerencia">
-                                                        <input type="hidden" id="gerencia_codigo" class="form-control" name="gerencia_codigo">
+                                                        <label class="form-label" for="gerencia">Nombre de la Gerencia</label>
+                                                        <input type="text" id="gerencia" name="gerencia" class="form-control" 
+                                                        placeholder="Click para seleccionar la Gerencia">
+                                                        <input type="hidden" id="gerencia_codigo" name="gerencia_codigo" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="nb_departamento">Nombre del Departamento</label>
-                                                        <input type="text" id="nb_departamento" class="form-control" 
-                                                        name="nb_departamento" placeholder="Ingrese el Nombre del Departamento">
+                                                        <label class="form-label" for="departamento">Nombre del Departamento</label>
+                                                        <input type="text" id="departamento" name="departamento" class="form-control" 
+                                                        placeholder="Ingrese el Nombre del Departamento">
                                                     </div>
                                                 </div>
                                             </div>
@@ -66,7 +64,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    <!--</form>-->
                                 </div>
                             </div>
                         </div>
@@ -84,7 +81,6 @@
     <script src="{{asset('assets/compiled/js/empresas_modal.js')}}"></script>
     <script src="{{asset('assets/compiled/js/direccion_modal.js')}}"></script>
     <script src="{{asset('assets/compiled/js/gerencia_modal.js')}}"></script>
-    <script src="{{asset('assets/compiled/js/departamento_modal.js')}}"></script>
 
     <script>
         $('#agregarDepartamento').validate({
@@ -101,9 +97,6 @@
                 departamento: {
                     required: true
                 },
-                nb_departamento: {
-                    required: true
-                }
             },
             messages: { // <-- Mensajes personalizados para cada alerta según su ID
                 empresa: {
@@ -116,11 +109,8 @@
                     required: "Gerencia requerida"
                 },
                 departamento: {
-                    required: "Departamento requerido"
-                },
-                nb_departamento: {
                     required: "Nombre del Departamento requerido"
-                }
+                },
             }
         });
     </script>

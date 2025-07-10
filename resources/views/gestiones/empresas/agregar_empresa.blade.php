@@ -32,9 +32,9 @@
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="nb_empresa">Ingrese la Razon Social</label>
-                                                        <input type="text" id="nb_empresa" class="form-control"
-                                                            name="nb_empresa" placeholder="Ingrese la Razon Social">
+                                                        <label class="form-label" for="empresa">Ingrese la Razon Social</label>
+                                                        <input type="text" id="empresa" class="form-control"
+                                                            name="empresa" placeholder="Ingrese la Razon Social">
                                                     </div>
                                                 </div>
                                             </div>
@@ -65,7 +65,7 @@
                 cod_empresa: {
                     required: true
                 },
-                nb_empresa: {
+                empresa: {
                     required: true
                 },
             },
@@ -73,7 +73,7 @@
                 cod_empresa: {
                     required: "Código de la Empresa requerido"
                 },
-                nb_empresa: {
+                empresa: {
                     required: "Nombre de la Empresa requerido"
                 },
             }

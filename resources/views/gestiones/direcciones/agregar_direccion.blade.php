@@ -25,9 +25,9 @@
                                             <div class="row">
                                                 <div class="col-12">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="cod_empresa">Nombre de la Empresa</label>
-                                                        <input type="text" id="cod_empresa" class="form-control"
-                                                            name="cod_empresa" placeholder="Click para seleccionar la Empresa">
+                                                        <label class="form-label" for="empresa">Nombre de la Empresa</label>
+                                                        <input type="text" id="empresa" name="empresa" class="form-control"
+                                                            placeholder="Click para seleccionar la Empresa">
                                                         <input type="hidden" id="empresa_codigo" class="form-control" name="empresa_codigo">
                                                     </div>
                                                 </div>
@@ -36,9 +36,9 @@
                                             <div class="row mt-2">
                                                 <div class="col-12">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="cod_direccion">Código de la Direccion</label>
-                                                        <input type="text" id="cod_direccion" class="form-control"
-                                                            name="cod_direccion" placeholder="Ingrese el Código de la Direccion">
+                                                        <label class="form-label" for="direccion_codigo">Código de la Direccion</label>
+                                                        <input type="text" id="direccion_codigo" name="direccion_codigo" class="form-control"
+                                                            placeholder="Ingrese el Código de la Direccion">
                                                     </div>
                                                 </div>
                                             </div>
@@ -46,9 +46,9 @@
                                             <div class="row mt-2">
                                                 <div class="col-12">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="nb_direccion">Nombre de la Dirección</label>
-                                                        <input type="text" id="nb_direccion" class="form-control"
-                                                            name="nb_direccion" placeholder="Ingrese el Nombre de la Dirección">
+                                                        <label class="form-label" for="direccion">Nombre de la Dirección</label>
+                                                        <input type="text" id="direccion" name="direccion" class="form-control"
+                                                            placeholder="Ingrese el Nombre de la Dirección">
                                                     </div>
                                                 </div>
                                             </div>
@@ -80,24 +80,24 @@
     <script>
         $('#agregarDireccion').validate({
             rules: { // <-- Alertas para cada input según su ID
-                cod_empresa: {
+                empresa: {
                     required: true
                 },
-                cod_direccion: {
+                direccion_codigo: {
                     required: true
                 },
-                nb_direccion: {
+                direccion: {
                     required: true
                 },
             },
             messages: { // <-- Mensajes personalizados para cada alerta según su ID
-                cod_empresa: {
+                empresa: {
                     required: "Empresa requerida"
                 },
-                cod_direccion: {
+                direccion_codigo: {
                     required: "Código de Dirección requerida"
                 },
-                nb_direccion: {
+                direccion: {
                     required: "Nombre de Direccion requerido"
                 },
             }
