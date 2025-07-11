@@ -39,7 +39,7 @@ class Usuario extends Authenticatable {
         'password',
     ];
 
-    public function obtener_usuarios($cedula, $nombre, $cod_departamento, 
+    public function obtener_usuarios($cedula, $id, $nombre, $cod_departamento, 
                                 $fecha_registro, $user_master, $email, $cod_centro_costo) {
                                 $resultado = self::select('usuario.cedula',
                                     'usuario.id',
@@ -91,7 +91,7 @@ class Usuario extends Authenticatable {
                 }else{
                     $resultado->limit(50);
                 }
-                $resultado = $resultado->orderBy('usuario.id', 'desc')->distinct()->get();
+                $resultado = $resultado->orderBy('usuario.cedula', 'asc')->distinct()->get();
                 
         return $resultado;
     }
@@ -116,23 +116,36 @@ class Usuario extends Authenticatable {
         return $resultado;
     }
 
-    public function GetUsuariosPorId($id_usuario){
+    public function GetUsuariosPorId($id){
 
-        $resultado = self::select('usuario.id',
-                                'usuario.cedula',
+        $resultado = self::select('usuario.cedula',
+                                'usuario.id',
                                 'usuario.nombre',
                                 'usuario.cod_empresa',
-                                'usuario.cod_sucursal',
+                                'usuario.cod_direccion',
+                                'usuario.cod_gerencia',
+                                'usuario.cod_departamento',
+                                'usuario.fecha_registro',
+                                'usuario.fecha_egreso',
+                                'usuario.user_master',
+                                'usuario.email',
                                 'usuario.cod_centro_costo',
 
-                                'empresa.nb_empresa as empresa',
-                                'sucursales.NB_SUCURSAL as sucursal',
-                                'centro_costo.centro as centro_de_costo',
+                                'empresa.nb_empresa as empresa_nombre',
+                                'sucursales.NB_SUCURSAL as sucursal_nombre',
+                                'direccion.nb_direccion as direccion_nombre',
+                                'gerencia.nb_gerencia as gerencia_nombre',
+                                'departamento.nb_departamento as departamento_nombre',
+                                'centro_costo.centro as centro_de_costo_nombre',
                                 )
+
                             ->join('empresa', 'usuario.cod_empresa', '=', 'empresa.cod_empresa')
                             ->join('sucursales', 'usuario.cod_sucursal', '=', 'sucursales.COD_SUCURSAL')
+                            ->join('direccion', 'usuario.cod_direccion', '=', 'direccion.cod_direccion')
+                            ->join('gerencia', 'usuario.cod_gerencia', '=', 'gerencia.cod_gerencia')
+                            ->join('departamento', 'usuario.cod_departamento', '=', 'departamento.cod_departamento')
                             ->join('centro_costo', 'usuario.cod_centro_costo', '=', 'centro_costo.id_centro')
-                            ->where('usuario.id', $id_usuario)
+                            ->where('usuario.id', $id)
                             ->first();
         return $resultado;
     }

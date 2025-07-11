@@ -11,8 +11,9 @@
         <div>
             <h2 class="card-title text-center mb-4 pb-2">Registro de Nuevos Usuarios</h2>
         </div>
-        <form class="form" action="{{ route('gestiones.usuarios.crear.usuarios') }}" method="POST">
+        <form class="form" action="{{ route('gestiones.usuarios.crear.usuarios', $usuario->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
+        @method('PUT')
             <section id="basic-vertical-layouts">
                 <div class="row match-height">
                     <div class="col-md-8 col-12 mx-auto">
@@ -27,14 +28,16 @@
                                                     <div class="form-group">
                                                         <label class="form-label" for="nombre_apellido_usuario">Nombre y Apellido</label>
                                                         <input type="text" id="nombre_apellido_usuario" class="form-control"
-                                                            name="nombre_apellido_usuario" placeholder="Ingrese el Nombre y Apellido del usuario">
+                                                            name="nombre_apellido_usuario" placeholder="Ingrese el Nombre y Apellido del usuario"
+                                                            value="{{ old('nombre_apellido_usuario', $usuario->nombre) }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="form-group">
                                                         <label class="form-label" for="cedula">Cedula</label>
                                                         <input type="text" id="cedula" class="form-control"
-                                                            name="cedula" placeholder="Ingrese la cédula del usuario">
+                                                            name="cedula" placeholder="Ingrese la cédula del usuario"
+                                                            value="{{ old('cedula', $usuario->cedula) }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -43,21 +46,18 @@
                                                 <div class="col-6">
                                                     <div class="form-group">
                                                         <label class="form-label" for="fecha_ingreso">Fecha de Registro</label>
+                                                        <p class="form-control-static text-center" name="fecha_ingreso" id="fecha_ingreso">
+                                                            {{ old('fecha_ingreso', \Carbon\Carbon::parse($usuario->fecha_ingreso)->format('d-m-Y')) }}</p>
                                                         <input type="date" id="fecha_ingreso" class="form-control" name="fecha_ingreso">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="user_master">Tipo de Usuario</label>
-                                                        <select class="form-select" id="user_master" name="user_master">
-                                                            <option value="0">0</option>
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
-                                                            <option value="3">3</option>
-                                                            <option value="4">4</option>
-                                                            <option value="6">6</option>
-                                                        </select>
+                                                        <label class="form-label" for="fecha_egreso">Fecha de Egreso</label>
+                                                        <p class="form-control-static text-center" name="fecha_egreso" id="fecha_egreso">
+                                                            {{ old('fecha_egreso', \Carbon\Carbon::parse($usuario->fecha_egreso)->format('d-m-Y')) }}</p>
+                                                        <input type="date" id="fecha_egreso" class="form-control" name="fecha_egreso">
                                                     </div>
                                                 </div>
                                             </div>
@@ -67,16 +67,20 @@
                                                     <div class="form-group">
                                                         <label class="form-label" for="empresa">Empresa</label>
                                                         <input type="text" id="empresa" class="form-control"
-                                                            name="empresa" placeholder="Click para seleccionar su Empresa">
-                                                        <input type="hidden" id="empresa_codigo" class="form-control"  name="empresa_codigo">
+                                                            name="empresa" placeholder="Click para seleccionar su Empresa"
+                                                            value="{{ old('empresa', $usuario->empresa_nombre) }}">
+                                                        <input type="hidden" id="empresa_codigo" class="form-control"name="empresa_codigo"
+                                                            value="{{ old('empresa_codigo', $usuario->cod_empresa) }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="form-group">
                                                         <label class="form-label" for="sucursal">Sucursal</label>
                                                         <input type="text" id="sucursal" class="form-control"
-                                                            name="sucursal" placeholder="Click para seleccionar su Sucursal">
-                                                            <input type="hidden" id="sucursal_codigo" class="form-control"  name="sucursal_codigo">
+                                                            name="sucursal" placeholder="Click para seleccionar su Sucursal"
+                                                            value="{{ old('sucursal', $usuario->sucursal_nombre) }}">
+                                                        <input type="hidden" id="sucursal_codigo" class="form-control" name="sucursal_codigo"
+                                                            value="{{ old('sucursal_codigo', $usuario->cod_sucursal) }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -86,16 +90,20 @@
                                                     <div class="form-group">
                                                         <label class="form-label" for="direccion">Dirección</label>
                                                         <input type="text" id="direccion" class="form-control"
-                                                            name="direccion" placeholder="Click para seleccionar su Dirección">
-                                                            <input type="hidden" id="direccion_codigo" class="form-control"  name="direccion_codigo">
+                                                            name="direccion" placeholder="Click para seleccionar su Dirección"
+                                                            value="{{ old('direccion', $usuario->direccion_nombre) }}">
+                                                        <input type="hidden" id="direccion_codigo" class="form-control" name="direccion_codigo"
+                                                            value="{{ old('direccion_codigo', $usuario->cod_direccion) }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="form-group">
                                                         <label class="form-label" for="gerencia">Gerencia</label>
                                                         <input type="text" id="gerencia" class="form-control"
-                                                            name="gerencia" placeholder="Click para seleccionar su Gerencia">
-                                                        <input type="hidden" id="gerencia_codigo" class="form-control"  name="gerencia_codigo">
+                                                            name="gerencia" placeholder="Click para seleccionar su Gerencia"
+                                                            value="{{ old('gerencia', $usuario->gerencia_nombre) }}">
+                                                        <input type="hidden" id="gerencia_codigo" class="form-control" name="gerencia_codigo"
+                                                            value="{{ old('gerencia_codigo', $usuario->cod_gerencia) }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -105,16 +113,20 @@
                                                     <div class="form-group">
                                                         <label class="form-label" for="departamento">Departamento</label>
                                                         <input type="text" id="departamento" class="form-control"
-                                                            name="departamento" placeholder="Click para seleccionar su Departamento">
-                                                        <input type="hidden" id="departamento_codigo" class="form-control"  name="departamento_codigo">
+                                                            name="departamento" placeholder="Click para seleccionar su Departamento"
+                                                            value="{{ old('departamento', $usuario->departamento_nombre) }}">
+                                                        <input type="hidden" id="departamento_codigo" class="form-control" name="departamento_codigo"
+                                                            value="{{ old('departamento_codigo', $usuario->cod_departamento) }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="form-group">
                                                         <label class="form-label" for="centro_costo">Centro de Costo</label>
                                                         <input type="text" id="centro_costo" class="form-control"
-                                                            name="centro_costo" placeholder="Click para seleccionar su Centro de Costo">
-                                                        <input type="hidden" id="centro_costo_codigo" class="form-control" name="centro_costo_codigo">
+                                                            name="centro_costo" placeholder="Click para seleccionar su Centro de Costo"
+                                                            value="{{ old('centro_costo', $usuario->centro_costo_nombre) }}">
+                                                        <input type="hidden" id="centro_costo_codigo" class="form-control" name="centro_costo_codigo"
+                                                            value="{{ old('centro_costo_codigo', $usuario->cod_centro_costo) }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -122,9 +134,24 @@
                                             <div class="row mt-2">
                                                 <div class="col-6">
                                                     <div class="form-group">
+                                                        <label class="form-label" for="user_master">Tipo de Usuario</label>
+                                                        <select class="form-select" id="user_master" name="user_master">
+                                                            <option value="0" {{ old('user_master', $usuario->id_pago) == '0' ? 'selected' : '' }}>0</option>
+                                                            <option value="1" {{ old('user_master', $usuario->id_pago) == '1' ? 'selected' : '' }}>1</option>
+                                                            <option value="2" {{ old('user_master', $usuario->id_pago) == '2' ? 'selected' : '' }}>2</option>
+                                                            <option value="3" {{ old('user_master', $usuario->id_pago) == '3' ? 'selected' : '' }}>3</option>
+                                                            <option value="4" {{ old('user_master', $usuario->id_pago) == '4' ? 'selected' : '' }}>4</option>
+                                                            <option value="6" {{ old('user_master', $usuario->id_pago) == '6' ? 'selected' : '' }}>6</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-6">
+                                                    <div class="form-group">
                                                         <label class="form-label" for="email">Email</label>
                                                         <input type="email" id="email" class="form-control"
-                                                            name="email" placeholder="Ingrese el Email">
+                                                            name="email" placeholder="Ingrese el Email"
+                                                            value="{{ old('email', $usuario->email) }}">
                                                     </div>
                                                 </div>
                                             </div>

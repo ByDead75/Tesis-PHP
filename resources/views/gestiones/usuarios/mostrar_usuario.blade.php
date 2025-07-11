@@ -106,7 +106,7 @@
 
         console.log('Se hizo clic en Editar para el ID del Usuario:', idUsuario);
 
-        const baseUrl = "{{ url('/editar/usuario') }}"; // Obtiene la URL base de pagos
+        const baseUrl = "{{ url('/editar/usuario') }}";
             window.location.href = baseUrl + '/'+idUsuario+'';
 }
 </script>

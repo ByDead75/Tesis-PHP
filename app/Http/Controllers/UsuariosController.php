@@ -23,7 +23,8 @@ class UsuariosController extends Controller {
         if ($request->ajax()) {
             
             $usuario_model = new Usuario;
-            $usuarios = $usuario_model->obtener_usuarios($request->cedula,
+            $usuario = $usuario_model->obtener_usuarios($request->cedula,
+                                                    $request->id,
                                                     $request->nombre,
                                                     $request->cod_departamento, 
                                                     $request->fecha_registro,
@@ -31,7 +32,7 @@ class UsuariosController extends Controller {
                                                     $request->email, 
                                                     $request->cod_centro_costo
                                                     );
-            $datatables = DataTables::of($usuarios)
+            $datatables = DataTables::of($usuario)
             ->addIndexColumn()
             ->addColumn('actions', function($row) {
                     $button = '<div class="btn-group" role="group">
@@ -54,7 +55,6 @@ class UsuariosController extends Controller {
 
     public function CrearUsuarios (Request $request) {
 
-
         $usuario = new Usuario();
 
         $usuario->nombre = $request->input('nombre_apellido_usuario');
@@ -68,7 +68,6 @@ class UsuariosController extends Controller {
         $usuario->email = $request->input('email');
         $usuario->fecha_registro = $request->input('fecha_ingreso');
         $usuario->user_master = $request->input('user_master');
-
         $usuario->password = md5($request->input('password'));
 
         $usuario->save();
@@ -76,10 +75,10 @@ class UsuariosController extends Controller {
         return redirect()->route('gestiones.usuarios.registros.obtener');
     }
 
-    public function EditarUsuarioSeleccionado(Request $request, $id_usuario) 
+    public function EditarUsuarioSeleccionado(Request $request, $id) 
     {   
-        $usuarios_model = new Usuario;
-        $usuario = $usuarios_model->GetUsuariosPorId($id_usuario);
+        $usuario_model = new Usuario;
+        $usuario = $usuario_model->GetUsuariosPorId($id);
 
         if (!$usuario) {
             abort(404, 'Usuario no encontrado');
@@ -88,8 +87,41 @@ class UsuariosController extends Controller {
         return view('gestiones.usuarios.editar_usuario', compact('usuario'));
     }
 
-    public function ActualizarUsuarioSeleccionado(Request $request, $cedula) 
-    {   
+    public function ActualizarUsuarioSeleccionado(Request $request, $id) { 
+        
+        $request->validate([
+            'nombre_apellido_usuario'   => 'required',
+            'cedula'   => 'required',
+            'empresa_codigo' => 'required',
+            'direccion_codigo' => 'required',
+            'sucursal_codigo' => 'required',
+            'departamento_codigo' => 'required',
+            'gerencia_codigo' => 'required',
+            'centro_costo_codigo' => 'required',         
+            'email' => 'required',
+            'fecha_ingreso' => 'required',
+            'fecha_egreso' => 'required',
+            'user_master' => 'required',
+        ]);
+
+        $usuarios_model = new Usuario;
+        $usuario = $usuarios_model->GetUsuariosPorId($id_usuario);
+
+        $usuario->nombre = $request->input('nombre_apellido_usuario');
+        $usuario->cedula = $request->input('cedula');
+        $usuario->cod_empresa = $request->input('empresa_codigo');
+        $usuario->cod_direccion = $request->input('direccion_codigo');
+        $usuario->cod_sucursal = $request->input('sucursal_codigo');
+        $usuario->cod_departamento = $request->input('departamento_codigo');
+        $usuario->cod_gerencia = $request->input('gerencia_codigo');
+        $usuario->cod_centro_costo = $request->input('centro_costo_codigo'); 
+        $usuario->email = $request->input('email');
+        $usuario->fecha_registro = $request->input('fecha_ingreso');
+        $usuario->fecha_egreso = $request->input('fecha_egreso');
+        $usuario->user_master = $request->input('user_master'); 
+
+        $solicitud->save();
+
         return redirect()->route('gestiones.usuarios.registros');
     }
 }

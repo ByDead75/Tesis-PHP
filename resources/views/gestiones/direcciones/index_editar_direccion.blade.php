@@ -1,6 +1,6 @@
 @extends('template')
 
-@section('title', 'Listado de Direcciones')
+@section('title', 'Editar Direcciones')
 
 @push('css')
     

@@ -30,7 +30,6 @@ use App\Http\Controllers\SucursalesController;
 
 //Controladores de Login
 
-
 Route::controller(LoginController::class)->group(function () {
     Route::get('login', 'MostrarLoginForm')->name('login');
 
@@ -60,7 +59,7 @@ Route::get('/cambiar/password', [PasswordController::class, 'MuestraCambioPasswo
 //Controladores de Gestiones (Usuarios, Proveedores, Departamentos, Gerencias, Sucursales, Direcciones y Empresas)
 
 Route::controller(UsuariosController::class)->group(function () {
-        Route::get('/perfil', 'MostrarPerfil')->name('usuario.perfil');
+    Route::get('/perfil', 'MostrarPerfil')->name('usuario.perfil');
 
     Route::get('/mostrar/usuario', 'MostrarIndexUsuarios')->name('gestiones.usuarios.registros.obtener');
     Route::get('/obtener/usuario', 'DataUsuario')->name('usuario.data');
@@ -68,10 +67,8 @@ Route::controller(UsuariosController::class)->group(function () {
     Route::get('/usuario/crear', 'MostrarCrearUsuarios')->name('gestiones.usuarios.crear.usuarios');
     Route::post('/usuario/crear', 'CrearUsuarios')->name('gestiones.usuarios.crear.usuarios');
 
-    Route::get('/editar/usuario/{id_usuario}', 'EditarUsuarioSeleccionado')->name('gestiones.usuarios.editar');
-
-    //Route::get('/usuario/editar/{id}', 'EditarUsuarioSeleccionado')->name('gestiones.usuarios.usuario.editar'); 
-    //Route::put('/usuario/editar/{id}', 'ActualizarUsuarioSeleccionado')->name('gestiones.usuarios.usuario.editar');
+    Route::get('/usuario/editar/{id_usuario}', 'EditarUsuarioSeleccionado')->name('gestiones.usuarios.editar'); 
+    //Route::put('/usuario/editar/{id_usuario}', 'ActualizarUsuarioSeleccionado')->name('gestiones.usuarios.editar');
 });
 
 Route::controller(BancosController::class)->group(function () {
@@ -85,7 +82,8 @@ Route::controller(EmpresasController::class)->group(function () {
     Route::get('/empresa/agregar', 'MostrarAgregarEmpresas')->name('gestiones.empresas.agregar.empresas');
     Route::post('/empresa/agregar', 'AgregarEmpresas')->name('gestiones.empresas.agregar.empresas');
 
-    Route::get('/editar/empresa/{id_empresa}', 'EditarEmpresaSeleccionada')->name('gestiones.empresas.editar');
+    Route::get('/empresa/editar/{id_empresa}', 'EditarEmpresaSeleccionada')->name('gestiones.empresas.editar');
+    //Route::put('/empresa/editar/{id_empresa}', 'ActualizarEmpresaSeleccionada')->name('gestiones.empresas.editar');
 
     Route::get('empresas/index', 'BuscarEmpresas')->name('buscar.empresas');
 });
@@ -97,7 +95,8 @@ Route::controller(DepartamentosController::class)->group(function () {
     Route::get('/departamento/agregar', 'MostrarAgregarDepartamentos')->name('gestiones.departamentos.agregar.departamentos');
     Route::post('/departamento/agregar', 'AgregarDepartamentos')->name('gestiones.departamentos.agregar.departamentos');
 
-    Route::get('/editar/departamento/{id_departamento}', 'EditarDepartamentoSeleccionado')->name('gestiones.departamentos.editar');
+    Route::get('/departamento/editar/{id_departamento}', 'EditarDepartamentoSeleccionado')->name('gestiones.departamentos.editar');
+    //Route::put('/departamento/editar/{id_departamento}', 'ActualizarDepartamentoSeleccionado')->name('gestiones.departamentos.editar');
 
     Route::get('departamento/gerencia/index', 'BuscarDepartamentoGerencia')->name('buscar.departamento.gerencia');
 });
@@ -119,7 +118,8 @@ Route::controller(ProveedoresController::class)->group(function () {
     Route::get('/proveedor/agregar', 'MostrarAgregarProveedores')->name('gestiones.proveedores.agregar.proveedores');
     Route::post('/proveedor/agregar', 'AgregarProveedores')->name('gestiones.proveedores.agregar.proveedores');
 
-    Route::get('/editar/proveedor/{id_proveedor}', 'EditarProveedorSeleccionado')->name('gestiones.proveedores.editar');
+    Route::get('/proveedor/editar/{id_proveedor}', 'EditarProveedorSeleccionado')->name('gestiones.proveedores.editar');
+    //Route::put('/proveedor/editar/{id_proveedor}', 'ActualizarProveedorSeleccionado')->name('gestiones.proveedores.editar');
 
     Route::get('proveedores/index', 'BuscarProveedores')->name('buscar.proveedores');
 });
@@ -157,12 +157,12 @@ Route::controller(GerenciasController::class)->group(function () {
     Route::get('/mostrar/gerencia', 'MostrarGerencias')->name('gestiones.gerencias.registros');
     Route::get('/mostrar/gerencia/obtener', 'DataGerencia')->name('gerencia.data');
 
-
     Route::get('/agregar/gerencia', 'MostrarAgregarGerencias')->name('gestiones.gerencias.agregar.gerencias');
     Route::post('/agregar/gerencia', 'AgregarGerencias')->name('gestiones.gerencias.agregar.gerencias');
 
-    Route::get('/editar/gerencia', 'EditarGerencias')->name('gestiones.gerencias.editar.gerencia');
-    
+    Route::get('/gerencia/editar/{id_gerencia}', 'EditarGerencias')->name('gestiones.gerencias.editar.gerencia');
+    //Route::put('/gerencia/editar/{id_gerencia}', 'ActualizarGerenciaSeleccionada')->name('gestiones.gerencias.editar.gerencia');
+
     Route::get('gerencia/direccion/index', 'BuscarGerenciasDireccion')->name('buscar.gerencia.direccion');
 });
 
@@ -190,27 +190,14 @@ Route::controller(OrdenesController::class)->group(function () {
 });
 
 
-
 //Rutas sueltas (provisionales)
 
 Route::get('/dashboard', function () { return view('dashboard.index');})->name('dashboard');
 
-
 // Ruta de inicio de Laravel
 Route::get('/welcome', function () { return view('welcome'); });
-
 
 // Rutas de Errores
 Route::get('/403', function () { return view('errors.403'); });
 Route::get('/404', function () { return view('errors.404'); });
 Route::get('/500', function () { return view('errors.500'); });
-
-
-//Rutas de Prueba
-/*
-Route::get('/pruebas', function () { return view('ordenes.pruebas'); });
-*/
-
-
-
-

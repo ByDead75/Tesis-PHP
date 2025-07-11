@@ -75,12 +75,6 @@ class GerenciasController extends Controller
             
             return back()->withErrors(['error' => 'Ocurrió un error al guardar los datos.']);
         }
-
-    }
-
-    public function EditarGerencias () {
-
-    return view('');
     }
 
     public function EditarGerenciaSeleccionada () {
