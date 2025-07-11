@@ -159,7 +159,7 @@
                                         <div class="form-group">
                                             <label for="tipo_solicitud" class="form-label text-center d-block">Factura/Presupuesto</label>
                                                 <select class="form-control text-center" id="tipo_solicitud" name="tipo_solicitud" disabled>
-                                                    <option value="0" {{ $solicitud->factupuesto == '1' ? 'selected' : '' }}></option>
+                                                    <option value="0" {{ $solicitud->factupuesto == '0' ? 'selected' : '' }}>N/A</option>
                                                     <option value="1" {{ $solicitud->factupuesto == '1' ? 'selected' : '' }}>FACTURA</option>
                                                     <option value="2" {{ $solicitud->factupuesto == '2' ? 'selected' : '' }}>PRESUPUESTO</option>
                                                 </select>
@@ -179,7 +179,7 @@
                                         <div class="form-group">
                                             <label for="forma_pago" class="form-label text-center d-block">Forma de Pago</label>
                                                 <select class="form-control text-center" id="forma_pago" name="forma_pago" disabled>
-                                                    <option value="0" {{  $solicitud->id_pago == '1' ? 'selected' : '' }}></option>
+                                                    <option value="0" {{  $solicitud->id_pago == '0' ? 'selected' : '' }}>N/A</option>
                                                     <option value="1" {{  $solicitud->id_pago == '1' ? 'selected' : '' }}>CHEQUE</option>
                                                     <option value="2" {{  $solicitud->id_pago == '2' ? 'selected' : '' }}>TRANSFERENCIA</option>
                                                 </select>

@@ -13,6 +13,7 @@
         </div>
         <form id="editarSucursal" class="form" action="{{ route('gestiones.sucursales.actualizar') }}" method="POST">
         @csrf
+        @method('PUT')
             <section id="basic-vertical-layouts">
                 <div class="row match-height">
                     <div class="col-md-8 col-12 mx-auto">
@@ -26,9 +27,8 @@
                                                     <label class="form-label" for="">Empresa</label>
                                                     <input type="text" id="empresa" name="empresa" class="form-control"
                                                         placeholder="Seleccione la Empresa" value="{{ old('empresa', $sucurdal->nombre_empresa) }}">
-                                                    <input type="hidden" id="empresa_codigo_viejo" name="empresa_codigo_viejo" class="form-control" 
-                                                                                                    value="{{ old('empresa_codigo_viejo', $sucurdal->COD_EMPRESA) }}">
-                                                    <input type="hidden" id="empresa_codigo" name="empresa_codigo" class="form-control">
+                                                    <input type="hidden" id="empresa_codigo_viejo" name="empresa_codigo_viejo" value="{{ old('empresa_codigo_viejo', $sucurdal->COD_EMPRESA) }}">
+                                                    <input type="hidden" id="empresa_codigo" name="empresa_codigo">
                                                 </div>
                                             </div>
                                         </div>
@@ -39,8 +39,8 @@
                                                     <label class="form-label" for="">Nombre de la Sucursal</label>
                                                     <input type="text" id="sucursal" name="sucursal" class="form-control"
                                                         placeholder="Ingrese el Nombre de la Sucursal" value="{{ old('sucursal', $sucurdal->NB_SUCURSAL) }}">
-                                                    <input type="hidden" id="sucursal_codigo" name="sucursal_codigo" class="form-control" 
-                                                                                                    value="{{ old('sucursal_codigo', $sucurdal->COD_SUCURSAL) }}">
+                                                    <input type="hidden" id="sucursal_codigo_viejo" name="sucursal_codigo_viejo" value="{{ old('sucursal_codigo_viejo', $sucurdal->COD_SUCURSAL) }}">
+                                                    <input type="hidden" id="sucursal_codigo" name="sucursal_codigo">
                                                 </div>
                                             </div>
                                         </div>
@@ -58,6 +58,15 @@
                     </div>
                 </div>
             </section>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
         </form>
     </div>
 

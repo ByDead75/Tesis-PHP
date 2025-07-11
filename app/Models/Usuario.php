@@ -121,6 +121,7 @@ class Usuario extends Authenticatable {
         $resultado = self::select('usuario.cedula',
                                 'usuario.id',
                                 'usuario.nombre',
+                                'usuario.email',
                                 'usuario.cod_empresa',
                                 'usuario.cod_direccion',
                                 'usuario.cod_gerencia',

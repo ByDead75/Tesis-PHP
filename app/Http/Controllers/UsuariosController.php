@@ -4,14 +4,64 @@ namespace App\Http\Controllers;
 use App\Helpers\UserMasterHelper;
 use Yajra\DataTables\DataTables;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Usuario;
+use Illuminate\Support\Facades\Validator;
 
 class UsuariosController extends Controller {
 
     public function MostrarPerfil()
     {
-        return view('perfil.index'); 
+        $usuario = Auth::guard('usuarios')->user();
+
+        return view('perfil.index', compact(['usuario'])); 
     }
+
+    public function GuardarCambiosPerfil(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'id' => 'required|exists:usuario,id', 
+            'nombre' => 'required|string|max:255',
+            'cedula' => 'required|string|max:20|unique:usuario,cedula,' . $request->input('id'), 
+            'email' => 'required|email|unique:usuario,email,' . $request->input('id'), 
+        ], [
+            'id.required' => 'El campo ID es obligatorio.',
+            'id.exists' => 'El ID proporcionado no existe.',
+            'nombre.required' => 'El nombre es obligatorio.',
+            'nombre.string' => 'El nombre debe ser una cadena de texto.',
+            'nombre.max' => 'El nombre no puede tener más de 255 caracteres.',
+            'cedula.required' => 'La cédula es obligatoria.',
+            'cedula.string' => 'La cédula debe ser una cadena de texto.',
+            'cedula.max' => 'La cédula no puede tener más de 20 caracteres.',
+            'cedula.unique' => 'La cédula ya está en uso.',
+            'email.required' => 'El correo electrónico es obligatorio.',
+            'email.email' => 'El formato del correo electrónico es inválido.',
+            'email.unique' => 'El correo electrónico ya está en uso.',
+        ]);
+        
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $usuario = Usuario::find($request->input('id'));
+
+        if (!$usuario) {
+            return redirect()->back()->with('error', 'Usuario no encontrado.');
+        }
+
+        $usuarioNombre = $request->input('nombre');
+        $usuario->nombre= strtoupper(trim(preg_replace('/\s+/', ' ', $usuarioNombre)));
+        $usuario->cedula = $request->input('cedula');
+        $usuario->email = $request->input('email');
+
+        $usuario->save();
+
+        return redirect()->route('usuario.perfil');
+    }
+
+
 
     public function MostrarIndexUsuarios () {
 

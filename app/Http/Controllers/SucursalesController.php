@@ -89,19 +89,30 @@ class SucursalesController extends Controller
 
     public function ActualizarSucursalSeleccionada (Request $request) {
 
+        $sucursalNombre = $request->input('sucursal');
+        $sucursalNombreVerificado = strtoupper(trim(preg_replace('/\s+/', ' ', $sucursalNombre)));
+
+        if ($request->input('empresa_codigo') !== null) {
+                $codigo_empresa = $request->input('empresa_codigo');
+            } else {
+                $codigo_empresa = $request->input('empresa_codigo_viejo');
+            }
+
+        $sucursal = Sucursales::where('COD_EMPRESA', $request->input('empresa_codigo_viejo'))
+        ->where('COD_SUCURSAL', $request->input('sucursal_codigo_viejo'))
+        ->update([ 'COD_EMPRESA' => $codigo_empresa,
+                    'NB_SUCURSAL' => $sucursalNombreVerificado,]);
+
+            //dd($sucursal);
         
-        $sucursales_model = new Sucursales;
-        $sucursal = $sucursales_model->GetSucursalPorId($request->input('empresa_codigo_viejo'), $request->input('sucursal_codigo'));
 
-            $sucursal->COD_EMPRESA = $request->input('empresa_codigo_viejo');
-            
-            $sucursal->COD_SUCURSAL = $request->input('sucursal_codigo');
+        if (!$sucursal) {
+            return redirect()->back()->with('error', 'Sucursal no encontrada.');
+        }
 
-            $sucursalNombre = $request->input('sucursal');
-            $sucursal->NB_SUCURSAL = strtoupper(trim(preg_replace('/\s+/', ' ', $sucursalNombre)));
-
-            $sucursal->FECHA_INACTIVACION = null;
-            $sucursal->save();
+            //$sucursal->FECHA_INACTIVACION = null;
+        
+            //$sucursal->save();
 
             return redirect()->route('gestiones.sucursales.registros');
 

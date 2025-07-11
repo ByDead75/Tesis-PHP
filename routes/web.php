@@ -60,6 +60,7 @@ Route::get('/cambiar/password', [PasswordController::class, 'MuestraCambioPasswo
 
 Route::controller(UsuariosController::class)->group(function () {
     Route::get('/perfil', 'MostrarPerfil')->name('usuario.perfil');
+    Route::put('/perfil/cambios', 'GuardarCambiosPerfil')->name('usuario.perfil.cambios');
 
     Route::get('/mostrar/usuario', 'MostrarIndexUsuarios')->name('gestiones.usuarios.registros.obtener');
     Route::get('/obtener/usuario', 'DataUsuario')->name('usuario.data');
@@ -136,7 +137,7 @@ Route::controller(SucursalesController::class)->group(function () {
     Route::post('/agregar/sucursal', 'AgregarSucursales')->name('gestiones.sucursales.agregar');
 
     Route::get('/editar/sucursal/{codigo_empresa}/{codigo_sucursal}', 'EditarSucursalSeleccionada')->name('gestiones.sucursales.editar');
-    //Route::put('/editar/sucursal', 'ActualizarSucursalSeleccionada')->name('gestiones.sucursales.actualizar');
+    Route::put('/editar/sucursal', 'ActualizarSucursalSeleccionada')->name('gestiones.sucursales.actualizar');
 
     Route::get('sucursales/empresa/index', 'BuscarSucursalesEmpresa')->name('buscar.sucursales.empresa');
 });
