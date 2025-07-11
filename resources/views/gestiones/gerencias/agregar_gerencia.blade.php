@@ -12,6 +12,7 @@
             <h2 class="card-title text-center mb-4 pb-2">Registro de Nuevas Gerencias</h2>
         </div>
         <form id="agregarGerencia" class="form"  action="{{ route('gestiones.gerencias.agregar.gerencias') }}" method="POST">
+        @csrf
             <section id="basic-vertical-layouts">
                 <div class="row match-height">
                     <div class="col-md-8 col-12 mx-auto">
