@@ -23,13 +23,14 @@ class ProveedoresController extends Controller
             $proveedores_model = new Proveedores;
             $proveedores = $proveedores_model->obtener_proveedores($request->nb_auxiliar,
                                                             $request->cod_tipo_auxiliar,
+                                                            $request->cod_auxiliar,
                                                             $request->rif,
                                                             );
             $datatables = DataTables::of($proveedores)
             ->addIndexColumn()
             ->addColumn('actions', function($row) {
                     $button = '<div class="btn-group" role="group">
-                                    <a class="btn btn-sm btn-secondary icon" onclick="RedireccionEditarDepartamento('.$row->cod_auxiliar.') "title="Clic para editar">
+                                    <a class="btn btn-sm btn-secondary icon" onclick="RedireccionEditarProveedor('.$row->cod_auxiliar.') "title="Clic para editar">
                                         <i class="fas fa-edit"></i> Editar
                                     </a>
                                 </div>';
