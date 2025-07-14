@@ -70,12 +70,20 @@ class Gerencia extends Model{
 
         return $resultado;
     }
-// Incompleta 
+
     public function GetGerenciaPorId($codigo_empresa, $codigo_direccion, $codigo_gerencia) {
-        $resultado = self::select(
-                    'empresa.nb_empresa as nombre_empresa')
-                ->join('empresa', 'sucursales.COD_EMPRESA', '=', 'empresa.cod_empresa')
-                ->where('sucursales.COD_EMPRESA', $codigo_empresa)
+        $resultado = self::select('gerencia.cod_empresa',
+                    'gerencia.cod_direccion',
+                    'gerencia.cod_gerencia',
+                    'gerencia.nb_gerencia',
+
+                    'empresa.nb_empresa as nombre_empresa',
+                    'direccion.nb_direccion as nombre_direccion')
+                ->join('empresa', 'gerencia.cod_empresa', '=', 'empresa.cod_empresa')
+                ->join('direccion', 'gerencia.cod_direccion', '=', 'direccion.cod_direccion')
+                ->where('gerencia.cod_empresa', $codigo_empresa)
+                ->where('gerencia.cod_direccion', $codigo_direccion)
+                ->where('gerencia.cod_gerencia',  $codigo_gerencia)
                 ->first();
 
         return $resultado;

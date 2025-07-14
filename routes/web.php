@@ -162,8 +162,8 @@ Route::controller(GerenciasController::class)->group(function () {
     Route::get('/agregar/gerencia', 'MostrarAgregarGerencias')->name('gestiones.gerencias.agregar.gerencias');
     Route::post('/agregar/gerencia', 'AgregarGerencias')->name('gestiones.gerencias.agregar.gerencias');
 
-    Route::get('/editar/gerencia/{id_gerencia}', 'EditarGerencias')->name('gestiones.gerencias.editar.gerencia');
-    //Route::put('/editar/gerencia/{id_gerencia}', 'ActualizarGerenciaSeleccionada')->name('gestiones.gerencias.editar.gerencia');
+    Route::get('/editar/gerencia/{codigo_empresa}/{codigo_direccion}/{codigo_gerencias}', 'EditarGerenciaSeleccionada')->name('gestiones.gerencias.editar.gerencia');
+    Route::put('/editar/gerencia', 'ActualizarGerenciaSeleccionada')->name('gestiones.gerencias.actualizar.gerencia');
 
     Route::get('gerencia/direccion/index', 'BuscarGerenciasDireccion')->name('buscar.gerencia.direccion');
 });

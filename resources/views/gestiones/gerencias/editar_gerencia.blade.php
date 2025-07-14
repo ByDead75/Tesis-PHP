@@ -9,10 +9,11 @@
 @section('content')
         <div id="main-content" class="">
         <div>
-            <h2 class="card-title text-center mb-4 pb-2">Registro de Nuevas Gerencias</h2>
+            <h2 class="card-title text-center mb-4 pb-2">Edición de Gerencias</h2>
         </div>
-        <form class="form" action="{{ route('gestiones.gerencias.agregar.gerencias') }}" method="POST">
+        <form class="form" action="{{ route('gestiones.gerencias.actualizar.gerencia') }}" method="POST">
         @csrf
+        @method('PUT')
             <section id="basic-vertical-layouts">
                 <div class="row match-height">
                     <div class="col-md-8 col-12 mx-auto">
@@ -26,8 +27,10 @@
                                                     <div class="form-group">
                                                         <label class="form-label" for="empresa">Nombre de la Empresa</label>
                                                         <input type="text" id="empresa" name="empresa" class="form-control"
-                                                            placeholder="Ingrese el Nombre de la Empresa">
-                                                        <input type="hidden" id="empresa_codigo" name="empresa_codigo" class="form-control">
+                                                        placeholder="Seleccione la Empresa" value="{{ old('empresa',$gerencia->nombre_empresa) }}">
+                                                        <input type="hidden" id="empresa_codigo_viejo" name="empresa_codigo_viejo" 
+                                                            value="{{ old('empresa_codigo_viejo', $gerencia->cod_empresa) }}">
+                                                        <input type="hidden" id="empresa_codigo" name="empresa_codigo">
                                                     </div>
                                                 </div>
                                             </div>
@@ -37,8 +40,10 @@
                                                     <div class="form-group">
                                                         <label class="form-label" for="direccion">Nombre de la Dirección</label>
                                                         <input type="text" id="direccion" name="direccion" class="form-control"
-                                                            placeholder="Ingrese el Nombre de la Direccion">
-                                                        <input type="hidden" id="direccion_codigo" name="direccion_codigo" class="form-control">
+                                                            placeholder="Ingrese el Nombre de la Direccion" value="{{ old('direccion', $gerencia->nombre_direccion) }}">
+                                                        <input type="hidden" id="direccion_codigo_viejo" name="direccion_codigo_viejo" 
+                                                            value="{{ old('direccion_codigo_viejo', $gerencia->cod_direccion) }}">
+                                                        <input type="hidden" id="direccion_codigo" name="direccion_codigo" >
                                                     </div>
                                                 </div>
                                             </div>
@@ -48,7 +53,9 @@
                                                     <div class="form-group">
                                                         <label class="form-label" for="gerencia_codigo">Código de la Gerencia</label>
                                                         <input type="number" min="0" id="gerencia_codigo" name="gerencia_codigo" class="form-control"
-                                                            placeholder="Ingrese el Nombre de la Gerencia">
+                                                            placeholder="Ingrese el Código de la Gerencia" value="{{ old('gerencia_codigo', $gerencia->cod_gerencia) }}">
+                                                        <input type="hidden" id="gerencia_codigo_viejo" name="gerencia_codigo_viejo" 
+                                                            value="{{ $gerencia->cod_gerencia }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -58,7 +65,7 @@
                                                     <div class="form-group">
                                                         <label class="form-label" for="gerencia">Nombre de la Gerencia</label>
                                                         <input type="text" id="gerencia" name="gerencia" class="form-control"
-                                                            placeholder="Ingrese el Nombre de la Gerencia">
+                                                            placeholder="Ingrese el Nombre de la Gerencia" value="{{ old('sucursal', $gerencia->nb_gerencia) }}">
                                                     </div>
                                                 </div>
                                             </div>
