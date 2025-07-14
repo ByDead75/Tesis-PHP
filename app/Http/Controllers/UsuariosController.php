@@ -139,6 +139,7 @@ class UsuariosController extends Controller {
 
     public function ActualizarUsuarioSeleccionado(Request $request, $id) { 
         
+        
         $request->validate([
             'nombre_apellido_usuario'   => 'required',
             'cedula'   => 'required',
@@ -149,13 +150,13 @@ class UsuariosController extends Controller {
             'gerencia_codigo' => 'required',
             'centro_costo_codigo' => 'required',         
             'email' => 'required',
-            'fecha_ingreso' => 'required',
+            'fecha_registro' => 'required',
             'fecha_egreso' => 'required',
             'user_master' => 'required',
         ]);
 
         $usuarios_model = new Usuario;
-        $usuario = $usuarios_model->GetUsuariosPorId($id_usuario);
+        $usuario = $usuarios_model->GetUsuariosPorId($id);
 
         $usuario->nombre = $request->input('nombre_apellido_usuario');
         $usuario->cedula = $request->input('cedula');
@@ -166,12 +167,13 @@ class UsuariosController extends Controller {
         $usuario->cod_gerencia = $request->input('gerencia_codigo');
         $usuario->cod_centro_costo = $request->input('centro_costo_codigo'); 
         $usuario->email = $request->input('email');
-        $usuario->fecha_registro = $request->input('fecha_ingreso');
+        $usuario->fecha_registro = $request->input('fecha_registro');
         $usuario->fecha_egreso = $request->input('fecha_egreso');
         $usuario->user_master = $request->input('user_master'); 
 
-        $solicitud->save();
+        
+        $usuario->save();
 
-        return redirect()->route('gestiones.usuarios.registros');
+        return redirect()->route('gestiones.usuarios.registros.obtener');
     }
 }

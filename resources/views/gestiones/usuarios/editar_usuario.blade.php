@@ -11,7 +11,7 @@
         <div>
             <h2 class="card-title text-center mb-4 pb-2">Registro de Nuevos Usuarios</h2>
         </div>
-        <form class="form" action="{{ route('gestiones.usuarios.crear.usuarios', $usuario->id) }}" method="POST" enctype="multipart/form-data">
+        <form class="form" action="{{ route('gestiones.usuarios.editar', $usuario->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
             <section id="basic-vertical-layouts">
@@ -20,7 +20,7 @@
                         <div class="card">
                             <div class="card-content">
                                 <div class="card-body">
-                                    <form class="form form-vertical">
+
                                         <div class="form-body">
 
                                             <div class="row">
@@ -45,19 +45,21 @@
                                             <div class="row mt-2">
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="fecha_ingreso">Fecha de Registro</label>
-                                                        <p class="form-control-static text-center" name="fecha_ingreso" id="fecha_ingreso">
-                                                            {{ old('fecha_ingreso', \Carbon\Carbon::parse($usuario->fecha_ingreso)->format('d-m-Y')) }}</p>
-                                                        <input type="date" id="fecha_ingreso" class="form-control" name="fecha_ingreso">
+                                                        <label class="form-label" for="fecha_registro">Fecha de Registro</label>
+                                                        
+                                                        <input type="date" id="fecha_registro" class="form-control" name="fecha_registro" 
+                                                            value="{{ \Carbon\Carbon::parse($usuario->fecha_registro)->format('Y-m-d') }}">
+
+                                                        
+                                                        
                                                     </div>
                                                 </div>
 
                                                 <div class="col-6">
                                                     <div class="form-group">
                                                         <label class="form-label" for="fecha_egreso">Fecha de Egreso</label>
-                                                        <p class="form-control-static text-center" name="fecha_egreso" id="fecha_egreso">
-                                                            {{ old('fecha_egreso', \Carbon\Carbon::parse($usuario->fecha_egreso)->format('d-m-Y')) }}</p>
-                                                        <input type="date" id="fecha_egreso" class="form-control" name="fecha_egreso">
+                                                        <input type="date" id="fecha_egreso" class="form-control" name="fecha_egreso" 
+                                                            value="{{ \Carbon\Carbon::parse($usuario->fecha_egreso)->format('Y-m-d') }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -163,7 +165,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </form>
+
                                 </div>
                             </div>
                         </div>

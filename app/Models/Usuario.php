@@ -126,6 +126,7 @@ class Usuario extends Authenticatable {
                                 'usuario.cod_direccion',
                                 'usuario.cod_gerencia',
                                 'usuario.cod_departamento',
+                                'usuario.cod_sucursal',
                                 'usuario.fecha_registro',
                                 'usuario.fecha_egreso',
                                 'usuario.user_master',

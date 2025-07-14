@@ -69,7 +69,7 @@ Route::controller(UsuariosController::class)->group(function () {
     Route::post('/usuario/crear', 'CrearUsuarios')->name('gestiones.usuarios.crear.usuarios');
 
     Route::get('/editar/usuario/{id_usuario}', 'EditarUsuarioSeleccionado')->name('gestiones.usuarios.editar'); 
-    //Route::put('/editar/usuario/{id_usuario}', 'ActualizarUsuarioSeleccionado')->name('gestiones.usuarios.editar');
+    Route::put('/editar/usuario/{id_usuario}', 'ActualizarUsuarioSeleccionado')->name('gestiones.usuarios.editar');
 });
 
 Route::controller(BancosController::class)->group(function () {
