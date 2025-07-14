@@ -84,12 +84,12 @@
     <script src="{{asset('assets/compiled/js/tabla-empresa.js')}}"></script>
 
     <script>
-        function RedireccionEditarEmpresa(cod_empresaEmpresa) {
+        function RedireccionEditarEmpresa(codigo_empresa) {
 
-            console.log('Se hizo click en Editar para el ID de la Empresa:', cod_empresaEmpresa);
+            console.log('Se hizo click en Editar para el ID de la Empresa:', codigo_empresa);
 
             const baseUrl = "{{ url('/editar/empresa') }}";
-                window.location.href = baseUrl + '/'+cod_empresaEmpresa+'';
+                window.location.href = baseUrl + '/'+codigo_empresa+'';
         }
     </script>
 

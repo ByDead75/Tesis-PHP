@@ -47,15 +47,12 @@ class SucursalesController extends Controller
 
     public function AgregarSucursales (Request $request) {
 
-        $ultimaSucursal = Sucursales::orderby('COD_SUCURSAL', 'desc')->first();
-        $nuevaCodSucursal = $ultimaSucursal ? $ultimaSucursal->COD_SUCURSAL + 1 : 1;
-
         try {
 
             $sucursal = new Sucursales();
 
             $sucursal->COD_EMPRESA = $request->input('empresa_codigo');
-            $sucursal->COD_SUCURSAL = $nuevaCodSucursal;
+            $sucursal->COD_SUCURSAL = $request->input('sucursal_codigo');
 
             $sucursalNombre = $request->input('sucursal');
             $sucursal->NB_SUCURSAL = strtoupper(trim(preg_replace('/\s+/', ' ', $sucursalNombre)));
@@ -90,22 +87,42 @@ class SucursalesController extends Controller
 
     public function ActualizarSucursalSeleccionada (Request $request) {
 
-        $sucursalNombre = $request->input('sucursal');
-        $sucursalNombreVerificado = strtoupper(trim(preg_replace('/\s+/', ' ', $sucursalNombre)));
+        try {
 
-        
-        if ($request->input('empresa_codigo') !== null) {
+            $sucursalNombre = $request->input('sucursal');
+            $sucursalNombreVerificado = strtoupper(trim(preg_replace('/\s+/', ' ', $sucursalNombre)));
+
+            
+            if ($request->input('empresa_codigo') !== null) {
+
                 $codigo_empresa = $request->input('empresa_codigo');
             } else {
                 $codigo_empresa = $request->input('empresa_codigo_viejo');
             }
 
-        $sucursal = Sucursales::where('COD_EMPRESA', $request->input('empresa_codigo_viejo'))
-        ->where('COD_SUCURSAL', $request->input('sucursal_codigo_viejo'))
-        ->update([ 'COD_EMPRESA' => $codigo_empresa,
-                    'NB_SUCURSAL' => $sucursalNombreVerificado,]);
+            if ($request->input('sucursal_codigo') !== null) {
+                
+                $codigo_sucursal = $request->input('sucursal_codigo');
+            } else {
+                $codigo_sucursal = $request->input('sucursal_codigo_viejo');
+            }
 
-        return redirect()->route('gestiones.sucursales.registros');
+            $sucursal = Sucursales::where('COD_EMPRESA', $request->input('empresa_codigo_viejo'))
+            ->where('COD_SUCURSAL', $request->input('sucursal_codigo_viejo'))
+            ->update([ 'COD_EMPRESA' => $codigo_empresa,
+                        'COD_SUCURSAL' => $codigo_sucursal,
+                        'NB_SUCURSAL' => $sucursalNombreVerificado,]);
+
+            if (!$sucursal) {
+                abort(404, 'Sucursal no encontrada');
+            }
+
+                return redirect()->route('gestiones.sucursales.registros');
+
+        } catch (\Exception $e) {
+            
+            return back()->withErrors(['error' => 'Ocurrió un error al guardar los datos.']);
+        }
 
     }
     

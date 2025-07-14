@@ -64,16 +64,47 @@ class EmpresasController extends Controller
         return redirect()->route('gestiones.empresas.registros.obtener');
     }
 
-    public function EditarEmpresaSeleccionada (Request $request, $cod_empresa) {
+    public function EditarEmpresaSeleccionada (Request $request, $codigo_empresa) {
 
         $empresa_model = new Empresa;
-        $empresa = $empresa_model->GetEmpresaPorCodigo($cod_empresa);
+        $empresa = $empresa_model->GetEmpresaPorCodigo($codigo_empresa);
 
         if (!$empresa) {
             abort(404, 'Empresa no encontrada');
         }
 
     return view('gestiones.empresas.editar_empresa', compact('empresa'));
+    }
+
+    public function ActualizarEmpresaSeleccionada (Request $request) {
+
+        try {
+
+            $empresaNombre = $request->input('empresa');
+            $empresaNombreVerificado = strtoupper(trim(preg_replace('/\s+/', ' ', $empresaNombre)));
+
+            if ($request->input('empresa_codigo') !== null) {
+
+                $codigo_empresa = $request->input('empresa_codigo');
+            } else {
+                $codigo_empresa = $request->input('empresa_codigo_viejo');
+            }
+
+            $empresa = Empresa::where('cod_empresa', $request->input('empresa_codigo_viejo'))
+            ->update([ 'cod_empresa' => $codigo_empresa,
+                        'nb_empresa' => $empresaNombreVerificado]);
+            
+            if (!$empresa) {
+                abort(404, 'Empresa no encontrada');
+            }
+
+                return redirect()->route('gestiones.empresas.registros.obtener');
+
+        } catch (\Exception $e) {
+            
+            return back()->withErrors(['error' => 'Ocurrió un error al guardar los datos.']);
+        }
+
     }
 
     public function BuscarEmpresas (Request $request)

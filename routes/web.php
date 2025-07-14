@@ -83,8 +83,8 @@ Route::controller(EmpresasController::class)->group(function () {
     Route::get('/empresa/agregar', 'MostrarAgregarEmpresas')->name('gestiones.empresas.agregar.empresas');
     Route::post('/empresa/agregar', 'AgregarEmpresas')->name('gestiones.empresas.agregar.empresas');
 
-    Route::get('/editar/empresa/{id_empresa}', 'EditarEmpresaSeleccionada')->name('gestiones.empresas.editar');
-    //Route::put('/editar/empresa/{id_empresa}', 'ActualizarEmpresaSeleccionada')->name('gestiones.empresas.editar');
+    Route::get('/editar/empresa/{codigo_empresa}', 'EditarEmpresaSeleccionada')->name('gestiones.empresas.editar');
+    Route::put('/editar/empresa', 'ActualizarEmpresaSeleccionada')->name('gestiones.empresas.actualizar');
 
     Route::get('empresas/index', 'BuscarEmpresas')->name('buscar.empresas');
 });

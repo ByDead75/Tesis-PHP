@@ -37,12 +37,23 @@
                                         <div class="row mt-2">
                                             <div class="col-12">
                                                 <div class="form-group">
+                                                    <label class="form-label" for="sucursal_codigo">Código de la Sucursal</label>
+                                                    
+                                                    <input type="text" id="sucursal_codigo" name="sucursal_codigo" class="form-control"
+                                                        placeholder="Ingrese el Código de la Direccion" value="{{ old('sucursal_codigo', $sucursal->COD_SUCURSAL) }}">
+
+                                                    <input type="hidden" id="sucursal_codigo_viejo" name="sucursal_codigo_viejo" 
+                                                        value="{{ $sucursal->COD_SUCURSAL}}">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mt-2">
+                                            <div class="col-12">
+                                                <div class="form-group">
                                                     <label class="form-label" for="sucursal">Nombre de la Sucursal</label>
                                                     <input type="text" id="sucursal" name="sucursal" class="form-control"
                                                         placeholder="Ingrese el Nombre de la Sucursal" value="{{ old('sucursal', $sucursal->NB_SUCURSAL) }}">
-                                                    <input type="hidden" id="sucursal_codigo_viejo" name="sucursal_codigo_viejo" 
-                                                        value="{{ old('sucursal_codigo_viejo', $sucursal->COD_SUCURSAL) }}">
-                                                    <input type="hidden" id="sucursal_codigo" name="sucursal_codigo">
                                                 </div>
                                             </div>
                                         </div>

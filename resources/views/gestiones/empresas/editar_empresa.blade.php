@@ -9,33 +9,33 @@
 @section('content')
     <div id="main-content" class="">
         <div>
-            <h2 class="card-title text-center mb-4 pb-2">Registro de Nuevas Empresas</h2>
+            <h2 class="card-title text-center mb-4 pb-2">Edición de Empresas</h2>
         </div>
-        <form class="form" action="{{ route('gestiones.empresas.agregar.empresas') }}" method="POST">
+        <form class="form" action="{{ route('gestiones.empresas.actualizar') }}" method="POST">
         @csrf
+        @method('PUT')
             <section id="basic-vertical-layouts">
                 <div class="row match-height">
                     <div class="col-md-8 col-12 mx-auto">
                         <div class="card">
                             <div class="card-content">
                                 <div class="card-body">
-                                    <form class="form form-vertical">
                                         <div class="form-body">
 
                                             <div class="row">
-                                                <div class="col-6">
+                                                <div class="col-12">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="">Codigo de la Empresa</label>
-                                                        <input type="text" id="" class="form-control"
-                                                            name="" placeholder="Ingrese el Codigo de la Empresa">
+                                                        <label class="form-label" for="empresa_codigo">Codigo de la Empresa</label>
+                                                        <input type="text" id="empresa_codigo" name="empresa_codigo" class="form-control"
+                                                            placeholder="Ingrese el Codigo de la Empresa" value="{{ old('empresa_codigo', $empresa->cod_empresa) }}">
+                                                        <input type="hidden" id="empresa_codigo_viejo" name="empresa_codigo_viejo" value="{{ $empresa->cod_empresa }}">
                                                     </div>
                                                 </div>
-                                                <div class="col-6">
+                                                <div class="col-12">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="cedula">Nombre de la Empresa</label>
-                                                        <input type="text" id="cedula" class="form-control"
-                                                            name="cedula" placeholder="Ingrese el Nombre de la Empresa">
-                                                        <input type="hidden" id="empresa_codigo" class="form-control" name="empresa_codigo">
+                                                        <label class="form-label" for="empresa">Nombre de la Empresa</label>
+                                                        <input type="text" id="empresa" class="form-control"
+                                                            name="empresa" placeholder="Ingrese el Nombre de la Empresa" value="{{ old('empresa_codigo', $empresa->nb_empresa) }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -47,7 +47,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </form>
                                 </div>
                             </div>
                         </div>
