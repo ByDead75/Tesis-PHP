@@ -11,7 +11,7 @@
         <div>
             <h2 class="card-title text-center mb-4 pb-2">Registro de Nuevas Sucursales</h2>
         </div>
-        <form id="crearSucursal" class="form" action="{{ route('gestiones.sucursales.agregar') }}" method="POST">
+        <form id="crearSucursal" class="form" action="{{ route('gestiones.sucursales.crear') }}" method="POST">
         @csrf
             <section id="basic-vertical-layouts">
                 <div class="row match-height">
@@ -23,7 +23,7 @@
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="form-group">
-                                                    <label class="form-label" for="">Empresa</label>
+                                                    <label class="form-label" for="empresa">Empresa</label>
                                                     <input type="text" id="empresa" name="empresa" class="form-control"
                                                         placeholder="Seleccione la Empresa">
                                                     <input type="hidden" id="empresa_codigo" name="empresa_codigo" class="form-control">
@@ -34,7 +34,7 @@
                                         <div class="row mt-2">
                                             <div class="col-12">
                                                 <div class="form-group">
-                                                    <label class="form-label" for="">Nombre de la Sucursal</label>
+                                                    <label class="form-label" for="sucursal">Nombre de la Sucursal</label>
                                                     <input type="text" id="sucursal" name="sucursal" class="form-control"
                                                         placeholder="Ingrese el Nombre de la Sucursal">
                                                 </div>

@@ -69,7 +69,6 @@ class SucursalesController extends Controller
             
             return back()->withErrors(['error' => 'Ocurrió un error al guardar los datos.']);
         }
-
         
     }
 

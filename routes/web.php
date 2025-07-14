@@ -134,7 +134,7 @@ Route::controller(SucursalesController::class)->group(function () {
     Route::get('/mostrar/sucursal/obtener', 'DataSucursales')->name('gestiones.sucursales.registros.obtener');
 
     Route::get('/agregar/sucursal', 'MostrarAgregarSucursales')->name('gestiones.sucursales.agregar');
-    Route::post('/agregar/sucursal', 'AgregarSucursales')->name('gestiones.sucursales.agregar');
+    Route::post('/agregar/sucursal', 'AgregarSucursales')->name('gestiones.sucursales.crear');
 
     Route::get('/editar/sucursal/{codigo_empresa}/{codigo_sucursal}', 'EditarSucursalSeleccionada')->name('gestiones.sucursales.editar');
     Route::put('/editar/sucursal', 'ActualizarSucursalSeleccionada')->name('gestiones.sucursales.actualizar');
