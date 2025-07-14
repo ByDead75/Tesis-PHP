@@ -78,20 +78,23 @@ class SucursalesController extends Controller
     public function EditarSucursalSeleccionada (Request $request, $codigo_empresa, $codigo_sucursal) {
 
         $sucursales_model = new Sucursales;
-        $sucurdal = $sucursales_model->GetSucursalPorId($codigo_empresa, $codigo_sucursal);
+        $sucursal = $sucursales_model->GetSucursalPorId($codigo_empresa, $codigo_sucursal);
 
-        if (!$sucurdal) {
+        if (!$sucursal) {
             abort(404, 'Sucursal no encontrada.');
         }
 
-        return view('gestiones.sucursales.editar_sucursal', compact('sucurdal'));
+        return view('gestiones.sucursales.editar_sucursal', compact('sucursal'));
     }
+
+    
 
     public function ActualizarSucursalSeleccionada (Request $request) {
 
         $sucursalNombre = $request->input('sucursal');
         $sucursalNombreVerificado = strtoupper(trim(preg_replace('/\s+/', ' ', $sucursalNombre)));
 
+        
         if ($request->input('empresa_codigo') !== null) {
                 $codigo_empresa = $request->input('empresa_codigo');
             } else {
@@ -103,18 +106,7 @@ class SucursalesController extends Controller
         ->update([ 'COD_EMPRESA' => $codigo_empresa,
                     'NB_SUCURSAL' => $sucursalNombreVerificado,]);
 
-            //dd($sucursal);
-        
-
-        if (!$sucursal) {
-            return redirect()->back()->with('error', 'Sucursal no encontrada.');
-        }
-
-            //$sucursal->FECHA_INACTIVACION = null;
-        
-            //$sucursal->save();
-
-            return redirect()->route('gestiones.sucursales.registros');
+        return redirect()->route('gestiones.sucursales.registros');
 
         
     }
