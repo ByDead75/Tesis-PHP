@@ -101,7 +101,7 @@
     <script>
         function RedireccionEditarSucursal(codigo_empresa, codigo_sucursal) {
 
-            console.log('Se hizo clic en Editar para el ID de Pago:', codigo_empresa, codigo_sucursal);
+            console.log('Se hizo clic en Editar para el ID de la Sucursal:', codigo_empresa, codigo_sucursal);
 
             const baseUrl = "{{ url('/editar/sucursal') }}";
                 window.location.href = baseUrl + '/'+codigo_empresa+'/'+codigo_sucursal+'';

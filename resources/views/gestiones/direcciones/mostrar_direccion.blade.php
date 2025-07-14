@@ -104,12 +104,12 @@
     <script src="{{asset('assets/compiled/js/tabla-direccion.js')}}"></script>
 
     <script>
-        function RedireccionEditarDireccion(cod_direccionDireccion) {
+        function RedireccionEditarDireccion(codigo_empresa, codigo_direccion) {
 
-            console.log('Se hizo click en Editar para el ID de la Direccion:', cod_direccionDireccion);
+            console.log('Se hizo click en Editar para el ID de la Direccion:', codigo_empresa, codigo_direccion);
 
             const baseUrl = "{{ url('/editar/direccion') }}";
-                window.location.href = baseUrl + '/'+cod_direccionDireccion+'';
+                window.location.href = baseUrl + '/'+codigo_empresa+'/'+codigo_direccion+'';
         }
     </script>
 @endpush 

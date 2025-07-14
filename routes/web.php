@@ -149,8 +149,8 @@ Route::controller(DireccionesController::class)->group(function () {
     Route::get('/direccion/agregar', 'MostrarAgregarDirecciones')->name('gestiones.direcciones.agregar.direcciones');
     Route::post('/direccion/agregar', 'AgregarDirecciones')->name('gestiones.direcciones.agregar.direcciones');
 
-    Route::get('/editar/direccion/{id_direccion}', 'EditarDireccionSeleccionada')->name('gestiones.direcciones.editar');
-    //Route::put('/editar/direccion/{id_direccion}', 'ActualizarDireccionSeleccionada')->name('gestiones.direcciones.editar');
+    Route::get('/editar/direccion/{codigo_empresa}/{codigo_direccion}', 'EditarDireccionSeleccionada')->name('gestiones.direcciones.editar');
+    Route::put('/editar/direccion', 'ActualizarDireccionSeleccionada')->name('gestiones.direcciones.actualizar');
 
     Route::get('direccion/empresa/index', 'BuscarDireccionEmpresa')->name('buscar.direccion.empresa');
 });

@@ -107,7 +107,6 @@ class SucursalesController extends Controller
 
         return redirect()->route('gestiones.sucursales.registros');
 
-        
     }
     
 

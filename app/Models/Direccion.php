@@ -61,12 +61,14 @@ class Direccion extends Model{
         return $resultado;
     }
 
-    public function GetDireccionPorCodigo($cod_direccion){
+    public function GetDireccionPorCodigo($cod_empresa, $cod_direccion){
 
         $resultado = self::select('direccion.cod_empresa',
                                 'direccion.cod_direccion',
                                 'direccion.nb_direccion',
-                                )
+                                'empresa.nb_empresa as nombre_empresa')
+                            ->join('empresa', 'direccion.cod_empresa', '=', 'empresa.cod_empresa')
+                            ->where('direccion.cod_empresa', $cod_empresa)
                             ->where('direccion.cod_direccion', $cod_direccion)
                             ->first();
         return $resultado;
