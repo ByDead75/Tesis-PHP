@@ -39,16 +39,15 @@ Route::controller(LoginController::class)->group(function () {
 
 }); 
 
-//Controlador Cambio de Contraseña
-
-Route::get('/cambiar/password', [PasswordController::class, 'MuestraCambioPasswordIndex'])->name('auth.password');
-//Route::put('/cambio/password', [PasswordController::class, 'CambiarPassword'])->name('index');
-
-
-
 //Controladores de Gestiones (Usuarios, Solicitudes, Proveedores, Departamentos, Gerencias, Sucursales, Direcciones y Empresas)
 
 Route::middleware(['auth:usuarios'])->group(function () {
+
+    Route::controller(PasswordController::class)->group(function () {
+
+        Route::get('/cambiar/password', 'MuestraCambioPasswordIndex')->name('cambiar.password');
+        Route::put('/cambiar/password', 'CambiarPassword')->name('actualizar.password');
+    });
     
     //Controladores de Usuarios
 

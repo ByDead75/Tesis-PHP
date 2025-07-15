@@ -25,7 +25,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end shadow-lg" aria-labelledby="topbarUserDropdown">
                         <li><a class="dropdown-item" href="{{ route('usuario.perfil') }}">Mi Perfil</a></li>
-                        <li><a class="dropdown-item" href="#">Cambiar Contraseña</a></li>
+                        <li><a class="dropdown-item" href="{{ route('cambiar.password') }}">Cambiar Contraseña</a></li>
                         <li><hr class="dropdown-divider"></li>
 
                         <li>
