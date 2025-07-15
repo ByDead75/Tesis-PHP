@@ -30,7 +30,7 @@ class LoginController extends Controller
             Auth::guard('usuarios')->login($usuario);
             session(['nombre_usuario' => Auth::guard('usuarios')->user()->nombre]);
 
-            return redirect()->intended('');
+            return redirect()->route('index');
         }else {
             throw ValidationException::withMessages([
                 'cedula' => ['El usuario o la contraseña son incorrectos.'], 
@@ -39,7 +39,6 @@ class LoginController extends Controller
         
     }
 
-    
     public function logout(Request $request)
     {
         Auth::guard('usuarios')->logout(); // Cierra la sesión del usuario
@@ -50,8 +49,5 @@ class LoginController extends Controller
         return redirect('/login'); // Redirige a la página de login
     }
 
-    public function MostrarInicio(){
-        
-        return view('index'); 
-    }
+    
 }

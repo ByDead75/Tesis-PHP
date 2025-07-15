@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Validator;
 
 class UsuariosController extends Controller {
 
+    public function MostrarInicio(){
+        
+        return view('index'); 
+    }
+
     public function MostrarPerfil()
     {
         $usuario = Auth::guard('usuarios')->user();

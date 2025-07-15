@@ -19,6 +19,13 @@ class RedirectIfAuthenticated
      */
     public function handle(Request $request, Closure $next, ...$guards)
     {
+
+        if (Auth::guard($guards)->check()) {
+           return redirect('/'); // Redirige a la página de inicio si ya está autenticado
+       }
+       return $next($request);
+
+        /*
         $guards = empty($guards) ? [null] : $guards;
 
         foreach ($guards as $guard) {
@@ -27,6 +34,6 @@ class RedirectIfAuthenticated
             }
         }
 
-        return $next($request);
+        return $next($request);*/
     }
 }
