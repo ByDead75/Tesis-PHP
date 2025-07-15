@@ -6,6 +6,7 @@ use App\Models\Empresa;
 use Yajra\DataTables\DataTables;
 use Illuminate\Contracts\Support\Jsonable;
 use Nette\Utils\Json;
+use Illuminate\Support\Facades\Validator;
 
 class EmpresasController extends Controller
 {
@@ -49,6 +50,19 @@ class EmpresasController extends Controller
         'cod_empresa' => 'required',
         'empresa' => 'required',
     ]);
+
+    $validator = Validator::make($request->all(), [
+            'cod_empresa' => 'required|unique:empresa',
+            'empresa' => 'required',
+        ], [
+            'cod_empresa.unique' => 'El código de empresa ya está en uso.',
+        ]);
+        
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
 
         $empresa = new Empresa();
 

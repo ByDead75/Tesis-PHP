@@ -21,7 +21,7 @@
                                 <div class="card-body">
                                         <div class="form-body">
                                             <div class="row">
-                                                <div class="col-6">
+                                                <div class="col-12">
                                                     <div class="form-group">
                                                         <label class="form-label" for="empresa">Nombre de la Empresa</label>
                                                         <input type="text" id="empresa" name="empresa" class="form-control"
@@ -29,7 +29,10 @@
                                                         <input type="hidden" id="empresa_codigo" name="empresa_codigo" class="form-control" >
                                                     </div>
                                                 </div>
-                                                <div class="col-6">
+                                            </div>
+
+                                            <div>
+                                                <div class="col-12">
                                                     <div class="form-group">
                                                         <label class="form-label" for="direccion">Nombre de la Direccion</label>
                                                         <input type="text" id="direccion" name="direccion" class="form-control"
@@ -40,7 +43,7 @@
                                             </div>
 
                                             <div class="row mt-2">
-                                                <div class="col-6">
+                                                <div class="col-12">
                                                     <div class="form-group">
                                                         <label class="form-label" for="gerencia">Nombre de la Gerencia</label>
                                                         <input type="text" id="gerencia" name="gerencia" class="form-control" 
@@ -48,7 +51,20 @@
                                                         <input type="hidden" id="gerencia_codigo" name="gerencia_codigo" class="form-control">
                                                     </div>
                                                 </div>
-                                                <div class="col-6">
+                                            </div>
+
+                                            <div class="row mt-2">
+                                                <div class="col-12">
+                                                    <div class="form-group">
+                                                        <label class="form-label" for="cod_departamento">Codigo del Departamento</label>
+                                                        <input type="number" min="0" id="cod_departamento" class="form-control"
+                                                            name="cod_departamento" placeholder="Ingrese el Codigo del Departamento">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mt-2">
+                                                <div class="col-12">
                                                     <div class="form-group">
                                                         <label class="form-label" for="departamento">Nombre del Departamento</label>
                                                         <input type="text" id="departamento" name="departamento" class="form-control" 
@@ -56,6 +72,8 @@
                                                     </div>
                                                 </div>
                                             </div>
+
+                                            
 
                                             <div class="row mt-2">
                                                 <div class="col-12 d-flex justify-content-end offset-md-4 col-md-8">

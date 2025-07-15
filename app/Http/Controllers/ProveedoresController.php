@@ -8,6 +8,7 @@ use Yajra\DataTables\DataTables;
 use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Http\Request;
 use Nette\Utils\Json;
+use Illuminate\Support\Facades\Validator;
 
 class ProveedoresController extends Controller
 {
@@ -49,21 +50,33 @@ class ProveedoresController extends Controller
 
     public function AgregarProveedores(Request $request) {
 
-    $request->validate([
+    $validator = Validator::make($request->all(), [
         'cod_tipo_auxiliar' => 'required',
-        'cod_auxiliar' => 'required',
+        'cod_auxiliar' => 'required|unique:proveedores',
         'nb_auxiliar' => 'required',
         'rif' => 'required',
         'nit' => 'required',
         'registro_banco_codigo' => 'required',
         'numero_cuenta' => 'required',
-    ]);
+    ], [
+            'cod_auxiliar.unique' => 'La codígo de proveedor ya está en uso.',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
 
     try {
         $proveedor = new Proveedores();
+
+        $proveedorNombre = $request->input('nb_auxiliar');
+        $proveedorNombreVerificado = strtoupper(trim(preg_replace('/\s+/', ' ', $proveedorNombre)));
+
         $proveedor->cod_tipo_auxiliar = $request->input('cod_tipo_auxiliar');
         $proveedor->cod_auxiliar = $request->input('cod_auxiliar');
-        $proveedor->nb_auxiliar = $request->input('nb_auxiliar');
+        $proveedor->nb_auxiliar = $proveedorNombreVerificado;
         $proveedor->rif = $request->input('rif');
         $proveedor->nit = $request->input('nit');
 
@@ -84,6 +97,7 @@ class ProveedoresController extends Controller
         return back()->withErrors(['error' => 'Ocurrió un error al guardar los datos.']);
     }
 }
+
     public function EditarProveedorSeleccionado (Request $request, $cod_auxiliar) {
 
         $proveedores_model = new Proveedores;

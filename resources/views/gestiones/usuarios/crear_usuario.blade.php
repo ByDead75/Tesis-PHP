@@ -33,7 +33,7 @@
                                                 <div class="col-6">
                                                     <div class="form-group">
                                                         <label class="form-label" for="cedula">Cedula</label>
-                                                        <input type="text" id="cedula" class="form-control"
+                                                        <input type="number" id="cedula" class="form-control"
                                                             name="cedula" placeholder="Ingrese la cédula del usuario">
                                                     </div>
                                                 </div>
@@ -153,6 +153,15 @@
                                                     <button type="submit"class="btn btn-primary me-1 mb-1" id="btn_confirmar" name="btn_confirmar">Confirmar</button>
                                                 </div>
                                             </div>
+                                            @if ($errors->any())
+                                                <div class="alert alert-danger">
+                                                    <ul>
+                                                        @foreach ($errors->all() as $error)
+                                                            <li>{{ $error }}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                </div>
+                                            @endif
                                         </div>
                                     </form>
                                 </div>

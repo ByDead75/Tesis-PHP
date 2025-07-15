@@ -54,12 +54,9 @@ class DepartamentosController extends Controller {
         'empresa_codigo' => 'required',
         'direccion_codigo' => 'required',
         'gerencia_codigo' => 'required',
+        'cod_departamento' => 'required',
         'departamento' => 'required',
     ]);
-
-        // Obtener el último código de departamento
-        $ultimoDepartamento = Departamento::orderBy('cod_departamento', 'desc')->first();
-        $nuevoCodDepartamento = $ultimoDepartamento ? $ultimoDepartamento->cod_departamento + 1 : 1;
 
         try {
 
@@ -68,7 +65,7 @@ class DepartamentosController extends Controller {
         $departamento->cod_empresa = $request->input('empresa_codigo');
         $departamento->cod_direccion = $request->input('direccion_codigo');
         $departamento->cod_gerencia = $request->input('gerencia_codigo');
-        $departamento->cod_departamento = $nuevoCodDepartamento;
+        $departamento->cod_departamento = $request->input('cod_departamento');
 
         $departamentoNombre = $request->input('departamento');
         $departamento->nb_departamento = strtoupper(trim(preg_replace('/\s+/', ' ', $departamentoNombre)));

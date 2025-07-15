@@ -105,9 +105,32 @@ class UsuariosController extends Controller {
 
     public function CrearUsuarios (Request $request) {
 
+        $validator = Validator::make($request->all(), [
+            'nombre_apellido_usuario' => 'required|string|max:255',
+            'cedula' => 'required|unique:usuario,cedula,',
+            'email' => 'required|email|unique:usuario,email,',
+        ], [
+            'nombre_apellido_usuario.required' => 'El nombre y apellido del usuario es obligatorio.',
+            'nombre_apellido_usuario.string' => 'El nombre y apellido del usuario debe ser una cadena de texto.',
+            'nombre_apellido_usuario.max' => 'El nombre no puede tener más de 255 caracteres.',
+            'cedula.required' => 'La cédula es obligatoria.',
+            'cedula.unique' => 'La cédula ya está en uso.',
+            'email.required' => 'El correo electrónico es obligatorio.',
+            'email.email' => 'El formato del correo electrónico es inválido.',
+            'email.unique' => 'El correo electrónico ya está en uso.',
+        ]);
+        
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
         $usuario = new Usuario();
 
-        $usuario->nombre = $request->input('nombre_apellido_usuario');
+        $usuarioNombre = $request->input('nombre_apellido_usuario');
+        $usuarioNombreVerificado = strtoupper(trim(preg_replace('/\s+/', ' ', $usuarioNombre)));
+        $usuario->nombre = $usuarioNombreVerificado;
         $usuario->cedula = $request->input('cedula');
         $usuario->cod_empresa = $request->input('empresa_codigo');
         $usuario->cod_direccion = $request->input('direccion_codigo');
