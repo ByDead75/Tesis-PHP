@@ -107,16 +107,4 @@
 
 @push('js')
     <script src="{{asset('assets/static/js/initTheme.js')}}"></script>
-        <!--<script>
-        function validarContraseñas() {
-            const nueva = document.getElementById('nuevo_password').value;
-            const confirmar = document.getElementById('confirmar_password').value;
-            if (nueva !== confirmar) {
-                alert('Las contraseñas no coinciden');
-                return false;
-            }
-            return true;
-        }
-    </script>
-    -->
 @endpush

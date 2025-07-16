@@ -44,7 +44,7 @@ class Empresa extends Model{
         }else{
             $resultado->limit(100);
         }
-        $resultado = $resultado->orderBy('empresa.cod_empresa', 'asc')->distinct()->get();
+        $resultado = $resultado->orderBy('empresa.cod_empresa', 'desc')->distinct()->get();
 
         return $resultado;
     }

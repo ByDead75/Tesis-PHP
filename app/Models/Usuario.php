@@ -91,7 +91,7 @@ class Usuario extends Authenticatable {
                 }else{
                     $resultado->limit(50);
                 }
-                $resultado = $resultado->orderBy('usuario.cedula', 'asc')->distinct()->get();
+                $resultado = $resultado->orderBy('usuario.cedula', 'desc')->distinct()->get();
                 
         return $resultado;
     }

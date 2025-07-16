@@ -9,7 +9,7 @@
 @section('content')
     <div id="main-content" class="">
         <div>
-            <h2 class="card-title text-center mb-4 pb-2">Registro de Nuevos Usuarios</h2>
+            <h2 class="card-title text-center mb-4 pb-2">Editar Usuario</h2>
         </div>
         <form class="form" action="{{ route('gestiones.usuarios.editar', $usuario->id) }}" method="POST" enctype="multipart/form-data">
         @csrf

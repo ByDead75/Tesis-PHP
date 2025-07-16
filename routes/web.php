@@ -1,32 +1,25 @@
 <?php
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\CentroCostoController;
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PasswordController;
+use App\Http\Controllers\UsuariosController;
+
+use App\Http\Controllers\OrdenesController;
+use App\Http\Controllers\HistorialController;
 use App\Http\Controllers\BancosController;
 use App\Http\Controllers\CuentasController;
-use App\Http\Controllers\DireccionesController;
-use App\Http\Controllers\EmpresasController;
-use App\Http\Controllers\OrdenesController;
-use App\Http\Controllers\UsuariosController;
-use App\Http\Controllers\DepartamentosController;
-use App\Http\Controllers\GerenciasController;
-use App\Http\Controllers\ProveedoresController;
-use App\Http\Controllers\HistorialController;
-use App\Http\Controllers\SucursalesController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Http\Controllers\EmpresasController;
+use App\Http\Controllers\ProveedoresController;
+use App\Http\Controllers\GerenciasController;
+use App\Http\Controllers\DireccionesController;
+use App\Http\Controllers\DepartamentosController;
+use App\Http\Controllers\SucursalesController;
+use App\Http\Controllers\CentroCostoController;
+
 
 //Controladores de Login
 
@@ -35,13 +28,13 @@ Route::controller(LoginController::class)->group(function () {
 
     Route::post('usuario/login', 'login')->name('usuario.login');
     Route::post('usuario/logout', 'logout')->name('usuario.logout');
-
-
 }); 
 
 //Controladores de Gestiones (Usuarios, Solicitudes, Proveedores, Departamentos, Gerencias, Sucursales, Direcciones y Empresas)
 
 Route::middleware(['auth:usuarios'])->group(function () {
+
+    //Controladores de Contraseña
 
     Route::controller(PasswordController::class)->group(function () {
 
@@ -49,6 +42,7 @@ Route::middleware(['auth:usuarios'])->group(function () {
         Route::put('/cambiar/password', 'CambiarPassword')->name('actualizar.password');
     });
     
+
     //Controladores de Usuarios
 
     Route::controller(UsuariosController::class)->group(function () {
@@ -185,8 +179,8 @@ Route::middleware(['auth:usuarios'])->group(function () {
         Route::get('/departamento/agregar', 'MostrarAgregarDepartamentos')->name('gestiones.departamentos.agregar.departamentos');
         Route::post('/departamento/agregar', 'AgregarDepartamentos')->name('gestiones.departamentos.agregar.departamentos');
 
-        Route::get('/editar/departamento/{id_departamento}', 'EditarDepartamentoSeleccionado')->name('gestiones.departamentos.editar');
-        //Route::put('/editar/departamento/{id_departamento}', 'ActualizarDepartamentoSeleccionado')->name('gestiones.departamentos.editar');
+        Route::get('/editar/departamento/{codigo_empresa}/{codigo_direccion}/{codigo_gerencias}/{codigo_departamento}', 'EditarDepartamentoSeleccionado')->name('gestiones.departamentos.editar');
+        Route::put('/editar/departamento', 'ActualizarDepartamentoSeleccionado')->name('gestiones.departamentos.actualizar');
 
         Route::get('departamento/gerencia/index', 'BuscarDepartamentoGerencia')->name('buscar.departamento.gerencia');
     });

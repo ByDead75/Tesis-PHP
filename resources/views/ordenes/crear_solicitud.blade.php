@@ -9,7 +9,7 @@
 @section('content')
     <div id="main-content" class="">
         <div>
-            <h2 class="card-title text-center mb-4 pb-2">Solicitud de Pago para Compras y Servicios</h2>
+            <h2 class="card-title text-center mb-4 pb-2">Crear Solicitud de Pago</h2>
         </div>
         <form class="form" id="crearSolicitud" action="{{ route('ordenes.solicitud.crear') }}" method="POST">
         @csrf

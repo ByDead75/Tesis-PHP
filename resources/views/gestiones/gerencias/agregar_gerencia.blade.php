@@ -9,7 +9,7 @@
 @section('content')
         <div id="main-content" class="">
         <div>
-            <h2 class="card-title text-center mb-4 pb-2">Registro de Nuevas Gerencias</h2>
+            <h2 class="card-title text-center mb-4 pb-2">Agregar Nueva Gerencia</h2>
         </div>
         <form id="agregarGerencia" class="form"  action="{{ route('gestiones.gerencias.agregar.gerencias') }}" method="POST">
         @csrf

@@ -53,7 +53,7 @@ class Gerencia extends Model{
                     } else {
                         $resultado->limit(100);
                     }
-                    $resultado->orderBy('gerencia.cod_empresa', 'asc')
+                    $resultado->orderBy('gerencia.cod_empresa', 'desc')
                                 ->distinct()
                                 ->get();
 

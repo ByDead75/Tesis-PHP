@@ -9,7 +9,7 @@
 @section('content')
     <div id="main-content" class="">
         <div>
-            <h2 class="card-title text-center mb-4 pb-2">Registro de Nuevos Proveedores</h2>
+            <h2 class="card-title text-center mb-4 pb-2">Editar Proveedor</h2>
         </div>
         <form class="form" action="{{ route('gestiones.proveedores.agregar.proveedores') }}" method="POST">
         @csrf

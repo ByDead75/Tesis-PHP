@@ -12,7 +12,7 @@
     <section class="section">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title text-center">Registro de Direcciones Existentes</h3>
+                <h3 class="card-title text-center">Listado de Direcciones</h3>
             </div>
             <div class="card-body pb-0">
                 <form class="mb-4">

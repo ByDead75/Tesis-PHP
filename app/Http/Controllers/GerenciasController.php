@@ -144,9 +144,6 @@ class GerenciasController extends Controller
 
     }
 
-
-
-
     public function BuscarGerenciasDireccion (Request $request)
     {
 

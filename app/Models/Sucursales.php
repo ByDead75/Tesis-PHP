@@ -41,7 +41,7 @@ class Sucursales extends Model{
                     } else {
                         $resultado->limit(100);
                     }
-                    $resultado->orderBy('sucursales.COD_EMPRESA', 'asc')
+                    $resultado->orderBy('sucursales.COD_EMPRESA', 'desc')
                                 ->distinct()
                                 ->get();
 

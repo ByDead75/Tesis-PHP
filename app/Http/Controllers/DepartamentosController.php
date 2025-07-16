@@ -31,7 +31,10 @@ class DepartamentosController extends Controller {
             ->addIndexColumn()
             ->addColumn('actions', function($row) {
                     $button = '<div class="btn-group" role="group">
-                                    <a class="btn btn-sm btn-secondary icon" onclick="RedireccionEditarDepartamento('.$row->cod_departamento.') "title="Clic para editar">
+                                    <a class="btn btn-sm btn-secondary icon" onclick="RedireccionEditarDepartamento('.$row->cod_empresa.',
+                                                                                                                    '.$row->cod_direccion.',
+                                                                                                                    '.$row->cod_gerencia.',
+                                                                                                                    '.$row->cod_departamento.',) "title="Clic para editar">
                                         <i class="fas fa-edit"></i> Editar
                                     </a>
                                 </div>';
@@ -80,10 +83,12 @@ class DepartamentosController extends Controller {
         }
     }
 
-    public function EditarDepartamentoSeleccionado (Request $request, $cod_departamento) {
+    public function EditarDepartamentoSeleccionado (Request $request, $cod_empresa, $cod_direccion, 
+                                                                        $cod_gerencia, $cod_departamento) {
 
         $departamento_model = new Departamento;
-        $departamento = $departamento_model->GetDepartamentoPorCodigo($cod_departamento);
+        $departamento = $departamento_model->GetDepartamentoPorCodigo($cod_empresa, $cod_direccion, 
+                                                                        $cod_gerencia, $cod_departamento);
 
         if (!$departamento) {
             abort(404, 'Departamento no encontrado');
@@ -91,6 +96,64 @@ class DepartamentosController extends Controller {
 
     return view('gestiones.departamentos.editar_departamento', compact('departamento'));
     } 
+
+    public function ActualizarDepartamentoSeleccionado (Request $request) {
+
+        try {
+
+            $departamentoNombre = $request->input('departamento');
+            $departamentoNombreVerificado = strtoupper(trim(preg_replace('/\s+/', ' ', $departamentoNombre)));
+
+            if ($request->input('empresa_codigo') !== null) {
+
+                $codigo_empresa = $request->input('empresa_codigo');
+            } else {
+                $codigo_empresa = $request->input('empresa_codigo_viejo');
+            }
+
+            if ($request->input('direccion_codigo') !== null) {
+                
+                $codigo_direccion = $request->input('direccion_codigo');
+            } else {
+                $codigo_direccion = $request->input('direccion_codigo_viejo');
+            }
+
+            if ($request->input('gerencia_codigo') !== null) {
+                
+                $codigo_gerencia = $request->input('gerencia_codigo');
+            } else {
+                $codigo_gerencia = $request->input('gerencia_codigo_viejo');
+            }
+
+            if ($request->input('cod_departamento') !== null) {
+                
+                $codigo_departamento = $request->input('cod_departamento');
+            } else {
+                $codigo_departamento = $request->input('departamento_codigo_viejo');
+            }
+
+            $departamento = Departamento::where('cod_empresa', $request->input('empresa_codigo_viejo'))
+            ->where('cod_direccion', $request->input('direccion_codigo_viejo'))
+            ->where('cod_gerencia', $request->input('gerencia_codigo_viejo'))
+            ->where('cod_departamento', $request->input('departamento_codigo_viejo'))
+            ->update([ 'cod_empresa' => $codigo_empresa,
+                        'cod_direccion' => $codigo_direccion,
+                        'cod_gerencia' => $codigo_gerencia,
+                        'cod_departamento' => $codigo_departamento,
+                        'nb_departamento' => $departamentoNombreVerificado]);
+
+            if (!$departamento) {
+                abort(404, 'Departamento no encontrado');
+            }
+
+                return redirect()->route('gestiones.departamentos.registros.obtener');
+
+        } catch (\Exception $e) {
+            
+            return back()->withErrors(['error' => 'Ocurrió un error al guardar los datos.']);
+        }
+
+    }
 
     public function BuscarDepartamentoGerencia (Request $request)
     {

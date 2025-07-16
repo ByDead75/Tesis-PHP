@@ -12,7 +12,7 @@
     <section class="section">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title text-center">Registro de Departamentos Existentes</h3>
+                <h3 class="card-title text-center">Listado de Departamentos</h3>
             </div>
             <div class="card-body pb-0">
                 <form class="mb-4">
@@ -113,12 +113,10 @@
 <script src="{{asset('assets/compiled/js/tabla-departamento.js')}}"></script>
 
 <script>
-    function RedireccionEditarDepartamento(cod_departamentoDepartamento) {
-
-        console.log('Se hizo click en Editar para el ID del Departamento:', cod_departamentoDepartamento);
+    function RedireccionEditarDepartamento(codigo_empresa, codigo_direccion, codigo_gerencias, codigo_departamento) {
 
         const baseUrl = "{{ url('/editar/departamento') }}";
-            window.location.href = baseUrl + '/'+cod_departamentoDepartamento+'';
+            window.location.href = baseUrl + '/'+codigo_empresa+'/'+codigo_direccion+'/'+codigo_gerencias+'/'+codigo_departamento+'';
 }
 </script>
 

@@ -80,14 +80,24 @@ class Departamento extends Model{
         return $resultado;
     }
 
-    public function GetDepartamentoPorCodigo($cod_departamento){
+    public function GetDepartamentoPorCodigo($cod_empresa, $cod_direccion, 
+                                            $cod_gerencia, $cod_departamento){
 
         $resultado = self::select('departamento.cod_empresa', 
                                 'departamento.cod_direccion', 
                                 'departamento.cod_gerencia', 
                                 'departamento.cod_departamento',
                                 'departamento.nb_departamento',
+                                'empresa.nb_empresa as nombre_empresa',
+                                'direccion.nb_direccion as nombre_direccion',
+                                'gerencia.nb_gerencia as nombre_gerencia',
                                 )
+                            ->join('empresa', 'departamento.cod_empresa', '=', 'empresa.cod_empresa')
+                            ->join('direccion', 'departamento.cod_direccion', '=', 'direccion.cod_direccion')
+                            ->join('gerencia', 'departamento.cod_gerencia', '=', 'gerencia.cod_gerencia')
+                            ->where('departamento.cod_empresa', $cod_empresa)
+                            ->where('departamento.cod_direccion', $cod_direccion)
+                            ->where('departamento.cod_gerencia', $cod_gerencia)
                             ->where('departamento.cod_departamento', $cod_departamento)
                             ->first();
         return $resultado;

@@ -52,7 +52,7 @@ class Proveedores extends Model{
         }else{
             $resultado->limit(100);
         }
-        $resultado = $resultado->orderBy('proveedores.cod_auxiliar', 'asc')->distinct()->get();
+        $resultado = $resultado->orderBy('proveedores.cod_auxiliar', 'desc')->distinct()->get();
 
         return $resultado;
     }

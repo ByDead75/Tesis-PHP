@@ -117,8 +117,6 @@
     <script>
         function RedireccionEditarGerencia(codigo_empresa, codigo_direccion, codigo_gerencias) {
 
-            console.log('Se hizo clic en Editar para el ID de la Gerencia:', codigo_empresa, codigo_direccion, codigo_gerencias);
-
             const baseUrl = "{{ url('/editar/gerencia') }}";
                 window.location.href = baseUrl + '/'+codigo_empresa+'/'+codigo_direccion+'/'+codigo_gerencias+'';
     }
