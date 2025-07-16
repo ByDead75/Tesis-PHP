@@ -315,16 +315,6 @@
         });
     </script>
 
-
-    <script>
-        document.getElementById('btn_regresar').addEventListener('click', function() {
-            if(confirm('¿Está seguro de que desea salir? Los cambios no guardados se perderán.')) {
-                window.history.back();
-                //window.location.href="{{ route('index') }}";
-            }
-        });
-    </script>
-
     
 @endpush
 

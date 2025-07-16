@@ -90,7 +90,7 @@
                                             </div>
                                             
                                             <div class="row mt-2">
-                                                <div class="col-12 d-flex justify-content-end offset-md-4 col-md-8">
+                                                <div class="col-12 d-flex justify-content-between align-items-center">
                                                     <button type="reset" class="btn btn-secondary me-1 mb-1" id="btn_regresar" name="btn_regresar">Regresar</button>
                                                     <button type="submit"class="btn btn-primary me-1 mb-1" id="btn_confirmar" name="btn_confirmar">Confirmar</button>
                                                 </div>
@@ -182,4 +182,12 @@
         })
     </script>
     
+    <script>
+        document.getElementById('btn_regresar').addEventListener('click', function() {
+            if(confirm('¿Está seguro de que desea salir? Los cambios no guardados se perderán.')) {
+                window.history.back();
+                
+            }
+        });
+    </script>
 @endpush

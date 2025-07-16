@@ -59,8 +59,8 @@
                                         </div>
 
                                         <div class="row mt-2">
-                                            <div class="col-12 d-flex justify-content-end offset-md-4 col-md-8">
-                                                <button type="reset" class="btn btn-secondary me-1 mb-1">Regresar</button>
+                                            <div class="col-12 d-flex justify-content-between align-items-center">
+                                                <button type="reset" id="btn_regresar" class="btn btn-secondary me-1 mb-1">Regresar</button>
                                                 <button type="submit"class="btn btn-primary me-1 mb-1">Confirmar</button>
                                             </div>
                                         </div>

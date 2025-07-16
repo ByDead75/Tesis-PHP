@@ -444,15 +444,6 @@
     </script>
 
     <script>
-        document.getElementById('btn_regresar').addEventListener('click', function() {
-            if(confirm('¿Está seguro de que desea salir? Los cambios no guardados se perderán.')) {
-                window.history.back();
-                
-            }
-        });
-    </script>
-
-    <script>
         // Obtener referencias a los elementos del DOM
         const input1 = document.getElementById('monto_neto');
         const input2 = document.getElementById('monto_iva');
