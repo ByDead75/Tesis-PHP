@@ -23,19 +23,32 @@
                                         <div class="form-body">
 
                                             <div class="row">
-                                                <div class="col-6">
+                                                <div class="col-12">
                                                     <div class="form-group">
                                                         <label class="form-label" for="nb_auxiliar">Nombre del Proveedor</label>
                                                         <input type="text" id="nb_auxiliar" class="form-control"
                                                             name="nb_auxiliar" placeholder="Ingrese el Nombre del Proveedor" required>
                                                     </div>
                                                 </div>
+                                            </div>
 
+                                            <div class="row mt-2">
                                                 <div class="col-6">
                                                     <div class="form-group">
                                                         <label class="form-label" for="cod_auxiliar">Código del Proveedor</label>
                                                         <input type="text" id="cod_auxiliar" class="form-control"
                                                             name="cod_auxiliar" placeholder="Ingrese el Código del Proveedor" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <label class="form-label" for="cod_tipo_auxiliar">Tipo de Proveedor</label>
+                                                        <select class="form-select" id="cod_tipo_auxiliar" name="cod_tipo_auxiliar">
+                                                            <option value="">---</option>
+                                                            <option value="PROSER">PROSER</option>
+                                                            <option value="COMIS">COMIS</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
@@ -72,19 +85,6 @@
                                                         <label class="form-label" for="numero_cuenta">N° de Cuenta</label>
                                                         <input type="text" id="numero_cuenta" class="form-control"
                                                             name="numero_cuenta" placeholder="Click para registrar nueva cuenta" required>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row mt-2">
-                                                <div class="col-6">
-                                                    <div class="form-group">
-                                                        <label class="form-label" for="cod_tipo_auxiliar">Tipo de Proveedor</label>
-                                                        <select class="form-select" id="cod_tipo_auxiliar" name="cod_tipo_auxiliar">
-                                                            <option value="">---</option>
-                                                            <option value="PROSER">PROSER</option>
-                                                            <option value="COMIS">COMIS</option>
-                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>

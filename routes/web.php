@@ -99,8 +99,13 @@ Route::middleware(['auth:usuarios'])->group(function () {
         Route::get('/proveedor/agregar', 'MostrarAgregarProveedores')->name('gestiones.proveedores.agregar.proveedores');
         Route::post('/proveedor/agregar', 'AgregarProveedores')->name('gestiones.proveedores.agregar.proveedores');
 
-        Route::get('/editar/proveedor/{id_proveedor}', 'EditarProveedorSeleccionado')->name('gestiones.proveedores.editar');
-        //Route::put('/editar/proveedor/{id_proveedor}', 'ActualizarProveedorSeleccionado')->name('gestiones.proveedores.editar');
+        Route::get('/editar/proveedor/{codigo_tipo_proveedor}/{codigo_proveedor}', 'EditarProveedorSeleccionado')->name('gestiones.proveedores.editar');
+        Route::put('/editar/proveedor', 'ActualizarProveedorSeleccionado')->name('gestiones.proveedores.actualizar');
+
+        Route::get('/agregar/cuenta/proveedor/{codigo_tipo_proveedor}/{codigo_proveedor}', 'MostrarAgregarCuentaProveedorSeleccionado')->name('gestiones.proveedores.cuenta');
+        Route::post('/agregar/cuenta/proveedor', 'AgregarCuentaProveedorSeleccionado')->name('gestiones.proveedores.agregar.cuenta');
+
+
 
         Route::get('proveedores/index', 'BuscarProveedores')->name('buscar.proveedores');
     });

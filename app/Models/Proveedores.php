@@ -57,7 +57,7 @@ class Proveedores extends Model{
         return $resultado;
     }
 
-    public function GetProveedorPorCodigo($cod_auxiliar){
+    public function GetProveedorPorCodigo($cod_tipo_auxiliar, $cod_auxiliar){
 
         $resultado = self::select('proveedores.cod_auxiliar',
                                 'proveedores.nb_auxiliar',
@@ -65,6 +65,7 @@ class Proveedores extends Model{
                                 'proveedores.nit',
                                 'proveedores.cod_tipo_auxiliar',
                                 )
+                            ->where('proveedores.cod_tipo_auxiliar', $cod_tipo_auxiliar)
                             ->where('proveedores.cod_auxiliar', $cod_auxiliar)
                             ->first();
         return $resultado;

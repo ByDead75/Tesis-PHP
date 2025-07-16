@@ -1,12 +1,12 @@
-var registro_bancos = function(url){
-    var mbody = $('#bancoRegistrarModal').find('.modal-body');
+var nuevo_registro_bancos = function(url){
+    var mbody = $('#nuevoBancoRegistrarModal').find('.modal-body');
     mbody.html('');
-    $('#bancoRegistrarModal').modal('show');
+    $('#nuevoBancoRegistrarModal').modal('show');
 
-    console.log($('#bancoRegistrarModal'));
+    console.log($('#nuevoBancoRegistrarModal'));
 
-    if ($('#bancoRegistrarModal').find('.modal-body').children().length == 0) {  
-        $("#spinner-bancos-registrar").show()
+    if ($('#nuevoBancoRegistrarModal').find('.modal-body').children().length == 0) {  
+        $("#spinner-nuevo-banco-registrar").show()
         $.ajax({
             url: url,
             type: 'GET',
@@ -15,7 +15,7 @@ var registro_bancos = function(url){
                     <tr>
                         <td class="text-bold-500">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="banco_codigo" id="banco_codigo" value="0" onclick="registro_banco_selecionado('634', 'BANCO POR DEFINIR')">
+                                <input class="form-check-input" type="radio" name="banco_codigo" id="banco_codigo" value="0" onclick="registro_nuevo_banco_selecionado('634', 'BANCO POR DEFINIR')">
                             </div>
                         </td>
                         <td class="text-bold-500"></td>
@@ -29,7 +29,7 @@ var registro_bancos = function(url){
                     <tr>
                             <td class="text-bold-500">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="banco_codigo" id="banco_codigo" value="`+data[i]['cod_banco']+`" onclick="registro_banco_selecionado('`+data[i]['cod_banco']+`','`+data[i]['nb_banco']+`' )">
+                                    <input class="form-check-input" type="radio" name="banco_codigo" id="banco_codigo" value="`+data[i]['cod_banco']+`" onclick="registro_nuevo_banco_selecionado('`+data[i]['cod_banco']+`','`+data[i]['nb_banco']+`' )">
                                 </div>
                             </td>
                             <td class="text-bold-500">`+data[i]['cod_banco']+`</td>
@@ -38,14 +38,14 @@ var registro_bancos = function(url){
                     `
                 }
 
-                $("#spinner-bancos-registrar").hide();
+                $("#spinner-nuevo-banco-registrar").hide();
                 mbody.append(`
                     <div class="row" id="table-hover-row">
                         <div class="col-12">
                             <div class="card mb-0">
                                 <div class="card-content">
                                     <div class="table-responsive">
-                                        <table class="table table-hover mb-0" id="registrar_banco_table">
+                                        <table class="table table-hover mb-0" id="nuevo_registrar_banco_table">
                                             <thead>
                                                 <tr>
                                                     <th></th>
@@ -66,7 +66,7 @@ var registro_bancos = function(url){
 
                 
 
-                new DataTable('#registrar_banco_table', {
+                new DataTable('#nuevo_registrar_banco_table', {
                     language: {
                             url: "https://cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"
                         },
@@ -78,8 +78,8 @@ var registro_bancos = function(url){
     }
 }
 
-var registro_banco_selecionado = function(codigo, nombre){
-    $('#registro_banco_codigo').val(codigo);
-    $('#registro_banco').val(nombre);
-    $('#bancoRegistrarModal').modal('hide');
+var registro_nuevo_banco_selecionado = function(codigo, nombre){
+    $('#nuevo_registro_banco_codigo').val(codigo);
+    $('#nuevo_registro_banco').val(nombre);
+    $('#nuevoBancoRegistrarModal').modal('hide');
 }

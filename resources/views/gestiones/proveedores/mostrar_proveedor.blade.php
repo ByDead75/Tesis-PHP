@@ -98,12 +98,22 @@
     </script>
 
     <script>
-        function RedireccionEditarProveedor(cod_auxiliarProveedor) {
+        function RedireccionEditarProveedor(codigo_tipo_proveedor, codigo_proveedor) {
 
-            console.log('Se hizo click en Editar para el ID del Proveedor:', cod_auxiliarProveedor);
+            console.log('Se hizo click en Editar para el ID del Proveedor:', codigo_tipo_proveedor, codigo_proveedor);
 
             const baseUrl = "{{ url('/editar/proveedor') }}";
-                window.location.href = baseUrl + '/'+cod_auxiliarProveedor+'';
+                window.location.href = baseUrl + '/'+codigo_tipo_proveedor+'/'+codigo_proveedor+'';
+    }
+    </script>
+
+    <script>
+        function RedireccionAgregarCuentaBancaria(codigo_tipo_proveedor, codigo_proveedor) {
+
+            console.log('Se hizo click en Editar para el ID del Proveedor:', codigo_tipo_proveedor, codigo_proveedor);
+
+            const baseUrl = "{{ url('/agregar/cuenta/proveedor') }}";
+                window.location.href = baseUrl + '/'+codigo_tipo_proveedor+'/'+codigo_proveedor+'';
     }
     </script>
 
