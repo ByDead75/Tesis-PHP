@@ -101,14 +101,24 @@
 
 <script src="{{asset('assets/compiled/js/tabla-usuario.js')}}"></script>
 
-<script>
-    function RedireccionEditarUsuario(idUsuario) {
+    <script>
+        function RedireccionEditarUsuario(idUsuario) {
 
-        console.log('Se hizo clic en Editar para el ID del Usuario:', idUsuario);
+            console.log('Se hizo clic en Editar para el ID del Usuario:', idUsuario);
 
-        const baseUrl = "{{ url('/editar/usuario') }}";
-            window.location.href = baseUrl + '/'+idUsuario+'';
-}
-</script>
+            const baseUrl = "{{ url('/editar/usuario') }}";
+                window.location.href = baseUrl + '/'+idUsuario+'';
+    }
+    </script>
+
+    <script>
+        function RedireccionFirmaDigitalUsuario(idUsuario) {
+
+            console.log('Se hizo clic en Editar para el ID del Usuario:', idUsuario);
+
+            const baseUrl = "{{ url('/agregar/firma/usuario') }}";
+                window.location.href = baseUrl + '/'+idUsuario+'';
+    }
+    </script>
 
 @endpush 

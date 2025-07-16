@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Usuario;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Documento;
+use App\Services\DocumentoService;
 
 class UsuariosController extends Controller {
 
@@ -90,12 +92,26 @@ class UsuariosController extends Controller {
             $datatables = DataTables::of($usuario)
             ->addIndexColumn()
             ->addColumn('actions', function($row) {
-                    $button = '<div class="btn-group" role="group">
-                                    <a class="btn btn-sm btn-secondary icon" onclick="RedireccionEditarUsuario('.$row->id.') "title="Clic para editar">
-                                        <i class="fas fa-edit"></i> Editar
-                                    </a>
-                                </div>';
-                    return $button;
+
+                    $buttons = '<div class="d-flex justify-content-between align-items-center">'; // Contenedor flex que alinea los elementos en línea
+                
+                // Botón Editar
+                $buttons .= '<div class="btn-group" role="group">
+                                <a class="btn btn-sm btn-secondary icon" onclick="RedireccionEditarUsuario('.$row->id.') "title="Clic para editar">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                            </div>';
+                
+                // Botón Cuenta
+                $buttons .= '<div class="btn-group" role="group">
+                                <a class="btn btn-sm btn-primary icon" onclick="RedireccionFirmaDigitalUsuario('.$row->id.')" title="Clic para agregar firma digital">
+                                    <i class="fas fa-plus"></i> 
+                                </a>
+                            </div>';
+                
+                $buttons .= '</div>'; // Cierra el contenedor flex
+                
+                return $buttons;
                 })
             ->rawColumns(['actions'])
             ->make(true);
@@ -158,11 +174,14 @@ class UsuariosController extends Controller {
         $usuario_model = new Usuario;
         $usuario = $usuario_model->GetUsuariosPorId($id);
 
+        $documento_model = new Documento;
+        $documentos = $documento_model->GetDocumentoPorId($id);
+
         if (!$usuario) {
             abort(404, 'Usuario no encontrado');
         }
 
-        return view('gestiones.usuarios.editar_usuario', compact('usuario'));
+        return view('gestiones.usuarios.editar_usuario', compact('usuario', 'documentos'));
     }
 
     public function ActualizarUsuarioSeleccionado(Request $request, $id) { 
@@ -200,6 +219,59 @@ class UsuariosController extends Controller {
         $usuario->user_master = $request->input('user_master'); 
 
         
+        $usuario->save();
+
+        return redirect()->route('gestiones.usuarios.registros.obtener');
+    }
+
+    public function MostrarAgregarFirmaUsuarioSeleccionado(Request $request, $id) 
+    {   
+        $usuario_model = new Usuario;
+        $usuario = $usuario_model->GetUsuariosPorId($id);
+
+        if (!$usuario) {
+            abort(404, 'Usuario no encontrado');
+        }
+
+        return view('gestiones.usuarios.agregar_firma_usuario', compact('usuario'));
+    }
+
+
+    public function CargarFirmaUsuarioSeleccionado(Request $request, $id) 
+    {   
+        $usuario_model = new Usuario;
+        $usuario = $usuario_model->GetUsuariosPorId($id);
+
+        $fecha_registro = $request->input('fecha_firma');
+
+        //dd($fecha_registro);
+
+        foreach($request->get('archivos') as $archivo){
+
+            if ($archivo !== null && !empty($archivo)) {
+
+                $ultimoDocumento = Documento::orderby('id', 'desc')->first();
+                $nuevoIdDocumento = $ultimoDocumento ? $ultimoDocumento->id + 1 : 1;
+
+                $nombre_archivo = $usuario->id . 'firmaDigital_' . ($nuevoIdDocumento) . '.' . pathinfo($archivo, PATHINFO_EXTENSION);
+                    
+                DocumentoService::copiar('public/temp/'.$archivo, 'public/firmas/'.$nombre_archivo);
+
+                DocumentoService::guardar([
+                        'nombre_documento' => $nombre_archivo,
+                        'id_factura' => $usuario->id,
+                        'id_usuario' => $usuario->cedula,
+                        'tipo_documento' => 1,
+                        'fecha_registro' => $fecha_registro,
+                        'ruta' => 'storage/firmas/',
+                        'observacion' => '',
+                    ]);
+
+                DocumentoService::eliminar('public/temp/'.$archivo);
+            }
+        }
+
+        $usuario->firma_digital = $nombre_archivo;
         $usuario->save();
 
         return redirect()->route('gestiones.usuarios.registros.obtener');

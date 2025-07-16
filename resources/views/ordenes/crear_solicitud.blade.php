@@ -75,7 +75,7 @@
                                         <div class="col-md-4 col-12">
                                             <div class="form-group">
                                                 <label  class="form-label text-center d-block" for="fecha">Fecha de Solicitud</label>
-                                                    <p class="form-control-static text-center" name="fecha" id="fecha" val>{{now()->format('d-m-Y')}}</p>
+                                                    <p class="form-control-static text-center" name="fecha" id="fecha">{{now()->format('d-m-Y')}}</p>
                                                     <input type="hidden" id="fecha_solicitud" class="form-control" name="fecha_solicitud" value="{{ now()->format('Y-m-d') }}">
                                             </div>
                                         </div>

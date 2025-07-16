@@ -59,6 +59,10 @@ Route::middleware(['auth:usuarios'])->group(function () {
 
         Route::get('/editar/usuario/{id_usuario}', 'EditarUsuarioSeleccionado')->name('gestiones.usuarios.editar'); 
         Route::put('/editar/usuario/{id_usuario}', 'ActualizarUsuarioSeleccionado')->name('gestiones.usuarios.editar');
+
+        Route::get('/agregar/firma/usuario/{id_usuario}', 'MostrarAgregarFirmaUsuarioSeleccionado')->name('gestiones.usuarios.firma'); 
+        Route::put('/cargar/firma/usuario/{id_usuario}', 'CargarFirmaUsuarioSeleccionado')->name('gestiones.usuarios.cargar.firma');
+
     });
 
 
