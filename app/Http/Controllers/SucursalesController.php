@@ -60,11 +60,11 @@ class SucursalesController extends Controller
             $sucursal->FECHA_INACTIVACION = null;
             $sucursal->save();
 
-            return redirect()->route('gestiones.sucursales.registros');
+            return redirect()->route('gestiones.sucursales.registros')->with('success', 'Sucursal agregada con exito.');
 
         } catch (\Exception $e) {
             
-            return back()->withErrors(['error' => 'Ocurrió un error al guardar los datos.']);
+            return back()->withErrors(['danger' => 'Ocurrió un error al guardar la Sucursal.']);
         }
         
     }
@@ -117,11 +117,11 @@ class SucursalesController extends Controller
                 abort(404, 'Sucursal no encontrada');
             }
 
-                return redirect()->route('gestiones.sucursales.registros');
+                return redirect()->route('gestiones.sucursales.registros')->with('success', 'Sucursal editada con exito.');
 
         } catch (\Exception $e) {
             
-            return back()->withErrors(['error' => 'Ocurrió un error al guardar los datos.']);
+            return back()->withErrors(['danger' => 'Ocurrió un error al editar la sucursal']);
         }
 
     }

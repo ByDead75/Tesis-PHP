@@ -30,7 +30,7 @@ class LoginController extends Controller
             Auth::guard('usuarios')->login($usuario);
             session(['nombre_usuario' => Auth::guard('usuarios')->user()->nombre]);
 
-            return redirect()->route('index');
+            return redirect()->route('index')->with('success', 'Ingreso exitoso');
         }else {
             throw ValidationException::withMessages([
                 'cedula' => ['El usuario o la contraseña son incorrectos.'], 

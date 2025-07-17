@@ -61,73 +61,73 @@ class OrdenesController extends Controller
         //Log::info($request->all());
         //local.INFO: array
 
-        $solicitud = new Solicitudes();
+            try {
 
-        $solicitud->fecha_solicitud = $request->input('fecha_solicitud');
-        $solicitud->cod_empresa = $request->input('empresa_codigo');
-        $solicitud->centro_de_costo = $request->input('centro_costo_empresa_codigo'); 
-        $solicitud->id_solicitante = $request->input('id_solicitante');
-        $solicitud->cod_departamento = 0;
-        $solicitud->concepto_de_pago = $request->input('concepto_de_pago');
-        $solicitud->beneficiario_de_pago = $request->input('proveedor_codigo'); 
-        $solicitud->id_pago = $request->input('forma_pago'); 
-        $solicitud->id_banco = $request->input('proveedor_banco_codigo');
-        $solicitud->cuenta = $request->input('proveedor_numero_cuenta'); 
-        $solicitud->factura = $request->input('numero_tipo_solicitud'); 
-        $solicitud->n_control = $request->input('numero_control'); 
-        $solicitud->monto = $request->input('monto_neto');
-        $solicitud->monto_iva = $request->input('monto_iva');
-        $solicitud->monto_total = $request->input('monto_total');
-        $solicitud->observaciones = "";
-        $solicitud->status_solicitud = 1;
-        $solicitud->rif = $request->input('proveedor_rif');
-        $solicitud->cod_sucursal= $request->input('sucursal_codigo');
-        $solicitud->cod_direccion = 0;  
-        $solicitud->TipoProveedor= $request->input('tipo_proveedor'); 
-        $solicitud->firma = 0;
-        $solicitud->factupuesto = $request->input('tipo_solicitud');   
-        $solicitud->imagen = " ";
-        $solicitud->firma_1 = 0;
-        $solicitud->firma_2 = 0;
-        $solicitud->firma_3 = 0;
-        $solicitud->aprobador_sol= $request->input('aprobador_codigo');
-        $solicitud->firma_4 = 0;
+            $solicitud = new Solicitudes();
 
-        $solicitud->save();
+            $solicitud->fecha_solicitud = $request->input('fecha_solicitud');
+            $solicitud->cod_empresa = $request->input('empresa_codigo');
+            $solicitud->centro_de_costo = $request->input('centro_costo_empresa_codigo'); 
+            $solicitud->id_solicitante = $request->input('id_solicitante');
+            $solicitud->cod_departamento = 0;
+            $solicitud->concepto_de_pago = $request->input('concepto_de_pago');
+            $solicitud->beneficiario_de_pago = $request->input('proveedor_codigo'); 
+            $solicitud->id_pago = $request->input('forma_pago'); 
+            $solicitud->id_banco = $request->input('proveedor_banco_codigo');
+            $solicitud->cuenta = $request->input('proveedor_numero_cuenta'); 
+            $solicitud->factura = $request->input('numero_tipo_solicitud'); 
+            $solicitud->n_control = $request->input('numero_control'); 
+            $solicitud->monto = $request->input('monto_neto');
+            $solicitud->monto_iva = $request->input('monto_iva');
+            $solicitud->monto_total = $request->input('monto_total');
+            $solicitud->observaciones = "";
+            $solicitud->status_solicitud = 1;
+            $solicitud->rif = $request->input('proveedor_rif');
+            $solicitud->cod_sucursal= $request->input('sucursal_codigo');
+            $solicitud->cod_direccion = 0;  
+            $solicitud->TipoProveedor= $request->input('tipo_proveedor'); 
+            $solicitud->firma = 0;
+            $solicitud->factupuesto = $request->input('tipo_solicitud');   
+            $solicitud->imagen = " ";
+            $solicitud->firma_1 = 0;
+            $solicitud->firma_2 = 0;
+            $solicitud->firma_3 = 0;
+            $solicitud->aprobador_sol= $request->input('aprobador_codigo');
+            $solicitud->firma_4 = 0;
 
-        
-        foreach($request->get('archivos') as $archivo){
+            $solicitud->save();
 
-            if ($archivo !== null && !empty($archivo)) {
+            foreach($request->get('archivos') as $archivo){
 
-                $ultimoDocumento = Documento::orderby('id', 'desc')->first();
-                $nuevoIdDocumento = $ultimoDocumento ? $ultimoDocumento->id + 1 : 1;
+                if ($archivo !== null && !empty($archivo)) {
 
-                $nombre_archivo = $solicitud->id_solicitud . 'datosSolicitud_' . ($nuevoIdDocumento) . '.' . pathinfo($archivo, PATHINFO_EXTENSION);
+                    $ultimoDocumento = Documento::orderby('id', 'desc')->first();
+                    $nuevoIdDocumento = $ultimoDocumento ? $ultimoDocumento->id + 1 : 1;
 
-                DocumentoService::copiar('public/temp/'.$archivo, 'public/documentos/'.$nombre_archivo);
+                    $nombre_archivo = $solicitud->id_solicitud . 'datosSolicitud_' . ($nuevoIdDocumento) . '.' . pathinfo($archivo, PATHINFO_EXTENSION);
 
-                DocumentoService::guardar([
-                        'nombre_documento' => $nombre_archivo,
-                        'id_factura' => $solicitud->id_solicitud,
-                        'id_usuario' => $solicitud->id_solicitante,
-                        'tipo_documento' => 1,
-                        'fecha_registro' => $solicitud->fecha_solicitud,
-                        'ruta' => 'storage/documentos/',
-                        'observacion' => '',
-                    ]);
+                    DocumentoService::copiar('public/temp/'.$archivo, 'public/documentos/'.$nombre_archivo);
 
-                DocumentoService::eliminar('public/temp/'.$archivo);
+                    DocumentoService::guardar([
+                            'nombre_documento' => $nombre_archivo,
+                            'id_factura' => $solicitud->id_solicitud,
+                            'id_usuario' => $solicitud->id_solicitante,
+                            'tipo_documento' => 1,
+                            'fecha_registro' => $solicitud->fecha_solicitud,
+                            'ruta' => 'storage/documentos/',
+                            'observacion' => '',
+                        ]);
+
+                    DocumentoService::eliminar('public/temp/'.$archivo);
+                }
             }
+
+            return redirect()->route('historial.index')->with('success', 'Solicitud guardada con exito.');
+        } catch (\Exception $e) {
+            dd($e);
+            return back()->withErrors(['danger' => 'Ocurrió un error al guardar los datos.']);
         }
-
-        
-
-        return redirect()->route('historial.index');
     }
-
-
-
 
     // Funciones de Editar
 
@@ -135,7 +135,6 @@ class OrdenesController extends Controller
     {
         return view('ordenes.index_editar_solicitudes');
     }
-
 
     public function RegistrosEditarSolicitudes (Request $request)
     {
@@ -172,7 +171,6 @@ class OrdenesController extends Controller
         }
         
     }
-
 
     public function EditarSolicitudSeleccionada(Request $request, $id_solicitud) 
     {   
@@ -221,10 +219,10 @@ class OrdenesController extends Controller
             'tipo_proveedor' => 'required|string|max:20',
         ]);
 
+        try {
+
         $solicitudes_model = new Solicitudes;
         $solicitud = $solicitudes_model->GetSolicitudesPorId($id_solicitud);
-
-        
 
         $solicitud->fecha_solicitud = $request->input('fecha_solicitud');
 
@@ -282,9 +280,11 @@ class OrdenesController extends Controller
             }
         }
 
-        
-
         return redirect()->route('ordenes.solicitud.registros')->with('success', 'Solicitud editada con exito.');
+        } catch (\Exception $e) {
+            dd($e);
+            return back()->withErrors(['danger' => 'Ocurrió un error al editar los datos.']);
+        }
     }
     
     // Funciones de Aprobar/Canbiar Status
@@ -349,7 +349,8 @@ class OrdenesController extends Controller
 
     public function ActualizarStatusSolicitud(Request $request, $id_solicitud) 
     {   
-        
+        try {
+
         $solicitudes_model = new Solicitudes;
         $solicitud = $solicitudes_model->GetSolicitudesPorId($id_solicitud);
 
@@ -366,7 +367,12 @@ class OrdenesController extends Controller
 
         $solicitud->save();
 
-        return redirect()->route('ordenes.solicitud.status');
+        return redirect()->route('ordenes.solicitud.status')->with('success', 'Status cambiado con exito.');
+
+        } catch (\Exception $e) {
+            dd($e);
+            return back()->withErrors(['danger' => 'Ocurrió un error al modificar el status.']);
+        }
 
     }
 }

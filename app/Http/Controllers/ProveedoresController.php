@@ -104,10 +104,10 @@ class ProveedoresController extends Controller
 
         $cuentas->save();
 
-        return redirect()->route('gestiones.proveedores.registros.obtener');
+        return redirect()->route('gestiones.proveedores.registros.obtener')->with('success', 'Proveedor agregado con exito.');
     } catch (\Exception $e) {
         dd($e);
-        return back()->withErrors(['error' => 'Ocurrió un error al guardar los datos.']);
+        return back()->withErrors(['danger' => 'Ocurrió un error al registrar al proveedor.']);
     }
 }
 
@@ -153,11 +153,11 @@ class ProveedoresController extends Controller
                 abort(404, 'Proveedor no encontrada');
             }
 
-                return redirect()->route('gestiones.proveedores.registros.obtener');
+                return redirect()->route('gestiones.proveedores.registros.obtener')->with('success', 'Proveedor editado con exito.');
 
         } catch (\Exception $e) {
             
-            return back()->withErrors(['error' => 'Ocurrió un error al guardar los datos.']);
+            return back()->withErrors(['danger' => 'Ocurrió un error al editar los datos.']);
         }
 
     }
@@ -177,6 +177,7 @@ class ProveedoresController extends Controller
 
     public function AgregarCuentaProveedorSeleccionado (Request $request) {
 
+        try {
         $cod_tipo_auxiliar = $request->input('cod_tipo_auxiliar');
         $cod_auxiliar = $request->input('cod_auxiliar');
 
@@ -189,9 +190,12 @@ class ProveedoresController extends Controller
 
         $cuentas->save();
 
-        return redirect()->route('gestiones.proveedores.registros.obtener');
+        return redirect()->route('gestiones.proveedores.registros.obtener')->with('success', 'Cuenta agregada con exito.');
+        } catch (\Exception $e) {
+            
+            return back()->withErrors(['danger' => 'Ocurrió un error al agregar la cuenta.']);
+        }
     }
-
 
     public function BuscarProveedores (Request $request)
     {

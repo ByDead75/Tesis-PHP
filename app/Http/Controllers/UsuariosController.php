@@ -147,6 +147,8 @@ class UsuariosController extends Controller {
                 ->withInput();
         }
 
+        try {
+
         $usuario = new Usuario();
 
         $usuarioNombre = $request->input('nombre_apellido_usuario');
@@ -166,7 +168,11 @@ class UsuariosController extends Controller {
 
         $usuario->save();
 
-        return redirect()->route('gestiones.usuarios.registros.obtener');
+        return redirect()->route('gestiones.usuarios.registros.obtener')->with('success', 'Usuario agregado con exito.');
+        } catch (\Exception $e) {
+            dd($e);
+            return back()->withErrors(['danger' => 'Ocurrió un error al registrar al usuario.']);
+        }
     }
 
     public function EditarUsuarioSeleccionado(Request $request, $id) 
@@ -202,6 +208,8 @@ class UsuariosController extends Controller {
             'user_master' => 'required',
         ]);
 
+        try {
+
         $usuarios_model = new Usuario;
         $usuario = $usuarios_model->GetUsuariosPorId($id);
 
@@ -221,7 +229,11 @@ class UsuariosController extends Controller {
         
         $usuario->save();
 
-        return redirect()->route('gestiones.usuarios.registros.obtener');
+        return redirect()->route('gestiones.usuarios.registros.obtener')->with('success', 'Usuario editado con exito.');
+        } catch (\Exception $e) {
+            dd($e);
+            return back()->withErrors(['danger' => 'Ocurrió un error al editar al Usuario.']);
+        }
     }
 
     public function MostrarAgregarFirmaUsuarioSeleccionado(Request $request, $id) 
@@ -239,6 +251,7 @@ class UsuariosController extends Controller {
 
     public function CargarFirmaUsuarioSeleccionado(Request $request, $id) 
     {   
+        try {
         $usuario_model = new Usuario;
         $usuario = $usuario_model->GetUsuariosPorId($id);
 
@@ -274,6 +287,10 @@ class UsuariosController extends Controller {
         $usuario->firma_digital = $nombre_archivo;
         $usuario->save();
 
-        return redirect()->route('gestiones.usuarios.registros.obtener');
+        return redirect()->route('gestiones.usuarios.registros.obtener')->with('success', 'Firma cargada con exito.');
+        } catch (\Exception $e) {
+            dd($e);
+            return back()->withErrors(['danger' => 'Ocurrió un error al cargar la Firma.']);
+        }
     }
 }
