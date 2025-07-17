@@ -11,7 +11,7 @@
         <div>
             <h2 class="card-title text-center mb-4 pb-2">Editar Departamento</h2>
         </div>
-        <form class="form" action="{{ route('gestiones.departamentos.actualizar') }}" method="POST">
+        <form class="form" id="EditarDepartamento" action="{{ route('gestiones.departamentos.actualizar') }}" method="POST">
         @csrf
         @method('PUT')
             <section id="basic-vertical-layouts">
@@ -48,8 +48,10 @@
                                             <div class="row mt-2">
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="gerencia_codigo">Nombre de la Gerencia</label>
-                                                        <input type="number" min="0" id="gerencia_codigo" name="gerencia_codigo" class="form-control"
+                                                        <label class="form-label" for="gerencia">Nombre de la Gerencia</label>
+                                                        <input type="text" id="gerencia" name="gerencia" class="form-control"
+                                                            placeholder="Ingrese el Codigo de la gerencia" value="{{ old('gerencia', $departamento->nombre_gerencia) }}">
+                                                        <input type="hidden" min="0" id="gerencia_codigo" name="gerencia_codigo" class="form-control"
                                                             placeholder="Ingrese el Nombre de la Gerencia" value="{{ old('gerencia_codigo', $departamento->cod_gerencia) }}">
                                                         <input type="hidden" id="gerencia_codigo_viejo" name="gerencia_codigo_viejo" 
                                                             value="{{ $departamento->cod_gerencia }}">
@@ -81,8 +83,8 @@
                                             </div>
 
                                             <div class="row mt-2">
-                                                <div class="col-12 d-flex justify-content-end offset-md-4 col-md-8">
-                                                    <button type="reset" class="btn btn-secondary me-1 mb-1">Regresar</button>
+                                                <div class="col-12 d-flex justify-content-between align-items-center">
+                                                    <button type="reset" class="btn btn-secondary me-1 mb-1" id="btn_regresar" name="btn_regresar">Regresar</button>
                                                     <button type="submit"class="btn btn-primary me-1 mb-1">Confirmar</button>
                                                 </div>
                                             </div>
@@ -96,12 +98,18 @@
             </section>
         </form>
     </div>
+
+    @include('components.modal')
 @endsection
 
 @push('js')
 
+    <script src="{{asset('assets/compiled/js/empresas_modal.js')}}"></script>
+    <script src="{{asset('assets/compiled/js/direccion_modal.js')}}"></script>
+    <script src="{{asset('assets/compiled/js/gerencia_modal.js')}}"></script>
+
     <script>
-        $('#agregarDepartamento').validate({
+        $('#EditarDepartamento').validate({
             rules: { // <-- Alertas para cada input según su ID
                 empresa: {
                     required: true
@@ -112,10 +120,10 @@
                 gerencia: {
                     required: true
                 },
-                departamento: {
+                cod_departamento: {
                     required: true
                 },
-                nb_departamento: {
+                departamento: {
                     required: true
                 }
             },
@@ -129,12 +137,53 @@
                 gerencia: {
                     required: "Gerencia requerida"
                 },
-                departamento: {
-                    required: "Departamento requerido"
+                cod_departamento: {
+                    required: "Código del departamento requerido"
                 },
-                nb_departamento: {
+                departamento: {
                     required: "Nombre del Departamento requerido"
                 }
+            }
+        });
+    </script>
+
+    <script>
+        $('#empresa').on('click', function () {
+            empresas('{{ route("buscar.empresas") }}')  
+        })
+    </script>
+
+    <script>
+        $('#direccion').on('click', function () {
+            if ($('#empresa').val() === "") {
+                alert('Debes seleccionar una empresa primero');
+                empresas('{{ route("buscar.empresas") }}')   
+                return
+            }
+            direccion('{{ route("buscar.direccion.empresa") }}')
+        })
+    </script>
+
+    <script>
+        $('#gerencia').on('click', function () {
+            if ($('#empresa').val() === "") {
+                alert('Debes seleccionar una empresa primero');
+                empresas('{{ route("buscar.empresas") }}')   
+                return;
+            } else if ($('#direccion').val() === "") {
+                alert('Debes seleccionar una dirección primero');
+                direccion('{{ route("buscar.direccion.empresa") }}')   
+                return;
+            }
+            gerencia('{{ route("buscar.gerencia.direccion") }}')
+        })
+    </script>
+    
+    <script>
+        document.getElementById('btn_regresar').addEventListener('click', function() {
+            if(confirm('¿Está seguro de que desea salir? Los cambios no guardados se perderán.')) {
+                window.history.back();
+                
             }
         });
     </script>

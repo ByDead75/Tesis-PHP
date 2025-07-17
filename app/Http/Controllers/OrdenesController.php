@@ -227,7 +227,6 @@ class OrdenesController extends Controller
         
 
         $solicitud->fecha_solicitud = $request->input('fecha_solicitud');
-        //$solicitud->fecha_solicitud = $fecha_solicitud_actual;
 
         $solicitud->cod_empresa = $request->input('empresa_codigo');
         $solicitud->centro_de_costo = $request->input('centro_costo_empresa_codigo'); 
@@ -285,7 +284,7 @@ class OrdenesController extends Controller
 
         
 
-        return redirect()->route('ordenes.solicitud.registros');
+        return redirect()->route('ordenes.solicitud.registros')->with('success', 'Solicitud editada con exito.');
     }
     
     // Funciones de Aprobar/Canbiar Status

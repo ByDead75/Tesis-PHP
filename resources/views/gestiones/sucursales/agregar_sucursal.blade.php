@@ -105,6 +105,15 @@
             empresas('{{ route("buscar.empresas") }}')  
         })
     </script>
+    
+    <script>
+        document.getElementById('btn_regresar').addEventListener('click', function() {
+            if(confirm('¿Está seguro de que desea salir? Los cambios no guardados se perderán.')) {
+                window.history.back();
+                
+            }
+        });
+    </script>
 
 @endpush
 

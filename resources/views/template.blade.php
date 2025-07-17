@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="{{asset('assets/compiled/css/jquery-validation.css')}}">
     
     @stack('css')
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -41,9 +42,9 @@
             @include('components.footer')
         </div>
     </div>
+    @include('components.mensajes')
 
-
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    
     <script src="https://cdn.datatables.net/2.3.2/js/dataTables.js"></script>
     <script src="{{asset('assets/extensions/datatables.net/js/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('assets/extensions/datatables.net-bs5/js/dataTables.bootstrap5.min.js')}}"></script>
@@ -86,18 +87,9 @@
             }
         };
     </script>
+
     
     <script src="{{asset('assets/compiled/js/app.js')}}"></script>
-
-    <script>
-        document.getElementById('btn_regresar').addEventListener('click', function() {
-            if(confirm('¿Está seguro de que desea salir? Los cambios no guardados se perderán.')) {
-                window.history.back();
-                
-            }
-        });
-    </script>
-    
     @stack('js')
     
 </body>
