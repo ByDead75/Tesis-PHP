@@ -62,7 +62,8 @@ class DireccionesController extends Controller
         $direccion->fecha_inactivacion = null;
         $direccion->save();
 
-        return redirect()->route('gestiones.direcciones.registros.obtener');
+        return redirect()->route('gestiones.direcciones.registros.obtener')
+                                ->with('success', 'Direccion creada con exito.');
     }
 
     public function EditarDireccionSeleccionada (Request $request, $codigo_empresa, $codigo_direccion) {
@@ -99,8 +100,13 @@ class DireccionesController extends Controller
         ->update([ 'cod_empresa' => $codigo_empresa,
                     'cod_direccion' => $codigo_direccion,
                     'nb_direccion' => $direccionNombreVerificado]);
+        
+        if (!$direccion) {
+            abort(404, 'Direccion no encontrada');
+        }
 
-        return redirect()->route('gestiones.direcciones.registros.obtener');
+        return redirect()->route('gestiones.direcciones.registros.obtener')
+                                ->with('success', 'Direccion actualizada con exito.');
 
     }
     

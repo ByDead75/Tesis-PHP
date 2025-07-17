@@ -75,7 +75,8 @@ class EmpresasController extends Controller
 
         $empresa->save();
 
-        return redirect()->route('gestiones.empresas.registros.obtener');
+        return redirect()->route('gestiones.empresas.registros.obtener')
+                                ->with('success', 'Empresa creada con exito.');
     }
 
     public function EditarEmpresaSeleccionada (Request $request, $codigo_empresa) {
@@ -112,7 +113,8 @@ class EmpresasController extends Controller
                 abort(404, 'Empresa no encontrada');
             }
 
-                return redirect()->route('gestiones.empresas.registros.obtener');
+                return redirect()->route('gestiones.empresas.registros.obtener')
+                                        ->with('success', 'Empresa actualizada con exito.');
 
         } catch (\Exception $e) {
             

@@ -70,7 +70,8 @@ class GerenciasController extends Controller
         $gerencia->nb_gerencia = strtoupper(trim(preg_replace('/\s+/', ' ', $gerenciaNombre)));
         $gerencia->save();
 
-            return redirect()->route('gestiones.gerencias.registros');
+            return redirect()->route('gestiones.gerencias.registros')
+                                    ->with('success', 'Gerencia creada con exito.');
         } catch (\Exception $e) {
             
             return back()->withErrors(['error' => 'Ocurrió un error al guardar los datos.']);
@@ -135,7 +136,8 @@ class GerenciasController extends Controller
                 abort(404, 'Gerencia no encontrada');
             }
 
-                return redirect()->route('gestiones.gerencias.registros');
+                return redirect()->route('gestiones.gerencias.registros')
+                                        ->with('success', 'Gerencia actualizada con exito.');
 
         } catch (\Exception $e) {
             

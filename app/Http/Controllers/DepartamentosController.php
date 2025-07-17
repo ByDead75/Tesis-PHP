@@ -76,7 +76,8 @@ class DepartamentosController extends Controller {
         $departamento->fecha_inactivacion = null;
         $departamento->save();
 
-            return redirect()->route('gestiones.departamentos.registros.obtener');
+            return redirect()->route('gestiones.departamentos.registros.obtener')
+                                    ->with('success', 'Departamento creado con exito.');
         } catch (\Exception $e) {
             
             return back()->withErrors(['error' => 'Ocurrió un error al guardar los datos.']);
@@ -146,7 +147,8 @@ class DepartamentosController extends Controller {
                 abort(404, 'Departamento no encontrado');
             }
 
-                return redirect()->route('gestiones.departamentos.registros.obtener');
+                return redirect()->route('gestiones.departamentos.registros.obtener')
+                                        ->with('success', 'Departamento actualizado con exito.');
 
         } catch (\Exception $e) {
             
