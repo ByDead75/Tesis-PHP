@@ -9,7 +9,7 @@
                 <div class="dropdown">
                     <a href="#" id="topbarUserDropdown" class="user-dropdown d-flex align-items-center dropend dropdown-toggle " data-bs-toggle="dropdown" aria-expanded="false">
                         <div class="avatar avatar-md2" >
-                            <img src="{{asset('assets/compiled/jpg/1.jpg')}}" alt="Avatar">
+                            <img src="{{asset('assets/compiled/png/durin.png')}}" alt="Avatar">
                         </div>
                         @if(session('nombre_usuario'))
                             <div class="text">

@@ -18,7 +18,7 @@
                             <div class="row mb-3">
                                 <div class="d-flex justify-content-center align-items-center flex-column">
                                     <div class="avatar avatar-2xl mt-3">
-                                        <img src="./assets/compiled/jpg/2.jpg" alt="Avatar">
+                                        <img src="./assets/compiled/png/durin.png" alt="Avatar">
                                     </div>
                                     <h3 class="mt-3"> {{ $usuario->nombre }}</h3>
                                 </div>

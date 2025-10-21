@@ -21,7 +21,7 @@
                     <div class="row justify-content-center mt-5">
                         <div class="col-md-8">
                             <div class="alert alert-info text-center">
-                                ¡Bienvenido al sistema de Ordenes de Pago!
+                                ¡Bienvenido al Sistema de Gestión de Pólizas!
                             </div>
                         </div>
                     </div>

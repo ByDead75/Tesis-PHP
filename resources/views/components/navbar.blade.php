@@ -9,7 +9,7 @@
             
             <li class="menu-item has-sub">
                 <a href="#" class='menu-link'>
-                    <span><i class="bi bi-stack"></i> Órdenes</span>
+                    <span><i class="bi bi-stack"></i> Casos</span>
                 </a>
                 <div class="submenu">
                     <div class="submenu-group-wrapper">
