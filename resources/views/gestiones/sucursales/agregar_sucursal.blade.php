@@ -35,8 +35,8 @@
                                             <div class="col-12">
                                                 <div class="form-group">
                                                     <label class="form-label" for="sucursal_codigo">Código de la Sucursal</label>
-                                                    <input type="text" id="sucursal_codigo" name="sucursal_codigo" class="form-control"
-                                                        placeholder="Ingrese el Código de la Direccion">
+                                                    <input type="number" min="0" id="sucursal_codigo" name="sucursal_codigo" class="form-control"
+                                                        placeholder="Ingrese el Código de la Sucursal">
                                                 </div>
                                             </div>
                                         </div>
@@ -53,10 +53,19 @@
 
                                         <div class="row mt-2">
                                             <div class="col-12 d-flex justify-content-between align-items-center">
-                                                <button type="reset" id="btn_regresar"  class="btn btn-secondary me-1 mb-1">Regresar</button>
-                                                <button type="submit"class="btn btn-primary me-1 mb-1">Confirmar</button>
+                                                <button type="button" id="btn_regresar" class="btn btn-secondary me-1 mb-1" name="btn_regresar">Regresar</button>
+                                                <button type="submit"id="btn_confirmar" class="btn btn-primary me-1 mb-1" name="btn_confirmar">Confirmar</button>
                                             </div>
                                         </div>
+                                        @if ($errors->any())
+                                            <div class="alert alert-danger">
+                                                <ul>
+                                                    @foreach ($errors->all() as $error)
+                                                        <li>{{ $error }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

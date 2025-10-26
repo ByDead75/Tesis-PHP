@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SOP Humanitas - @yield('title')</title>
+    <title>Humanitas - @yield('title')</title>
     
-    <link rel="shortcut icon" href="{{ asset('assets/compiled/svg/favicon.svg')}}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('assets/compiled/png/humanitas_icono.png')}}" type="image/x-icon">
     
     <link rel="stylesheet" href="{{asset('assets/compiled/css/footer.css')}}">
     <link rel="stylesheet" href="{{asset('assets/compiled/css/app.css')}}">

@@ -35,9 +35,9 @@
                                         <div class="row mt-2" >
                                             <div class="col-12">
                                                 <div class="form-group">
-                                                    <label class="form-label" for="empresa">Ingrese la Razon Social</label>
+                                                    <label class="form-label" for="empresa">Ingrese la Razon Social/Nombre de la Empresa</label>
                                                     <input type="text" id="empresa" class="form-control"
-                                                        name="empresa" placeholder="Ingrese la Razon Social">
+                                                        name="empresa" placeholder="Ingrese la Razon Social/Nombre de la Empresa">
                                                 </div>
                                             </div>
                                         </div>

@@ -20,7 +20,6 @@
                             <div class="card-content">
                                 <div class="card-body">
                                         <div class="form-body">
-
                                             <div class="row">
                                                 <div class="col-12">
                                                     <div class="form-group">
@@ -48,7 +47,7 @@
                                                     <div class="form-group">
                                                         <label class="form-label" for="gerencia_codigo">Código de la Gerencia</label>
                                                         <input type="number" min="0" id="gerencia_codigo" name="gerencia_codigo" class="form-control"
-                                                            placeholder="Ingrese el Nombre de la Gerencia">
+                                                            placeholder="Ingrese el Codigo de la Gerencia">
                                                     </div>
                                                 </div>
                                             </div>
@@ -65,10 +64,19 @@
 
                                             <div class="row mt-2">
                                                 <div class="col-12 d-flex justify-content-between align-items-center">
-                                                    <button type="reset" id="btn_regresar" name="btn_regresar" class="btn btn-secondary me-1 mb-1">Regresar</button>
-                                                    <button type="submit"class="btn btn-primary me-1 mb-1">Confirmar</button>
+                                                    <button type="button" class="btn btn-secondary me-1 mb-1" id="btn_regresar" name="btn_regresar">Regresar</button>
+                                                    <button type="submit"class="btn btn-primary me-1 mb-1" id="btn_confirmar" name="btn_confirmar">Confirmar</button>
                                                 </div>
                                             </div>
+                                            @if ($errors->any())
+                                            <div class="alert alert-danger">
+                                                <ul>
+                                                    @foreach ($errors->all() as $error)
+                                                        <li>{{ $error }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        @endif
                                         </div>
                                 </div>
                             </div>

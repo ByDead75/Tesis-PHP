@@ -53,13 +53,18 @@ class GerenciasController extends Controller
     public function AgregarGerencias (Request $request) {
 
         $request->validate([
-        'empresa_codigo' => 'required',
-        'direccion_codigo' => 'required',
-        'gerencia_codigo' => 'required',
-        'gerencia' => 'required',
+            'empresa_codigo' => 'required',
+            'direccion_codigo' => 'required',
+            'gerencia_codigo' => 'required',
+            'gerencia' => 'required',
         ]);
 
-        try {
+        /*try {
+
+            } catch (\Exception $e) {
+            
+            return back()->withErrors(['error' => 'Ocurrió un error al guardar los datos.']);
+        }*/
 
         $gerencia = new Gerencia();
 
@@ -68,14 +73,12 @@ class GerenciasController extends Controller
         $gerencia->cod_gerencia = $request->input('gerencia_codigo');
         $gerenciaNombre = $request->input('gerencia');
         $gerencia->nb_gerencia = strtoupper(trim(preg_replace('/\s+/', ' ', $gerenciaNombre)));
+
+        $gerencia->fecha_inactivacion = null;
         $gerencia->save();
 
             return redirect()->route('gestiones.gerencias.registros')
                                     ->with('success', 'Gerencia creada con exito.');
-        } catch (\Exception $e) {
-            
-            return back()->withErrors(['error' => 'Ocurrió un error al guardar los datos.']);
-        }
     }
 
     public function EditarGerenciaSeleccionada (Request $request, 

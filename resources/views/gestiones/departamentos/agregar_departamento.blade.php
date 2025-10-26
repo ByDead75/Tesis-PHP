@@ -56,9 +56,9 @@
                                             <div class="row mt-2">
                                                 <div class="col-12">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="cod_departamento">Codigo del Departamento</label>
-                                                        <input type="number" min="0" id="cod_departamento" class="form-control"
-                                                            name="cod_departamento" placeholder="Ingrese el Codigo del Departamento">
+                                                        <label class="form-label" for="departamento_codigo">Codigo del Departamento</label>
+                                                        <input type="number" min="0" id="departamento_codigo" class="form-control"
+                                                            name="departamento_codigo" placeholder="Ingrese el Codigo del Departamento">
                                                     </div>
                                                 </div>
                                             </div>
@@ -77,8 +77,8 @@
 
                                             <div class="row mt-2">
                                                 <div class="col-12 d-flex justify-content-between align-items-center">
-                                                    <button type="reset" class="btn btn-secondary me-1 mb-1" id="btn_regresar" name="btn_regresar">Regresar</button>
-                                                    <button type="submit"class="btn btn-primary me-1 mb-1" id="btn_confirmar" name="btn_confirmar">Confirmar</button>
+                                                    <button type="button" id="btn_regresar" class="btn btn-secondary me-1 mb-1" name="btn_regresar">Regresar</button>
+                                                    <button type="submit"id="btn_confirmar" class="btn btn-primary me-1 mb-1" name="btn_confirmar">Confirmar</button>
                                                 </div>
                                             </div>
                                         </div>

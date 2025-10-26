@@ -108,17 +108,17 @@
 @endsection
 
 @push('js') 
-    <script src="{{asset('assets/compiled/js/tabla-gerencia.js')}}"></script>
-
     <script>
         var route_gerencia = '{{ route("gerencia.data") }}'
     </script>
+    
+    <script src="{{asset('assets/compiled/js/tabla-gerencia.js')}}"></script>
 
     <script>
-        function RedireccionEditarGerencia(codigo_empresa, codigo_direccion, codigo_gerencias) {
+        function RedireccionEditarGerencia(codigo_empresa, codigo_direccion, codigo_gerencia) {
 
             const baseUrl = "{{ url('/editar/gerencia') }}";
-                window.location.href = baseUrl + '/'+codigo_empresa+'/'+codigo_direccion+'/'+codigo_gerencias+'';
+                window.location.href = baseUrl + '/'+codigo_empresa+'/'+codigo_direccion+'/'+codigo_gerencia+'';
     }
     </script>
 

@@ -27,7 +27,7 @@
 
                         <div class="col-md-6 col-12">
                             <div class="form-group">
-                                <label class="form-label" for="nb_empresa" >Razon Social</label>
+                                <label class="form-label" for="nb_empresa" >Razon Social/Nombre de la Empresa</label>
                                 <input type="text" id="nb_empresa" name="nb_empresa" class="form-control" 
                                 placeholder="Ingrese la Razon Social">
                             </div>
@@ -53,7 +53,7 @@
                                 <tr>
                                     <th class="text-center">Acciones</th>
                                     <th class="text-center">Codigo de la Empresa</th>
-                                    <th class="text-center">Razon Social</th>
+                                    <th class="text-center">Razon Social/Nombre de la Empresa</th>
                                 </tr>
                             </thead>
                             <tbody class="text-center">

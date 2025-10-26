@@ -60,7 +60,8 @@ class SucursalesController extends Controller
             $sucursal->FECHA_INACTIVACION = null;
             $sucursal->save();
 
-            return redirect()->route('gestiones.sucursales.registros')->with('success', 'Sucursal agregada con exito.');
+            return redirect()->route('gestiones.sucursales.registros')
+                                    ->with('success', 'Sucursal agregada con exito.');
 
         } catch (\Exception $e) {
             
@@ -69,7 +70,6 @@ class SucursalesController extends Controller
         
     }
 
-    
 
     public function EditarSucursalSeleccionada (Request $request, $codigo_empresa, $codigo_sucursal) {
 

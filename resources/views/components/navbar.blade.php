@@ -3,7 +3,7 @@
         <ul>
             <li class="menu-item active">
                 <a href="{{ url('dashboard') }}" class='menu-link'>
-                    <span><i class="bi bi-grid-fill"></i> Dashboard</span>
+                    <span><i class="bi bi-grid-fill"></i> Panel</span>
                 </a>
             </li>
             

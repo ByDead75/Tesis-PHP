@@ -57,18 +57,23 @@ class DepartamentosController extends Controller {
         'empresa_codigo' => 'required',
         'direccion_codigo' => 'required',
         'gerencia_codigo' => 'required',
-        'cod_departamento' => 'required',
+        'departamento_codigo' => 'required',
         'departamento' => 'required',
     ]);
 
-        try {
-
+        /*try {
+        } catch (\Exception $e) {
+            
+            return back()->withErrors(['error' => 'Ocurrió un error al guardar los datos.']);
+        }
+        */
+       
         $departamento = new Departamento();
 
         $departamento->cod_empresa = $request->input('empresa_codigo');
         $departamento->cod_direccion = $request->input('direccion_codigo');
         $departamento->cod_gerencia = $request->input('gerencia_codigo');
-        $departamento->cod_departamento = $request->input('cod_departamento');
+        $departamento->cod_departamento = $request->input('departamento_codigo');
 
         $departamentoNombre = $request->input('departamento');
         $departamento->nb_departamento = strtoupper(trim(preg_replace('/\s+/', ' ', $departamentoNombre)));
@@ -78,10 +83,6 @@ class DepartamentosController extends Controller {
 
             return redirect()->route('gestiones.departamentos.registros.obtener')
                                     ->with('success', 'Departamento creado con exito.');
-        } catch (\Exception $e) {
-            
-            return back()->withErrors(['error' => 'Ocurrió un error al guardar los datos.']);
-        }
     }
 
     public function EditarDepartamentoSeleccionado (Request $request, $cod_empresa, $cod_direccion, 

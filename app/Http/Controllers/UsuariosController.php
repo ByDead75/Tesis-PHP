@@ -93,7 +93,7 @@ class UsuariosController extends Controller {
             ->addIndexColumn()
             ->addColumn('actions', function($row) {
 
-                    $buttons = '<div class="d-flex justify-content-between align-items-center">'; // Contenedor flex que alinea los elementos en línea
+                    $buttons = '<div class="d-flex justify-content-between align-items-center">';
                 
                 // Botón Editar
                 $buttons .= '<div class="btn-group" role="group">
