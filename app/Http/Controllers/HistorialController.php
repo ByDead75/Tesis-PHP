@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helpers\StatusHelper;
 use App\Models\Solicitudes;
-use App\Models\Empleados1;
+use App\Models\Usuarios;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 

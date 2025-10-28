@@ -40,10 +40,10 @@ class CentroCosto extends Model{
                     'centro_costo.cod_gerencia',
                     'centro_costo.cod_aprobador',
                     'gerencia.nb_gerencia as gerencia',
-                    'empleados1.nombre as aprobador'
+                    'usuario.nombre as aprobador'
                     )
                     ->join('gerencia', 'centro_costo.cod_gerencia', '=', 'gerencia.cod_gerencia')
-                    ->join('empleados1', 'centro_costo.cod_aprobador', '=', 'empleados1.cedula')
+                    ->join('usuario', 'centro_costo.cod_aprobador', '=', 'usuario.cedula')
                     ->where('centro_costo.cod_empresa', $codigo_empresa)
                     ->distinct()
                     ->get();

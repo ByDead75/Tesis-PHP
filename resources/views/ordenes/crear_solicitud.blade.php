@@ -277,9 +277,9 @@
             sucursal: {
                 required: true
             },
-            centro_costo_empresa: {
+            /*centro_costo_empresa: {
                 required: true
-            },
+            },*/
             tipo_proveedor: {
                 required: true
             },
@@ -321,9 +321,9 @@
             sucursal: {
                 required: "Seleccione una sucursal."
             },
-            centro_costo_empresa: {
+            /*centro_costo_empresa: {
                 required: "Seleccione un centro de costo."
-            },
+            },*/
             tipo_proveedor: {
                 required: "Seleccione un proveedor."
             },

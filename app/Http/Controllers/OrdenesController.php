@@ -61,7 +61,7 @@ class OrdenesController extends Controller
         //Log::info($request->all());
         //local.INFO: array
 
-            try {
+            /*try { */
 
             $solicitud = new Solicitudes();
 
@@ -123,11 +123,10 @@ class OrdenesController extends Controller
             }
 
             return redirect()->route('historial.index')->with('success', 'Solicitud guardada con exito.');
-        } catch (\Exception $e) {
-            dd($e);
+        } /*catch (\Exception $e) {
             return back()->withErrors(['danger' => 'Ocurrió un error al guardar los datos.']);
-        }
-    }
+        }*/
+    /*} */
 
     // Funciones de Editar
 
