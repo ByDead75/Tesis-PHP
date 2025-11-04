@@ -47,10 +47,9 @@
 
                                         <div class="col-md-4 col-12">
                                             <div class="form-group">
-                                                <label class="form-label text-center d-block" for="centro_costo_empresa">Centro de Costo / Departamento </label>
-                                                    <input type="text" id="centro_costo_empresa" name="centro_costo_empresa" class="form-control text-center"
-                                                        placeholder="Click para seleccionar su Centro de Costo" >
-                                                    <input type="hidden" id="centro_costo_empresa_codigo" class="form-control" name="centro_costo_empresa_codigo">
+                                                <label class="form-label text-center d-block" for="nombre_solicitante">Solicitante</label>
+                                                    <p class="form-control-static text-center" id="nombre_solicitante" name="nombre_solicitante">{{ $nombre }}</p>
+                                                    <input type="hidden" id="id_solicitante" class="form-control" name="id_solicitante" value="{{ $cedula }}">
                                             </div>
                                         </div>
                                     </div>
@@ -58,17 +57,17 @@
                                     <div class="row mt-2">
                                         <div class="col-md-4 col-12">
                                             <div class="form-group">
-                                                <label class="form-label text-center d-block" for="nombre_solicitante">Solicitante</label>
-                                                    <p class="form-control-static text-center" id="nombre_solicitante" name="nombre_solicitante">{{ $nombre }}</p>
-                                                    <input type="hidden" id="id_solicitante" class="form-control" name="id_solicitante" value="{{ $cedula }}">
+                                                <label class="form-label text-center d-block" for="aprobador_nombre">Aprobador del Centro</label>
+                                                    <input type="text" class="form-control text-center" id="aprobador_nombre" name='aprobador_nombre' disabled >
+                                                    <input type="hidden" id="aprobador_codigo" class="form-control" name="aprobador_codigo">
                                             </div>
                                         </div>
 
                                         <div class="col-md-4 col-12">
                                             <div class="form-group">
-                                                <label class="form-label text-center d-block" for="aprobador_nombre">Aprobador del Centro</label>
-                                                    <input type="text" class="form-control text-center" id="aprobador_nombre" name='aprobador_nombre' disabled >
-                                                    <input type="hidden" id="aprobador_codigo" class="form-control" name="aprobador_codigo">
+                                                <label  class="form-label text-center d-block" for="fecha"></label>
+                                                    <p class="form-control-static text-center" name="fecha" id="fecha"></p>
+                                                    <input type="hidden" id="fecha_solicitud" class="form-control" name="fecha_solicitud" value="">
                                             </div>
                                         </div>
 
@@ -242,7 +241,7 @@
                                     <div class="row">
                                         <div class="col-12 d-flex justify-content-between align-items-center">
                                             <button type="button" class="btn btn-secondary me-1 mb-1" id="btn_regresar" name="btn_regresar">Regresar</button>
-                                            <button type="submit" class="btn btn-primary me-1 mb-1">Enviar Solicitud</button>
+                                            <button type="submit" class="btn btn-primary me-1 mb-1" id="btn_confirmar" name="btn_confirmar">Enviar Solicitud</button>
                                         </div>
                                     </div>
                                 </div>
@@ -265,7 +264,6 @@
     <script src="{{asset('assets/compiled/js/bancos_modal.js')}}"></script>
     
     <script src="{{asset('assets/compiled/js/sucursales_modal.js')}}"></script>
-    <script src="{{asset('assets/compiled/js/centrocosto_empresa_modal.js')}}"></script>
 
     
     <script>
@@ -277,9 +275,6 @@
             sucursal: {
                 required: true
             },
-            /*centro_costo_empresa: {
-                required: true
-            },*/
             tipo_proveedor: {
                 required: true
             },
@@ -321,9 +316,6 @@
             sucursal: {
                 required: "Seleccione una sucursal."
             },
-            /*centro_costo_empresa: {
-                required: "Seleccione un centro de costo."
-            },*/
             tipo_proveedor: {
                 required: "Seleccione un proveedor."
             },
@@ -434,16 +426,6 @@
                 return
             }
             sucursales('{{ route("buscar.sucursales.empresa") }}')
-        })
-    </script>
-
-    <script>
-        $('#centro_costo_empresa').on('click', function () {
-            if ($('#empresa_codigo').val() === "") {
-                alert('Debes seleccionar una empresa primero'); 
-                return;
-            }
-            centroCosto_empresa('{{ route("buscar.centrocosto.empresa") }}')
         })
     </script>
 

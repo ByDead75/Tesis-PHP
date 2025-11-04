@@ -45,15 +45,6 @@
                                                         value="{{ old('sucursal_codigo', $solicitud->cod_sucursal) }}">
                                         </div>
                                     </div>
-                                    <div class="col-md-4 col-12">
-                                        <div class="form-group">
-                                            <label class="form-label text-center d-block" for="centro_costo_empresa">Centro de Costo / Departamento </label>
-                                                <input type="text" id="centro_costo_empresa" class="form-control text-center" placeholder="Click para seleccionar el Centro de Costo" name="centro_costo_empresa"
-                                                        value="{{ old('centro_costo_empresa', $solicitud->nombre_centro_costo) }}">
-                                                <input type="hidden" id="centro_costo_empresa_codigo" name="centro_costo_empresa_codigo"  class="form-control"  
-                                                        value="{{ old('centro_costo_empresa_codigo', $solicitud->codigo_centro_costo) }}">
-                                        </div>
-                                    </div>
                                 </div>
 
                                 <div class="row mt-2">
@@ -271,9 +262,7 @@
 
     <script src="{{asset('assets/compiled/js/proveedores_modal.js')}}"></script>
     <script src="{{asset('assets/compiled/js/bancos_modal.js')}}"></script>
-
     <script src="{{asset('assets/compiled/js/sucursales_modal.js')}}"></script>
-    <script src="{{asset('assets/compiled/js/centrocosto_empresa_modal.js')}}"></script>
     
 
     <script>
@@ -300,16 +289,6 @@
                 return
             }
             sucursales('{{ route("buscar.sucursales.empresa") }}')
-        })
-    </script>
-
-    <script>
-        $('#centro_costo_empresa').on('click', function () {
-            if ($('#empresa_codigo').val() === "") {
-                alert('Debes seleccionar una empresa primero'); 
-                return;
-            }
-            centroCosto_empresa('{{ route("buscar.centrocosto.empresa") }}')
         })
     </script>
 

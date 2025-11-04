@@ -89,14 +89,6 @@
                                                     value="{{ $solicitud->cod_sucursal }}">
                                         </div>
                                     </div>
-                                    <div class="col-md-4 col-12">
-                                        <div class="form-group">
-                                            <label class="form-label text-center d-block" for="centro_costo_empresa">Centro de Costo / Departamento </label>
-                                            <p class="form-control-static text-center" id="centro_costo_empresa" name="centro_costo_empresa">{{ $solicitud->nombre_centro_costo}}</p>
-                                            <input type="hidden" id="centro_costo_empresa_codigo" name="centro_costo_empresa_codigo"  class="form-control"  
-                                                    value="{{$solicitud->codigo_centro_costo}}">
-                                        </div>
-                                    </div>
                                 </div>
 
                                 <div class="row mt-2">

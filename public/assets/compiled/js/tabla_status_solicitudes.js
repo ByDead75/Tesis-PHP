@@ -25,7 +25,7 @@ $(document).ready(function() {
                     searchable: false,
                 },
                 {data: 'id_solicitud', name: 'id_solicitud' },
-                {data: 'nombre_solicitante', name: 'empleados1.nombre'},
+                {data: 'nombre_solicitante', name: 'usuario.nombre'},
                 {data: 'id_solicitante', name: 'id_solicitante'},
                 {data: 'fecha_solicitud', name: 'fecha_solicitud' },
                 {data: 'nombre_proveedor', name: 'proveedores.nb_auxiliar'},

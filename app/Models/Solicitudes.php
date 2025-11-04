@@ -63,8 +63,8 @@ class Solicitudes extends Model{
                 'solicitudes.rif',
                 'solicitudes.monto_total',
                 'solicitudes.status_solicitud',
-                'empleados1.nombre as nombre_solicitante' )
-                ->join('empleados1', 'solicitudes.id_solicitante', '=', 'empleados1.cedula');
+                'usuario.nombre as nombre_solicitante' )
+                ->join('usuario', 'solicitudes.id_solicitante', '=', 'usuario.cedula');
                 if($id_solicitud != null){
                     $resultado->where('solicitudes.id_solicitud', $id_solicitud);
                 }
@@ -95,9 +95,9 @@ class Solicitudes extends Model{
                 'solicitudes.beneficiario_de_pago',
                 'solicitudes.monto_total',
                 'solicitudes.status_solicitud',
-                'empleados1.nombre as nombre_solicitante',
+                'usuario.nombre as nombre_solicitante',
                 'proveedores.nb_auxiliar as nombre_proveedor')
-                ->join('empleados1', 'solicitudes.id_solicitante', '=', 'empleados1.cedula')
+                ->join('usuario', 'solicitudes.id_solicitante', '=', 'usuario.cedula')
                 ->join('proveedores', 'solicitudes.beneficiario_de_pago', '=', 'proveedores.cod_auxiliar')
                 ->where('solicitudes.status_solicitud', 1);
                 if($id_solicitud != null){
@@ -123,7 +123,6 @@ class Solicitudes extends Model{
         $resultado = self::select('solicitudes.id_solicitud',
                 'solicitudes.fecha_solicitud',
                 'solicitudes.cod_empresa',
-                'solicitudes.centro_de_costo as codigo_centro_costo',
                 'solicitudes.id_solicitante',
                 'solicitudes.cod_departamento',
                 'solicitudes.concepto_de_pago',
@@ -157,18 +156,16 @@ class Solicitudes extends Model{
 
                 'empresa.nb_empresa as nombre_empresa',
                 'sucursales.NB_SUCURSAL as sucursal',
-                'centro_costo.centro as nombre_centro_costo',
-                'empleados1.nombre as nombre_solicitante',
+                'usuario.nombre as nombre_solicitante',
                 'aprobador.nombre as nombre_aprobador',
                 
                 'proveedores.nb_auxiliar as nombre_proveedor',
                 'bancos.nb_banco as banco_nombre',
                 )
-                ->join('empleados1 as aprobador', 'solicitudes.aprobador_sol', '=', 'aprobador.cedula') 
+                ->join('usuario as aprobador', 'solicitudes.aprobador_sol', '=', 'aprobador.cedula') 
                 ->join('empresa', 'solicitudes.cod_empresa', '=', 'empresa.cod_empresa')
                 ->join('sucursales', 'solicitudes.cod_sucursal', '=', 'sucursales.COD_SUCURSAL')
-                ->join('centro_costo', 'solicitudes.centro_de_costo', '=', 'centro_costo.id_centro')
-                ->join('empleados1', 'solicitudes.id_solicitante', '=', 'empleados1.cedula')
+                ->join('usuario', 'solicitudes.id_solicitante', '=', 'usuario.cedula')
                 ->join('proveedores', 'solicitudes.beneficiario_de_pago', '=', 'proveedores.cod_auxiliar')
                 ->join('bancos', 'solicitudes.id_banco', '=', 'bancos.cod_banco')
                 ->where('solicitudes.id_solicitud', $id_solicitud)

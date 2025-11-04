@@ -40,7 +40,7 @@ class Usuario extends Authenticatable {
     ];
 
     public function obtener_usuarios($cedula, $id, $nombre, $cod_departamento, 
-                                $fecha_registro, $user_master, $email, $cod_centro_costo) {
+                                $fecha_registro, $user_master, $email) {
                                 $resultado = self::select('usuario.cedula',
                                     'usuario.id',
                                     'usuario.nombre',
@@ -51,18 +51,12 @@ class Usuario extends Authenticatable {
                                     'usuario.fecha_registro',
                                     'usuario.user_master',
                                     'usuario.email',
-                                    'usuario.cod_centro_costo',
-                                    'departamento.nb_departamento as nombre_departamento',
-                                    'centro_costo.centro as nombre_centro_costo'    
+                                    'departamento.nb_departamento as nombre_departamento',   
                                 )
                                 ->join('departamento', function($join) {
                                     $join->on('usuario.cod_departamento', '=', 'departamento.cod_departamento')
                                         ->on('departamento.cod_direccion', '=', 'usuario.cod_direccion')
                                         ->on('departamento.cod_empresa', '=', 'usuario.cod_empresa');
-                                })
-                                ->join('centro_costo', function($join) {
-                                    $join->on('usuario.cod_centro_costo', '=', 'centro_costo.id_centro')
-                                        ->on('centro_costo.cod_empresa', '=', 'usuario.cod_empresa');
                                 })
                                 ->join('sucursales', function($join) {
                                     $join->on('usuario.cod_sucursal', '=', 'sucursales.cod_sucursal')
@@ -86,11 +80,7 @@ class Usuario extends Authenticatable {
                 if($email != null){
                     $resultado->where('usuario.email', $email);
                 }
-                if($cod_centro_costo != null){
-                    $resultado->where('usuario.cod_centro_costo', $cod_centro_costo);
-                }else{
-                    $resultado->limit(50);
-                }
+
                 $resultado = $resultado->orderBy('usuario.cedula', 'desc')->distinct()->get();
                 
         return $resultado;
@@ -102,15 +92,12 @@ class Usuario extends Authenticatable {
                                 'usuario.nombre',
                                 'usuario.cod_empresa',
                                 'usuario.cod_sucursal',
-                                'usuario.cod_centro_costo',
 
                                 'empresa.nb_empresa as empresa',
                                 'sucursales.NB_SUCURSAL as sucursal',
-                                'centro_costo.centro as centro_de_costo',
                                 )
                             ->join('empresa', 'usuario.cod_empresa', '=', 'empresa.cod_empresa')
                             ->join('sucursales', 'usuario.cod_sucursal', '=', 'sucursales.COD_SUCURSAL')
-                            ->join('centro_costo', 'usuario.cod_centro_costo', '=', 'centro_costo.id_centro')
                             ->where('usuario.cedula', $id_usuario)
                             ->first();
         return $resultado;
@@ -131,14 +118,12 @@ class Usuario extends Authenticatable {
                                 'usuario.fecha_egreso',
                                 'usuario.user_master',
                                 'usuario.email',
-                                'usuario.cod_centro_costo',
 
                                 'empresa.nb_empresa as empresa_nombre',
                                 'sucursales.NB_SUCURSAL as sucursal_nombre',
                                 'direccion.nb_direccion as direccion_nombre',
                                 'gerencia.nb_gerencia as gerencia_nombre',
                                 'departamento.nb_departamento as departamento_nombre',
-                                'centro_costo.centro as centro_de_costo_nombre',
                                 )
 
                             ->join('empresa', 'usuario.cod_empresa', '=', 'empresa.cod_empresa')
@@ -146,7 +131,6 @@ class Usuario extends Authenticatable {
                             ->join('direccion', 'usuario.cod_direccion', '=', 'direccion.cod_direccion')
                             ->join('gerencia', 'usuario.cod_gerencia', '=', 'gerencia.cod_gerencia')
                             ->join('departamento', 'usuario.cod_departamento', '=', 'departamento.cod_departamento')
-                            ->join('centro_costo', 'usuario.cod_centro_costo', '=', 'centro_costo.id_centro')
                             ->where('usuario.id', $id)
                             ->first();
         return $resultado;

@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use App\Helpers\StatusHelper;
-use App\Models\CentroCosto;
-use App\Models\Empleados1;
+use App\Models\Usuario;
 use App\Models\Sucursales;
 use App\Models\Empresa;
 use App\Models\Proveedores;
@@ -39,7 +38,6 @@ class OrdenesController extends Controller
         $request->validate([
             'fecha_solicitud'   => 'required|date',
             'empresa_codigo'   => 'required|int',
-            'centro_costo_empresa_codigo' => 'required|int',
             'id_solicitante' => 'required|int',
             'concepto_de_pago' => 'required|string|max:500',
             'proveedor_codigo' => 'required|string|max:500',
@@ -67,7 +65,6 @@ class OrdenesController extends Controller
 
             $solicitud->fecha_solicitud = $request->input('fecha_solicitud');
             $solicitud->cod_empresa = $request->input('empresa_codigo');
-            $solicitud->centro_de_costo = $request->input('centro_costo_empresa_codigo'); 
             $solicitud->id_solicitante = $request->input('id_solicitante');
             $solicitud->cod_departamento = 0;
             $solicitud->concepto_de_pago = $request->input('concepto_de_pago');
@@ -190,16 +187,13 @@ class OrdenesController extends Controller
 
         return view('ordenes.editar_solicitud', compact('solicitud', 'empresas', 'documentos'));
 
-        
     }
-
 
     public function ActualizarSolicitudSeleccionada(Request $request, $id_solicitud){
 
         $request->validate([
             'fecha_solicitud'   => 'required|date',
             'empresa_codigo'   => 'required|int',
-            'centro_costo_empresa_codigo' => 'required|int',
             'id_solicitante' => 'required|int',
             'concepto_de_pago' => 'required|string|max:500',
             'proveedor_codigo' => 'required|string|max:500',
@@ -226,7 +220,6 @@ class OrdenesController extends Controller
         $solicitud->fecha_solicitud = $request->input('fecha_solicitud');
 
         $solicitud->cod_empresa = $request->input('empresa_codigo');
-        $solicitud->centro_de_costo = $request->input('centro_costo_empresa_codigo'); 
         $solicitud->id_solicitante = $request->input('id_solicitante');
 
 
@@ -244,10 +237,10 @@ class OrdenesController extends Controller
 
 
         $solicitud->rif = $request->input('proveedor_rif');
-        $solicitud->cod_sucursal= $request->input('sucursal_codigo');
+        $solicitud->cod_sucursal = $request->input('sucursal_codigo');
         $solicitud->factupuesto = $request->input('tipo_solicitud');   
-        $solicitud->aprobador_sol= $request->input('aprobador_codigo');
-        $solicitud->TipoProveedor= $request->input('tipo_proveedor'); 
+        $solicitud->aprobador_sol = $request->input('aprobador_codigo');
+        $solicitud->TipoProveedor = $request->input('tipo_proveedor'); 
 
         $solicitud->save();
 
@@ -369,7 +362,6 @@ class OrdenesController extends Controller
         return redirect()->route('ordenes.solicitud.status')->with('success', 'Status cambiado con exito.');
 
         } catch (\Exception $e) {
-            dd($e);
             return back()->withErrors(['danger' => 'Ocurrió un error al modificar el status.']);
         }
 

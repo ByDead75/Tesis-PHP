@@ -117,19 +117,6 @@
                                         </div>
                                         <div class="col-6">
                                             <div class="form-group">
-                                                <label class="form-label" for="centro_costo">Centro de Costo</label>
-                                                <input type="text" id="centro_costo" class="form-control"
-                                                    name="centro_costo" placeholder="Click para seleccionar su Centro de Costo"
-                                                    value="{{ old('centro_costo', $usuario->centro_costo_nombre) }}">
-                                                <input type="hidden" id="centro_costo_codigo" class="form-control" name="centro_costo_codigo"
-                                                    value="{{ old('centro_costo_codigo', $usuario->cod_centro_costo) }}">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row mt-2">
-                                        <div class="col-6">
-                                            <div class="form-group">
                                                 <label class="form-label" for="user_master">Tipo de Usuario</label>
                                                 <select class="form-select" id="user_master" name="user_master">
                                                     <option value="0" {{ old('user_master', $usuario->id_pago) == '0' ? 'selected' : '' }}>0</option>
@@ -141,7 +128,9 @@
                                                 </select>
                                             </div>
                                         </div>
+                                    </div>
 
+                                    <div class="row mt-2">
                                         <div class="col-6">
                                             <div class="form-group">
                                                 <label class="form-label" for="email">Email</label>
@@ -198,7 +187,6 @@
     <script src="{{asset('assets/compiled/js/direccion_modal.js')}}"></script>
     <script src="{{asset('assets/compiled/js/gerencia_modal.js')}}"></script>
     <script src="{{asset('assets/compiled/js/departamento_modal.js')}}"></script>
-    <script src="{{asset('assets/compiled/js/centro_costo_modal.js')}}"></script>
     
     <script>
     $('#crearUsuario').validate({
@@ -222,9 +210,6 @@
                 required: true
             },
             departamento: {
-                required: true
-            },
-            centro_costo: {
                 required: true
             },
             user_master: {
@@ -261,9 +246,6 @@
             },
             departamento: {
                 required: "Departamento requerido"
-            },
-            centro_costo: {
-                required: "Centro de Costo requerido"
             },
             user_master: {
                 required: "Rol requerido"
@@ -343,26 +325,6 @@
         })
     </script>
 
-    <script>
-        $('#centro_costo').on('click', function () {
-            if ($('#empresa').val() === "") {
-                alert('Debes seleccionar una empresa primero');
-                empresas('{{ route("buscar.empresas") }}')   
-                return;
-            } else if ($('#direccion').val() === "") {
-                alert('Debes seleccionar una dirección primero');
-                direccion('{{ route("buscar.direccion.empresa") }}')   
-                return;
-            } else if ($('#gerencia').val() === "") {
-                alert('Debes seleccionar una gerencia primero');
-                gerencia('{{ route("buscar.gerencia.direccion") }}') 
-                return;
-            }
-            centro_costo('{{ route("buscar.centrocosto.gerencia") }}')
-        })
-    </script>
-
-    
     <script>
         document.getElementById('btn_regresar').addEventListener('click', function() {
             if(confirm('¿Está seguro de que desea salir? Los cambios no guardados se perderán.')) {

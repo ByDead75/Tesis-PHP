@@ -112,23 +112,13 @@
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="centro_costo">Centro de Costo</label>
-                                                        <input type="text" id="centro_costo" class="form-control"
-                                                            name="centro_costo" placeholder="Click para seleccionar su Centro de Costo">
-                                                        <input type="hidden" id="centro_costo_codigo" class="form-control" name="centro_costo_codigo">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row mt-2">
-                                                <div class="col-12">
-                                                    <div class="form-group">
                                                         <label class="form-label" for="email">Email</label>
                                                         <input type="email" id="email" class="form-control"
                                                             name="email" placeholder="Ingrese el Email">
                                                     </div>
                                                 </div>
                                             </div>
+
                                             <div class="row mt-2">
                                                 <div class="col-6">
                                                     <div class="form-group">
@@ -183,9 +173,7 @@
     <script src="{{asset('assets/compiled/js/direccion_modal.js')}}"></script>
     <script src="{{asset('assets/compiled/js/gerencia_modal.js')}}"></script>
     <script src="{{asset('assets/compiled/js/departamento_modal.js')}}"></script>
-    <script src="{{asset('assets/compiled/js/centro_costo_modal.js')}}"></script>
 
-    
     <script>
     $('#crearUsuario').validate({
         rules: { // <-- Alertas para cada input según su ID
@@ -211,9 +199,6 @@
                 required: true
             },
             departamento: {
-                required: true
-            },
-            centro_costo: {
                 required: true
             },
             user_master: {
@@ -254,9 +239,6 @@
             },
             departamento: {
                 required: "Seleccione un departamento."
-            },
-            centro_costo: {
-                required: "Seleccione un centro de costo."
             },
             user_master: {
                 required: "Seleccione el tipo de usuario."
@@ -340,25 +322,6 @@
                 return;
             }
             departamento('{{ route("buscar.departamento.gerencia") }}')
-        })
-    </script>
-
-    <script>
-        $('#centro_costo').on('click', function () {
-            if ($('#empresa').val() === "") {
-                alert('Debes seleccionar una empresa primero');
-                empresas('{{ route("buscar.empresas") }}')   
-                return;
-            } else if ($('#direccion').val() === "") {
-                alert('Debes seleccionar una dirección primero');
-                direccion('{{ route("buscar.direccion.empresa") }}')   
-                return;
-            } else if ($('#gerencia').val() === "") {
-                alert('Debes seleccionar una gerencia primero');
-                gerencia('{{ route("buscar.gerencia.direccion") }}') 
-                return;
-            }
-            centro_costo('{{ route("buscar.centrocosto.gerencia") }}')
         })
     </script>
 

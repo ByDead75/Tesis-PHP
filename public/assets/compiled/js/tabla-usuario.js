@@ -13,8 +13,7 @@ $(document).ready(function() {
                     d.cod_departamento = $('#cod_departamento').val(),
                     d.fecha_registro = $('#fecha_registro').val(),
                     d.user_master = $('#user_master').val(),
-                    d.email = $('#email').val(),
-                    d.cod_centro_costo = $('#cod_centro_costo').val()
+                    d.email = $('#email').val()
                 },
             },
             columns: [
@@ -28,8 +27,7 @@ $(document).ready(function() {
                 {data: 'nombre_departamento', name: 'departamento.nb_departamento' },
                 {data: 'fecha_registro', name: 'fecha_registro' },
                 {data: 'user_master', name: 'user_master' },
-                {data: 'email', name: 'email' },
-                {data: 'nombre_centro_costo', name: 'centro_costo.centro' },
+                {data: 'email', name: 'email' }
             ],
             language: {
                 url: "https://cdn.datatables.net/plug-ins/1.10.25/i18n/Spanish.json"

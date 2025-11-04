@@ -71,7 +71,6 @@
                                     <th class="text-center">Fecha de Registro</th>
                                     <th class="text-center">Tipo de Usuario</th>
                                     <th class="text-center">Email</th>
-                                    <th class="text-center">Centro de Costo</th>
                                 </tr>
                             </thead>
                             <tbody class="text-center">

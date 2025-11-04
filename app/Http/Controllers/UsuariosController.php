@@ -68,8 +68,6 @@ class UsuariosController extends Controller {
         return redirect()->route('usuario.perfil');
     }
 
-
-
     public function MostrarIndexUsuarios () {
 
         return view('gestiones.usuarios.mostrar_usuario');
@@ -87,7 +85,6 @@ class UsuariosController extends Controller {
                                                     $request->fecha_registro,
                                                     $request->user_master,
                                                     $request->email, 
-                                                    $request->cod_centro_costo
                                                     );
             $datatables = DataTables::of($usuario)
             ->addIndexColumn()
@@ -160,7 +157,6 @@ class UsuariosController extends Controller {
         $usuario->cod_sucursal = $request->input('sucursal_codigo');
         $usuario->cod_departamento = $request->input('departamento_codigo');
         $usuario->cod_gerencia = $request->input('gerencia_codigo');
-        $usuario->cod_centro_costo = $request->input('centro_costo_codigo'); 
         $usuario->email = $request->input('email');
         $usuario->fecha_registro = $request->input('fecha_ingreso');
         $usuario->user_master = $request->input('user_master');
@@ -200,8 +196,7 @@ class UsuariosController extends Controller {
             'direccion_codigo' => 'required',
             'sucursal_codigo' => 'required',
             'departamento_codigo' => 'required',
-            'gerencia_codigo' => 'required',
-            'centro_costo_codigo' => 'required',         
+            'gerencia_codigo' => 'required',      
             'email' => 'required',
             'fecha_registro' => 'required',
             'fecha_egreso' => 'required',
@@ -219,8 +214,7 @@ class UsuariosController extends Controller {
         $usuario->cod_direccion = $request->input('direccion_codigo');
         $usuario->cod_sucursal = $request->input('sucursal_codigo');
         $usuario->cod_departamento = $request->input('departamento_codigo');
-        $usuario->cod_gerencia = $request->input('gerencia_codigo');
-        $usuario->cod_centro_costo = $request->input('centro_costo_codigo'); 
+        $usuario->cod_gerencia = $request->input('gerencia_codigo'); 
         $usuario->email = $request->input('email');
         $usuario->fecha_registro = $request->input('fecha_registro');
         $usuario->fecha_egreso = $request->input('fecha_egreso');
